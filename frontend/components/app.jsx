@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Route } from 'react-router-dom'
 
-import UserForm from './auth/user_form'
+// import UserForm from './auth/user_form'
 
 import LogoName from './logos/logo_name'
 
