@@ -4,12 +4,12 @@ import { Route } from 'react-router-dom'
 
 // import UserForm from './auth/user_form'
 
-import LogoName from './logos/logo_name'
+import UserForm from './user_forms/user_form'
 
 
 const App = ({store}) => (
   <div>
-    <LogoName />
+    <UserForm />
   </div>
 )
 
