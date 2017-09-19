@@ -3,18 +3,20 @@
   text-decoration: none;
   color: #2D333A;
   font-family: 'Lato', sans-serif;
-  width: 13rem;
+  width: 16rem;
   height: 3rem;
-  font-size: 2.4rem;
+  font-size: 3rem;
   font-weight: 900;
   margin: 1rem;
 }
 
 .logo_name__img {
   height: 100%;
-  float: left;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .logo_name__name {
-  float: left;
+  display: inline-block;
+  vertical-align: baseline;
 }
