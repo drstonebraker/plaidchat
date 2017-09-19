@@ -17,11 +17,11 @@ module.exports = {
           presets: ['env', 'react']
         }
       }
-    ],
-    plugins: [
-      new LiveReloadPlugin({})
     ]
   },
+  plugins: [
+    new LiveReloadPlugin({})
+  ],
   devtool: 'source-map',
   resolve: {
     extensions: ['.js', '.jsx', '*']
