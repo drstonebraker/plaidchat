@@ -27,4 +27,9 @@ class ApplicationController < ActionController::Base
     render json: ['You must be logged in'], status: 401 unless logged_in?
   end
 
+  def require_logout
+    render json: ['You cannot create a new session when already logged in'],
+      status: 401 if logged_in?
+  end
+
 end
