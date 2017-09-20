@@ -13,49 +13,57 @@ class UserForm extends React.Component {
 
   render() {
     return (
-      <div className="l-form_container l-middle">
+      <div className='userform'>
 
-        <h1
-          className="form_container__header">
-          Log in to plaidchat
-        </h1>
+        <nav
+          className='auth_nav'>
 
-        <form className='form'>
+        </nav>
 
-          <div className="form_field">
-            <label
-              className='form_field__label'
-              htmlFor='login__username_input'>
-              Username
-            </label>
+        <div className="l-form_container l-middle">
+
+          <h1
+            className="form_container__header">
+            Log in to plaidchat
+          </h1>
+
+          <form className='form'>
+
+            <div className="form_field">
+              <label
+                className='form_field__label'
+                htmlFor='login__username_input'>
+                Username
+              </label>
+              <input
+                className='form_field__text_input'
+                type='text'
+                id='login__username_input'
+              />
+            </div>
+
+            <div className="form_field">
+              <label
+                className='form_field__label'
+                htmlFor='login__password_input'>
+                Password
+              </label>
+              <input
+                className='form_field__text_input'
+                type='password'
+                id='login__password_input'
+              />
+            </div>
+
             <input
-              className='form_field__text_input'
-              type='text'
-              id='login__username_input'
-            />
-          </div>
+              className='form_field__submit form_field__submit--wide'
+              type='submit'
+              value='Log in →'
+              />
 
-          <div className="form_field">
-            <label
-              className='form_field__label'
-              htmlFor='login__password_input'>
-              Password
-            </label>
-            <input
-              className='form_field__text_input'
-              type='password'
-              id='login__password_input'
-            />
-          </div>
+          </form>
 
-          <input
-            className='form_field__submit form_field__submit--wide'
-            type='submit'
-            value='Log in →'
-            />
-
-        </form>
-
+        </div>
       </div>
     )
   }
