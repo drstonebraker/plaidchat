@@ -4,16 +4,17 @@ import { Route, withRouter } from 'react-router-dom'
 class AuthNav extends React.Component {
   constructor(props) {
     super(props)
+    this.navigate = this.navigate.bind(this)
   }
 
   navigate(path) {
-    this.props.history.push(path)
+    return () => this.props.history.push(path)
   }
 
   render () {
     const authBtn = (value, path) => (
       <button
-        className=".wire_button"
+        className="l-wire_button"
         onClick={this.navigate(path)}
       >
         {value}
