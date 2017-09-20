@@ -30,7 +30,7 @@ class UserForm extends React.Component {
 
     return (
       <div className='userform_view'>
-        <div className=''>
+        <div className='l-middle-wrapper'>
           <div className="l-form_container l-middle l-form_container--userform">
 
             <h1
