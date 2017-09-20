@@ -1,6 +1,6 @@
 import React from 'react'
 
-import LogoName from '../logos/logo_name'
+import MainNav from '../navs/main_nav'
 
 class UserForm extends React.Component {
   constructor(props) {
@@ -15,11 +15,7 @@ class UserForm extends React.Component {
     return (
       <div className='userform_view'>
 
-        <nav
-          className='main_nav'>
-          <LogoName
-            className='logo_name--main_nav'/>
-        </nav>
+        <MainNav />
 
         <div className="l-form_container l-middle l-form_container--userform">
 
