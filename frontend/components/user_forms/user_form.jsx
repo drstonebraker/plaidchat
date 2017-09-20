@@ -13,14 +13,14 @@ class UserForm extends React.Component {
 
   render() {
     return (
-      <div className='userform'>
+      <div className='userform_view'>
 
         <nav
           className='auth_nav'>
 
         </nav>
 
-        <div className="l-form_container l-middle">
+        <div className="l-form_container l-middle l-form_container--userform">
 
           <h1
             className="form_container__header">

@@ -1,0 +1,14 @@
+@import '../../globals/_all.scss';
+
+.userform_view {
+  background-color: $slack_bg_light;
+  height: 100vh;
+  width: 100vw;
+}
+
+.l-form_container--userform {
+  border: 1px solid $slack_border_light;
+  box-shadow: 0 1px 0 $slack-shadow-color;
+  border-radius: .4rem;
+  background-color: white;
+}
