@@ -16,8 +16,9 @@ class UserForm extends React.Component {
       <div className='userform_view'>
 
         <nav
-          className='auth_nav'>
-
+          className='main_nav'>
+          <LogoName
+            className='logo_name--main_nav'/>
         </nav>
 
         <div className="l-form_container l-middle l-form_container--userform">
