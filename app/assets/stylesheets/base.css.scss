@@ -5,5 +5,9 @@ html {
 }
 
 body {
-  font-family: $open-sans;
+  font-family: $open_sans;
+}
+
+input {
+  border-radius: .4rem;
 }

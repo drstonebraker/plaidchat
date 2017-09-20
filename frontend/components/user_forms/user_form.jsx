@@ -24,10 +24,12 @@ class UserForm extends React.Component {
 
           <div className="form_field">
             <label
+              className='form_field__label'
               htmlFor='login__username_input'>
               Username
             </label>
             <input
+              className='form_field__text_input'
               type='text'
               id='login__username_input'
             />
@@ -35,18 +37,21 @@ class UserForm extends React.Component {
 
           <div className="form_field">
             <label
+              className='form_field__label'
               htmlFor='login__password_input'>
               Password
             </label>
             <input
+              className='form_field__text_input'
               type='password'
               id='login__password_input'
             />
           </div>
 
           <input
+            className='form_field__submit form_field__submit--wide'
             type='submit'
-            value='Log in ➜'
+            value='Log in →'
             />
 
         </form>
