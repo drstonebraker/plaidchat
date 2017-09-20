@@ -41,6 +41,14 @@
   }
 }
 
+.form_field__input_tip {
+  display: block;
+  margin: 0.4rem 0 0 0;
+  line-height: 1.6rem;
+  font-size: 1.2rem;
+  color: $slack_tip_color;
+}
+
 .form_field__submit {
   background-color: $slack-green;
   color: white;
@@ -70,4 +78,8 @@
   display: block;
   width: 100%;
   margin: 1.2rem 0 0 auto;
+}
+
+.form_field__input_tip {
+
 }

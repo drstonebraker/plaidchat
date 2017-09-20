@@ -6,6 +6,13 @@
   clear: both;
 }
 
+.l-form_container {
+  padding: 3rem;
+  max-width: 70rem;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
 .l-middle {
   position: absolute;
   top: 50%;
@@ -13,11 +20,26 @@
   transform: translate(-50%, -50%);
 }
 
-.l-form_container {
-  padding: 3rem;
-  max-width: 70rem;
-  width: 100vw;
+.l-middle-wrapper {
+  display: inline-block;
   box-sizing: border-box;
+  padding: 3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+
+  & > .l-middle {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+
+  & > .l-form_container {
+    width: 100%;
+  }
 }
 
 .l-wire_button {

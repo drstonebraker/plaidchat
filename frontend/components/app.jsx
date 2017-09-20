@@ -4,12 +4,15 @@ import { Route } from 'react-router-dom'
 
 // import UserForm from './auth/user_form'
 
+import MainNav from './navs/main_nav'
 import UserForm from './user_forms/user_form'
 
 
 const App = ({store}) => (
   <div>
-    <UserForm />
+    <Route exact path="(/login|/signup|/)" component={MainNav} />
+    <Route exact path="/signup" component={UserForm} />
+    <Route exact path="/login" component={UserForm} />
   </div>
 )
 

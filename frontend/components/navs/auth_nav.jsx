@@ -22,7 +22,7 @@ class AuthNav extends React.Component {
     )
 
     return (
-      <div class={`${this.props.className}`}>
+      <div className={`${this.props.className}`}>
         <Route exact path="/" render={() => (
           <div>
             {authBtn('Login', 'login')}
