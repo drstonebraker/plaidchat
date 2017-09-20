@@ -1,0 +1,13 @@
+@import './globals/_all.scss';
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: $open_sans;
+}
+
+input {
+  border-radius: .4rem;
+}

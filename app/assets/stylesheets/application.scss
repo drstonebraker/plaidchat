@@ -12,8 +12,9 @@
  *
  *= require normalize-rails
  *= require_self
- *= require_tree ./base
- *= require_tree ./fonts
- *= require_tree ./logos
- *= require_tree ./user_forms
+ *= require ./reset
+ *= require ./form_reset
+ *= require ./base
+ *= require ./layout
+ *= require_tree ./modules
  */

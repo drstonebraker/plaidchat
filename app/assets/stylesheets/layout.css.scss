@@ -1,0 +1,21 @@
+@import './globals/_all.scss';
+
+.l-cf::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.l-middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.l-form_container {
+  padding: 3rem;
+  max-width: 70rem;
+  width: 100vw;
+  box-sizing: border-box;
+}
