@@ -19,3 +19,20 @@
   width: 100vw;
   box-sizing: border-box;
 }
+
+.l-wire_button {
+  color: $slack_wirebutton_light;
+  font-weight: 550;
+  border: .2rem solid $slack_wirebutton_light;
+  border-radius: 0.4rem;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  padding: 1rem 1.4rem 1.2rem 1.4rem;
+  cursor: pointer;
+  margin: 0 0 0 1.2rem;
+
+  &:hover {
+    color: $slack_wirebutton_dark;
+    border-color: $slack_wirebutton_dark;
+  }
+}
