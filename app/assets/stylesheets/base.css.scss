@@ -1,8 +1,9 @@
+@import './globals/_all.scss';
+
 html {
   font-size: 10px;
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  background: blue;
+  font-family: $open-sans;
 }

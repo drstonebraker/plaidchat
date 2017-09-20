@@ -1,8 +1,10 @@
+@import '../../globals/_all.scss';
+
 .logo_name {
   display: inline-block;
   text-decoration: none;
-  color: #2D333A;
-  font-family: 'Lato', sans-serif;
+  color: $slack-logo-color;
+  font-family: $lato;
   width: 16rem;
   height: 3rem;
   font-size: 3rem;

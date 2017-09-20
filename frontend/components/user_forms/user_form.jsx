@@ -13,7 +13,7 @@ class UserForm extends React.Component {
 
   render() {
     return (
-      <div className="form_container">
+      <div className="l-form_container l-middle">
 
         <h1
           className="form_container__header">
