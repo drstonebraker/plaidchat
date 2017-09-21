@@ -234,7 +234,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   figaro
   guard (>= 2.2.2)
-  guard-livereload
+  guard-livereload (~> 2.5)
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
