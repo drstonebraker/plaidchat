@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
   # before_action :require_current_user, only: %i(update)
 
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
     if @user.save
       login(@user)
       render :show
