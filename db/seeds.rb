@@ -7,11 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 ActiveRecord::Base.transaction do
-  Team.create(name: 'DemoTeam1')
-  demo_team_id = Team.find_by(name: 'DemoTeam1').id
-  User.create(
+  demo_team = Team.create(
+    name: 'DemoTeam1'
+  )
+
+  demo_user = User.create(
     username: 'demoUser',
     password: '1t9xbnxtZbYWw8d90wOkMA',
-    default_team_id: demo_team_id
-    )
+  )
+
+  TeamMembership.create(
+    user_id: demo_user.id,
+    team_id: demo_team.id,
+    is_default: true
+  )
 end

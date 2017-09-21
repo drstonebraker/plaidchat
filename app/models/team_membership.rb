@@ -11,4 +11,9 @@
 #
 
 class TeamMembership < ApplicationRecord
+  validates :is_default, presence: true
+
+  belongs_to :user
+  belongs_to :team
+  
 end

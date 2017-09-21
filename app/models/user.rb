@@ -17,6 +17,22 @@ class User < ApplicationRecord
   validate :valid_username
   validate :strong_password
 
+  attr_reader :password
+  after_initialize :ensure_session_token!
+
+  ######################
+  #  associations
+  ######################
+
+  has_many :team_memberships
+  has_many :teams,
+    through: :team_memberships,
+    source: :team
+
+  ######################
+  # custom validations
+  ######################
+
   def strong_password
     unless strong_password?
       errors.add(:password, "can't be things like _password_, " \
@@ -48,8 +64,9 @@ class User < ApplicationRecord
     true
   end
 
-  attr_reader :password
-  after_initialize :ensure_session_token!
+  ######################
+  # class methods
+  ######################
 
   def self.find_by_credentials(username, password)
     user = self.find_by(username: username)
@@ -64,6 +81,10 @@ class User < ApplicationRecord
     end
     token
   end
+
+  ######################
+  # instance methods
+  ######################
 
   def password=(password)
     @password = password
