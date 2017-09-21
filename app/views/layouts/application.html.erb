@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PlaidChat</title>
+    <title>plaidchat | chat for teams</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <% if logged_in? %>
+      <script type="text/javascript">
+        window.currentUser =
+        <%= render('api/users/user.json.jbuilder', user: current_user).html_safe %>
+      </script>
+    <% end %>
     <script src="http://localhost:35729/livereload.js"></script>
   </head>
 
