@@ -19,9 +19,6 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new LiveReloadPlugin({})
-  ],
   devtool: 'source-map',
   resolve: {
     extensions: ['.js', '.jsx', '*']

@@ -37,8 +37,7 @@
   },
   "homepage": "https://github.com/drstonebraker/plaid-chat#readme",
   "devDependencies": {
-    "redux-devtools-extension": "^2.13.2",
-    "webpack-livereload-plugin": "^0.11.0"
+    "redux-devtools-extension": "^2.13.2"
   },
   "engines": {
     "node": "4.1.1",
