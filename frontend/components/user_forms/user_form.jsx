@@ -34,7 +34,7 @@ class UserForm extends React.Component {
   render() {
     const {
         type, headingContent, submitContent, usernameErrors,
-        passwordErrors, generalErrors, isValidUsername, isValidPassword,
+        passwordErrors, generalErrors, isInvalidUsername, isInvalidPassword,
         hasUsernameErrors, hasPasswordErrors
       } = this.props
     const { user, errors } = this.state
@@ -96,7 +96,7 @@ class UserForm extends React.Component {
                   <span
                     className={`
                       form_field__input_tip
-                      ${isValidUsername ? 'form_field__input_tip--warn' : ''}
+                      ${isInvalidUsername ? 'form_field__input_tip--warn' : ''}
                     `}
                   >
                     Please choose a username that is all lowercase,
@@ -130,11 +130,11 @@ class UserForm extends React.Component {
                   <span
                     className={`
                       form_field__input_tip
-                      ${isValidPassword ? 'form_field__input_tip--warn' : ''}
+                      ${isInvalidPassword ? 'form_field__input_tip--warn' : ''}
                     `}
                   >
                     Passwords must be at least 6 characters long,
-                    and can't be things like <em>password</em>,
+                    and can't be things like <em>password</em>, 
                     <em>123456</em>, or <em>abcdef</em>.
                   </span>
                 }

@@ -19,9 +19,9 @@ const sessionErrorsReducer = (state = defaultState, action) => {
     case RECEIVE_SESSION_ERRORS:
       for (let i = 0; i < action.errors.length; i++) {
         let error = action.errors[i]
-        newState.username = error.username
-        newState.password = error.password
-        newState.general = error.general
+        newState.username = error.username || []
+        newState.password = error.password || []
+        newState.general = error.general || []
       }
       return newState;
     default:

@@ -13,7 +13,10 @@ const invalidErrorFn = (type) => {
 }
 
 // boolean for identifying specific errors
-export const isValid = (errors, type) => {
+export const isInvalid = (errors, type) => {
+  if (!errors[type]) {
+    return false
+  }
   return errors[type].includes(invalidErrorFn(type))
 }
 
@@ -39,5 +42,5 @@ export const getErrors = (errors, type) => {
 }
 
 export const hasErrors = (errors, type) => {
-  return Boolean(errors[type].length)
+  return Boolean(errors[type] && errors[type].length)
 }

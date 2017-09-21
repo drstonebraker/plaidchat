@@ -26,8 +26,8 @@ const mapStateToProps = (state, ownProps) => {
     usernameErrors: ErrorsSelector.getErrors(errors, 'username'),
     passwordErrors: ErrorsSelector.getErrors(errors, 'password'),
     generalErrors: ErrorsSelector.getErrors(errors, 'general'),
-    isValidUsername: ErrorsSelector.isValid(errors, 'username'),
-    isValidPassword: ErrorsSelector.isValid(errors, 'password'),
+    isInvalidUsername: ErrorsSelector.isInvalid(errors, 'username'),
+    isInvalidPassword: ErrorsSelector.isInvalid(errors, 'password'),
     hasUsernameErrors: ErrorsSelector.hasErrors(errors, 'username'),
     hasPasswordErrors: ErrorsSelector.hasErrors(errors, 'password'),
   };

@@ -15,6 +15,10 @@
 
 .form_field__text_input--warn {
   border-color: $form_error_red;
+
+  &:hover {
+    border-color: $form_error_red;
+  }
 }
 
 .form_field__input_tip--warn {
