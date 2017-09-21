@@ -12,10 +12,12 @@ const invalidErrorFn = (type) => {
   }
 }
 
+// boolean for identifying specific errors
 const isValid = (errors, type) => {
   return errors[type].includes(invalidErrorFn(type))
 }
 
+// get array of properly formatted errors
 const getErrors = (errors, type) => {
   const result = [];
 
@@ -24,7 +26,7 @@ const getErrors = (errors, type) => {
   for (let i = 0; i < errors[type.toLowerCase()].length; i++) {
     let error = errors[type.toLowerCase()][i]
     if (error !== invalidError) {
-      result.push('• ' + type + error)
+      result.push(`• ${type === 'errors' ? '' : type}${error}`)
     }
   }
 
@@ -46,4 +48,9 @@ export const usernameErrors = (errors) => {
 
 export const passwordErrors = (errors) => {
   return getErrors(errors, 'Password')
+}
+
+// for things like 'Invalid uername or password'
+export const generalErrors = (errors) => {
+  return getErrors(errors, 'errors')
 }
