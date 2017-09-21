@@ -14,20 +14,20 @@ export const receiveSessionErrors = errors => ({
   errors
 });
 
-export const signup = user => dispatch => {
+export const signup = user => dispatch => (
   AuthUtils.postUser(user)
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
-          error => dispatch(receiveSessionErrors(error.responseJSON)));
-};
+          error => dispatch(receiveSessionErrors(error.responseJSON)))
+);
 
-export const login = user => dispatch => {
+export const login = user => dispatch => (
   AuthUtils.postSession(user)
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
-          error => dispatch(receiveSessionErrors(error.responseJSON)));
-};
+          error => dispatch(receiveSessionErrors(error.responseJSON)))
+);
 
-export const logout = () => dispatch => {
+export const logout = () => dispatch => (
   AuthUtils.deleteSession()
     .then(emptyUser => dispatch(receiveCurrentUser(null)),
-          error => dispatch(receiveSessionErrors(error.responseJSON)));
-};
+          error => dispatch(receiveSessionErrors(error.responseJSON)))
+);

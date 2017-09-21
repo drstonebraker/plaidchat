@@ -9,24 +9,25 @@ class UserForm extends React.Component {
       username: '',
       password: ''
     }
-    if (this.props.match.path == '/signup') {
-      this.type = 'signup'
-    } else if (this.props.match.path == '/login') {
-      this.type = 'login'
-    }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(field) {
+    return e => this.setState({[field]: e.target.value})
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.action(this.state)
+      .then(
+        () => this.props.history.push('/'),
+        () => console.log('ERROR!')
+      )
   }
 
   render() {
-    let headingContent;
-    let submitContent;
-    if (this.type == 'signup') {
-      headingContent = 'Sign up for plaidchat'
-      submitContent = 'Sign up'
-    } else if (this.type == 'login') {
-      headingContent = 'Log in to plaidchat'
-      submitContent = 'Log in'
-    }
-
+    const { headingContent, submitContent, type } = this.props
 
     return (
       <div className='userform_view'>
@@ -38,7 +39,10 @@ class UserForm extends React.Component {
               {headingContent}
             </h1>
 
-            <form className='form'>
+            <form
+              className='form'
+              onSubmit={this.handleSubmit}
+              >
 
               <div className="form_field">
                 <label
@@ -50,9 +54,11 @@ class UserForm extends React.Component {
                   className='form_field__text_input'
                   type='text'
                   id='login__username_input'
+                  onChange={this.handleChange('username')}
+                  value={this.state.username}
                 />
                 {
-                  this.type == 'signup' &&
+                  type == 'signup' &&
                   <span
                     className='form_field__input_tip'
                   >
@@ -73,9 +79,11 @@ class UserForm extends React.Component {
                   className='form_field__text_input'
                   type='password'
                   id='login__password_input'
+                  onChange={this.handleChange('password')}
+                  value={this.state.password}
                 />
                 {
-                  this.type == 'signup' &&
+                  type == 'signup' &&
                   <span
                     className='form_field__input_tip'
                   >
