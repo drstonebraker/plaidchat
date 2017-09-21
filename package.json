@@ -23,7 +23,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
@@ -39,5 +39,9 @@
   "devDependencies": {
     "redux-devtools-extension": "^2.13.2",
     "webpack-livereload-plugin": "^0.11.0"
+  },
+  "engines": {
+    "node": "4.1.1",
+    "npm": "2.1.x"
   }
 }
