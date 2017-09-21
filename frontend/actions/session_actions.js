@@ -22,10 +22,7 @@ export const clearErrors = () => ({
 export const signup = user => dispatch => (
   AuthUtils.postUser(user)
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
-          error => {
-            console.log(error)
-            return dispatch(receiveSessionErrors(error.responseJSON))
-          })
+          error => dispatch(receiveSessionErrors(error.responseJSON)))
 );
 
 export const login = user => dispatch => (
