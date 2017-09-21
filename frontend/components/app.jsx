@@ -1,21 +1,92 @@
+// just for Auth MVP
+import { connect } from 'react-redux'
+
+import { login, logout } from '../actions/session_actions';
+
+
+class AuthButtons extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render () {
+    return (
+      <div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        {
+          this.props.isLoggedIn &&
+          <Route exact path='/' component={() => (
+              <button
+                onClick={this.props.logout}
+                type="button"
+              >
+                Logout
+              </button>
+            )} />
+        }
+
+        <br/>
+        {
+          !this.props.isLoggedIn &&
+          <Route exact path='/' component={() => (
+              <button
+                onClick={this.props.demoLogin}
+                type="button"
+              >
+                Demo Login
+              </button>
+            )} />
+        }
+        <br/>
+        { JSON.stringify(this.props.currentUser) }
+      </div>
+    )
+  }
+}
+
+const mapStateToProps = (state, ownProps) => ({
+  isLoggedIn: Boolean(state.session.currentUser),
+  currentUser: state.session
+})
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  demoLogin: () => dispatch(login({username: 'demoUser', password: 'abc123'})),
+  logout: () => dispatch(logout()),
+})
+
+const AuthButtonsContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AuthButtons)
+
+// end demo for Auth MVP
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Route } from 'react-router-dom'
 
-// import UserForm from './auth/user_form'
-
 import MainNav from './navs/main_nav'
 import UserFormContainer from './user_forms/user_form_container'
+import { AuthRoute, ProtectedRoute } from '../util/route_util'
 
 
 const App = ({store}) => (
   <div>
     <Route exact path="(/login|/signup|/)" component={MainNav} />
-    <Route exact path="/signup" component={UserFormContainer} />
-    <Route exact path="/login" component={UserFormContainer} />
+    <AuthRoute exact path="/signup" component={UserFormContainer} />
+    <AuthRoute exact path="/login" component={UserFormContainer} />
+    <AuthButtonsContainer />
   </div>
 )
 
 export default App;
-
-// <Route path="/login" component={UserForm} />
