@@ -13,7 +13,8 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "webpack": "^3.6.0"
+    "webpack": "^3.6.0",
+    "redux-devtools-extension": "^2.13.2"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",
@@ -36,9 +37,6 @@
     "url": "https://github.com/drstonebraker/plaid-chat/issues"
   },
   "homepage": "https://github.com/drstonebraker/plaid-chat#readme",
-  "devDependencies": {
-    "redux-devtools-extension": "^2.13.2"
-  },
   "engines": {
     "node": "4.1.1",
     "npm": "2.1.x"
