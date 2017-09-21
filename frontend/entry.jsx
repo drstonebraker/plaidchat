@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
       messages: {},
     },
     session: {
-      currentUser: window.currentUser,
+      currentUser: window.currentUser || null,
     },
     ui: {},
     errors: {
