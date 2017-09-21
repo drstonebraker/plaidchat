@@ -14,12 +14,13 @@ class User < ApplicationRecord
   validates :username, :password_digest, :session_token, presence: true
   validates :username, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
+  validate :valid_username
   validate :strong_password
 
   def strong_password
     unless strong_password?
-      errors.add(:password, "can't be things like _password_,
-        _123456_, or _abcdef_")
+      errors.add(:password, "can't be things like _password_, " \
+        "_123456_, or _abcdef_")
     end
   end
 
@@ -32,6 +33,18 @@ class User < ApplicationRecord
 
       return false
     end
+    true
+  end
+
+  def valid_username
+    unless valid_username?
+      errors.add(:username, "must contain only letters, numbers, " \
+        "periods, hyphens, and underscores")
+    end
+  end
+
+  def valid_username?
+    return false if self.username =~ /[^a-zA-Z0-9\.\-\_]/
     true
   end
 
