@@ -6,20 +6,28 @@ class UserForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: ''
+      user: {
+        username: '',
+        password: '',
+      },
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(field) {
-    return e => this.setState({[field]: e.target.value})
+    return e => {
+      const user = Object.assign(
+        this.state.user,
+        {[field]: e.target.value}
+      )
+      this.setState({ user })
+    }
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.action(this.state)
+    this.props.action(this.state.user)
       .then(
         () => this.props.history.push('/'),
         () => console.log('ERROR!')
@@ -28,6 +36,7 @@ class UserForm extends React.Component {
 
   render() {
     const { headingContent, submitContent, type } = this.props
+    const { user, errors } = this.state
 
     return (
       <div className='userform_view'>
