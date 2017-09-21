@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 import UserForm from './user_form'
 import * as ErrorsSelector from '../../selectors/errors_selector'
-import { signup, login } from '../../actions/session_actions';
+import { signup, login, clearErrors } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let type;
@@ -42,6 +42,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 
   return {
+    clearErrors: () => dispatch(clearErrors()),
     action: userCredentials => dispatch(action(userCredentials)),
   };
 };

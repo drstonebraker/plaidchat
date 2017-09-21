@@ -8,7 +8,9 @@ class Api::SessionsController < ApplicationController
       login!(@user)
       render :show
     else
-      render json: [{errors: 'Invalid username or password'}], status: 400
+      @errors = [{general: ['Invalid username or password']}]
+      render partial: 'api/shared/errors.json.jbuilder',
+        status: 400
     end
   end
 

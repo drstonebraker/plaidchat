@@ -15,6 +15,10 @@ class UserForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.props.clearErrors()
+  }
+
   handleChange(field) {
     return e => {
       const user = Object.assign(
@@ -134,7 +138,7 @@ class UserForm extends React.Component {
                     `}
                   >
                     Passwords must be at least 6 characters long,
-                    and can't be things like <em>password</em>, 
+                    and can't be things like <em>password</em>,
                     <em>123456</em>, or <em>abcdef</em>.
                   </span>
                 }
