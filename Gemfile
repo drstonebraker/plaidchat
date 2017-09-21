@@ -54,7 +54,7 @@ group :development do
   gem 'pry-rails'
   gem 'annotate'
   gem "guard", ">= 2.2.2", :require => false
-  gem "guard-livereload",  :require => false
+  gem "guard-livereload", '~> 2.5',  :require => false
   gem "rack-livereload"
   gem "rb-fsevent",        :require => false
 end
