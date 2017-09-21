@@ -28,16 +28,14 @@ class UserForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.action(this.state.user)
-      .then(
-        () => this.props.history.push('/'),
-        (error) => console.log('ERROR!', error)
-      )
+      .then(() => this.props.history.push('/'))
   }
 
   render() {
     const {
-        headingContent, submitContent, type, usernameErrors,
-        passwordErrors, generalErrors, isValidUsername, isValidPassword
+        type, headingContent, submitContent, usernameErrors,
+        passwordErrors, generalErrors, isValidUsername, isValidPassword,
+        hasUsernameErrors, hasPasswordErrors
       } = this.props
     const { user, errors } = this.state
 
@@ -83,7 +81,7 @@ class UserForm extends React.Component {
                 <input
                   className={`
                     form_field__text_input
-                    ${isValidUsername ? 'form_field__text_input--warn' : ''}
+                    ${hasUsernameErrors ? 'form_field__text_input--warn' : ''}
                   `}
                   type='text'
                   id='login__username_input'
@@ -96,7 +94,10 @@ class UserForm extends React.Component {
                 {
                   type === 'signup' &&
                   <span
-                    className='form_field__input_tip'
+                    className={`
+                      form_field__input_tip
+                      ${isValidUsername ? 'form_field__input_tip--warn' : ''}
+                    `}
                   >
                     Please choose a username that is all lowercase,
                     containing only letters, numbers, periods, hyphens,
@@ -114,7 +115,7 @@ class UserForm extends React.Component {
                 <input
                   className={`
                     form_field__text_input
-                    ${isValidPassword ? 'form_field__text_input--warn' : ''}
+                    ${hasPasswordErrors ? 'form_field__text_input--warn' : ''}
                     `}
                   type='password'
                   id='login__password_input'
@@ -127,7 +128,10 @@ class UserForm extends React.Component {
                 {
                   type === 'signup' &&
                   <span
-                    className='form_field__input_tip'
+                    className={`
+                      form_field__input_tip
+                      ${isValidPassword ? 'form_field__input_tip--warn' : ''}
+                    `}
                   >
                     Passwords must be at least 6 characters long,
                     and can't be things like <em>password</em>,
