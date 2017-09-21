@@ -30,13 +30,34 @@ class UserForm extends React.Component {
     this.props.action(this.state.user)
       .then(
         () => this.props.history.push('/'),
-        () => console.log('ERROR!')
+        (error) => console.log('ERROR!', error)
       )
   }
 
   render() {
-    const { headingContent, submitContent, type } = this.props
+    const {
+        headingContent, submitContent, type, usernameErrors,
+        passwordErrors, generalErrors, isValidUsername, isValidPassword
+      } = this.props
     const { user, errors } = this.state
+
+    const getList = (list) => (
+      list.map((error) => (
+        <li
+          key={error}
+          className={`
+            form_field__input_tip
+            form_field__input_tip--warn
+          `}
+        >
+          {error}
+        </li>
+      ))
+    )
+
+    const usernameErrorsList = getList(usernameErrors);
+    const passwordErrorsList = getList(passwordErrors);
+    const generalErrorsList = getList(generalErrors);
 
     return (
       <div className='userform_view'>
@@ -60,14 +81,20 @@ class UserForm extends React.Component {
                   Username
                 </label>
                 <input
-                  className='form_field__text_input'
+                  className={`
+                    form_field__text_input
+                    ${isValidUsername ? 'form_field__text_input--warn' : ''}
+                  `}
                   type='text'
                   id='login__username_input'
                   onChange={this.handleChange('username')}
                   value={this.state.username}
                 />
+                <ul>
+                  { usernameErrorsList }
+                </ul>
                 {
-                  type == 'signup' &&
+                  type === 'signup' &&
                   <span
                     className='form_field__input_tip'
                   >
@@ -85,14 +112,20 @@ class UserForm extends React.Component {
                   Password
                 </label>
                 <input
-                  className='form_field__text_input'
+                  className={`
+                    form_field__text_input
+                    ${isValidPassword ? 'form_field__text_input--warn' : ''}
+                    `}
                   type='password'
                   id='login__password_input'
                   onChange={this.handleChange('password')}
                   value={this.state.password}
                 />
+                <ul>
+                  { passwordErrorsList }
+                </ul>
                 {
-                  type == 'signup' &&
+                  type === 'signup' &&
                   <span
                     className='form_field__input_tip'
                   >
@@ -108,6 +141,9 @@ class UserForm extends React.Component {
                 type='submit'
                 value={`${submitContent} →`}
                 />
+              <ul>
+                { generalErrorsList }
+              </ul>
 
             </form>
 

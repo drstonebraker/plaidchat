@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       session: {
         username: [],
         password: [],
-        errors: [],
+        general: [],
       },
     }
   }

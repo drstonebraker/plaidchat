@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 
 import UserForm from './user_form'
+import * as ErrorsSelector from '../../selectors/errors_selector'
 import { signup, login } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -16,8 +17,20 @@ const mapStateToProps = (state, ownProps) => {
     headingContent = 'Log in to plaidchat'
     submitContent = 'Log in'
   }
+  const errors = state.errors.session;
 
-  return { type, headingContent, submitContent };
+  return {
+    type,
+    headingContent,
+    submitContent,
+    usernameErrors: ErrorsSelector.getErrors(errors, 'username'),
+    passwordErrors: ErrorsSelector.getErrors(errors, 'password'),
+    generalErrors: ErrorsSelector.getErrors(errors, 'general'),
+    isValidPassword: ErrorsSelector.isValid(errors, 'username'),
+    isValidUsername: ErrorsSelector.isValid(errors, 'password'),
+    hasUsernameErrors: ErrorsSelector.hasErrors(errors, 'username'),
+    hasPasswordErrors: ErrorsSelector.hasErrors(errors, 'password'),
+  };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

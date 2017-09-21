@@ -12,3 +12,16 @@
   border-radius: .4rem;
   background-color: white;
 }
+
+.form_field__text_input--warn {
+  border-color: $form_error_red;
+}
+
+.form_field__input_tip--warn {
+  color: $form_error_red;
+  font-style: italic;
+
+  & > em {
+    font-style: normal;
+  }
+}

@@ -3,9 +3,16 @@ import {
   RECEIVE_SESSION_ERRORS
 } from '../actions/session_actions.js';
 
-const sessionErrorsReducer = (state = [], action) => {
+const defaultState = {
+  username: [],
+  password: [],
+  general: []
+}
+
+const sessionErrorsReducer = (state = defaultState, action) => {
   Object.freeze(state);
-  const newState = Object.assign({}, state)
+  const newState = Object.assign({}, state, defaultState)
+
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return {};
@@ -14,7 +21,7 @@ const sessionErrorsReducer = (state = [], action) => {
         let error = action.errors[i]
         newState.username = error.username
         newState.password = error.password
-        newState.errors = error.errors
+        newState.general = error.general
       }
       return newState;
     default:

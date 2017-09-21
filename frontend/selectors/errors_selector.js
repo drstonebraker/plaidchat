@@ -4,7 +4,7 @@ const invalidPasswordError =
   "can't be things like _password_, _123456_, or _abcdef_"
 
 const invalidErrorFn = (type) => {
-  switch (type.toLowerCase()) {
+  switch (type) {
     case 'username':
       return invalidUsernameError;
     case 'password':
@@ -13,44 +13,31 @@ const invalidErrorFn = (type) => {
 }
 
 // boolean for identifying specific errors
-const isValid = (errors, type) => {
+export const isValid = (errors, type) => {
   return errors[type].includes(invalidErrorFn(type))
 }
 
 // get array of properly formatted errors
-const getErrors = (errors, type) => {
+export const getErrors = (errors, type) => {
+  if (!errors[type]) {
+    return []
+  }
   const result = [];
+
+  const typeCaps = type.charAt(0).toUpperCase() + type.slice(1) + ' '
 
   const invalidError = invalidErrorFn(type);
 
-  for (let i = 0; i < errors[type.toLowerCase()].length; i++) {
-    let error = errors[type.toLowerCase()][i]
+  for (let i = 0; i < errors[type].length; i++) {
+    let error = errors[type][i]
     if (error !== invalidError) {
-      result.push(`• ${type === 'errors' ? '' : type}${error}`)
+      result.push(`• ${type === 'general' ? '' : typeCaps}${error}`)
     }
   }
 
   return result;
 }
 
-
-export const isValidUsername = (errors) => {
-  return isValid(errors, 'username')
-}
-
-export const isValidPassword = (errors) => {
-  return isValid(errors, 'password')
-}
-
-export const usernameErrors = (errors) => {
-  return getErrors(errors, 'Username')
-}
-
-export const passwordErrors = (errors) => {
-  return getErrors(errors, 'Password')
-}
-
-// for things like 'Invalid uername or password'
-export const generalErrors = (errors) => {
-  return getErrors(errors, 'errors')
+export const hasErrors = (errors, type) => {
+  return Boolean(errors[type].length)
 }

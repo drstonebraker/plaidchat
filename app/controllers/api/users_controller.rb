@@ -9,7 +9,9 @@ class Api::UsersController < ApplicationController
       login!(@user)
       render :show
     else
-      render json: [@user.errors], status: 400
+      @errors = [@user.errors.messages]
+      render partial: 'api/shared/errors.json.jbuilder',
+        status: 400
     end
   end
 
