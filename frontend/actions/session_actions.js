@@ -17,17 +17,17 @@ export const receiveSessionErrors = errors => ({
 export const signup = user => dispatch => {
   AuthUtils.postUser(user)
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
-          errors => dispatch(receiveSessionErrors(errors)));
+          error => dispatch(receiveSessionErrors(error.responseJSON)));
 };
 
 export const login = user => dispatch => {
   AuthUtils.postSession(user)
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
-          errors => dispatch(receiveSessionErrors(errors)));
+          error => dispatch(receiveSessionErrors(error.responseJSON)));
 };
 
 export const logout = () => dispatch => {
   AuthUtils.deleteSession()
     .then(emptyUser => dispatch(receiveCurrentUser(null)),
-          errors => dispatch(receiveSessionErrors(errors)));
+          error => dispatch(receiveSessionErrors(error.responseJSON)));
 };

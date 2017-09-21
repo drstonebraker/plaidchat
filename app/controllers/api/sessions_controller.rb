@@ -3,17 +3,17 @@ class Api::SessionsController < ApplicationController
   before_action :require_logout, only: %i(create)
 
   def create
-    @user = User.find_by_credentials(params[:username], params[:password])
+    @user = User.find_by_credentials(user_params[:username], user_params[:password])
     if @user
       login!(@user)
       render :show
     else
-      render json: [{auth: 'Invalid username or password'}], status: 400
+      render json: [{errors: 'Invalid username or password'}], status: 400
     end
   end
 
   def destroy
-    log_out!
+    logout!
     render json: {}
   end
 
@@ -22,5 +22,5 @@ class Api::SessionsController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :password)
   end
-  
+
 end

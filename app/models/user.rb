@@ -14,17 +14,22 @@ class User < ApplicationRecord
   validates :username, :password_digest, :session_token, presence: true
   validates :username, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
-  validate :good_password
+  validate :strong_password
 
   def strong_password
-    unless good_password?
-      errors.add(:password, "can't be things like <em>password<em>,
-        <em>123456<em>, or <em>abcdef<em>")
+    unless strong_password?
+      errors.add(:password, "can't be things like _password_,
+        _123456_, or _abcdef_")
     end
   end
 
   def strong_password?
-    if ('a'..'z').to_a.concat(('A'..'Z').to_a, (0..9).to_a).includes?(@password)
+    @password ||= ''
+    if ('a'..'z').to_a.
+      concat((0..9).to_a).
+      include?(@password.downcase) ||
+      @password.downcase.include?('password')
+
       return false
     end
     true
@@ -62,10 +67,10 @@ class User < ApplicationRecord
     self.session_token
   end
 
-  private
+  # private
 
   def valid_password?(password)
-    BCrypt.new(self.password_digest).is_password?(password)
+    BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
 end
