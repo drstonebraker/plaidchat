@@ -8,14 +8,32 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  default_team_id :integer          default(2), not null
 #
 
 class User < ApplicationRecord
-  validates :username, :password_digest, :session_token, presence: true
+  validates :username, :password_digest, :session_token,
+    :default_team_id, presence: true
   validates :username, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
   validate :valid_username
   validate :strong_password
+
+  attr_reader :password
+  after_initialize :ensure_session_token!
+
+  ######################
+  #  associations
+  ######################
+
+  has_many :team_memberships
+  has_many :teams,
+    through: :team_memberships,
+    source: :team
+
+  ######################
+  # custom validations
+  ######################
 
   def strong_password
     unless strong_password?
@@ -48,8 +66,9 @@ class User < ApplicationRecord
     true
   end
 
-  attr_reader :password
-  after_initialize :ensure_session_token!
+  ######################
+  # class methods
+  ######################
 
   def self.find_by_credentials(username, password)
     user = self.find_by(username: username)
@@ -64,6 +83,10 @@ class User < ApplicationRecord
     end
     token
   end
+
+  ######################
+  # instance methods
+  ######################
 
   def password=(password)
     @password = password

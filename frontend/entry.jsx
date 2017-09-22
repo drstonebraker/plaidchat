@@ -3,10 +3,7 @@ import ReactDOM from 'react-dom'
 
 import configureStore from './store/store'
 import Root from './components/root'
-
-// TODO: REMOVE TESTING
-import * as Actions from './actions/session_actions';
-//
+import { receiveCurrentUser } from './actions/session_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
   const preloadedState = {
@@ -17,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
       messages: {},
     },
     session: {
-      currentUser: window.currentUser || null,
+      currentUser: window.currentUser ? window.currentUser.user : null,
     },
     ui: {},
     errors: {
@@ -31,12 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const store = configureStore(preloadedState)
 
-  // TODO: REMOVE TESTING
-  window.store = store
-  window.Actions = Actions
-  //
-
-  delete window.currentUser
+  if (window.currentUser) {
+    store.dispatch(receiveCurrentUser(window.currentUser))
+    delete window.currentUser
+  }
 
   const root = document.getElementById('root')
 

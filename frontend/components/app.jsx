@@ -60,7 +60,9 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  demoLogin: () => dispatch(login({username: 'demoUser', password: 'abc123'})),
+  demoLogin: () => dispatch(
+    login({username: 'demoUser', password: '1t9xbnxtZbYWw8d90wOkMA'})
+  ),
   logout: () => dispatch(logout()),
 })
 
@@ -77,6 +79,8 @@ import { Route } from 'react-router-dom'
 
 import MainNav from './navs/main_nav'
 import UserFormContainer from './user_forms/user_form_container'
+import ChatView from './chat/chat_view'
+import ChannelRedirectContainer from './chat/channel_redirect_container'
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 
 
@@ -85,6 +89,9 @@ const App = ({store}) => (
     <Route exact path="(/login|/signup|/)" component={MainNav} />
     <AuthRoute exact path="/signup" component={UserFormContainer} />
     <AuthRoute exact path="/login" component={UserFormContainer} />
+
+    <ProtectedRoute exact path='/messages' component={ChannelRedirectContainer} />
+    <ProtectedRoute exact path='/messages/:teamId' component={ChatView} />
     <AuthButtonsContainer />
   </div>
 )
