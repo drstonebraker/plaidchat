@@ -1,6 +1,6 @@
 // import { connect } from 'react-redux'
 //
-// import  from ''
+// import XXX from 'XXX'
 //
 // const mapStateToProps = (state, ownProps) => {
 //
@@ -19,4 +19,4 @@
 // export default connect(
 //   mapStateToProps,
 //   mapDispatchToProps
-// )();
+// )(XXX);
