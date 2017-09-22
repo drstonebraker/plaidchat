@@ -10,6 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.session.currentUser,
     teamName: getTeamName(ownProps.match.params.teamId, state),
+    isHeaderModalOpen: state.ui.isSideNavHeaderModalOpen,
   };
 };
 

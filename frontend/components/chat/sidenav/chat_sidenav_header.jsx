@@ -15,7 +15,9 @@ class ChatSidenavHeader extends React.Component {
   }
 
   handleClick() {
-    this.props.openHeaderModal()
+    if (!this.props.isHeaderModalOpen) {      
+      this.props.openHeaderModal()
+    }
   }
 
   render() {
