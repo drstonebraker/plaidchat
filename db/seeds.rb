@@ -8,7 +8,7 @@
 
 ActiveRecord::Base.transaction do
   demo_team = Team.create(
-    name: 'DemoTeam1'
+    name: 'Demo'
   )
 
   global_team = Team.create(
@@ -24,5 +24,5 @@ ActiveRecord::Base.transaction do
     demo_team.id,
     global_team.id
   ]
-  
+
 end
