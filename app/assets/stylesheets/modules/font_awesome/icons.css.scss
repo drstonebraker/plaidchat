@@ -1,9 +1,13 @@
 @import '../../globals/_all.scss';
 
 .fa-grey {
-  color: $slack_fa_grey;
+  color: $slack_sidenav_ligthgrey;
 }
 
 .fa-white {
   color: white;
+}
+
+.fa {
+  vertical-align: middle;
 }

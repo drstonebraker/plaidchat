@@ -13,5 +13,5 @@
 //= require rails-ujs
 //= require jquery
 //= require jquery_ujs
-// require serialize_json
+//= require serialize_json
 //= require_tree .

@@ -6,6 +6,10 @@
   background-color: $slack_sidenav_main;
   padding: 0.9rem 1.6rem;
   cursor: pointer;
+
+  &:hover {
+    background-color: $slack_sidenav_hover;
+  }
 }
 
 .chat_sidenav_header__heading {
@@ -16,10 +20,11 @@
   font-weight: 900;
   padding: 0.3rem 0;
   margin: 0 0.7rem 0 0;
+  vertical-align: middle;
 }
 
 .chat_sidenav_header__username {
-  color: white;
+  color: $slack_sidenav_ligthgrey;
   font-size: 1.6rem;
   line-height: 1.7rem;
   font-weight: 900;

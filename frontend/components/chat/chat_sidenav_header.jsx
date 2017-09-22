@@ -12,7 +12,7 @@ class ChatSidenavHeader extends React.Component {
   }
 
   render() {
-    const { teamName } = this.props
+    const { teamName, currentUser } = this.props
 
     return (
       <div className='chat_sidenav_header'>
@@ -20,11 +20,11 @@ class ChatSidenavHeader extends React.Component {
           <h1 className='chat_sidenav_header__heading'>
             { teamName }
           </h1>
-          <CaretDown color='grey' />
+          <CaretDown color='grey' size='1.6rem' />
         </div>
 
         <h4 className='chat_sidenav_header__username'>
-
+          { currentUser.username }
         </h4>
       </div>
     )

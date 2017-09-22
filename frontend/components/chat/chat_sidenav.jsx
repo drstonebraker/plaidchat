@@ -14,9 +14,9 @@ class ChatSideNav extends React.Component {
   render() {
 
     return (
-      <div className='chat_sidenav'>
+      <nav className='chat_sidenav'>
         <ChatSidenavHeaderContainer />
-      </div>
+      </nav>
     )
   }
 }
