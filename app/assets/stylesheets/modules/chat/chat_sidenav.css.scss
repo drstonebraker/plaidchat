@@ -1,0 +1,10 @@
+@import '../../globals/_all.scss';
+
+.chat_sidenav {
+  position: fixed;
+  top: 0rem;
+  bottom: 0rem;
+  left: 0rem;
+  width: 22rem;
+  background-color: $slack_sidenav_main;
+}

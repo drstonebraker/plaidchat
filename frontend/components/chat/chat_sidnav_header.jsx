@@ -1,7 +1,5 @@
 // import React from 'react'
 //
-// import XXX from 'XXX'
-//
 // class XXX extends React.component {
 //   constructor(props) {
 //     super(props)

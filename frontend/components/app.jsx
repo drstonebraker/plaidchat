@@ -79,6 +79,7 @@ import { Route } from 'react-router-dom'
 
 import MainNav from './navs/main_nav'
 import UserFormContainer from './user_forms/user_form_container'
+import ChatView from './chat/chat_view'
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 
 
@@ -87,6 +88,8 @@ const App = ({store}) => (
     <Route exact path="(/login|/signup|/)" component={MainNav} />
     <AuthRoute exact path="/signup" component={UserFormContainer} />
     <AuthRoute exact path="/login" component={UserFormContainer} />
+
+    <Route path='/messages' component={ChatView} />
     <AuthButtonsContainer />
   </div>
 )
