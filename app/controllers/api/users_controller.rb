@@ -8,9 +8,9 @@ class Api::UsersController < ApplicationController
     demo_team = Team.find_by(name: 'Demo')
     global_team = Team.find_by(name: 'Global')
     @user.default_team_id = global_team.id
-    @user.team_ids = [demo_team.id, global_team.id]
 
     if @user.save
+      @user.team_ids = [demo_team.id, global_team.id]
       login!(@user)
       render :show
     else
