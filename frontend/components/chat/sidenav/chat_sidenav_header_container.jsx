@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 
 import ChatSidenavHeader from './chat_sidenav_header'
 import { getTeamName } from '../../../selectors/chat_selectors'
+import { openSidenavHeaderModal } from '../../../actions/ui_actions'
 
 const mapStateToProps = (state, ownProps) => {
 
@@ -15,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 
   return {
-
+    openHeaderModal: () => dispatch(openSidenavHeaderModal())
   };
 };
 
