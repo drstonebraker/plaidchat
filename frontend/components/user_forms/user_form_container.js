@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import UserForm from './user_form'
-import * as ErrorsSelector from '../../selectors/errors_selector'
+import * as ErrorsSelector from '../../selectors/errors_selectors'
 import { signup, login, clearErrors } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
