@@ -13,15 +13,18 @@ export const CaretDown = ({color}) => (
 )
 
 export const CirclePlus = ({color, style}) => (
-  <span className={`fa-stack`} style={style}>
+  <span className={`fa-stack`}>
     <i
+      style={style}
       className={
         `fa fa-circle-thin fa-stack-2x ${color && ('fa-' + color)}`
       }
     ></i>
     <i
+      style={style}
       className={
         `fa fa-plus fa-stack-1x ${color && ('fa-' + color)}`
+
     }></i>
   </span>
 )
