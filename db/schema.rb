@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921222402) do
+ActiveRecord::Schema.define(version: 20170921233449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,11 +18,10 @@ ActiveRecord::Schema.define(version: 20170921222402) do
   create_table "team_memberships", force: :cascade do |t|
     t.integer "team_id", null: false
     t.integer "user_id", null: false
-    t.boolean "is_default", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["team_id", "user_id"], name: "index_team_memberships_on_team_id_and_user_id", unique: true
-    t.index ["user_id", "is_default"], name: "index_team_memberships_on_user_id_and_is_default"
+    t.index ["user_id"], name: "index_team_memberships_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -38,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170921222402) do
     t.string "session_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "default_team_id", default: 2, null: false
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["username", "password_digest"], name: "index_users_on_username_and_password_digest", unique: true
   end

@@ -11,14 +11,18 @@ ActiveRecord::Base.transaction do
     name: 'DemoTeam1'
   )
 
+  global_team = Team.create(
+    name: 'Global'
+  )
+
   demo_user = User.create(
     username: 'demoUser',
     password: '1t9xbnxtZbYWw8d90wOkMA',
   )
 
-  TeamMembership.create(
-    user_id: demo_user.id,
-    team_id: demo_team.id,
-    is_default: true
-  )
+  demo_user.team_ids = [
+    demo_team.id,
+    global_team.id
+  ]
+  
 end
