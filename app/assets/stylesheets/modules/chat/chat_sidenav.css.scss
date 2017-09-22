@@ -11,12 +11,14 @@
 
 .left_icon {
   display: inline;
+  box-sizing: border-box;
   line-height: 2.1rem;
   width: 2rem;
   margin: 0 .1rem 0 0;
 }
 
 .status_indicator {
+  box-sizing: border-box;
   display: inline-block;
   height: 0.9rem;
   width: 0.9rem;
