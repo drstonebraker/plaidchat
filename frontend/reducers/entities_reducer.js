@@ -9,9 +9,9 @@ const entitiesReducer = combineReducers({
   users: userEntitiesReducer,
   teams: teamEntitiesReducer,
   teamMemberships: teamMembershipEntitiesReducer,
-  channels: () => {},
-  channelMemberships: () => {},
-  messages: () => {},
+  channels: () => ({}),
+  channelMemberships: () => ({}),
+  messages: () => ({}),
 });
 
 export default entitiesReducer;
