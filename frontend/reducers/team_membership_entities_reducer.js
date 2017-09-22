@@ -9,7 +9,11 @@ const teamMembershipEntitiesReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return arrayToObj(action.user.team_memberships);
+      if (action.user) {
+        return arrayToObj(action.user.team_memberships);
+      } else {
+        return {}
+      }
     default:
       return state;
   }

@@ -10,8 +10,12 @@ const userEntitiesReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      newState[user.id] = user
-      return newState
+      if (user) {
+        newState[user.id] = user
+        return newState
+      } else {
+        return {}
+      }
     default:
       return state;
   }
