@@ -9,6 +9,10 @@
 
   &:hover {
     background-color: $slack_sidenav_hover;
+
+    & * {
+      color: white;
+    }
   }
 }
 
@@ -24,8 +28,9 @@
 }
 
 .chat_sidenav_header__username {
-  color: $slack_sidenav_ligthgrey;
-  font-size: 1.6rem;
-  line-height: 1.7rem;
-  font-weight: 900;
+  color: $slack_sidenav_darkgrey;
+  font-size: 1.2rem;
+  line-height: 2.1rem;
+  font-weight: lighter;
+
 }

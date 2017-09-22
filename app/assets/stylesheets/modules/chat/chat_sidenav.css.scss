@@ -8,3 +8,21 @@
   width: 22rem;
   background-color: $slack_sidenav_main;
 }
+
+.left_icon {
+  display: inline;
+  line-height: 2.1rem;
+  width: 2rem;
+  margin: 0 .1rem 0 0;
+}
+
+.status_indicator {
+  display: inline-block;
+  height: 0.9rem;
+  width: 0.9rem;
+  border-radius: 50%;
+}
+
+.status_indicator--active {
+  background-color: $slack_status_active;
+}

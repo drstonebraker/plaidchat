@@ -7,7 +7,7 @@ import { getTeamName } from '../../selectors/chat_selectors'
 const mapStateToProps = (state, ownProps) => {
 
   return {
-    currentUser: state.session.currentUser.username,
+    currentUser: state.session.currentUser,
     teamName: getTeamName(ownProps.match.params.teamId, state),
   };
 };
