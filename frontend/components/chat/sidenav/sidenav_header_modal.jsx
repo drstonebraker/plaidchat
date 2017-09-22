@@ -5,6 +5,14 @@ import Modal from 'react-modal'
 class SidenavHeaderModal extends React.Component {
   constructor(props) {
     super(props)
+    this.style = {
+      overlay: {
+        backgroundColor: 'transparent',
+      },
+      content: {
+
+      }
+    }
   }
 
   componentDidMount() {
@@ -16,6 +24,7 @@ class SidenavHeaderModal extends React.Component {
 
     return (
       <Modal
+        style={this.style}
         isOpen={true}
         onRequestClose={onRequestClose}
       >

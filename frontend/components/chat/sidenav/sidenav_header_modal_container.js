@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import SidenavHeaderModal from 'sidenav_header_modal'
+import SidenavHeaderModal from './sidenav_header_modal'
 import { closeSidenavHeaderModal } from '../../../actions/ui_actions'
 
 const mapStateToProps = (state, ownProps) => {
