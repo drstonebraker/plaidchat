@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import ChatSidenavHeader from './chat_sidenav_header'
-import { getTeamName } from '../../selectors/chat_selectors'
+import { getTeamName } from '../../../selectors/chat_selectors'
 
 const mapStateToProps = (state, ownProps) => {
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import StatusIndicator from './status_indicator'
-import { CaretDown } from '../font_awesome/icons'
+import { CaretDown } from '../../font_awesome/icons'
 
 class ChatSidenavHeader extends React.Component {
   constructor(props) {

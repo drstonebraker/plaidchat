@@ -80,7 +80,8 @@ import { Route } from 'react-router-dom'
 import MainNav from './navs/main_nav'
 import UserFormContainer from './user_forms/user_form_container'
 import ChatView from './chat/chat_view'
-import ChannelRedirectContainer from './chat/channel_redirect_container'
+import ChannelRedirectContainer from
+  './chat/channel_redirects/channel_redirect_container'
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 
 
