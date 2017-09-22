@@ -32,7 +32,7 @@ class UserForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.action(this.state.user)
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push('/messages'))
   }
 
   render() {
