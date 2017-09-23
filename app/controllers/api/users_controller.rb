@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     demo_team = Team.find_by(name: 'Demo')
     global_team = Team.find_by(name: 'Global')
-    @user.default_team_id = global_team.id
+    @user.default_team_id ||= global_team.id 
 
     if @user.save
       @user.team_ids = [demo_team.id, global_team.id]

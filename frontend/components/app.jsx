@@ -9,6 +9,13 @@ class AuthButtons extends React.Component {
     super(props)
   }
 
+  login() {
+    return () => (
+      this.props.demoLogin()
+        .then(() => this.props.history.push('/messages'))
+    )
+  }
+
   render () {
     return (
       <div>
@@ -40,7 +47,7 @@ class AuthButtons extends React.Component {
           !this.props.isLoggedIn &&
           <Route exact path='/' component={() => (
               <button
-                onClick={this.props.demoLogin}
+                onClick={this.login()}
                 type="button"
               >
                 Demo Login
@@ -61,7 +68,11 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   demoLogin: () => dispatch(
-    login({username: 'anonymous_alien', password: '1t9xbnxtZbYWw8d90wOkMA'})
+    login({
+      username: 'anonymous_alien',
+      password: '1t9xbnxtZbYWw8d90wOkMA',
+      default_team_id: 1,
+    })
   ),
   logout: () => dispatch(logout()),
 })
@@ -93,7 +104,9 @@ const App = ({store}) => (
 
     <ProtectedRoute path='/messages/:teamId?' component={ChannelRedirectContainer} />
     <ProtectedRoute path='/messages/:teamId/:channelId?' component={ChatViewContainer} />
-    <AuthButtonsContainer />
+
+    <Route path="/" component={AuthButtonsContainer} />
+
   </div>
 )
 

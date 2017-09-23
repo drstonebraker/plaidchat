@@ -26,8 +26,8 @@ class SidenavHeaderModal extends React.Component {
   logout() {
     return () => {
       this.props.onRequestClose()
-      this.props.logout().then(
-        this.props.history.push(`/`)
+      return this.props.logout().then(
+        () => this.props.history.push(`/`)
       )
     }
   }
