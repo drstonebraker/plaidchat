@@ -61,7 +61,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   demoLogin: () => dispatch(
-    login({username: 'demoUser', password: '1t9xbnxtZbYWw8d90wOkMA'})
+    login({username: 'anonymous_alien', password: '1t9xbnxtZbYWw8d90wOkMA'})
   ),
   logout: () => dispatch(logout()),
 })

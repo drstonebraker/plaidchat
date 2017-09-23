@@ -16,7 +16,7 @@ ActiveRecord::Base.transaction do
   )
 
   demo_user = User.create(
-    username: 'demoUser',
+    username: 'anonymous_alien',
     password: '1t9xbnxtZbYWw8d90wOkMA',
     default_team_id: global_team.id
   )

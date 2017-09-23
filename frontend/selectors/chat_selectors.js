@@ -37,3 +37,13 @@ export const getTeamIds = (teamMemberships) => {
     membership.teamId
   ))
 }
+
+export const getTeamsByMembership = (state) => {
+  const memberships = Object.values(state.entities.teamMemberships)
+  const memberTeamIds = getTeamIds(memberships)
+  const teams = Object.values(state.entities.teams)
+
+  return teams.filter(team => (
+    memberTeamIds.includes(team.id)
+  ))
+}

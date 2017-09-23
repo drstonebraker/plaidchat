@@ -1,13 +1,22 @@
+@import '../../globals/_all.scss';
+
 .modal_content {
   position: relative;
   box-sizing: border-box;
   max-height: calc(100vh - 10.7rem);
-  padding: 1rem;
+  font-family: $lato;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  & * {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 
 .modal_content--scroll {
-  overflow-y: scroll;
+  overflow-y: auto;
 
   &::-webkit-scrollbar {
     width: 1.6rem;
@@ -23,5 +32,53 @@
     border: 0.4rem solid white;
     border-radius: 0.8rem;
     background-color: #D9D9DE;
+  }
+}
+
+.modal_section {
+  padding: 1.5rem 0;
+  &:not(:last-of-type) {
+    border-bottom: 0.1rem solid $slack_border_light;
+  }
+}
+
+.modal_section_header {
+  height: 4rem;
+  width: 100%;
+  margin: .6rem 2.2rem;
+}
+
+.image_placeholder {
+  display: inline-block;
+  height: 3.6rem;
+  width: 3.6rem;
+  background-color: $slack_sidenav_lightgrey;
+  border-radius: 0.3rem;
+  vertical-align: middle;
+  margin: 0 1rem 0 0;
+}
+
+.modal_section_header__heading {
+  display: inline;
+  line-height: 3.6rem;
+  color: $slack_copy_color;
+  font-size: 2rem;
+  font-weight: 900;
+  vertical-align: middle;
+}
+
+.modal_list_item {
+  margin: 0 1.5rem;
+  padding: 0 1.6rem 0 0.8rem;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  color: $slack_copy_color;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+
+  &:hover {
+    background-color: $slack_modal_item_hover;
+    color: white;
+    text-shadow: 0 0.1rem 0 rgba(0,0,0,.1);
   }
 }
