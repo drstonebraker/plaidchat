@@ -25,7 +25,7 @@ class ChatSidenavHeader extends React.Component {
 
     return (
       <div
-        className={`chat_sidenav_header ${isModalOpen && 'chat_sidenav_header--active'}`}
+        className={`chat_sidenav_header ${isModalOpen ? 'chat_sidenav_header--active' : ''}`}
         onClick={this.handleClick}
       >
         <div className='chat_sidenav_header__heading'>

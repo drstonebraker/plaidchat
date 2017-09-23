@@ -12,7 +12,7 @@
     background-color: $slack_sidenav_hover;
 
     & * {
-      color: white;
+      color: white !important;
     }
   }
 }
@@ -21,7 +21,7 @@
   background-color: $slack_sidenav_hover;
 
   & * {
-    color: white;
+    color: white !important;
   }
 }
 
