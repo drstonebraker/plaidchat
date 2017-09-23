@@ -10,8 +10,27 @@ class ChatView extends React.Component {
   }
 
   componentDidMount() {
-    const { teamId } = this.props.match.params
-    this.props.editUser({ defaultTeamId: teamId })
+    this.resetDefaultTeamId(parseInt(this.props.match.params.teamId))
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const oldTeamId = parseInt(this.props.match.params.teamId)
+    const newTeamId = parseInt(nextProps.match.params.teamId)
+    if (oldTeamId !== newTeamId) {
+      this.resetDefaultTeamId(newTeamId)
+    }
+  }
+
+  resetDefaultTeamId(newTeamId) {
+    const { teamIds, currentUser } = this.props
+
+    if (teamIds.includes(newTeamId)) {
+
+      this.props.editUser({
+        default_team_id: newTeamId,
+        id: currentUser.id })
+
+    }
   }
 
   render() {

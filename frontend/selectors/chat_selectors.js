@@ -32,8 +32,8 @@ export const getTeamMembership = (teamId, state) => {
   return null
 }
 
-// export const getTeamMembershipIds = (teamMemberships) => {
-//   return Object.values(teamMemberships).map(membership => (
-//     membership.id
-//   ))
-// }
+export const getTeamIds = (teamMemberships) => {
+  return Object.values(teamMemberships).map(membership => (
+    membership.teamId
+  ))
+}
