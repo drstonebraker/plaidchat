@@ -91,7 +91,7 @@ const App = ({store}) => (
     <AuthRoute exact path="/signup" component={UserFormContainer} />
     <AuthRoute exact path="/login" component={UserFormContainer} />
 
-    <ProtectedRoute exact path='/messages' component={ChannelRedirectContainer} />
+    <ProtectedRoute path='/messages/:teamId?' component={ChannelRedirectContainer} />
     <ProtectedRoute exact path='/messages/:teamId' component={ChatView} />
     <AuthButtonsContainer />
   </div>

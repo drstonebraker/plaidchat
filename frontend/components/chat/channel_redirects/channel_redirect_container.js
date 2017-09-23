@@ -2,14 +2,13 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import ChannelRedirect from './channel_redirect'
-import { getTeamMembership } from '../../../selectors/chat_selectors'
+import { getTeamMembership, getTeamMembershipIds } from '../../../selectors/chat_selectors'
 
 const mapStateToProps = (state, ownProps) => {
-
   return {
     currentUser: state.session.currentUser,
     teamMembership: getTeamMembership(
-      ownProps.match.params.teamId,
+      parseInt(ownProps.match.params.teamId),
       state),
     isModalOpen: state.ui.isSideNavHeaderModalOpen,
   };
