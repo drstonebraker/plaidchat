@@ -26,7 +26,7 @@ class SidenavHeaderModal extends React.Component {
           <h2>Im a modal!</h2>
           <p>modal modal modal modal modal</p>
           <p>mooooooooodal!</p>
-          <p>
+          {/*<p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eget turpis justo. In efficitur volutpat neque in lacinia. Vivamus vitae tellus a magna condimentum bibendum quis id eros. Nunc hendrerit nisi ut porta convallis. Nullam et tortor egestas, porttitor mi ut, placerat eros. Nullam augue sem, maximus a semper non, condimentum quis dui. Duis sit amet dolor ut lorem egestas consectetur. Curabitur lobortis nibh vitae nisl malesuada blandit ut vitae leo. Proin enim justo, pulvinar non gravida nec, condimentum quis elit. Donec a maximus lorem, in interdum tellus. Praesent vel vestibulum urna. Aenean vitae arcu accumsan, consectetur nisi sit amet, vehicula ex. Phasellus scelerisque sapien non felis consequat, ac blandit leo vehicula. Duis vehicula, nibh sit amet interdum luctus, urna nulla cursus dui, vitae mollis urna ante quis risus. Etiam at erat iaculis, interdum metus sit amet, varius augue. Nulla arcu mauris, pharetra sed lacus vitae, scelerisque maximus lorem.
 
 Fusce ultricies, massa vulputate consectetur placerat, augue nibh commodo leo, sed consectetur dolor mi vitae libero. Quisque cursus cursus pellentesque. Etiam a auctor nisi, in scelerisque magna. Proin sagittis varius interdum. Etiam iaculis varius est, id molestie odio fringilla ut. Integer ac nulla et risus imperdiet suscipit. Phasellus id orci dignissim, efficitur diam et, vulputate elit. Morbi non nibh condimentum, porttitor felis a, interdum metus. Aliquam efficitur consequat magna, vitae vulputate odio ornare sed. Quisque mattis rhoncus sodales. Aliquam vitae viverra quam. Duis pellentesque, justo eu aliquam facilisis, augue nisl sodales turpis, at pharetra est orci sollicitudin leo.
@@ -68,7 +68,7 @@ Pellentesque tristique a tortor et congue. Donec suscipit augue vitae libero rut
 Aenean consequat gravida nisl id scelerisque. Quisque faucibus, elit aliquet accumsan consequat, turpis ipsum congue est, sed pellentesque lorem urna at orci. Integer leo augue, porta quis augue sed, bibendum pharetra magna. Nam feugiat mi velit, at elementum est venenatis ut. Nullam tempus eleifend tellus, ut hendrerit nisl finibus in. Ut sed enim nec enim porta varius. Donec eget maximus lectus, vitae venenatis velit. Proin ultrices imperdiet tellus at tristique. Praesent porttitor feugiat eros id mollis. Nullam lacinia nisl eget risus ornare interdum. Donec accumsan risus eu purus bibendum, vel vulputate nisi iaculis. Etiam non lectus enim. Sed ac dui consectetur, rhoncus elit in, sollicitudin velit. Vivamus pharetra orci vitae nulla aliquam, et condimentum lacus luctus. Quisque non mattis augue. Maecenas arcu diam, consequat nec magna eu, ultrices lobortis massa.
 
 
-          </p>
+          </p>*/}
         </div>
 
       </Modal>
