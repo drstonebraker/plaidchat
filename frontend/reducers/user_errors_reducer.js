@@ -22,7 +22,7 @@ const userErrorsReducer = (state = defaultState, action) => {
         let error = action.errors[i]
         newState.username = error.username || []
         newState.password = error.password || []
-        newState.default_team_id = error.default_team_id || []
+        newState.defaultTeamId = error.defaultTeamId || []
         newState.general = error.general || []
       }
       return newState;

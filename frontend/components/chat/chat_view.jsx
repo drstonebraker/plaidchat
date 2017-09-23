@@ -9,6 +9,11 @@ class ChatView extends React.Component {
     super(props)
   }
 
+  componentDidMount() {
+    const { teamId } = this.props.match.params
+    this.props.editUser({ defaultTeamId: teamId })
+  }
+
   render() {
     const { match } = this.props
 

@@ -79,7 +79,7 @@ import { Route } from 'react-router-dom'
 
 import MainNav from './navs/main_nav'
 import UserFormContainer from './user_forms/user_form_container'
-import ChatView from './chat/chat_view'
+import ChatViewContainer from './chat/chat_view_container'
 import ChannelRedirectContainer from
   './chat/channel_redirects/channel_redirect_container'
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
@@ -92,7 +92,7 @@ const App = ({store}) => (
     <AuthRoute exact path="/login" component={UserFormContainer} />
 
     <ProtectedRoute path='/messages/:teamId?' component={ChannelRedirectContainer} />
-    <ProtectedRoute exact path='/messages/:teamId' component={ChatView} />
+    <ProtectedRoute path='/messages/:teamId/:channelId?' component={ChatViewContainer} />
     <AuthButtonsContainer />
   </div>
 )
