@@ -17,7 +17,12 @@ class SidenavHeaderModal extends React.Component {
 
     return (
       <Modal
-        style={modalStyle}
+        style={
+          Object.assign(
+            modalStyle,
+            { maxHeight: 'calc(100vh - 10.7rem)' }
+          )
+        }
         contentLabel="User Menu"
         isOpen={true}
         onRequestClose={onRequestClose}

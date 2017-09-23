@@ -12,7 +12,6 @@ const modalStyle = {
     right: 'unset',
     overflow: 'hidden',
     width: '28.5rem',
-    maxHeight: 'calc(100vh - 10.7rem)',
     border: 'none',
     borderRadius: '0.5rem',
     boxShadow: '0 0 0 0.1rem rgba(0, 0, 0, .1),' +
