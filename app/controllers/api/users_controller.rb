@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
-  before_action :require_login, only: %i(destroy)
+  before_action :require_login, only: %i(destroy update)
   before_action :require_logout, only: %i(create)
-  # before_action :require_current_user, only: %i(update)
+  before_action :require_current_user, only: %i(destroy update)
 
   def create
     @user = User.new(user_params)

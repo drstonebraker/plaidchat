@@ -1,4 +1,4 @@
-import * as AuthUtils from '../util/session_api_util';
+import * as AuthUtil from '../util/session_api_util';
 
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
@@ -20,19 +20,19 @@ export const clearErrors = () => ({
 })
 
 export const signup = user => dispatch => (
-  AuthUtils.postUser(user)
+  AuthUtil.postUser(user)
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
           error => dispatch(receiveSessionErrors(error.responseJSON)))
 );
 
 export const login = user => dispatch => (
-  AuthUtils.postSession(user)
+  AuthUtil.postSession(user)
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
           error => dispatch(receiveSessionErrors(error.responseJSON)))
 );
 
 export const logout = () => dispatch => (
-  AuthUtils.deleteSession()
+  AuthUtil.deleteSession()
     .then(emptyUser => dispatch(receiveCurrentUser(null)),
           error => dispatch(receiveSessionErrors(error.responseJSON)))
 );
