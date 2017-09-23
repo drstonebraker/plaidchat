@@ -8,7 +8,7 @@ export const receiveUserErrors = errors => ({
   errors
 });
 
-export const signup = user => dispatch => (
+export const editUser = user => dispatch => (
   UserUtil.patchUser(user)
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
           error => dispatch(receiveUserErrors(error.responseJSON)))
