@@ -1,29 +1,28 @@
 import {
-  RECEIVE_CURRENT_USER,
-  RECEIVE_SESSION_ERRORS,
-  CLEAR_SESSION_ERRORS,
-} from '../actions/session_actions.js';
+  RECEIVE_USER_ERRORS,
+  CLEAR_USER_ERRORS,
+} from '../actions/user_actions';
+import { RECEIVE_CURRENT_USER } from '../actions/session_actions'
 
 const defaultState = {
-  username: [],
-  password: [],
-  general: []
+
 }
 
-const sessionErrorsReducer = (state = defaultState, action) => {
+const userErrorsReducer = (state = defaultState, action) => {
   Object.freeze(state);
   const newState = Object.assign({}, state, defaultState)
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return {};
-    case CLEAR_SESSION_ERRORS:
+    case CLEAR_USER_ERRORS:
       return {};
-    case RECEIVE_SESSION_ERRORS:
+    case RECEIVE_USER_ERRORS:
       for (let i = 0; i < action.errors.length; i++) {
         let error = action.errors[i]
         newState.username = error.username || []
         newState.password = error.password || []
+        newState.default_team_id = error.default_team_id || []
         newState.general = error.general || []
       }
       return newState;
@@ -32,4 +31,4 @@ const sessionErrorsReducer = (state = defaultState, action) => {
   }
 };
 
-export default sessionErrorsReducer;
+export default userErrorsReducer;

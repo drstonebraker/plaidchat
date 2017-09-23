@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         password: [],
         general: [],
       },
+      user: {}
     }
   }
 
