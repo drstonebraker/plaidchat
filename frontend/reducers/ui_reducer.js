@@ -1,7 +1,7 @@
 import {
   OPEN_SIDENAV_HEADER_MODAL,
   CLOSE_SIDENAV_HEADER_MODAL
-} from '../actions/session_actions.js';
+} from '../actions/ui_actions.js';
 
 const defaultState = {
   isSideNavHeaderModalOpen: false,

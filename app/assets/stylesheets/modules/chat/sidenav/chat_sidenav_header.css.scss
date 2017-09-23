@@ -1,4 +1,4 @@
-@import '../../globals/_all.scss';
+@import '../../../globals/_all.scss';
 
 .chat_sidenav_header {
   box-sizing: border-box;
@@ -14,6 +14,14 @@
     & * {
       color: white;
     }
+  }
+}
+
+.chat_sidenav_header--active {
+  background-color: $slack_sidenav_hover;
+
+  & * {
+    color: white;
   }
 }
 

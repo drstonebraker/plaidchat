@@ -15,17 +15,17 @@ class ChatSidenavHeader extends React.Component {
   }
 
   handleClick() {
-    if (!this.props.isHeaderModalOpen) {      
+    if (!this.props.isHeaderModalOpen) {
       this.props.openHeaderModal()
     }
   }
 
   render() {
-    const { teamName, currentUser } = this.props
+    const { teamName, currentUser, isModalOpen } = this.props
 
     return (
       <div
-        className='chat_sidenav_header'
+        className={`chat_sidenav_header ${isModalOpen && 'chat_sidenav_header--active'}`}
         onClick={this.handleClick}
       >
         <div className='chat_sidenav_header__heading'>

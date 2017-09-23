@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => {
     teamMembership: getTeamMembership(
       ownProps.match.params.teamId,
       state),
+    isModalOpen: state.ui.isSideNavHeaderModalOpen,
   };
 };
 

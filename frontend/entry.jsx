@@ -16,7 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     session: {
       currentUser: window.currentUser ? window.currentUser.user : null,
     },
-    ui: {},
+    ui: {
+      isSideNavHeaderModalOpen: false,
+    },
     errors: {
       session: {
         username: [],

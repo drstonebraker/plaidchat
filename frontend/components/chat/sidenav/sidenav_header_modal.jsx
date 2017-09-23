@@ -24,7 +24,7 @@ class SidenavHeaderModal extends React.Component {
           )
         }
         contentLabel="User Menu"
-        isOpen={true}
+        isOpen={isOpen}
         onRequestClose={onRequestClose}
       >
         <div className="modal_content modal_content--scroll">
