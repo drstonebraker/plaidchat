@@ -8,11 +8,12 @@ const mapStateToProps = (state, ownProps) => {
   let type;
   let headingContent;
   let submitContent;
-  if (ownProps.match.path === '/signup') {
+  console.log(ownProps);
+  if (ownProps.location.pathname === '/signup') {
     type = 'signup'
     headingContent = 'Sign up for plaidchat'
     submitContent = 'Sign up'
-  } else if (ownProps.match.path === '/login') {
+  } else if (ownProps.location.pathname === '/login') {
     type = 'login'
     headingContent = 'Log in to plaidchat'
     submitContent = 'Log in'
@@ -35,9 +36,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   let action;
-  if (ownProps.match.path === '/signup') {
+  if (ownProps.location.pathname === '/signup') {
     action = signup
-  } else if (ownProps.match.path === '/login') {
+  } else if (ownProps.location.pathname === '/login') {
     action = login
   }
 

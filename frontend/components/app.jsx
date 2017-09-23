@@ -98,9 +98,8 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util'
 
 const App = ({store}) => (
   <div>
-    <Route exact path="(/login|/signup|/)" component={MainNav} />
-    <AuthRoute exact path="/signup" component={UserFormContainer} />
-    <AuthRoute exact path="/login" component={UserFormContainer} />
+    <AuthRoute exact path="(/login|/signup|/)" component={MainNav} />
+    <AuthRoute exact path="(/login|/signup)" component={UserFormContainer} />
 
     <ProtectedRoute path='/messages/:teamId?' component={ChannelRedirectContainer} />
     <ProtectedRoute path='/messages/:teamId/:channelId?' component={ChatViewContainer} />
