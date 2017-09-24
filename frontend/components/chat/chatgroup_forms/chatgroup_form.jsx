@@ -13,16 +13,23 @@ class ChatgroupForm extends React.Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.closeModal = this.closeModal.bind(this)
+    this.handleEscKey = this.handleEscKey.bind(this)
   }
 
   componentDidMount() {
     this.props.clearErrors()
+    window.addEventListener("keyup", this.handleEscKey);
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.type !== nextProps.type) {
       this.props.clearErrors()
     }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("keyup", this.handleEscKey);
   }
 
   handleChange(field) {
@@ -35,6 +42,12 @@ class ChatgroupForm extends React.Component {
     }
   }
 
+  handleEscKey(e) {
+    if(e.keyCode === 27){
+      this.closeModal()
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.closeChatGroupModal()
@@ -42,10 +55,14 @@ class ChatgroupForm extends React.Component {
       .then(() => this.props.history.push('/messages'))
   }
 
+  closeModal() {
+    this.props.closeChatGroupModal()
+  }
+
   render() {
     const {
         type, headingContent, submitContent, nameErrors, hasNameErrors,
-        clearErrors, action
+        clearErrors
       } = this.props
     const { team } = this.state
 
@@ -70,6 +87,7 @@ class ChatgroupForm extends React.Component {
               onChange={this.handleChange('name')}
               inputVal={team.name}
               errorsList={nameErrors}
+              autofocus={true}
             >
 
               {
@@ -89,6 +107,14 @@ class ChatgroupForm extends React.Component {
             />
 
           </form>
+
+          <button
+            type='button'
+            onClick={this.closeModal}
+            className='chat_group_form_close'
+          >
+            esc
+          </button>
 
         </div>
       </div>
