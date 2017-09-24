@@ -82,3 +82,21 @@
     text-shadow: 0 0.1rem 0 rgba(0,0,0,.1);
   }
 }
+
+// from: https://github.com/reactjs/react-modal/issues/125#issuecomment-187106042
+// and https://github.com/reactjs/react-modal/issues/125#issuecomment-260144308
+
+.ReactModalPortal > div {
+    opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+  transition: opacity 200ms ease-in-out;
+  background: rgba(0, 0, 0, 0.15);
+  &--after-open {
+    opacity: 1;
+  }
+  &--before-close {
+      opacity: 0;
+  }
+}

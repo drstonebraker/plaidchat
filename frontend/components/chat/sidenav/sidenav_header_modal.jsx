@@ -59,6 +59,7 @@ class SidenavHeaderModal extends React.Component {
     return (
       <Modal
         style={ newModalStyle }
+        closeTimeoutMS={100}
         contentLabel="User Menu"
         isOpen={isOpen}
         onRequestClose={onRequestClose}
