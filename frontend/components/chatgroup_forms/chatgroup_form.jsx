@@ -48,8 +48,6 @@ class ChatgroupForm extends React.Component {
       } = this.props
     const { team } = this.state
 
-    const nameErrorsList = makeErrorsList(nameErrors);
-
     return (
       <div className='chatgroup_form_view'>
         <div className="l-form_container l-middle">
@@ -70,50 +68,24 @@ class ChatgroupForm extends React.Component {
               inputType='text'
               onChange={this.handleChange('name')}
               inputVal={team.name}
-              errorsList={usernameErrorsList}
-              tipValidation={isInvalidUsername}
+              errorsList={nameErrors}
             >
 
               {
                 type === 'signup' &&
                 <span>
-                  Please choose a username that is all lowercase,
-                  containing only letters, numbers, periods, hyphens,
-                  and underscores.
+                  Name your team after the group that will be using
+                  Slack together.
                 </span>
               }
 
             </FormFullField>
 
-            <FormFullField
-              labelVal='password'
-              hasErrors={hasPasswordErrors}
-              inputType='password'
-              onChange={this.handleChange('password')}
-              inputVal={this.state.password}
-              errorsList={passwordErrorsList}
-              tipValidation={isInvalidPassword}
-            >
-
-            {
-              type === 'signup' &&
-              <span>
-                Passwords must be at least 6 characters long,
-                and can't be things like <em>password</em>,
-                <em>123456</em>, or <em>abcdef</em>.
-              </span>
-            }
-
-            </FormFullField>
-
             <input
-              className='form_field__submit form_field__submit--wide'
+              className='form_field__submit'
               type='submit'
               value={`${submitContent} →`}
               />
-            <ul>
-              { generalErrorsList }
-            </ul>
 
           </form>
 
