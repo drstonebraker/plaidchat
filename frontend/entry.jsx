@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     ui: {
       isSideNavHeaderModalOpen: false,
-      isChatGroupModalOpen: false,
+      isChatGroupModalOpen: true,
       chatgroupFormType: null
     },
     errors: {
