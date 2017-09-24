@@ -1,6 +1,7 @@
 import React from 'react'
 
 import MainNav from '../navs/main_nav'
+import FormFullField from './form_full_field'
 
 class UserForm extends React.Component {
   constructor(props) {
@@ -17,6 +18,12 @@ class UserForm extends React.Component {
 
   componentDidMount() {
     this.props.clearErrors()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.location.pathname !== nextProps.location.pathname) {
+      this.props.clearErrors()
+    }
   }
 
   handleChange(field) {
@@ -41,7 +48,7 @@ class UserForm extends React.Component {
         passwordErrors, generalErrors, isInvalidUsername, isInvalidPassword,
         hasUsernameErrors, hasPasswordErrors
       } = this.props
-    const { user, errors } = this.state
+    const { user } = this.state
 
     const getList = (list) => (
       list.map((error) => (
@@ -76,73 +83,47 @@ class UserForm extends React.Component {
               onSubmit={this.handleSubmit}
               >
 
-              <div className="form_field">
-                <label
-                  className='form_field__label'
-                  htmlFor='login__username_input'>
-                  Username
-                </label>
-                <input
-                  className={`
-                    form_field__text_input
-                    ${hasUsernameErrors ? 'form_field__text_input--warn' : ''}
-                  `}
-                  type='text'
-                  id='login__username_input'
-                  onChange={this.handleChange('username')}
-                  value={this.state.username}
-                />
-                <ul>
-                  { usernameErrorsList }
-                </ul>
+              <FormFullField
+                labelVal='username'
+                hasErrors={hasUsernameErrors}
+                inputType='text'
+                onChange={this.handleChange('username')}
+                inputVal={this.state.username}
+                errorsList={usernameErrorsList}
+                tipValidation={isInvalidUsername}
+              >
+
                 {
                   type === 'signup' &&
-                  <span
-                    className={`
-                      form_field__input_tip
-                      ${isInvalidUsername ? 'form_field__input_tip--warn' : ''}
-                    `}
-                  >
+                  <span>
                     Please choose a username that is all lowercase,
                     containing only letters, numbers, periods, hyphens,
                     and underscores.
                   </span>
                 }
-              </div>
 
-              <div className="form_field">
-                <label
-                  className='form_field__label'
-                  htmlFor='login__password_input'>
-                  Password
-                </label>
-                <input
-                  className={`
-                    form_field__text_input
-                    ${hasPasswordErrors ? 'form_field__text_input--warn' : ''}
-                    `}
-                  type='password'
-                  id='login__password_input'
-                  onChange={this.handleChange('password')}
-                  value={this.state.password}
-                />
-                <ul>
-                  { passwordErrorsList }
-                </ul>
-                {
-                  type === 'signup' &&
-                  <span
-                    className={`
-                      form_field__input_tip
-                      ${isInvalidPassword ? 'form_field__input_tip--warn' : ''}
-                    `}
-                  >
-                    Passwords must be at least 6 characters long,
-                    and can't be things like <em>password</em>,
-                    <em>123456</em>, or <em>abcdef</em>.
-                  </span>
-                }
-              </div>
+              </FormFullField>
+
+              <FormFullField
+                labelVal='password'
+                hasErrors={hasPasswordErrors}
+                inputType='password'
+                onChange={this.handleChange('password')}
+                inputVal={this.state.password}
+                errorsList={passwordErrorsList}
+                tipValidation={isInvalidPassword}
+              >
+
+              {
+                type === 'signup' &&
+                <span>
+                  Passwords must be at least 6 characters long,
+                  and can't be things like <em>password</em>,
+                  <em>123456</em>, or <em>abcdef</em>.
+                </span>
+              }
+
+              </FormFullField>
 
               <input
                 className='form_field__submit form_field__submit--wide'
