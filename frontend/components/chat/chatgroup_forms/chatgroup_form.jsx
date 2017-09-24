@@ -105,20 +105,24 @@ class ChatgroupForm extends React.Component {
 
             <div className='l-float_children_right'>
 
+              <span>
+                
+                <button
+                  type='button'
+                  onClick={this.closeModal}
+                  className='form_button form_button--cancel'
+                >
+                  Cancel
+                </button>
 
-              <input
-                className='form_button form_button--submit'
-                type='submit'
-                value={`${submitContent} →`}
-              />
+                <input
+                  className='form_button form_button--submit'
+                  type='submit'
+                  value={`${submitContent}`}
+                />
 
-              <button
-                type='button'
-                onClick={this.closeModal}
-                className='form_button form_button--cancel'
-              >
-                Cancel
-              </button>
+              </span>
+
 
 
             </div>
