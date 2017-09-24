@@ -37,7 +37,8 @@ class ChatgroupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.action(this.state.team)
+    this.props.closeChatGroupModal()
+    this.props[this.props.formType](this.state.team)
       .then(() => this.props.history.push('/messages'))
   }
 
@@ -85,7 +86,7 @@ class ChatgroupForm extends React.Component {
               className='form_field__submit'
               type='submit'
               value={`${submitContent} →`}
-              />
+            />
 
           </form>
 

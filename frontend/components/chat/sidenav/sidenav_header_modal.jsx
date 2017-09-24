@@ -35,7 +35,7 @@ class SidenavHeaderModal extends React.Component {
 
   openNewTeamForm() {
     this.props.onRequestClose()
-    this.props.openChatGroupModal('newTeam')
+    this.props.openChatGroupModal('createTeam')
   }
 
   render() {
