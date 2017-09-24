@@ -3,7 +3,7 @@ import React from 'react'
 import Modal from 'react-modal'
 import { Link } from 'react-router-dom'
 
-import modalStyle from '../../../util/modal_style'
+import { modalStyle } from '../../../util/modal_style'
 import ModalSection from '../modals/modal_section'
 
 class SidenavHeaderModal extends React.Component {

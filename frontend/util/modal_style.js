@@ -1,11 +1,11 @@
-const modalStyle = {
+export const modalStyle = {
   overlay: {
     backgroundColor: 'transparent',
   },
   content: {
     padding: 0,
     position: 'fixed',
-    zIndex: 10,
+    zIndex: 100,
     top: '5.7rem',
     left: '1rem',
     bottom: 'unset',
@@ -20,4 +20,23 @@ const modalStyle = {
   }
 }
 
-export default modalStyle;
+export const modalStyleFull = {
+  overlay: {
+    backgroundColor: 'transparent',
+  },
+  content: {
+    padding: 0,
+    position: 'fixed',
+    zIndex: 100,
+    top: '0rem',
+    left: '0rem',
+    bottom: '0rem',
+    right: '0rem',
+    overflow: 'auto',
+    width: 'auto',
+    border: 'none',
+    borderRadius: '0rem',
+    boxShadow: 'none',
+
+  }
+}
