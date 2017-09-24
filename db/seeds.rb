@@ -21,9 +21,20 @@ ActiveRecord::Base.transaction do
     default_team_id: global_team.id
   )
 
-  demo_user.team_ids = [
-    demo_team.id,
-    global_team.id
-  ]
+  [demo_team, global_team].each do |team|
+    general_channel = Channel.create(
+      name: 'general'
+    )
+
+    Channel.create(
+      name: 'random'
+    )
+
+    TeamMembership.create(
+      team_id: team.id,
+      user_id: demo_user.id,
+      default_channel_id: general_channel.id
+    )
+  end
 
 end

@@ -10,16 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170922205029) do
+ActiveRecord::Schema.define(version: 20170924225023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "channel_memberships", force: :cascade do |t|
+    t.integer "channel_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id", "user_id"], name: "index_channel_memberships_on_channel_id_and_user_id", unique: true
+    t.index ["user_id"], name: "index_channel_memberships_on_user_id"
+  end
+
+  create_table "channels", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "is_direct_message", default: false, null: false
+    t.integer "team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id", "name"], name: "index_channels_on_team_id_and_name", unique: true
+  end
 
   create_table "team_memberships", force: :cascade do |t|
     t.integer "team_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "default_channel_id", null: false
     t.index ["team_id", "user_id"], name: "index_team_memberships_on_team_id_and_user_id", unique: true
     t.index ["user_id"], name: "index_team_memberships_on_user_id"
   end

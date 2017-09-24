@@ -13,6 +13,7 @@ class Team < ApplicationRecord
   validate :unique_name
 
   has_many :team_memberships
+  has_many :channels
   has_many :users,
     through: :team_memberships,
     source: :user

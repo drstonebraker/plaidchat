@@ -8,7 +8,7 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  default_team_id :integer          default(2), not null
+#  default_team_id :integer          not null
 #
 
 class User < ApplicationRecord
@@ -30,6 +30,11 @@ class User < ApplicationRecord
   has_many :teams,
     through: :team_memberships,
     source: :team
+
+  has_many :channel_memberships
+  has_many :channels,
+    through: :channel_memberships,
+    source: :channel
 
   ######################
   # custom validations
