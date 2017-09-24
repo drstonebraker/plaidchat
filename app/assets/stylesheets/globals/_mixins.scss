@@ -1,0 +1,63 @@
+@import './_media_breakpoints.scss';
+
+@mixin scrollable_light_bg {
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 1.6rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 0.8rem;
+    background-color: #F3F3F3;
+    -webkit-box-shadow: inset 0 0 0 0.4rem white;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 0.4rem solid white;
+    border-radius: 0.8rem;
+    background-color: #D9D9DE;
+  }
+}
+
+@mixin scrollable_dark_bg {
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 0.4rem;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      border-radius: 0.4rem;
+      background-color: rgba(255,255,255,0.2);
+    }
+  }
+}
+
+@mixin overflow_ellipses {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  & * {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@mixin clearfix {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}

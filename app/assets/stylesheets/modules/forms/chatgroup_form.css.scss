@@ -1,0 +1,57 @@
+@import '../../globals/_all.scss';
+
+.chatgroup_form_view {
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+}
+
+.chat_group_form_close {
+  position: fixed;
+  top: 4.8rem;
+  right: 4.8rem;
+  @include phone {
+    top: 1.6rem;
+    right: 1.6rem;
+  }
+  height: 6.4rem;
+  width: 6.4rem;
+  border-radius: 50%;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: center;
+  outline: none;
+
+  &:hover, &:focus {
+    background-color: $slack_hover_light;
+  }
+
+}
+
+.chat_group_form_close__esc {
+  font-size: 1.2rem;
+  font-weight: lighter;
+  color: $slack_tip_color;
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.x_diag {
+  $diag_width: 2.8rem;
+  position: absolute;
+  top: calc(50% - 0.7rem);
+  left: calc(50% - 1.4rem);
+  border-radius: 0.1rem;
+  height: 0.2rem;
+  width: $diag_width;
+  background-color: $slack_tip_color;
+
+  &--up {
+    transform: rotate(-45deg);
+  }
+  &--down {
+    transform: rotate(45deg);
+  }
+}

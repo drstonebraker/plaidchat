@@ -32,4 +32,12 @@ class ApplicationController < ActionController::Base
       status: 401 if logged_in?
   end
 
+  def require_current_user
+    unless current_user.session_token == session[:session_token]
+      render json: [
+        {error: "You do not have permission to edit this user's information"}
+      ], status: 401
+    end
+  end
+
 end

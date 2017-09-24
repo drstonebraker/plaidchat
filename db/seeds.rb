@@ -8,7 +8,7 @@
 
 ActiveRecord::Base.transaction do
   demo_team = Team.create(
-    name: 'DemoTeam1'
+    name: 'Demo'
   )
 
   global_team = Team.create(
@@ -16,13 +16,14 @@ ActiveRecord::Base.transaction do
   )
 
   demo_user = User.create(
-    username: 'demoUser',
+    username: 'anonymous_alien',
     password: '1t9xbnxtZbYWw8d90wOkMA',
+    default_team_id: global_team.id
   )
 
   demo_user.team_ids = [
     demo_team.id,
     global_team.id
   ]
-  
+
 end

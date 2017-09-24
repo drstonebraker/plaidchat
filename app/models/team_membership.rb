@@ -10,6 +10,8 @@
 #
 
 class TeamMembership < ApplicationRecord
+  validates :user_id, uniqueness: { scope: :team_id,
+    message: 'can only subscribe once to each team'}
 
   belongs_to :user
   belongs_to :team

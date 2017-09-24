@@ -1,6 +1,8 @@
 import React from 'react'
 
 import MainNav from '../navs/main_nav'
+import FormFullField from '../modules/form_full_field'
+import { ErrorsList } from '../modules/jsx_lists'
 
 class UserForm extends React.Component {
   constructor(props) {
@@ -19,6 +21,12 @@ class UserForm extends React.Component {
     this.props.clearErrors()
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.location.pathname !== nextProps.location.pathname) {
+      this.props.clearErrors()
+    }
+  }
+
   handleChange(field) {
     return e => {
       const user = Object.assign(
@@ -32,7 +40,7 @@ class UserForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.action(this.state.user)
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push('/messages'))
   }
 
   render() {
@@ -41,28 +49,10 @@ class UserForm extends React.Component {
         passwordErrors, generalErrors, isInvalidUsername, isInvalidPassword,
         hasUsernameErrors, hasPasswordErrors
       } = this.props
-    const { user, errors } = this.state
-
-    const getList = (list) => (
-      list.map((error) => (
-        <li
-          key={error}
-          className={`
-            form_field__input_tip
-            form_field__input_tip--warn
-          `}
-        >
-          {error}
-        </li>
-      ))
-    )
-
-    const usernameErrorsList = getList(usernameErrors);
-    const passwordErrorsList = getList(passwordErrors);
-    const generalErrorsList = getList(generalErrors);
+    const { user } = this.state
 
     return (
-      <div className='userform_view'>
+      <div className='user_form_view'>
         <div className='l-middle-wrapper'>
           <div className="l-form_container l-middle l-form_container--userform">
 
@@ -76,82 +66,58 @@ class UserForm extends React.Component {
               onSubmit={this.handleSubmit}
               >
 
-              <div className="form_field">
-                <label
-                  className='form_field__label'
-                  htmlFor='login__username_input'>
-                  Username
-                </label>
-                <input
-                  className={`
-                    form_field__text_input
-                    ${hasUsernameErrors ? 'form_field__text_input--warn' : ''}
-                  `}
-                  type='text'
-                  id='login__username_input'
-                  onChange={this.handleChange('username')}
-                  value={this.state.username}
-                />
-                <ul>
-                  { usernameErrorsList }
-                </ul>
+              <FormFullField
+                labelVal='username'
+                hasErrors={hasUsernameErrors}
+                inputType='text'
+                onChange={this.handleChange('username')}
+                inputVal={user.username}
+                errorsList={usernameErrors}
+                tipValidation={isInvalidUsername}
+                autofocus={true}
+                formType={type}
+              >
+
                 {
                   type === 'signup' &&
-                  <span
-                    className={`
-                      form_field__input_tip
-                      ${isInvalidUsername ? 'form_field__input_tip--warn' : ''}
-                    `}
-                  >
+                  <span>
                     Please choose a username that is all lowercase,
                     containing only letters, numbers, periods, hyphens,
                     and underscores.
                   </span>
                 }
-              </div>
 
-              <div className="form_field">
-                <label
-                  className='form_field__label'
-                  htmlFor='login__password_input'>
-                  Password
-                </label>
-                <input
-                  className={`
-                    form_field__text_input
-                    ${hasPasswordErrors ? 'form_field__text_input--warn' : ''}
-                    `}
-                  type='password'
-                  id='login__password_input'
-                  onChange={this.handleChange('password')}
-                  value={this.state.password}
-                />
-                <ul>
-                  { passwordErrorsList }
-                </ul>
-                {
-                  type === 'signup' &&
-                  <span
-                    className={`
-                      form_field__input_tip
-                      ${isInvalidPassword ? 'form_field__input_tip--warn' : ''}
-                    `}
-                  >
-                    Passwords must be at least 6 characters long,
-                    and can't be things like <em>password</em>,
-                    <em>123456</em>, or <em>abcdef</em>.
-                  </span>
-                }
-              </div>
+              </FormFullField>
+
+              <FormFullField
+                labelVal='password'
+                hasErrors={hasPasswordErrors}
+                inputType='password'
+                onChange={this.handleChange('password')}
+                inputVal={user.password}
+                errorsList={passwordErrors}
+                tipValidation={isInvalidPassword}
+                formType={type}
+              >
+
+              {
+                type === 'signup' &&
+                <span>
+                  Passwords must be at least 6 characters long,
+                  and can't be things like <em>password</em>,
+                  <em>123456</em>, or <em>abcdef</em>.
+                </span>
+              }
+
+              </FormFullField>
 
               <input
-                className='form_field__submit form_field__submit--wide'
+                className='form_button--submit form_button--submit--wide'
                 type='submit'
                 value={`${submitContent} →`}
-                />
-              <ul>
-                { generalErrorsList }
-              </ul>
+              />
+
+              <ErrorsList>{generalErrors}</ErrorsList>
 
             </form>
 

@@ -1,22 +1,33 @@
 import React from 'react'
 
 import StatusIndicator from './status_indicator'
-import { CaretDown } from '../font_awesome/icons'
+import SidenavHeaderModalContainer from './sidenav_header_modal_container'
+import { CaretDown } from '../../font_awesome/icons'
 
 class ChatSidenavHeader extends React.Component {
   constructor(props) {
     super(props)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
 
   }
 
+  handleClick() {
+    if (!this.props.isHeaderModalOpen) {
+      this.props.openHeaderModal()
+    }
+  }
+
   render() {
-    const { teamName, currentUser } = this.props
+    const { teamName, currentUser, isModalOpen } = this.props
 
     return (
-      <div className='chat_sidenav_header'>
+      <div
+        className={`chat_sidenav_header ${isModalOpen ? 'chat_sidenav_header--active' : ''}`}
+        onClick={this.handleClick}
+      >
         <div className='chat_sidenav_header__heading'>
           <h1 className='chat_sidenav_header__teamname'>
             { teamName }
@@ -30,6 +41,8 @@ class ChatSidenavHeader extends React.Component {
             { currentUser.username }
           </h4>
         </div>
+
+        <SidenavHeaderModalContainer />
 
       </div>
     )

@@ -22,6 +22,7 @@ export const isInvalid = (errors, type) => {
 
 // get array of properly formatted errors
 export const getErrors = (errors, type) => {
+
   if (!errors[type]) {
     return []
   }

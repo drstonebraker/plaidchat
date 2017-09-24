@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921233449) do
+ActiveRecord::Schema.define(version: 20170922205029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20170921233449) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_teams_on_name", unique: true
+    t.index ["name"], name: "index_teams_on_name"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20170921233449) do
     t.string "session_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "default_team_id", default: 2, null: false
+    t.integer "default_team_id", null: false
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["username", "password_digest"], name: "index_users_on_username_and_password_digest", unique: true
   end

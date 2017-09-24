@@ -16,13 +16,23 @@ document.addEventListener('DOMContentLoaded', () => {
     session: {
       currentUser: window.currentUser ? window.currentUser.user : null,
     },
-    ui: {},
+    ui: {
+      isSideNavHeaderModalOpen: false,
+      isChatGroupModalOpen: true,
+      chatgroupFormType: 'createTeam'
+    },
     errors: {
       session: {
         username: [],
         password: [],
         general: [],
       },
+      user: {
+
+      },
+      team: {
+        name: [],
+      }
     }
   }
 

@@ -1,6 +1,6 @@
 @import '../../globals/_all.scss';
 
-.userform_view {
+.user_form_view {
   background-color: $slack_bg_light;
   height: 100vh;
   width: 100vw;
@@ -11,21 +11,4 @@
   box-shadow: 0 1px 0 $slack_shadow_solid_color;
   border-radius: .4rem;
   background-color: white;
-}
-
-.form_field__text_input--warn {
-  border-color: $form_error_red;
-
-  &:hover {
-    border-color: $form_error_red;
-  }
-}
-
-.form_field__input_tip--warn {
-  color: $form_error_red;
-  font-style: italic;
-
-  & > em {
-    font-style: normal;
-  }
 }

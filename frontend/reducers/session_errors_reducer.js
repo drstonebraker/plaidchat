@@ -1,7 +1,7 @@
 import {
   RECEIVE_CURRENT_USER,
   RECEIVE_SESSION_ERRORS,
-  CLEAR_ERRORS,
+  CLEAR_SESSION_ERRORS,
 } from '../actions/session_actions.js';
 
 const defaultState = {
@@ -17,7 +17,7 @@ const sessionErrorsReducer = (state = defaultState, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return {};
-    case CLEAR_ERRORS:
+    case CLEAR_SESSION_ERRORS:
       return {};
     case RECEIVE_SESSION_ERRORS:
       for (let i = 0; i < action.errors.length; i++) {

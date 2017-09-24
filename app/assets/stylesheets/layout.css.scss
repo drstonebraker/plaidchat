@@ -1,9 +1,14 @@
 @import './globals/_all.scss';
 
 .l-cf::after {
-  display: block;
-  content: "";
-  clear: both;
+  @include clearfix;
+}
+
+.l-float_children_right {
+  @include clearfix;
+  & > * {
+    float: right;
+  }
 }
 
 .l-form_container {

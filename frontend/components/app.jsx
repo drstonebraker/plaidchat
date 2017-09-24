@@ -9,6 +9,13 @@ class AuthButtons extends React.Component {
     super(props)
   }
 
+  login() {
+    return () => (
+      this.props.demoLogin()
+        .then(() => this.props.history.push('/messages'))
+    )
+  }
+
   render () {
     return (
       <div>
@@ -40,7 +47,7 @@ class AuthButtons extends React.Component {
           !this.props.isLoggedIn &&
           <Route exact path='/' component={() => (
               <button
-                onClick={this.props.demoLogin}
+                onClick={this.login()}
                 type="button"
               >
                 Demo Login
@@ -61,7 +68,11 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   demoLogin: () => dispatch(
-    login({username: 'demoUser', password: '1t9xbnxtZbYWw8d90wOkMA'})
+    login({
+      username: 'anonymous_alien',
+      password: '1t9xbnxtZbYWw8d90wOkMA',
+      default_team_id: 1,
+    })
   ),
   logout: () => dispatch(logout()),
 })
@@ -79,20 +90,22 @@ import { Route } from 'react-router-dom'
 
 import MainNav from './navs/main_nav'
 import UserFormContainer from './user_forms/user_form_container'
-import ChatView from './chat/chat_view'
-import ChannelRedirectContainer from './chat/channel_redirect_container'
+import ChatViewContainer from './chat/chat_view_container'
+import ChannelRedirectContainer from
+  './chat/channel_redirects/channel_redirect_container'
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 
 
 const App = ({store}) => (
   <div>
-    <Route exact path="(/login|/signup|/)" component={MainNav} />
-    <AuthRoute exact path="/signup" component={UserFormContainer} />
-    <AuthRoute exact path="/login" component={UserFormContainer} />
+    <AuthRoute exact path="(/login|/signup|/)" component={MainNav} />
+    <AuthRoute exact path="(/login|/signup)" component={UserFormContainer} />
 
-    <ProtectedRoute exact path='/messages' component={ChannelRedirectContainer} />
-    <ProtectedRoute exact path='/messages/:teamId' component={ChatView} />
-    <AuthButtonsContainer />
+    <ProtectedRoute path='/messages/:teamId?' component={ChannelRedirectContainer} />
+    <ProtectedRoute path='/messages/:teamId/:channelId?' component={ChatViewContainer} />
+
+    <Route path="/" component={AuthButtonsContainer} />
+
   </div>
 )
 

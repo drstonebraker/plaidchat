@@ -1,13 +1,15 @@
-import * as AuthUtils from '../util/session_api_util';
+import * as AuthUtil from '../util/api/session_api_util';
 
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
-export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
 
-export const receiveCurrentUser = user => ({
+export const receiveCurrentUser = ({ user, teams, teamMemberships }) => ({
   type: RECEIVE_CURRENT_USER,
-  user
+  user,
+  teams,
+  teamMemberships,
 });
 
 export const receiveSessionErrors = errors => ({
@@ -15,24 +17,24 @@ export const receiveSessionErrors = errors => ({
   errors
 });
 
-export const clearErrors = () => ({
-  type: CLEAR_ERRORS,
+export const clearSessionErrors = () => ({
+  type: CLEAR_SESSION_ERRORS,
 })
 
 export const signup = user => dispatch => (
-  AuthUtils.postUser(user)
-    .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
+  AuthUtil.postUser(user)
+    .then(currentUserData => dispatch(receiveCurrentUser(currentUserData)),
           error => dispatch(receiveSessionErrors(error.responseJSON)))
 );
 
 export const login = user => dispatch => (
-  AuthUtils.postSession(user)
-    .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
+  AuthUtil.postSession(user)
+    .then(currentUserData => dispatch(receiveCurrentUser(currentUserData)),
           error => dispatch(receiveSessionErrors(error.responseJSON)))
 );
 
 export const logout = () => dispatch => (
-  AuthUtils.deleteSession()
-    .then(emptyUser => dispatch(receiveCurrentUser(null)),
+  AuthUtil.deleteSession()
+    .then(emptyUser => dispatch(receiveCurrentUser({user: null})),
           error => dispatch(receiveSessionErrors(error.responseJSON)))
 );

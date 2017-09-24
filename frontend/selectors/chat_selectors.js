@@ -1,12 +1,23 @@
 export const getTeamName = (teamId, state) => {
-  return teamId && state.entities.teams[teamId].name
+  const currentTeam = state.entities.teams[teamId]
+  if (
+    teamId === undefined ||
+    currentTeam === undefined
+  ) {
+    return null
+  }
+  return currentTeam.name
 }
 
 export const getTeamMembership = (teamId, state) => {
+  // debugger
+  if (!teamId) {
+    return null
+  }
   const teamMemberships = state.entities.teamMemberships
   const currentUser = state.session.currentUser
 
-  for (var id in teamMemberships) {
+  for (let id in teamMemberships) {
     if (teamMemberships.hasOwnProperty(id)) {
       const teamMembership = teamMemberships[id]
       if (
@@ -17,4 +28,22 @@ export const getTeamMembership = (teamId, state) => {
       }
     }
   }
+
+  return null
+}
+
+export const getTeamIds = (teamMemberships) => {
+  return Object.values(teamMemberships).map(membership => (
+    membership.teamId
+  ))
+}
+
+export const getTeamsByMembership = (state) => {
+  const memberships = Object.values(state.entities.teamMemberships)
+  const memberTeamIds = getTeamIds(memberships)
+  const teams = Object.values(state.entities.teams)
+
+  return teams.filter(team => (
+    memberTeamIds.includes(team.id)
+  ))
 }
