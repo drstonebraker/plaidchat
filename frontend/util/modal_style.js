@@ -27,7 +27,7 @@ export const modalStyleFull = {
   content: {
     padding: 0,
     position: 'fixed',
-    zIndex: 100,
+    zIndex: 200,
     top: '0rem',
     left: '0rem',
     bottom: '0rem',

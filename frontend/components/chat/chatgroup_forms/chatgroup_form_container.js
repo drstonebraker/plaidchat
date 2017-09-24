@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 
-import ChatgroupForm from './chatgroup_form'
-import * as ErrorsSelector from '../../selectors/errors_selectors'
-import { createTeam, clearTeamErrors } from '../../actions/team_actions';
+import ChatgroupForm from './chatgroup_form.jsx'
+import * as ErrorsSelector from '../../../selectors/errors_selectors'
+import { createTeam, clearTeamErrors } from '../../../actions/team_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let type;
@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
     submitContent = 'Create Team!'
   }
 
-  const errors = state.errors.teams;
+  const errors = state.errors.team;
 
   return {
     type,
