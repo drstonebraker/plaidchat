@@ -5,13 +5,8 @@
   box-sizing: border-box;
   max-height: calc(100vh - 10.7rem);
   font-family: $lato;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 
-  & * {
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  @include overflow_ellipses;
 }
 
 

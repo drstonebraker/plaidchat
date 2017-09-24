@@ -42,6 +42,12 @@
   }
 }
 
-@mixin ellipses {
+@mixin overflow_ellipses {
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
+  & * {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
 }
