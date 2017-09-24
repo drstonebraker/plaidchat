@@ -2,13 +2,14 @@ import { connect } from 'react-redux'
 
 import UserForm from './user_form'
 import * as ErrorsSelector from '../../selectors/errors_selectors'
-import { signup, login, clearSessionErrors } from '../../actions/session_actions';
+import { signup, login, clearSessionErrors } from
+  '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let type;
   let headingContent;
   let submitContent;
-  console.log(ownProps);
+
   if (ownProps.location.pathname === '/signup') {
     type = 'signup'
     headingContent = 'Sign up for plaidchat'

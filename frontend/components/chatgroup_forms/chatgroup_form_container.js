@@ -8,43 +8,34 @@ const mapStateToProps = (state, ownProps) => {
   let type;
   let headingContent;
   let submitContent;
-  console.log(ownProps);
-  if (ownProps.location.pathname === '/signup') {
-    type = 'signup'
-    headingContent = 'Sign up for plaidchat'
-    submitContent = 'Sign up'
-  } else if (ownProps.location.pathname === '/login') {
-    type = 'login'
-    headingContent = 'Log in to plaidchat'
-    submitContent = 'Log in'
+
+  if (ownProps.type === 'newTeam') {
+    type = 'newTeam'
+    headingContent = 'Create a new team'
+    submitContent = 'Create Team!'
   }
-  const errors = state.errors.session;
+
+  const errors = state.errors.teams;
 
   return {
     type,
     headingContent,
     submitContent,
-    usernameErrors: ErrorsSelector.getErrors(errors, 'username'),
-    passwordErrors: ErrorsSelector.getErrors(errors, 'password'),
-    generalErrors: ErrorsSelector.getErrors(errors, 'general'),
-    isInvalidUsername: ErrorsSelector.isInvalid(errors, 'username'),
-    isInvalidPassword: ErrorsSelector.isInvalid(errors, 'password'),
-    hasUsernameErrors: ErrorsSelector.hasErrors(errors, 'username'),
-    hasPasswordErrors: ErrorsSelector.hasErrors(errors, 'password'),
+    nameErrors: ErrorsSelector.getErrors(errors, 'name'),
+    hasNameErrors: ErrorsSelector.hasErrors(errors, 'name'),
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   let action;
-  if (ownProps.location.pathname === '/signup') {
-    action = signup
-  } else if (ownProps.location.pathname === '/login') {
-    action = login
+
+  if (ownProps.type === 'newTeam') {
+    action = createTeam
   }
 
   return {
-    clearSessionErrors: () => dispatch(clearSessionErrors()),
-    action: userCredentials => dispatch(action(userCredentials)),
+    clearErrors: () => dispatch(clearTeamErrors()),
+    action: team => dispatch(action(team)),
   };
 };
 

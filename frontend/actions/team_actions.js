@@ -10,17 +10,17 @@ export const receiveNewTeam = team => ({
   team
 });
 
-export const receiveSessionErrors = errors => ({
+export const receiveTeamErrors = errors => ({
   type: RECEIVE_TEAM_ERRORS,
   errors
 });
 
-export const clearSessionErrors = () => ({
+export const clearTeamErrors = () => ({
   type: CLEAR_TEAM_ERRORS,
 })
 
 export const createTeam = (team, currentUser) => dispatch => (
   TeamUtil.postTeam(team, currentUser)
     .then(newTeam => dispatch(receiveNewTeam(newTeam)),
-          error => dispatch(receiveSessionErrors(error.responseJSON)))
+          error => dispatch(receiveTeamErrors(error.responseJSON)))
 );
