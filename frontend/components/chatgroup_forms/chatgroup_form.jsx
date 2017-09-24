@@ -1,15 +1,13 @@
 import React from 'react'
 
-import MainNav from '../navs/main_nav'
 import FormFullField from '../modules/form_full_field'
 
-class UserForm extends React.Component {
+class ChatgroupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {
-        username: '',
-        password: '',
+      team: {
+        name: '',
       },
     }
 
@@ -21,24 +19,24 @@ class UserForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.location.pathname !== nextProps.location.pathname) {
+    if (this.props.type !== nextProps.type) {
       this.props.clearErrors()
     }
   }
 
   handleChange(field) {
     return e => {
-      const user = Object.assign(
-        this.state.user,
+      const team = Object.assign(
+        this.state.team,
         {[field]: e.target.value}
       )
-      this.setState({ user })
+      this.setState({ team })
     }
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.action(this.state.user)
+    this.props.action(this.state.team, this.props.currentUser)
       .then(() => this.props.history.push('/messages'))
   }
 
@@ -145,4 +143,4 @@ class UserForm extends React.Component {
 
 
 
-export default UserForm;
+export default ChatgroupForm;

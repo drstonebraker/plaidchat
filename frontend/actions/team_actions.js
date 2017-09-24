@@ -5,9 +5,10 @@ export const RECEIVE_NEW_TEAM = 'RECEIVE_NEW_TEAM';
 export const RECEIVE_TEAM_ERRORS = 'RECEIVE_TEAM_ERRORS';
 export const CLEAR_TEAM_ERRORS = 'CLEAR_TEAM_ERRORS';
 
-export const receiveNewTeam = team => ({
+export const receiveNewTeam = ({team, teamMembership}) => ({
   type: RECEIVE_NEW_TEAM,
-  team
+  team,
+  teamMembership,
 });
 
 export const receiveTeamErrors = errors => ({
@@ -21,6 +22,6 @@ export const clearTeamErrors = () => ({
 
 export const createTeam = (team, currentUser) => dispatch => (
   TeamUtil.postTeam(team, currentUser)
-    .then(newTeam => dispatch(receiveNewTeam(newTeam)),
+    .then(res => dispatch(receiveNewTeam(res)),
           error => dispatch(receiveTeamErrors(error.responseJSON)))
 );
