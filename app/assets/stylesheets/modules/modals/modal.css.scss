@@ -91,7 +91,7 @@
 }
 
 .ReactModalPortal .ReactModal__Overlay {
-  transition: opacity 200ms ease-in-out;
+  transition: opacity 100ms ease-in-out;
   background: rgba(0, 0, 0, 0.15);
   &--after-open {
     opacity: 1;
