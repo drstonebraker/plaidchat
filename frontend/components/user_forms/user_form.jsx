@@ -2,6 +2,7 @@ import React from 'react'
 
 import MainNav from '../navs/main_nav'
 import FormFullField from '../modules/form_full_field'
+import { ErrorsList } from '../modules/jsx_lists'
 
 class UserForm extends React.Component {
   constructor(props) {
@@ -50,26 +51,8 @@ class UserForm extends React.Component {
       } = this.props
     const { user } = this.state
 
-    const getList = (list) => (
-      list.map((error) => (
-        <li
-          key={error}
-          className={`
-            form_field__input_tip
-            form_field__input_tip--warn
-          `}
-        >
-          {error}
-        </li>
-      ))
-    )
-
-    const usernameErrorsList = getList(usernameErrors);
-    const passwordErrorsList = getList(passwordErrors);
-    const generalErrorsList = getList(generalErrors);
-
     return (
-      <div className='userform_view'>
+      <div className='user_form_view'>
         <div className='l-middle-wrapper'>
           <div className="l-form_container l-middle l-form_container--userform">
 
@@ -88,8 +71,8 @@ class UserForm extends React.Component {
                 hasErrors={hasUsernameErrors}
                 inputType='text'
                 onChange={this.handleChange('username')}
-                inputVal={this.state.username}
-                errorsList={usernameErrorsList}
+                inputVal={user.username}
+                errorsList={usernameErrors}
                 tipValidation={isInvalidUsername}
                 autofocus={true}
                 formType={type}
@@ -111,8 +94,8 @@ class UserForm extends React.Component {
                 hasErrors={hasPasswordErrors}
                 inputType='password'
                 onChange={this.handleChange('password')}
-                inputVal={this.state.password}
-                errorsList={passwordErrorsList}
+                inputVal={user.password}
+                errorsList={passwordErrors}
                 tipValidation={isInvalidPassword}
                 formType={type}
               >
@@ -132,10 +115,9 @@ class UserForm extends React.Component {
                 className='form_field__submit form_field__submit--wide'
                 type='submit'
                 value={`${submitContent} →`}
-                />
-              <ul>
-                { generalErrorsList }
-              </ul>
+              />
+
+              <ErrorsList>{generalErrors}</ErrorsList>
 
             </form>
 

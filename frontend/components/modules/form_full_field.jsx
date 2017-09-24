@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { ErrorsList } from './jsx_lists'
+
 class FormFullField extends React.Component {
   constructor(props) {
     super(props)
@@ -59,9 +61,9 @@ class FormFullField extends React.Component {
           value={inputVal}
           ref={input => { this.input = input }}
         />
-        <ul>
-          { errorsList }
-        </ul>
+
+        <ErrorsList>{errorsList}</ErrorsList>
+
         { mappedChildren }
       </div>
     )
