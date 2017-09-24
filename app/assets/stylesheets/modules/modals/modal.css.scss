@@ -16,23 +16,7 @@
 
 
 .modal_content--scroll {
-  overflow-y: auto;
-
-  &::-webkit-scrollbar {
-    width: 1.6rem;
-  }
-
-  &::-webkit-scrollbar-track {
-    border-radius: 0.8rem;
-	  background-color: #F3F3F3;
-    -webkit-box-shadow: inset 0 0 0 0.4rem white;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border: 0.4rem solid white;
-    border-radius: 0.8rem;
-    background-color: #D9D9DE;
-  }
+  @include scrollable_light_bg;
 }
 
 .modal_section {
