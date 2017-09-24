@@ -7,30 +7,32 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 ActiveRecord::Base.transaction do
-  demo_team = Team.create(
+  demo_team = Team.create!(
     name: 'Demo'
   )
 
-  global_team = Team.create(
+  global_team = Team.create!(
     name: 'Global'
   )
 
-  demo_user = User.create(
+  demo_user = User.create!(
     username: 'anonymous_alien',
     password: '1t9xbnxtZbYWw8d90wOkMA',
     default_team_id: global_team.id
   )
 
   [demo_team, global_team].each do |team|
-    general_channel = Channel.create(
-      name: 'general'
+    general_channel = Channel.create!(
+      name: 'general',
+      team_id: team.id,
     )
 
-    Channel.create(
-      name: 'random'
+    Channel.create!(
+      name: 'random',
+      team_id: team.id,
     )
 
-    TeamMembership.create(
+    TeamMembership.create!(
       team_id: team.id,
       user_id: demo_user.id,
       default_channel_id: general_channel.id

@@ -11,7 +11,7 @@
 #
 
 class Channel < ApplicationRecord
-  validates :name, :is_direct_message, presence: true
+  validates :name, presence: true
   validates :name, uniqueness: { scope: :team_id,
     message: 'cannot have the same name as another channel on this team' }
   validate :valid_name
@@ -26,8 +26,8 @@ class Channel < ApplicationRecord
   end
 
   def valid_name?
-    return false if @name =~ /[A-Z\s\.]/
-    return false if @name.length >= 22
+    return false if self.name =~ /[A-Z\s\.]/
+    return false if self.name.length >= 22
     true
   end
 
