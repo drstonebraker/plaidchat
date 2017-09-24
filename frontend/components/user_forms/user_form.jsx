@@ -92,6 +92,7 @@ class UserForm extends React.Component {
                 errorsList={usernameErrorsList}
                 tipValidation={isInvalidUsername}
                 autofocus={true}
+                formType={type}
               >
 
                 {
@@ -113,6 +114,7 @@ class UserForm extends React.Component {
                 inputVal={this.state.password}
                 errorsList={passwordErrorsList}
                 tipValidation={isInvalidPassword}
+                formType={type}
               >
 
               {
