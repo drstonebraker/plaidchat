@@ -91,6 +91,7 @@ class UserForm extends React.Component {
                 inputVal={this.state.username}
                 errorsList={usernameErrorsList}
                 tipValidation={isInvalidUsername}
+                autofocus={true}
               >
 
                 {

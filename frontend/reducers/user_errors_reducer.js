@@ -13,19 +13,7 @@ const userErrorsReducer = (state = defaultState, action) => {
   const newState = Object.assign({}, state, defaultState)
 
   switch (action.type) {
-    case RECEIVE_CURRENT_USER:
-      return {};
-    case CLEAR_USER_ERRORS:
-      return {};
-    case RECEIVE_USER_ERRORS:
-      for (let i = 0; i < action.errors.length; i++) {
-        let error = action.errors[i]
-        newState.username = error.username || []
-        newState.password = error.password || []
-        newState.defaultTeamId = error.defaultTeamId || []
-        newState.general = error.general || []
-      }
-      return newState;
+
     default:
       return state;
   }

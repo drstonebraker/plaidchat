@@ -2,7 +2,7 @@ import React from 'react'
 
 const FormFullField = ({
   labelVal, hasErrors, inputType, onChange, inputVal,
-  errorsList, children, tipValidation
+  errorsList, children, tipValidation, autofocus
 }) => {
   const labelCaps = labelVal.charAt(0).toUpperCase() + labelVal.slice(1)
   const inputId = `login__${labelVal}_input`
