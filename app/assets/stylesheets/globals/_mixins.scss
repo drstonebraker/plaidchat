@@ -1,3 +1,5 @@
+@import './_media_breakpoints.scss';
+
 @mixin scrollable_light_bg {
   overflow-y: auto;
 
@@ -49,5 +51,13 @@
   & * {
     overflow-x: hidden;
     text-overflow: ellipsis;
+  }
+}
+
+@mixin clearfix {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
   }
 }

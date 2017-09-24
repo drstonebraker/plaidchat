@@ -2,6 +2,7 @@ import React from 'react'
 
 import FormFullField from '../../modules/form_full_field'
 import { ErrorsList } from '../../modules/jsx_lists'
+import X from '../../modules/x.jsx'
 
 class ChatgroupForm extends React.Component {
   constructor(props) {
@@ -100,23 +101,42 @@ class ChatgroupForm extends React.Component {
 
             </FormFullField>
 
-            <input
-              className='form_field__submit'
-              type='submit'
-              value={`${submitContent} →`}
-            />
+            <div className='l-float_children_right'>
+
+
+              <input
+                className='form_field__submit'
+                type='submit'
+                value={`${submitContent} →`}
+              />
+
+              <button
+                type='button'
+                onClick={this.closeModal}
+                className=''
+              >
+                Cancel
+              </button>
+
+
+            </div>
+
 
           </form>
 
-          <button
-            type='button'
-            onClick={this.closeModal}
-            className='chat_group_form_close'
-          >
-            esc
-          </button>
-
         </div>
+
+        <button
+          type='button'
+          onClick={this.closeModal}
+          className='chat_group_form_close'
+        >
+          <X/>
+          <span className='chat_group_form_close__esc'>
+            esc
+          </span>
+        </button>
+        
       </div>
     )
   }
