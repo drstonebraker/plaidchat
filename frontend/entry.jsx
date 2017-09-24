@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     ui: {
       isSideNavHeaderModalOpen: false,
+      isNewTeamViewModalOpen: true
     },
     errors: {
       session: {

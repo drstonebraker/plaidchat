@@ -1,6 +1,8 @@
 import {
   OPEN_SIDENAV_HEADER_MODAL,
-  CLOSE_SIDENAV_HEADER_MODAL
+  CLOSE_SIDENAV_HEADER_MODAL,
+  OPEN_NEW_TEAM_VIEW_MODAL,
+  CLOSE_NEW_TEAM_VIEW_MODAL,
 } from '../actions/ui_actions.js';
 
 const defaultState = {
@@ -17,6 +19,12 @@ const uiReducer = (state = defaultState, action) => {
       return newState;
     case CLOSE_SIDENAV_HEADER_MODAL:
       newState.isSideNavHeaderModalOpen = false
+      return newState;
+    case OPEN_NEW_TEAM_VIEW_MODAL:
+      newState.isNewTeamViewModalOpen = true
+      return newState;
+    case CLOSE_NEW_TEAM_VIEW_MODAL:
+      newState.isNewTeamViewModalOpen = false
       return newState;
     default:
       return state;
