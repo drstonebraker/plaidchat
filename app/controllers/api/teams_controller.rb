@@ -6,11 +6,10 @@ class Api::TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     # create membership for creator
-    @team.user_ids = [params[:user_id]]
+    @team.user_ids = current_user.id
     # set as default team
-    @user = User.find(params[:user_id])
-    @user.update!(default_team_id: @team.id)
-    
+    current_user.update!(default_team_id: @team.id)
+
     # TODO: create standard channels
 
     if @team.save

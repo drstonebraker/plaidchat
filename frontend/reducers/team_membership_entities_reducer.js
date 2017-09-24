@@ -9,7 +9,7 @@ import {
 const teamMembershipEntitiesReducer = (state = {}, action) => {
   Object.freeze(state);
   const newState = Object.assign({}, state)
-  const teamMembership = action.teamMembership
+  const teamMemberships = action.teamMemberships
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
@@ -19,8 +19,7 @@ const teamMembershipEntitiesReducer = (state = {}, action) => {
         return {}
       }
     case RECEIVE_NEW_TEAM:
-      newState[teamMembership.id] = teamMembership
-      return newState
+      return Object.assign(newState, arrayToObj(teamMemberships))
     default:
       return state;
   }

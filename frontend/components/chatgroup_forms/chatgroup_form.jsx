@@ -36,7 +36,7 @@ class ChatgroupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.action(this.state.team, this.props.currentUser)
+    this.props.action(this.state.team)
       .then(() => this.props.history.push('/messages'))
   }
 

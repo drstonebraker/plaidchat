@@ -23,7 +23,6 @@ const mapStateToProps = (state, ownProps) => {
     submitContent,
     nameErrors: ErrorsSelector.getErrors(errors, 'name'),
     hasNameErrors: ErrorsSelector.hasErrors(errors, 'name'),
-    currentUser: state.session.currentUser,
   };
 };
 
