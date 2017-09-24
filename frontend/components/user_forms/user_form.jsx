@@ -112,7 +112,7 @@ class UserForm extends React.Component {
               </FormFullField>
 
               <input
-                className='form_field__submit form_field__submit--wide'
+                className='form_button--submit form_button--submit--wide'
                 type='submit'
                 value={`${submitContent} →`}
               />

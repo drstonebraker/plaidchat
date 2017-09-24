@@ -49,35 +49,58 @@
   color: $slack_tip_color;
 }
 
-.form_field__submit {
-  background-color: $slack-green;
-  color: white;
+.form_button {
+  background-color: $slack_bg_light;
+  color: $slack_label_color;
   cursor: pointer;
   box-sizing: border-box;
   font-size: 2rem;
   font-weight: 900;
   line-height: 1.92rem;
   text-align: center;
-  text-shadow: rgba(0, 0, 0, 0.1) 0px 1px 1px;
-  padding: 1.4rem 1.8rem 1.6rem 1.8rem;
+  outline: none;
 
-  &:hover, &:focus {
-    box-shadow:  0 .2rem 0 $slack-green-dark;
-    padding-bottom: 1.4rem;
-    margin-bottom: 0.2rem;
-  }
+  border-radius: 0.4rem;
+
+
 
   &:active {
-    box-shadow: inset 0 .2rem .3rem $slack-border-color;
+    box-shadow: inset 0 .2rem .3rem $slack_shadow_solid_color;
     padding-bottom: 1.6rem;
     margin-bottom: 0rem;
   }
-}
 
-.form_field__submit--wide {
-  display: block;
-  width: 100%;
-  margin: 1.2rem 0 0 auto;
+  &--cancel {
+    padding: 1.3rem 1.8rem 1.5rem 1.8rem;
+    margin: 0 0.8rem;
+    border: 1px solid $slack_border_medium;
+
+    &:hover, &:focus {
+      background-color: white;
+      color: $slack_cancel_color;
+    }
+  }
+
+
+  &--submit {
+    padding: 1.4rem 1.8rem 1.6rem 1.8rem;
+    background-color: $slack-green;
+    color: white;
+    text-shadow: rgba(0, 0, 0, 0.1) 0px 1px 1px;
+    border: none;
+
+    &:hover, &:focus {
+      box-shadow:  0 .2rem 0 $slack-green-dark;
+      padding-bottom: 1.4rem;
+      margin-bottom: 0.2rem;
+    }
+
+    &--wide {
+      display: block;
+      width: 100%;
+      margin: 1.2rem 0 0 auto;
+    }
+  }
 }
 
 .form_field__text_input--warn {

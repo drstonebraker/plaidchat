@@ -51,9 +51,11 @@ class ChatgroupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.closeChatGroupModal()
     this.props[this.props.formType](this.state.team)
-      .then(() => this.props.history.push('/messages'))
+      .then(() => {
+        this.props.closeChatGroupModal()
+        this.props.history.push('/messages')
+      })
   }
 
   closeModal() {
@@ -105,7 +107,7 @@ class ChatgroupForm extends React.Component {
 
 
               <input
-                className='form_field__submit'
+                className='form_button form_button--submit'
                 type='submit'
                 value={`${submitContent} →`}
               />
@@ -113,7 +115,7 @@ class ChatgroupForm extends React.Component {
               <button
                 type='button'
                 onClick={this.closeModal}
-                className=''
+                className='form_button form_button--cancel'
               >
                 Cancel
               </button>
@@ -136,7 +138,7 @@ class ChatgroupForm extends React.Component {
             esc
           </span>
         </button>
-        
+
       </div>
     )
   }
