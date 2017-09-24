@@ -61,7 +61,7 @@
   text-shadow: rgba(0, 0, 0, 0.1) 0px 1px 1px;
   padding: 1.4rem 1.8rem 1.6rem 1.8rem;
 
-  &:hover {
+  &:hover, &:focus {
     box-shadow:  0 .2rem 0 $slack-green-dark;
     padding-bottom: 1.4rem;
     margin-bottom: 0.2rem;
