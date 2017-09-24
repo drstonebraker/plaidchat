@@ -15,7 +15,7 @@ export const receiveSessionErrors = errors => ({
   errors
 });
 
-export const clearErrors = () => ({
+export const clearSessionErrors = () => ({
   type: CLEAR_SESSION_ERRORS,
 })
 
