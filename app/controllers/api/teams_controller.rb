@@ -7,12 +7,12 @@ class Api::TeamsController < ApplicationController
     @team = Team.new(team_params)
     # create membership for creator
     @team.user_ids = current_user.id
-    # set as default team
-    current_user.update!(default_team_id: @team.id)
 
     # TODO: create standard channels
 
     if @team.save
+      # set as default team
+      current_user.update!(default_team_id: @team.id)
       render :show
     else
       @errors = [@team.errors.messages]

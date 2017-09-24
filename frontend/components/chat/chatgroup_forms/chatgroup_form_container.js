@@ -1,9 +1,11 @@
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import ChatgroupForm from './chatgroup_form.jsx'
 import * as ErrorsSelector from '../../../selectors/errors_selectors'
 import { createTeam, clearTeamErrors } from '../../../actions/team_actions';
 import { closeChatGroupModal } from '../../../actions/ui_actions';
+import { updateDefaultTeam } from '../../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let formType;
@@ -36,7 +38,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(ChatgroupForm);
+)(ChatgroupForm));

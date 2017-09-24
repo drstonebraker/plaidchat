@@ -1,5 +1,6 @@
 import {
   RECEIVE_CURRENT_USER,
+  UPDATE_DEFAULT_TEAM,
 } from '../actions/session_actions';
 import {
   RECEIVE_NEW_TEAM,

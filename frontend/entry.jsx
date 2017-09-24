@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ui: {
       isSideNavHeaderModalOpen: false,
       isChatGroupModalOpen: true,
-      chatgroupFormType: null
+      chatgroupFormType: 'createTeam'
     },
     errors: {
       session: {

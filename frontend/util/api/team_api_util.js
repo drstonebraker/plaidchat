@@ -1,7 +1,7 @@
-export const postTeam = (team, currentUser) => (
+export const postTeam = (team) => (
   $.ajax({
     method: 'POST',
-    url: `api/users/${currentUser.id}/teams`,
+    url: `api/teams`,
     data: { team }
   })
 )

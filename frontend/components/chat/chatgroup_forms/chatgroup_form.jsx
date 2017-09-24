@@ -106,7 +106,7 @@ class ChatgroupForm extends React.Component {
             <div className='l-float_children_right'>
 
               <span>
-                
+
                 <button
                   type='button'
                   onClick={this.closeModal}
