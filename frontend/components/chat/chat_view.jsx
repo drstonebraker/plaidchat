@@ -40,7 +40,7 @@ class ChatView extends React.Component {
     return (
       <div className='chat_view'>
         <ChatSideNav />
-        <ChatgroupModalContainer type='newTeam' />
+        <ChatgroupModalContainer />
       </div>
     )
   }

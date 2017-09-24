@@ -25,9 +25,7 @@ class ChatgroupModal extends React.Component {
         isOpen={isOpen}
         onRequestClose={onRequestClose}
       >
-        <ChatgroupFormContainer
-          type={type}
-        />
+        <ChatgroupFormContainer />
       </Modal>
     )
   }

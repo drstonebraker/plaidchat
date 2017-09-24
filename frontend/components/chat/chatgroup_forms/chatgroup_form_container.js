@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
   let headingContent;
   let submitContent;
 
-  if (ownProps.type === 'newTeam') {
+  if (state.ui.chatgroupFormType === 'newTeam') {
     type = 'newTeam'
     headingContent = 'Create a new team'
     submitContent = 'Create Team!'

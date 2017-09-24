@@ -1,21 +1,20 @@
 import { connect } from 'react-redux'
 
 import ChatgroupModal from './chatgroup_modal.jsx'
-import { openNewTeamViewModal, closeNewTeamViewModal } from
+import { openChatGroupModal, closeChatGroupModal } from
   '../../../actions/ui_actions'
 
 const mapStateToProps = (state, ownProps) => {
 
   return {
-    isOpen: state.ui.isNewTeamViewModalOpen,
-    type: ownProps.type,
+    isOpen: state.ui.isChatGroupModalOpen,
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 
   return {
-    onRequestClose: () => dispatch(closeNewTeamViewModal()),
+    onRequestClose: () => dispatch(closeChatGroupModal()),
   };
 };
 
