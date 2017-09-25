@@ -36,6 +36,17 @@ class User < ApplicationRecord
     through: :channel_memberships,
     source: :channel
 
+  belongs_to :default_team_membership,
+    class_name: :TeamMembership
+
+  has_one :default_team,
+    through: :default_team_membership,
+    source: :team
+
+  has_one :default_team_default_channel,
+    through: :default_team_membership,
+    source: :default_channel
+
   ######################
   # custom validations
   ######################

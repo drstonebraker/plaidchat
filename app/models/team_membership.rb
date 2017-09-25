@@ -16,5 +16,11 @@ class TeamMembership < ApplicationRecord
 
   belongs_to :user
   belongs_to :team
+  belongs_to :default_channel,
+    class_name: :Channel
+
+  has_many :users_as_default,
+    primary_key: :id,
+    foriegn_key: :default_team_membership_id
 
 end

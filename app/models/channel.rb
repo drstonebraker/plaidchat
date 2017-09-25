@@ -17,6 +17,10 @@ class Channel < ApplicationRecord
   validate :valid_name
 
   belongs_to :team
+  has_many :team_memberships_as_default,
+    primary_key: :id,
+    foreign_key: :default_channel_id,
+    class_name: :TeamMembership
 
   def valid_name
     unless valid_name?
