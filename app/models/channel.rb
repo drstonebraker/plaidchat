@@ -13,7 +13,7 @@
 class Channel < ApplicationRecord
   validates :name, presence: true
   validates :name, uniqueness: { scope: :team_id,
-    message: 'cannot have the same name as another channel on this team' }
+    message: 'cannot be the same as another channel on this team' }
   validate :valid_name
 
   belongs_to :team

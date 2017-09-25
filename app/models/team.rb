@@ -28,7 +28,7 @@ class Team < ApplicationRecord
     return true if self.name == 'Demo'
     return false if Team.all.
       select(:name).
-      where("name = ?", self.name).
+      where("LOWER(name) = ?", self.name.downcase).
       exists?
 
     true

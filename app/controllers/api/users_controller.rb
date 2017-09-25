@@ -7,11 +7,11 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     demo_team = Team.find_by(name: 'Demo')
     global_team = Team.find_by(name: 'Global')
-    @user.default_team_id ||= global_team.id 
+    set_default_team(global_team, @user) unless @user.default_team_id
 
     if @user.save
-      @user.team_ids = [demo_team.id, global_team.id]
       login!(@user)
+      create_team_membership!(demo_team, global_team)
       render :show
     else
       @errors = [@user.errors.messages]

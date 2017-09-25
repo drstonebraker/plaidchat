@@ -7,9 +7,8 @@ class Api::TeamsController < ApplicationController
     @team = Team.new(team_params)
 
     if @team.save
-      create_membership(@team)
-      set_default_team(@team)
-      create_default_channels(@team)
+      set_default_team!(@team)
+      create_membership_and_default_channels!(@team)
 
       render :show
     else
@@ -25,30 +24,20 @@ class Api::TeamsController < ApplicationController
     params.require(:team).permit(:name)
   end
 
-  def create_default_channels(team)
-    general_channel = Channel.create!(
-      name: 'general',
-      team_id: team.id,
-    )
+  def create_membership_and_default_channels!(*teams)
+    teams.each do |team|
+      general_channel = Channel.create!(
+        name: 'general',
+        team_id: team.id,
+      )
 
-    Channel.create!(
-      name: 'random',
-      team_id: team.id,
-    )
+      Channel.create!(
+        name: 'random',
+        team_id: team.id,
+      )
 
-    TeamMembership.create!(
-      team_id: team.id,
-      user_id: current_user.id,
-      default_channel_id: general_channel.id
-    )
-  end
-
-  def create_membership(team)
-    team.user_ids = [current_user.id]
-  end
-
-  def set_default_team(team)
-    current_user.update!(default_team_id: team.id)
+      create_team_membership!(team)
+    end
   end
 
 end
