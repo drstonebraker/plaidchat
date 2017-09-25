@@ -19,7 +19,7 @@ class User < ApplicationRecord
   validate :strong_password
 
   attr_reader :password
-  after_initialize :ensure_session_token!
+  after_initialize :ensure_session_token!, :create_standard_teams!
 
   ######################
   #  associations
@@ -36,6 +36,8 @@ class User < ApplicationRecord
     source: :channel
 
   belongs_to :default_team_membership,
+    primary_key: :id,
+    foreign_key: :default_team_membership_id,
     class_name: :TeamMembership,
     optional: true
 
@@ -83,7 +85,7 @@ class User < ApplicationRecord
   end
 
   ######################
-  # class methods
+  # auth methods
   ######################
 
   def self.find_by_credentials(username, password)
@@ -101,10 +103,6 @@ class User < ApplicationRecord
     token
   end
 
-  ######################
-  # instance methods
-  ######################
-
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
@@ -118,6 +116,29 @@ class User < ApplicationRecord
     self.session_token = self.class.generate_session_token
     self.save!
     self.session_token
+  end
+
+  ######################
+  # association methods
+  ######################
+
+  def write_standard_teams
+    global_team = Team.global_team
+    demo_team = Team.new(name: 'Demo')
+    self.default_team = global_team
+    # self.team_ids += [global_team.id, demo_team.id]
+    self.teams << [demo_team, global_team]
+    # debugger
+  end
+
+  def create_standard_teams
+    write_standard_teams
+    self.save
+  end
+
+  def create_standard_teams!
+    write_standard_teams
+    self.save!
   end
 
   # private
