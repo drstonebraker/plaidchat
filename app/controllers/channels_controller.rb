@@ -22,4 +22,12 @@ class ChannelsController < ApplicationController
     params.require(:channel).permit(:name, :is_direct_message, :team_id)
   end
 
+  def set_default_channel!(channel_id)
+    channel_id = channel_id.id if channel_id.is_a?(Channel)
+    current_team_membership = user.team_memberships.find_by(
+      team_id: params[:team_id]
+    )
+    current_team_membership.update!(default_channel_id: channel_id)
+  end
+
 end

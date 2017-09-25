@@ -52,7 +52,7 @@ class User < ApplicationRecord
     if ('a'..'z').to_a.
       concat((0..9).to_a).
       include?(@password.downcase) ||
-      @password.downcase.include?('password')
+        @password.downcase.include?('password')
 
       return false
     end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :teams, only: [:create] do
       resources :channels, only: [:create]
+      resources :team_memberships, only: [:update]
     end
   end
 

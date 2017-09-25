@@ -65,9 +65,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_default_channel!(channel)
-    current_team = user.teams.find(params[:team_id])
-    current_team.update!(default_channel_id: channel.id)
-  end
-
 end
