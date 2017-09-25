@@ -51,11 +51,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_default_team(team, user=current_user)
+  def set_default_team_membership(team, user=current_user)
     user.default_team_id = team.id
   end
 
-  def set_default_team!(team, user=current_user)
+  def set_default_team_membership!(team, user=current_user)
     user.update!(default_team_id: team.id)
   end
 

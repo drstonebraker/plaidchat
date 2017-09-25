@@ -6,8 +6,8 @@ class Api::SessionsController < ApplicationController
     @user = User.find_by_credentials(
       user_params[:username],
       user_params[:password]
-    ).
-      includes(:teams, :team_memberships)
+    )
+    
     if @user
       login!(@user)
       render :show
