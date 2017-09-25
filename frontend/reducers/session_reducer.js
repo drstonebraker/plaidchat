@@ -16,7 +16,8 @@ const sessionReducer = (state = nullUser, action) => {
   const newState = Object.assign({}, state)
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return Object.assign(newState, { currentUser: action.user });
+      newState.currentUser = action.user;
+      return newState
     case RECEIVE_NEW_TEAM:
       newState.currentUser.defaultTeamId = action.team.id
       return newState
