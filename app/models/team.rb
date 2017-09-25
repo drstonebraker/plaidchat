@@ -12,7 +12,7 @@ class Team < ApplicationRecord
   validates :name, presence: true
   validate :unique_name
 
-  after_initialize :create_standard_channels!
+  after_initialize :create_standard_channels!, unless: :persisted?
 
   has_many :team_memberships
   has_many :channels

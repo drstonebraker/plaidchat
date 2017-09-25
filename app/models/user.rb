@@ -19,7 +19,8 @@ class User < ApplicationRecord
   validate :strong_password
 
   attr_reader :password
-  after_initialize :ensure_session_token!, :create_standard_teams!
+  after_initialize :ensure_session_token!
+  after_initialize :create_standard_teams!, unless: :persisted?
 
   ######################
   #  associations
@@ -126,9 +127,7 @@ class User < ApplicationRecord
     global_team = Team.global_team
     demo_team = Team.new(name: 'Demo')
     self.default_team = global_team
-    # self.team_ids += [global_team.id, demo_team.id]
     self.teams << [demo_team, global_team]
-    # debugger
   end
 
   def create_standard_teams
