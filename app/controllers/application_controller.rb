@@ -59,4 +59,15 @@ class ApplicationController < ActionController::Base
     user.update!(default_team_id: team.id)
   end
 
+  def create_channel_membership!(*channels)
+    channels.each do |channel|
+      current_user.channel_ids += channel.id
+    end
+  end
+
+  def set_default_channel!(channel)
+    current_team = user.teams.find(params[:team_id])
+    current_team.update!(default_channel_id: channel.id)
+  end
+
 end

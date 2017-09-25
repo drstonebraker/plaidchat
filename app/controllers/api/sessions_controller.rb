@@ -3,7 +3,11 @@ class Api::SessionsController < ApplicationController
   before_action :require_logout, only: %i(create)
 
   def create
-    @user = User.find_by_credentials(user_params[:username], user_params[:password])
+    @user = User.find_by_credentials(
+      user_params[:username],
+      user_params[:password]
+    ).
+      includes(:teams, :team_memberships)
     if @user
       login!(@user)
       render :show
