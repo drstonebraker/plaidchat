@@ -37,7 +37,8 @@ class User < ApplicationRecord
     source: :channel
 
   belongs_to :default_team_membership,
-    class_name: :TeamMembership
+    class_name: :TeamMembership,
+    optional: true
 
   has_one :default_team,
     through: :default_team_membership,

@@ -21,6 +21,6 @@ class TeamMembership < ApplicationRecord
 
   has_many :users_as_default,
     primary_key: :id,
-    foriegn_key: :default_team_membership_id
+    foreign_key: :default_team_membership_id
 
 end
