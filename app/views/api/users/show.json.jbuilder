@@ -9,7 +9,13 @@ json.teams do
 end
 
 json.team_memberships do
-  json.array! @user.team_memberships do |tm|
-    json.partial! 'api/team_memberships/team_membership', tm: tm
+  json.array! @user.team_memberships do |t_m|
+    json.partial! 'api/team_memberships/team_membership', t_m: t_m
+  end
+end
+
+json.channel_memberships do
+  json.array! @user.channel_memberships do |c_m|
+    json.partial! 'api/channel_memberships/channel_membership', c_m: c_m
   end
 end

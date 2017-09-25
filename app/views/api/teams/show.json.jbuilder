@@ -3,8 +3,8 @@ json.team do
 end
 
 json.team_memberships do
-  json.array! @team.team_memberships do |tm|
-    json.partial! 'api/team_memberships/team_membership', tm: tm
+  json.array! @team.team_memberships do |t_m|
+    json.partial! 'api/team_memberships/team_membership', t_m: t_m
   end
 end
 
