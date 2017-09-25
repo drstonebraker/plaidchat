@@ -3,7 +3,7 @@ import {
   RECEIVE_CURRENT_USER
 } from '../actions/session_actions.js';
 import {
-  RECEIVE_NEW_TEAM,
+  RECEIVE_TEAM,
 } from '../actions/team_actions';
 
 const teamMembershipEntitiesReducer = (state = {}, action) => {
@@ -14,7 +14,7 @@ const teamMembershipEntitiesReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return arrayToObj(action.teamMemberships);
-    case RECEIVE_NEW_TEAM:
+    case RECEIVE_TEAM:
       return Object.assign(newState, arrayToObj(teamMemberships))
     default:
       return state;

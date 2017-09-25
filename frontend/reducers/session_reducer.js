@@ -3,7 +3,7 @@ import {
   UPDATE_DEFAULT_TEAM,
 } from '../actions/session_actions';
 import {
-  RECEIVE_NEW_TEAM,
+  RECEIVE_TEAM,
 } from '../actions/team_actions';
 
 
@@ -18,7 +18,7 @@ const sessionReducer = (state = nullUser, action) => {
     case RECEIVE_CURRENT_USER:
       newState.currentUser = action.user;
       return newState
-    case RECEIVE_NEW_TEAM:
+    case RECEIVE_TEAM:
       newState.currentUser.defaultTeamId = action.team.id
       return newState
     default:
