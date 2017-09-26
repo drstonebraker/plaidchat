@@ -5,7 +5,7 @@ import SidenavHeaderModal from './sidenav_header_modal.jsx'
 import { closeSidenavHeaderModal, openChatGroupModal } from
   '../../../actions/ui_actions'
 import { logout } from '../../../actions/session_actions'
-import { getTeamName, getTeamsByMembership } from
+import { getTeamName, getEntitiesByMembership } from
   '../../../selectors/chat_selectors'
 
 const mapStateToProps = (state, ownProps) => {
@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.session.currentUser,
     isOpen: state.ui.isSideNavHeaderModalOpen,
     teamName: getTeamName(ownProps.match.params.teamId, state),
-    teams: getTeamsByMembership(state),
+    teams: getEntitiesByMembership('team', state),
   };
 };
 

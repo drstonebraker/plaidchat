@@ -9,11 +9,11 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     currentUser,
-    teamMembership: getMembershipByEntityId({
-      type: 'team',
-      id: ownProps.match.params.teamId,
+    teamMembership: getMembershipByEntityId(
+      'team',
+      ownProps.match.params.teamId,
       state
-    }),
+    ),
     defaultTeamId: state.entities.teamMemberships[
       currentUser.defaultTeamMembershipId
     ].teamId

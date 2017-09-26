@@ -8,15 +8,12 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     currentUser: state.session.currentUser,
-    teamIds: getEntityIdsByMembership({
-      type: 'team', 
-      memberships: state.entities.teamMemberships
-    }),
-    getTeamMembership: (teamId) => getMembershipByEntityId({
-      type: 'team',
-      id: teamId,
+    teamIds: getEntityIdsByMembership('team', state),
+    getTeamMembership: (teamId) => getMembershipByEntityId(
+      'team',
+      teamId,
       state
-    })
+    )
   };
 };
 
