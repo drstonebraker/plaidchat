@@ -5,8 +5,8 @@ class ChannelsController < ApplicationController
     @channel = Channel.new(channel_params)
 
     if @channel.save
-      create_channel_membership!(@channel)
-      set_default_channel!(@channel)
+      current_user.channels << @channel
+      current_user.default_team_default_channel = @channel
 
       render :show
     else
@@ -20,14 +20,6 @@ class ChannelsController < ApplicationController
 
   def channel_params
     params.require(:channel).permit(:name, :is_direct_message, :team_id)
-  end
-
-  def set_default_channel!(channel_id)
-    channel_id = channel_id.id if channel_id.is_a?(Channel)
-    current_team_membership = user.team_memberships.find_by(
-      team_id: params[:team_id]
-    )
-    current_team_membership.update!(default_channel_id: channel_id)
   end
 
 end
