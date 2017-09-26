@@ -12,7 +12,7 @@
       <script type="text/javascript">
 
         window.currentUser =
-        <%= render('api/shared/current_user.json.jbuilder', user: current_user).html_safe %>
+        <%= render('api/users/user_full_info.json.jbuilder', user: current_user).html_safe %>
       </script>
     <% end %>
   </head>
