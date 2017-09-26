@@ -20,9 +20,9 @@ class User < ApplicationRecord
 
   attr_reader :password
   after_initialize :ensure_session_token!
-  after_initialize :create_standard_teams!, unless: :persisted?
+  after_initialize :create_standard_teams!, if: :new_record?
   before_validation :set_default_team_membership,
-    unless: :default_team_membership_id, if: :persisted?
+    if: :new_record?
 
   ######################
   #  associations
@@ -44,8 +44,7 @@ class User < ApplicationRecord
   belongs_to :default_team_membership,
     primary_key: :id,
     foreign_key: :default_team_membership_id,
-    class_name: :TeamMembership,
-    optional: true
+    class_name: :TeamMembership
 
   has_one :default_team,
     through: :default_team_membership,
@@ -147,9 +146,11 @@ class User < ApplicationRecord
   end
 
   def set_default_team_membership(team_id = Team.global_team.id)
-    self.default_team_membership = self.team_memberships.find_by(
-      team_id: team_id
-    )
+    default_team_membership_collection = self.team_memberships.select do |proxy|
+      proxy.team_id == team_id
+    end
+
+    self.default_team_membership = default_team_membership_collection.first
   end
 
   def create_standard_teams

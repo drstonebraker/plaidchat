@@ -14,7 +14,7 @@ class TeamMembership < ApplicationRecord
   validates :user_id, uniqueness: { scope: :team_id,
     message: 'can only subscribe once to each team'}
 
-  before_validation :write_default_channel, unless: :persisted?
+  before_validation :write_default_channel, if: :new_record?
 
   belongs_to :user
   belongs_to :team
