@@ -21,7 +21,8 @@ class User < ApplicationRecord
   attr_reader :password, :default_team_membership_id
   after_initialize :ensure_session_token!
   after_initialize :create_standard_teams!, unless: :persisted?
-  before_validation :set_default_team_membership, unless: :default_team_membership_id, if: :persisted?
+  before_validation :set_default_team_membership,
+    unless: :default_team_membership_id, if: :persisted?
 
   ######################
   #  associations
@@ -44,15 +45,24 @@ class User < ApplicationRecord
     primary_key: :id,
     foreign_key: :default_team_membership_id,
     class_name: :TeamMembership,
-    optional: false
+    optional: true
 
   has_one :default_team,
     through: :default_team_membership,
     source: :team
 
+  has_many :default_team_channels,
+    through: :default_team,
+    source: :channels
+
   has_one :default_team_default_channel,
     through: :default_team_membership,
     source: :default_channel
+
+  # TODO
+  # has_many :default_team_default_channel_messages,
+  #   through: :default_team_default_channel,
+  #   source: :messages
 
   ######################
   # custom validations
@@ -94,7 +104,9 @@ class User < ApplicationRecord
   ######################
 
   def self.find_by_credentials(username, password)
-    user = self.includes(:teams, :team_memberships).
+    user = self.includes(
+      :teams, :team_memberships, :default_team_channels#, TODO :default_team_default_channel_messages
+      ).
       find_by(username: username)
     return nil unless user
     user.valid_password?(password) ? user : nil

@@ -13,3 +13,22 @@ json.team_memberships do
     json.partial! 'api/team_memberships/team_membership', t_m: t_m
   end
 end
+
+json.channel_memberships do
+  json.array! user.channel_memberships do |c_m|
+    json.partial! 'api/channel_memberships/channel_membership', c_m: c_m
+  end
+end
+
+json.default_team_channels do
+  json.array! user.default_team_channels do |d_t_c|
+    json.partial! 'api/channels/channel', channel: d_t_c
+  end
+end
+
+# TODO
+# json.default_team_default_channel_messages do
+#   json.array! user.default_team_default_channel_messages do |d_t_d_c_m|
+#     json.partial! 'api/messages/message', message: d_t_d_c_m
+#   end
+# end
