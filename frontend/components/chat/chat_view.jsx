@@ -25,11 +25,14 @@ class ChatView extends React.Component {
   resetDefaultTeamId(newTeamId) {
     const { teamIds, currentUser, getTeamMembership } = this.props
 
-    if (teamIds.includes(newTeamId)) {
+    if (teamIds.includes(parseInt(newTeamId))) {
 
       this.props.editUser({
-        default_team_membership_id: getTeamMembership(newTeamId),
-        id: currentUser.id
+        user: {
+          default_team_membership_id: getTeamMembership(newTeamId).id,
+          id: currentUser.id
+        },
+
       })
 
     }
