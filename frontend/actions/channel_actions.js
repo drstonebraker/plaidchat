@@ -1,14 +1,14 @@
 import * as ChannelUtil from '../util/api/channel_api_util';
 
 
-export const RECEIVE_CHANNEL = 'RECEIVE_CHANNEL';
+export const RECEIVE_NEW_CHANNEL = 'RECEIVE_NEW_CHANNEL';
 export const RECEIVE_CHANNEL_ERRORS = 'RECEIVE_CHANNEL_ERRORS';
 export const CLEAR_CHANNEL_ERRORS = 'CLEAR_CHANNEL_ERRORS';
 
-export const receiveChannel = ({channel, channelMemberships}) => ({
-  type: RECEIVE_CHANNEL,
+export const receiveNewChannel = ({channel, channelMembership}) => ({
+  type: RECEIVE_NEW_CHANNEL,
   channel,
-  channelMemberships,
+  channelMembership,
 });
 
 export const receiveChannelErrors = errors => ({
@@ -22,6 +22,6 @@ export const clearChannelErrors = () => ({
 
 export const createChannel = channel => dispatch => (
   ChannelUtil.postChannel(channel)
-    .then(res => dispatch(receiveChannel(res)),
+    .then(res => dispatch(receiveNewChannel(res)),
           error => dispatch(receiveChannelErrors(error.responseJSON)))
 );
