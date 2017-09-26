@@ -9,7 +9,7 @@ export const getTeamName = (teamId, state) => {
   return currentTeam.name
 }
 
-export const getMembershipByEntity = (options) => {
+export const getMembershipByEntityId = (options) => {
   const { type, state } = options
   const entityId = parseInt(options.id)
 
@@ -35,32 +35,15 @@ export const getMembershipByEntity = (options) => {
   return null
 }
 
-// export const getTeamMembership = (teamId, state) => {
-//   // debugger
-//   if (!teamId) {
-//     return null
-//   }
-//   const teamMemberships = state.entities.teamMemberships
-//   const currentUser = state.session.currentUser
-//
-//   for (let id in teamMemberships) {
-//     if (teamMemberships.hasOwnProperty(id)) {
-//       const teamMembership = teamMemberships[id]
-//       if (
-//         teamId === teamMembership.teamId &&
-//         currentUser.id === teamMembership.userId
-//       ) {
-//         return teamMembership
-//       }
-//     }
-//   }
-//
-//   return null
-// }
-
 export const getTeamIds = (teamMemberships) => {
   return Object.values(teamMemberships).map(membership => (
     membership.teamId
+  ))
+}
+
+export const getEntityIdsByMembership = ({ type, memberships }) => {
+  return Object.values(memberships).map(membership => (
+    membership[`${type}Id`]
   ))
 }
 
@@ -71,5 +54,14 @@ export const getTeamsByMembership = (state) => {
 
   return teams.filter(team => (
     memberTeamIds.includes(team.id)
+  ))
+}
+
+export const getSubscribedChannelsByTeamId = (teamId, state) => {
+  const teamChannels = state.entities.channels.filter((channel) => (
+    channel.teamId === teamId
+  ))
+  const subscribedChannels = teamChannels.filter((channel) => (
+
   ))
 }

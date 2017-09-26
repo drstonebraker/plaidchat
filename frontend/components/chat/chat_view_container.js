@@ -2,14 +2,17 @@ import { connect } from 'react-redux'
 
 import ChatView from './chat_view'
 import { editUser } from '../../actions/user_actions'
-import { getTeamIds, getMembershipByEntity } from '../../selectors/chat_selectors'
+import { getEntityIdsByMembership, getMembershipByEntityId } from '../../selectors/chat_selectors'
 
 const mapStateToProps = (state, ownProps) => {
 
   return {
     currentUser: state.session.currentUser,
-    teamIds: getTeamIds(state.entities.teamMemberships),
-    getTeamMembership: (teamId) => getMembershipByEntity({
+    teamIds: getEntityIdsByMembership({
+      type: 'team', 
+      memberships: state.entities.teamMemberships
+    }),
+    getTeamMembership: (teamId) => getMembershipByEntityId({
       type: 'team',
       id: teamId,
       state
