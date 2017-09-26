@@ -18,7 +18,7 @@ class User < ApplicationRecord
   validate :valid_username
   validate :strong_password
 
-  attr_reader :password, :default_team_membership_id
+  attr_reader :password
   after_initialize :ensure_session_token!
   after_initialize :create_standard_teams!, unless: :persisted?
   before_validation :set_default_team_membership,

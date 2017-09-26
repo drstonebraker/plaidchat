@@ -7,7 +7,7 @@ class Api::SessionsController < ApplicationController
       user_params[:username],
       user_params[:password]
     )
-    
+
     if @user
       login!(@user)
       render :show
