@@ -21,6 +21,7 @@ class Channel < ApplicationRecord
   #####################
 
   belongs_to :team
+  
   has_many :team_memberships_as_default,
     primary_key: :id,
     foreign_key: :default_channel_id,

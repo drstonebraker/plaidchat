@@ -4,7 +4,7 @@ import StatusIndicator from './status_indicator'
 import SidenavHeaderModalContainer from './sidenav_header_modal_container'
 import { CaretDown } from '../../font_awesome/icons'
 
-class ChatSidenavHeader extends React.Component {
+class ChatSidenavChannelIndex extends React.Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
@@ -49,4 +49,4 @@ class ChatSidenavHeader extends React.Component {
   }
 }
 
-export default ChatSidenavHeader
+export default ChatSidenavChannelIndex

@@ -30,6 +30,7 @@ class User < ApplicationRecord
 
   has_many :team_memberships,
     dependent: :destroy
+
   has_many :teams,
     through: :team_memberships,
     source: :team
@@ -57,6 +58,10 @@ class User < ApplicationRecord
   has_one :default_team_default_channel,
     through: :default_team_membership,
     source: :default_channel
+
+  def default_team_channel_memberships
+    self.channel_memberships.where(team: self.default_team)
+  end
 
   # TODO
   # has_many :default_team_default_channel_messages,

@@ -57,11 +57,13 @@ export const getEntitiesByMembership = (type, state) => {
 }
 
 export const getSubscribedChannelsByTeamId = (teamId, state) => {
-  const teamChannels = state.entities.channels.filter((channel) => (
+  const channels = Object.values(state.entities.channels)
+  const teamChannels = channels.filter((channel) => (
     channel.teamId === teamId
   ))
   const subscribedChannelIds = getEntityIdsByMembership(
-    state.entities.channelMemberships
+    'channel',
+    state
   )
   const subscribedTeamChannels = teamChannels.filter((channel) => (
     subscribedChannelIds.includes(channel.id)

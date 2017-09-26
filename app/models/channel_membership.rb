@@ -14,4 +14,8 @@ class ChannelMembership < ApplicationRecord
   belongs_to :channel
   belongs_to :user
 
+  has_one :team,
+    through: :channel,
+    source: :team
+
 end

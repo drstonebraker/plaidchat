@@ -14,7 +14,7 @@ json.team_memberships do
   end
 end
 
-json.channel_memberships do
+json.default_team_channel_memberships do
   json.array! user.channel_memberships do |c_m|
     json.partial! 'api/channel_memberships/channel_membership.json.jbuilder', c_m: c_m
   end
