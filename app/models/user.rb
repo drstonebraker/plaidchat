@@ -168,8 +168,6 @@ class User < ApplicationRecord
     self.send(association).where("#{entity_type}_id = ?", entity.id)
   end
 
-  private
-
   def valid_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
