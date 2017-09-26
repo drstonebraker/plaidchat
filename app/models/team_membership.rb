@@ -21,9 +21,10 @@ class TeamMembership < ApplicationRecord
   belongs_to :default_channel,
     class_name: :Channel
 
-  has_many :users_as_default,
+  has_one :user_as_default,
     primary_key: :id,
-    foreign_key: :default_team_membership_id
+    foreign_key: :default_team_membership_id,
+    class_name: :User
 
   def write_default_channel
     self.default_channel = self.team.general_channel

@@ -47,7 +47,7 @@ class Team < ApplicationRecord
   ######################
 
   def self.global_team
-    self.find_by(name: 'Global')
+    @global_team ||= self.find_by(name: 'Global')
   end
 
   def write_standard_channels

@@ -21,6 +21,7 @@ class User < ApplicationRecord
   attr_reader :password
   after_initialize :ensure_session_token!
   after_initialize :create_standard_teams!, unless: :persisted?
+  before_validation :set_default_team_membership
 
   ######################
   #  associations
@@ -126,8 +127,13 @@ class User < ApplicationRecord
   def write_standard_teams
     global_team = Team.global_team
     demo_team = Team.new(name: 'Demo')
-    self.default_team = global_team
     self.teams << [demo_team, global_team]
+  end
+
+  def set_default_team_membership(team_id = Team.global_team.id)
+    self.default_team_membership = self.team_memberships.find_by(
+      team_id: team_id
+    )
   end
 
   def create_standard_teams
@@ -140,7 +146,7 @@ class User < ApplicationRecord
     self.save!
   end
 
-  # private
+  private
 
   def valid_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
