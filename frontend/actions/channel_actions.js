@@ -1,4 +1,5 @@
 import * as ChannelUtil from '../util/api/channel_api_util';
+import { receiveTeamMembership } from './team_membership_actions'
 
 
 export const RECEIVE_NEW_CHANNEL = 'RECEIVE_NEW_CHANNEL';
@@ -25,3 +26,8 @@ export const createChannel = channel => dispatch => (
     .then(res => dispatch(receiveNewChannel(res)),
           error => dispatch(receiveChannelErrors(error.responseJSON)))
 );
+
+export const setDefaultChannel = channelId => dispatch => (
+  ChannelUtil.patchDefaultChannel(channelId)
+    .then(res => dispatch(receiveTeamMembership(res)))
+)

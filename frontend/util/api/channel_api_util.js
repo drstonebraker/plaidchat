@@ -5,3 +5,10 @@ export const postChannel = (channel) => (
     data: { channel }
   })
 )
+
+export const patchDefaultChannel = (channelId) => (
+  $.ajax({
+    method: 'PATCH',
+    url: `api/channels/${channelId}`,
+  })
+)
