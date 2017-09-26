@@ -19,7 +19,7 @@ const sessionReducer = (state = nullUser, action) => {
       newState.currentUser = action.user;
       return newState
     case RECEIVE_NEW_TEAM:
-      newState.currentUser.defaultTeamId = action.team.id
+      newState.currentUser.defaultTeamMembershipId = action.teamMembership.id
       return newState
     default:
       return state;
