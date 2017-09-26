@@ -22,6 +22,9 @@ class Channel < ApplicationRecord
     foreign_key: :default_channel_id,
     class_name: :TeamMembership
 
+  has_many :channel_memberships,
+    dependent: :destroy
+
   def valid_name
     unless valid_name?
       errors.add(:name, "must be lowercase, without spaces or periods," \

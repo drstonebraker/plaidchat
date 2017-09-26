@@ -18,21 +18,24 @@ class User < ApplicationRecord
   validate :valid_username
   validate :strong_password
 
-  attr_reader :password
+  attr_reader :password, :default_team_membership_id
   after_initialize :ensure_session_token!
-  after_initialize :create_standard_teams!, :create_standard_channel_memberships, unless: :persisted?
-  before_validation :set_default_team_membership
+  after_initialize :create_standard_teams!, unless: :persisted?
+  before_validation :set_default_team_membership, unless: :default_team_membership_id, if: :persisted?
 
   ######################
   #  associations
   ######################
 
-  has_many :team_memberships
+  has_many :team_memberships,
+    dependent: :destroy
   has_many :teams,
     through: :team_memberships,
     source: :team
 
-  has_many :channel_memberships
+  has_many :channel_memberships,
+    dependent: :destroy
+
   has_many :channels,
     through: :channel_memberships,
     source: :channel
@@ -41,7 +44,7 @@ class User < ApplicationRecord
     primary_key: :id,
     foreign_key: :default_team_membership_id,
     class_name: :TeamMembership,
-    optional: true
+    optional: false
 
   has_one :default_team,
     through: :default_team_membership,
@@ -132,6 +135,7 @@ class User < ApplicationRecord
   end
 
   def set_default_team_membership(team_id = Team.global_team.id)
+    debugger
     self.default_team_membership = self.team_memberships.find_by(
       team_id: team_id
     )
@@ -145,10 +149,6 @@ class User < ApplicationRecord
   def create_standard_teams!
     write_standard_teams
     self.save!
-  end
-
-  def create_standard_channel_memberships
-    debugger
   end
 
   private
