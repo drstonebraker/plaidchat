@@ -2,39 +2,67 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  username        :string           not null
-#  password_digest :string           not null
-#  session_token   :string           not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  default_team_id :integer          not null
+#  id                         :integer          not null, primary key
+#  username                   :string           not null
+#  password_digest            :string           not null
+#  session_token              :string           not null
+#  created_at                 :datetime         not null
+#  updated_at                 :datetime         not null
+#  default_team_membership_id :integer          not null
 #
 
 class User < ApplicationRecord
-  validates :username, :password_digest, :session_token,
-    :default_team_id, presence: true
+  validates :username, :password_digest, :session_token, presence: true
   validates :username, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
   validate :valid_username
   validate :strong_password
 
-  attr_reader :password
+  attr_reader :password, :default_team_membership_id
   after_initialize :ensure_session_token!
+  after_initialize :create_standard_teams!, unless: :persisted?
+  before_validation :set_default_team_membership,
+    unless: :default_team_membership_id, if: :persisted?
 
   ######################
   #  associations
   ######################
 
-  has_many :team_memberships
+  has_many :team_memberships,
+    dependent: :destroy
   has_many :teams,
     through: :team_memberships,
     source: :team
 
-  has_many :channel_memberships
+  has_many :channel_memberships,
+    dependent: :destroy
+
   has_many :channels,
     through: :channel_memberships,
     source: :channel
+
+  belongs_to :default_team_membership,
+    primary_key: :id,
+    foreign_key: :default_team_membership_id,
+    class_name: :TeamMembership,
+    optional: true
+
+  has_one :default_team,
+    through: :default_team_membership,
+    source: :team
+
+  has_many :default_team_channels,
+    through: :default_team,
+    source: :channels
+
+  has_one :default_team_default_channel,
+    through: :default_team_membership,
+    source: :default_channel
+
+  # TODO
+  # has_many :default_team_default_channel_messages,
+  #   through: :default_team_default_channel,
+  #   source: :messages
 
   ######################
   # custom validations
@@ -72,11 +100,14 @@ class User < ApplicationRecord
   end
 
   ######################
-  # class methods
+  # auth methods
   ######################
 
   def self.find_by_credentials(username, password)
-    user = self.find_by(username: username)
+    user = self.includes(
+      :teams, :team_memberships, :default_team_channels#, TODO :default_team_default_channel_messages
+      ).
+      find_by(username: username)
     return nil unless user
     user.valid_password?(password) ? user : nil
   end
@@ -88,10 +119,6 @@ class User < ApplicationRecord
     end
     token
   end
-
-  ######################
-  # instance methods
-  ######################
 
   def password=(password)
     @password = password
@@ -108,7 +135,38 @@ class User < ApplicationRecord
     self.session_token
   end
 
-  # private
+  ######################
+  # association methods
+  ######################
+
+  def write_standard_teams
+    global_team = Team.global_team
+    demo_team = Team.new(name: 'Demo')
+    self.teams << [demo_team, global_team]
+    self.channels << [demo_team.channels, global_team.channels]
+  end
+
+  def set_default_team_membership(team_id = Team.global_team.id)
+    self.default_team_membership = self.team_memberships.find_by(
+      team_id: team_id
+    )
+  end
+
+  def create_standard_teams
+    write_standard_teams
+    self.save
+  end
+
+  def create_standard_teams!
+    write_standard_teams
+    self.save!
+  end
+
+  def find_membership_by_entity(entity)
+    entity_type, entity = entity.to_a[0]
+    association = "#{entity_type}_memberships".to_sym
+    self.send(association).where("#{entity_type}_id = ?", entity.id)
+  end
 
   def valid_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)

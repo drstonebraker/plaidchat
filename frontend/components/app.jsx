@@ -71,7 +71,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     login({
       username: 'anonymous_alien',
       password: '1t9xbnxtZbYWw8d90wOkMA',
-      default_team_id: 1,
     })
   ),
   logout: () => dispatch(logout()),

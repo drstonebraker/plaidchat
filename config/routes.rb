@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :channels, only: [:create]
     end
     resources :team_memberships, only: [:update]
+    patch 'channels/:id', to: 'channels#make_default', as: 'default_channel'
   end
 
   root "static_pages#root"

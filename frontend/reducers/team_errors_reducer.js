@@ -1,7 +1,7 @@
 import {
   RECEIVE_TEAM_ERRORS,
   CLEAR_TEAM_ERRORS,
-  RECEIVE_TEAM,
+  RECEIVE_NEW_TEAM,
 } from '../actions/team_actions'
 
 const defaultState = {
@@ -13,7 +13,7 @@ const teamsReducer = (state = defaultState, action) => {
   const newState = Object.assign({}, state, defaultState)
 
   switch (action.type) {
-    case RECEIVE_TEAM:
+    case RECEIVE_NEW_TEAM:
       return defaultState;
     case CLEAR_TEAM_ERRORS:
       return defaultState;

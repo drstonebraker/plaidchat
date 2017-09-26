@@ -3,23 +3,23 @@ import {
   RECEIVE_CURRENT_USER
 } from '../actions/session_actions';
 import {
-  RECEIVE_NEW_TEAM
-} from '../actions/team_actions'
+  RECEIVE_NEW_CHANNEL
+} from '../actions/channel_actions'
 
-const teamEntitiesReducer = (state = {}, action) => {
+const channelEntitiesReducer = (state = {}, action) => {
   Object.freeze(state);
   const newState = Object.assign({}, state)
-  const team = action.team
+  const channel = action.channel
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return arrayToObj(action.teams);
-    case RECEIVE_NEW_TEAM:
-      newState[team.id] = team
+      return arrayToObj(action.defaultTeamChannels);
+    case RECEIVE_NEW_CHANNEL:
+      newState[channel.id] = channel
       return newState
     default:
       return state;
   }
 };
 
-export default teamEntitiesReducer;
+export default channelEntitiesReducer;

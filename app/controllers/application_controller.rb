@@ -40,29 +40,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def create_team_membership!(*teams)
-    teams.each do |team|
-      general_channel = team.channels.find_by(name: 'general')
-      TeamMembership.create!(
-        team_id: team.id,
-        user_id: current_user.id,
-        default_channel_id: general_channel.id
-      )
-    end
-  end
-
-  def set_default_team(team, user=current_user)
-    user.default_team_id = team.id
-  end
-
-  def set_default_team!(team, user=current_user)
-    user.update!(default_team_id: team.id)
-  end
-
-  def create_channel_membership!(*channels)
-    channels.each do |channel|
-      current_user.channel_ids += channel.id
-    end
-  end
-
 end
