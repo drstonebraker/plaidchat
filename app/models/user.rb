@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   attr_reader :password
   after_initialize :ensure_session_token!
-  after_initialize :create_standard_teams!, unless: :persisted?
+  after_initialize :create_standard_teams!, :create_standard_channel_memberships, unless: :persisted?
   before_validation :set_default_team_membership
 
   ######################
@@ -128,6 +128,7 @@ class User < ApplicationRecord
     global_team = Team.global_team
     demo_team = Team.new(name: 'Demo')
     self.teams << [demo_team, global_team]
+    self.channels << [demo_team.channels, global_team.channels]
   end
 
   def set_default_team_membership(team_id = Team.global_team.id)
@@ -144,6 +145,10 @@ class User < ApplicationRecord
   def create_standard_teams!
     write_standard_teams
     self.save!
+  end
+
+  def create_standard_channel_memberships
+    debugger
   end
 
   private

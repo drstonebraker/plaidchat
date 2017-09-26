@@ -8,7 +8,7 @@
 
 ActiveRecord::Base.transaction do
 
-  
+
   Team.create!(
     name: 'Global'
   )
@@ -17,47 +17,5 @@ ActiveRecord::Base.transaction do
     username: 'anonymous_alien',
     password: '1t9xbnxtZbYWw8d90wOkMA'
   )
-
-
-  # global_team = Team.create!(
-  #   name: 'Global'
-  # )
-  #
-  # demo_team = Team.create!(
-  #   name: 'Demo'
-  # )
-  #
-  # demo_user = User.create!(
-  #   username: 'anonymous_alien',
-  #   password: '1t9xbnxtZbYWw8d90wOkMA'
-  # )
-  #
-  # [demo_team, global_team].each do |team|
-  #   general_channel = Channel.create!(
-  #     name: 'general',
-  #     team_id: team.id,
-  #   )
-  #
-  #   demo_channel = Channel.create!(
-  #     name: 'random',
-  #     team_id: team.id,
-  #   )
-  #
-  #   # channel memberships
-  #   demo_user.channel_ids = [general_channel.id, demo_channel.id]
-  #
-  #   team_membership = TeamMembership.create!(
-  #     team_id: team.id,
-  #     user_id: demo_user.id,
-  #     default_channel_id: general_channel.id
-  #   )
-  #
-  #   if team == global_team
-  #     demo_user.update!(
-  #       default_team_membership_id: team_membership.id
-  #     )
-  #   end
-  #
-  # end
 
 end
