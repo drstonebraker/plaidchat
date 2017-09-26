@@ -9,6 +9,31 @@ export const getTeamName = (teamId, state) => {
   return currentTeam.name
 }
 
+// export const getMembershipByEntity = (options) => {
+//   const { type, entityId, state } = options
+//
+//   if (!entityId) {
+//     return null
+//   }
+//
+//   const memberships = state.entities[`${type}Memberships`]
+//   const currentUser = state.session.currentUser
+//
+//   for (let id in memberships) {
+//     if (memberships.hasOwnProperty(id)) {
+//       const membership = memberships[id]
+//       if (
+//         entityId === membership[`${type}Id`] &&
+//         currentUser.id === membership.userId
+//       ) {
+//         return membership
+//       }
+//     }
+//   }
+//
+//   return null
+// }
+
 export const getTeamMembership = (teamId, state) => {
   // debugger
   if (!teamId) {

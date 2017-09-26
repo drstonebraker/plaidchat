@@ -40,4 +40,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def subscribe_current_user!(association, chatgroup)
+    current_user.send(association) << chatgroup
+  end
+
 end

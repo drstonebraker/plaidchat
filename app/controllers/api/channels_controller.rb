@@ -5,6 +5,8 @@ class Api::ChannelsController < ApplicationController
     @channel = Channel.new(channel_params)
 
     if @channel.save
+      subscribe_current_user!(:channels, @channel)
+      set_as_default!
       render :show
     else
       @errors = [@channel.errors.messages]
@@ -25,5 +27,9 @@ class Api::ChannelsController < ApplicationController
   def channel_params
     params.require(:channel).permit(:name, :is_direct_message, :team_id)
   end
-  
+
+  def set_as_default!
+    current_user.default_team_default_channel = @channel
+  end
+
 end

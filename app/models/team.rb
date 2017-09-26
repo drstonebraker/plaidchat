@@ -13,7 +13,6 @@ class Team < ApplicationRecord
   validate :unique_name
 
   after_initialize :create_standard_channels!, unless: :persisted?
-  after_save :set_as_default!, :subscribe_current_user!
 
   has_many :team_memberships,
     dependent: :destroy
@@ -65,14 +64,6 @@ class Team < ApplicationRecord
   def create_standard_channels!
     write_standard_channels
     self.save!
-  end
-
-  def subscribe_current_user!
-    current_user.teams << self
-  end
-
-  def set_as_default!
-    current_user.default_team = self
   end
 
   def general_channel

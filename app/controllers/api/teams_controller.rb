@@ -5,6 +5,8 @@ class Api::TeamsController < ApplicationController
     @team = Team.new(team_params)
 
     if @team.save
+      subscribe_current_user!(:teams, @team)
+      set_as_default!
       render :show
     else
       @errors = [@team.errors.messages]
@@ -17,6 +19,10 @@ class Api::TeamsController < ApplicationController
 
   def team_params
     params.require(:team).permit(:name)
+  end
+
+  def set_as_default!
+    current_user.default_team = @team
   end
 
 end

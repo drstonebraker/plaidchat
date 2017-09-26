@@ -16,8 +16,6 @@ class Channel < ApplicationRecord
     message: 'cannot be the same as another channel on this team' }
   validate :valid_name
 
-  after_save :subscribe_current_user!, :set_as_default!
-
   ######################
   #  associations
   #####################
@@ -51,13 +49,5 @@ class Channel < ApplicationRecord
   ######################
   # association methods
   #####################
-
-  def subscribe_current_user!
-    current_user.channels << self
-  end
-
-  def set_as_default!
-    current_user.default_team_default_channel = self
-  end
 
 end
