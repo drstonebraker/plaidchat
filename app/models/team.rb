@@ -34,7 +34,6 @@ class Team < ApplicationRecord
 
   def unique_name?
     return true if self.name == 'Demo'
-    # debugger
     return false if Team.all.
       select(:name).
       where("id <> ?", self.id).
