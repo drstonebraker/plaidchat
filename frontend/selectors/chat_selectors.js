@@ -9,53 +9,54 @@ export const getTeamName = (teamId, state) => {
   return currentTeam.name
 }
 
-// export const getMembershipByEntity = (options) => {
-//   const { type, entityId, state } = options
-//
-//   if (!entityId) {
-//     return null
-//   }
-//
-//   const memberships = state.entities[`${type}Memberships`]
-//   const currentUser = state.session.currentUser
-//
-//   for (let id in memberships) {
-//     if (memberships.hasOwnProperty(id)) {
-//       const membership = memberships[id]
-//       if (
-//         entityId === membership[`${type}Id`] &&
-//         currentUser.id === membership.userId
-//       ) {
-//         return membership
-//       }
-//     }
-//   }
-//
-//   return null
-// }
+export const getMembershipByEntity = (options) => {
+  const { type, state } = options
+  const entityId = parseInt(options.id)
 
-export const getTeamMembership = (teamId, state) => {
-  // debugger
-  if (!teamId) {
+  if (!entityId) {
     return null
   }
-  const teamMemberships = state.entities.teamMemberships
+
+  const memberships = state.entities[`${type}Memberships`]
   const currentUser = state.session.currentUser
 
-  for (let id in teamMemberships) {
-    if (teamMemberships.hasOwnProperty(id)) {
-      const teamMembership = teamMemberships[id]
+  for (let membershipId in memberships) {
+    if (memberships.hasOwnProperty(membershipId)) {
+      const membership = memberships[membershipId]
       if (
-        teamId === teamMembership.teamId &&
-        currentUser.id === teamMembership.userId
+        entityId === membership[`${type}Id`] &&
+        currentUser.id === membership.userId
       ) {
-        return teamMembership
+        return membership
       }
     }
   }
 
   return null
 }
+
+// export const getTeamMembership = (teamId, state) => {
+//   // debugger
+//   if (!teamId) {
+//     return null
+//   }
+//   const teamMemberships = state.entities.teamMemberships
+//   const currentUser = state.session.currentUser
+//
+//   for (let id in teamMemberships) {
+//     if (teamMemberships.hasOwnProperty(id)) {
+//       const teamMembership = teamMemberships[id]
+//       if (
+//         teamId === teamMembership.teamId &&
+//         currentUser.id === teamMembership.userId
+//       ) {
+//         return teamMembership
+//       }
+//     }
+//   }
+//
+//   return null
+// }
 
 export const getTeamIds = (teamMemberships) => {
   return Object.values(teamMemberships).map(membership => (

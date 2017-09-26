@@ -2,14 +2,14 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 
 const ChannelRedirect = (
-  { match, currentUser, teamMembership }
+  { match, currentUser, teamMembership, defaultTeamId, defaultChannelId }
 ) => {
   const teamId = match.params.teamId
   if (!teamMembership) {
     return (
       <Redirect
         to={
-          `/messages/${currentUser.defaultTeamId}`
+          `/messages/${defaultTeamId}`
         }
       />
     )
