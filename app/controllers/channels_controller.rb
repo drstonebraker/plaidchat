@@ -16,6 +16,13 @@ class ChannelsController < ApplicationController
     end
   end
 
+  def make_default
+    @channel = Channel.find(params[:id])
+    current_user.default_team_default_channel = @channel
+    @team_membership = current_user.default_team_membership
+    render 'api/team_memberships/show'
+  end
+
   private
 
   def channel_params
