@@ -8,6 +8,9 @@
 
 ActiveRecord::Base.transaction do
 
+  Team.destroy_all
+  User.destroy_all
+  TeamMembership.destroy_all
 
   Team.create!(
     name: 'Global'
