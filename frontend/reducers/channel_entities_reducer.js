@@ -3,7 +3,7 @@ import {
   RECEIVE_CURRENT_USER
 } from '../actions/session_actions';
 import {
-  RECEIVE_NEW_TEAM
+  RECEIVE_CHANNEL
 } from '../actions/team_actions'
 
 const teamEntitiesReducer = (state = {}, action) => {

@@ -162,6 +162,12 @@ class User < ApplicationRecord
     self.save!
   end
 
+  def find_membership_by_entity(entity)
+    entity_type, entity = entity.to_a[0]
+    association = "#{entity_type}_memberships".to_sym
+    self.send(association).where("#{entity_type}_id = ?", entity.id)
+  end
+
   private
 
   def valid_password?(password)
