@@ -147,7 +147,6 @@ class User < ApplicationRecord
   end
 
   def set_default_team_membership(team_id = Team.global_team.id)
-    debugger
     self.default_team_membership = self.team_memberships.find_by(
       team_id: team_id
     )
