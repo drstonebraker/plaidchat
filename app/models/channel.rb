@@ -16,6 +16,12 @@ class Channel < ApplicationRecord
     message: 'cannot be the same as another channel on this team' }
   validate :valid_name
 
+  after_save :subscribe_current_user!, :set_as_default!
+
+  ######################
+  #  associations
+  #####################
+
   belongs_to :team
   has_many :team_memberships_as_default,
     primary_key: :id,
@@ -24,6 +30,10 @@ class Channel < ApplicationRecord
 
   has_many :channel_memberships,
     dependent: :destroy
+
+  ######################
+  # custom validations
+  #####################
 
   def valid_name
     unless valid_name?
@@ -36,6 +46,18 @@ class Channel < ApplicationRecord
     return false if self.name =~ /[A-Z\s\.]/
     return false if self.name.length >= 22
     true
+  end
+
+  ######################
+  # association methods
+  #####################
+
+  def subscribe_current_user!
+    current_user.channels << @channel
+  end
+
+  def set_as_default!
+    current_user.default_team_default_channel = @channel
   end
 
 end

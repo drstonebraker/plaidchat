@@ -5,15 +5,9 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    global_team = Team.find_by(name: 'Global')
-    @user.default_team = global_team
-    @user.default_team_membership.default_channel =
-
 
     if @user.save
-      set_default_team_membership(global_team, @user) unless @user.default_team_membership_id
       login!(@user)
-      create_team_membership!(demo_team, global_team)
       render :show
     else
       @errors = [@user.errors.messages]

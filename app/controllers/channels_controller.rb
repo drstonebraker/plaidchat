@@ -5,9 +5,6 @@ class ChannelsController < ApplicationController
     @channel = Channel.new(channel_params)
 
     if @channel.save
-      current_user.channels << @channel
-      current_user.default_team_default_channel = @channel
-
       render :show
     else
       @errors = [@channel.errors.messages]
