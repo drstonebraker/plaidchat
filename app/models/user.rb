@@ -139,6 +139,10 @@ class User < ApplicationRecord
     self.session_token
   end
 
+  def valid_password?(password)
+    BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
+
   ######################
   # association methods
   ######################
@@ -171,13 +175,8 @@ class User < ApplicationRecord
   def find_membership_by_entity(entity)
     entity_type, entity = entity.to_a[0]
     association = "#{entity_type}_memberships".to_sym
-    self.send(association).where("#{entity_type}_id = ?", entity.id)
 
     self.send(association).find_by("#{entity_type}_id" => entity.id)
-  end
-
-  def valid_password?(password)
-    BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
 end
