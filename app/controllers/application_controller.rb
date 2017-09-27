@@ -41,7 +41,9 @@ class ApplicationController < ActionController::Base
   end
 
   def subscribe_current_user!(association, chatgroup)
-    current_user.send(association) << chatgroup
+    unless current_user.send(association).include?(chatgroup)
+      current_user.send(association) << chatgroup
+    end
   end
 
 end
