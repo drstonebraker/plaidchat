@@ -16,7 +16,7 @@ const channelEntitiesReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return Object.assign(newState, arrayToObj(channels));
+      return arrayToObj(channels);
     case RECEIVE_NEW_TEAM:
       return Object.assign(newState, arrayToObj(channels));
     case RECEIVE_NEW_CHANNEL:
