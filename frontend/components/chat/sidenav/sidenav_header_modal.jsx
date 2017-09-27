@@ -49,7 +49,7 @@ class SidenavHeaderModal extends React.Component {
     )
 
     const switchTeamLinks = teams.map(team => {
-      if (team.id !== parseInt(match.params.teamId)) {
+      if (team.id !== +match.params.teamId) {
         return (
           <li
             key={team.id}

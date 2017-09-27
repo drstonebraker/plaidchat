@@ -5,7 +5,7 @@ import userEntitiesReducer from './user_entities_reducer.js';
 import teamMembershipEntitiesReducer from
   './team_membership_entities_reducer.js';
 import channelEntitiesReducer from
-  './channel_membership_entities_reducer.js';
+  './channel_entities_reducer.js';
 import channelMembershipEntitiesReducer from
   './channel_membership_entities_reducer.js';
 
