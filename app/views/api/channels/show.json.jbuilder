@@ -8,5 +8,5 @@ json.channel_membership do
 end
 
 json.team_membership do
-  json.partial! 'api/team_memberships/team_membership', t_m: current_user.default_team_membership
+  json.partial! 'api/team_memberships/team_membership', team_membership: current_user.default_team_membership
 end

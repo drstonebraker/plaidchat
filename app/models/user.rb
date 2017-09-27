@@ -60,7 +60,7 @@ class User < ApplicationRecord
     source: :default_channel
 
   def default_team_channel_memberships
-    self.channel_memberships.joins(:team).where(tteams: {id: self.default_team.id})
+    self.channel_memberships.joins(:team).where(teams: {id: self.default_team.id})
   end
 
   # TODO
