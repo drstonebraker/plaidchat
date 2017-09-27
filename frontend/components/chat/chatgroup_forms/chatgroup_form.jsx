@@ -52,9 +52,11 @@ class ChatgroupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props[this.props.formType](this.state.team)
-      .then(() => {
+      .then((action) => {
+        debugger
+        const { teamId, defaultChannelId } = action.teamMembership
         this.props.closeChatGroupModal()
-        this.props.history.push('/messages')
+        this.props.history.push(`/messages/${teamId}/${defaultChannelId}`)
       })
   }
 

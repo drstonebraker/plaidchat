@@ -8,7 +8,7 @@ const ChannelRedirect = (props) => {
     channel, defaultChannelId, teamId, doesChannelBelongToTeam, channelId
   } = props
 
-  // debugger
+  debugger
 // || (channelId && !doesChannelBelongToTeam)
   if (!teamMembership || (channelId && !doesChannelBelongToTeam))
     { return <RedirectToTeam {...props} /> }

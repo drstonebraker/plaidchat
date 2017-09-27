@@ -12,7 +12,7 @@ class AuthButtons extends React.Component {
   login() {
     return () => (
       this.props.demoLogin()
-        .then(() => this.props.history.push('/messages'))
+        // .then(() => this.props.history.push('/messages'))
     )
   }
 

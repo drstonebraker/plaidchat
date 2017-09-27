@@ -3,6 +3,9 @@ import {
   RECEIVE_CURRENT_USER
 } from '../actions/session_actions.js';
 import {
+  RECEIVE_NEW_TEAM,
+} from '../actions/team_actions';
+import {
   RECEIVE_NEW_CHANNEL,
 } from '../actions/channel_actions';
 import {
@@ -12,11 +15,13 @@ import {
 const channelMembershipEntitiesReducer = (state = {}, action) => {
   Object.freeze(state);
   const newState = Object.assign({}, state)
-  const { channelMembership, defaultTeamChannelMemberships } = action
+  const { channelMembership, channelMemberships } = action
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return Object.assign(newState, arrayToObj(defaultTeamChannelMemberships));
+      return Object.assign(newState, arrayToObj(channelMemberships));
+    case RECEIVE_NEW_TEAM:
+      return Object.assign(newState, arrayToObj(channelMemberships));
     case RECEIVE_NEW_CHANNEL:
       newState[channelMembership.id] = channelMembership
       return newState;
