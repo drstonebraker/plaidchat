@@ -12,7 +12,7 @@ class ChatView extends React.Component {
   }
 
   componentDidMount() {
-
+    this.resetDefaultTeamMembershipId(this.props.match.params.teamId)
   }
 
   componentWillReceiveProps(nextProps) {
