@@ -2,6 +2,7 @@ export const postTeam = (team) => (
   $.ajax({
     method: 'POST',
     url: `api/teams`,
-    data: { team }
+    data: JSON.stringify({ team }),
+    contentType: 'application/json'
   })
 )
