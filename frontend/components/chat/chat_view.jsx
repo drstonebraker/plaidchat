@@ -11,18 +11,18 @@ class ChatView extends React.Component {
   }
 
   componentDidMount() {
-    this.resetDefaultTeamId(parseInt(this.props.match.params.teamId))
+    
   }
 
   componentWillReceiveProps(nextProps) {
     const oldTeamId = parseInt(this.props.match.params.teamId)
     const newTeamId = parseInt(nextProps.match.params.teamId)
     if (oldTeamId !== newTeamId) {
-      this.resetDefaultTeamId(newTeamId)
+      this.resetDefaultTeamMembershipId(newTeamId)
     }
   }
 
-  resetDefaultTeamId(newTeamId) {
+  resetDefaultTeamMembershipId(newTeamId) {
     const { teamIds, currentUser, getTeamMembership } = this.props
 
     if (teamIds.includes(parseInt(newTeamId))) {
