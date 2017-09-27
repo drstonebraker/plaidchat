@@ -1,0 +1,28 @@
+@import '../../../globals/_all.scss';
+
+.channel_index_section {
+
+}
+
+.channel_navlink {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &:hover, :focus {
+    
+  }
+
+  &--active {
+
+  }
+
+  &--group {
+
+  }
+
+  &--direct_message {
+
+  }
+}
