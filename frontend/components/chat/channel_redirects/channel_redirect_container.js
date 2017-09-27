@@ -6,17 +6,42 @@ import { getMembershipByEntityId } from '../../../selectors/chat_selectors'
 
 const mapStateToProps = (state, ownProps) => {
   const { currentUser } = state.session
+  let { teamId, channelId } = ownProps.match.params
+  teamId = parseInt(teamId)
+  channelId = parseInt(channelId)
+
+  const teamMembership = getMembershipByEntityId(
+    'team',
+    teamId,
+    state
+  )
+
+  // const channelMembership = getMembershipByEntityId(
+  //   'channel',
+  //   channelId,
+  //   state
+  // )
+
+  const channel = state.entities.channels[channelId]
+
+  const defaultTeamId = state.entities.teamMemberships[
+    currentUser.defaultTeamMembershipId
+  ].teamId
+
+  const defaultChannelId = teamMembership ? teamMembership.defaultChannelId : null
+
+  const doesChannelBelongToTeam = channel ? channel.teamId === teamId : false
 
   return {
     currentUser,
-    teamMembership: getMembershipByEntityId(
-      'team',
-      ownProps.match.params.teamId,
-      state
-    ),
-    defaultTeamId: state.entities.teamMemberships[
-      currentUser.defaultTeamMembershipId
-    ].teamId
+    teamMembership,
+    defaultTeamId,
+    // channelMembership,
+    channel,
+    teamId,
+    channelId,
+    defaultChannelId,
+    doesChannelBelongToTeam,
   };
 };
 

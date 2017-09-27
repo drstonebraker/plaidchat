@@ -6,14 +6,14 @@ export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
 
 export const receiveCurrentUser = ({
-  user, teams, teamMemberships, channelMemberships,
+  user, teams, teamMemberships, defaultTeamChannelMemberships,
   defaultTeamChannels, defaultTeamDefaultChannelMessages
 }) => ({
   type: RECEIVE_CURRENT_USER,
   user,
   teams,
   teamMemberships,
-  channelMemberships,
+  defaultTeamChannelMemberships,
   defaultTeamChannels,
   defaultTeamDefaultChannelMessages,
 });

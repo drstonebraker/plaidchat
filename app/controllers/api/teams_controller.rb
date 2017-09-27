@@ -6,6 +6,7 @@ class Api::TeamsController < ApplicationController
 
     if @team.save
       subscribe_current_user!(:teams, @team)
+      subscribe_current_user!(:channels, @team.channels)
       set_as_default!
       render :show
     else

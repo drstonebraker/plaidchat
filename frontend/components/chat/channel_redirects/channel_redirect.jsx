@@ -1,28 +1,28 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
 
-const ChannelRedirect = (
-  { match, currentUser, teamMembership, defaultTeamId, defaultChannelId }
-) => {
-  const teamId = match.params.teamId
-  if (!teamMembership) {
-    return (
-      <Redirect
-        to={
-          `/messages/${defaultTeamId}`
-        }
-      />
-    )
-  } else if (teamId) {
-    return (
-      <Redirect
-        to={
-          `/messages/${defaultTeamId}/${teamMembership.defaultChannelId}`
-        }
-      />
-    )
-  } else {
+import { RedirectToTeam, RedirectToChannel } from './redirects.jsx'
+
+const ChannelRedirect = (props) => {
+  const {
+    match, currentUser, teamMembership, defaultTeamId,
+    channel, defaultChannelId, teamId, doesChannelBelongToTeam, channelId
+  } = props
+
+  // debugger
+// || (channelId && !doesChannelBelongToTeam)
+  if (!teamMembership )
+    { return <RedirectToTeam {...props} /> }
+  else if (teamId && !channelId)
+    { return <RedirectToChannel {...props} /> }
+  // else if (teamId && channel.teamId === teamId) {
+  //
+  //   return <RedirectToTeam {...props} />
+  //
+  // }
+  else {
+
     return null
+
   }
 }
 

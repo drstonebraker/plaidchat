@@ -8,9 +8,15 @@
 
 ActiveRecord::Base.transaction do
 
-  Team.destroy_all
   User.destroy_all
+  Team.destroy_all
   TeamMembership.destroy_all
+  Channel.destroy_all
+  ChannelMembership.destroy_all
+
+end
+
+ActiveRecord::Base.transaction do
 
   Team.create!(
     name: 'Global'

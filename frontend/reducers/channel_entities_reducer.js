@@ -9,11 +9,12 @@ import {
 const channelEntitiesReducer = (state = {}, action) => {
   Object.freeze(state);
   const newState = Object.assign({}, state)
-  const channel = action.channel
+  const { defaultTeamChannels, channel } = action
+  debugger
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return arrayToObj(action.defaultTeamChannels);
+      return Object.assign(newState, arrayToObj(defaultTeamChannels));
     case RECEIVE_NEW_CHANNEL:
       newState[channel.id] = channel
       return newState

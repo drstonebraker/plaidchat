@@ -12,12 +12,11 @@ import {
 const channelMembershipEntitiesReducer = (state = {}, action) => {
   Object.freeze(state);
   const newState = Object.assign({}, state)
-  const channelMemberships = action.channelMemberships
-  const channelMembership = action.channelMembership
+  const { channelMembership, channelMemberships } = action
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return arrayToObj(action.channelMemberships);
+      return Object.assign(newState, arrayToObj(channelMemberships));
     case RECEIVE_NEW_CHANNEL:
       newState[channelMembership.id] = channelMembership
       return newState;
