@@ -4,6 +4,17 @@
 
 }
 
+.channel_index_section__header {
+  display: flex;
+  width: 100%;
+  font-size: 1.65rem;
+  color: $slack_sidenav_lightgrey;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: lighter;
+  overflow: initial;
+}
+
 .channel_navlink {
   display: block;
   width: 100%;
@@ -11,7 +22,7 @@
   cursor: pointer;
 
   &:hover, :focus {
-    
+
   }
 
   &--active {

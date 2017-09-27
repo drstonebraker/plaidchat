@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ChatSideNav from './sidenav/chat_sidenav'
+import ChatSideNav from './sidenav/chat_sidenav.jsx'
 import ChannelRedirectContainer from
   './channel_redirects/channel_redirect_container'
 import ChatgroupModalContainer from

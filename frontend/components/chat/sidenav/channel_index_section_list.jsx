@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-route-dom'
+import { NavLink } from 'react-router-dom'
 
 import StatusIndicator from './status_indicator.jsx'
 
@@ -40,7 +40,7 @@ const createChannelList = (groupChannels, type) => {
   })
 }
 
-const channelIndexSectionList = (channels) => {
+const channelIndexSectionLists = (channels) => {
   const {
     groupChannels, directMessageChannels
   } = partitionChannels(channels)
@@ -53,4 +53,4 @@ const channelIndexSectionList = (channels) => {
   return { groupChannelList, directMessageChannelList }
 }
 
-export default channelIndexSectionList
+export default channelIndexSectionLists

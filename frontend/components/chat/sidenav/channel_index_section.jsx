@@ -1,8 +1,6 @@
 import React from 'react'
 
-import StatusIndicator from './status_indicator'
-import SidenavHeaderModalContainer from './sidenav_header_modal_container'
-import { CaretDown } from '../../font_awesome/icons'
+import { CirclePlus } from '../../font_awesome/icons'
 
 class ChannelIndexSection extends React.Component {
   constructor(props) {
@@ -14,14 +12,23 @@ class ChannelIndexSection extends React.Component {
   }
 
   render() {
-    const {  } = this.props
+    const { children, headerContent } = this.props
 
     return (
       <div
         className={`channel_index_section`}
       >
-
-
+        <h4 className='channel_index_section__header'>
+          <span>{ headerContent }</span>
+          <CirclePlus
+            color='grey'
+            style={{
+              cursor: 'pointer',
+              fontSize: '1rem'
+            }}
+          />
+        </h4>
+        { children }
       </div>
     )
   }

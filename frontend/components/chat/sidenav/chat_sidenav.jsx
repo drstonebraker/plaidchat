@@ -18,11 +18,10 @@ class ChatSideNav extends React.Component {
     return (
       <nav className='chat_sidenav'>
         <ChatSidenavHeaderContainer />
-
+        <ChatSidenavChannelIndexContainer />
       </nav>
     )
   }
 }
-// <ChatSidenavChannelIndexContainer />
 
 export default ChatSideNav

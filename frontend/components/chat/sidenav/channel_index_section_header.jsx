@@ -1,7 +1,5 @@
 import React from 'react'
 
-
-
 class ChannelIndexSection extends React.Component {
   constructor(props) {
     super(props)

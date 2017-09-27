@@ -2,6 +2,14 @@
 
 .fa-grey {
   color: $slack_sidenav_darkgrey;
+
+  &:hover {
+    color: $slack_sidenav_lightgrey;
+  }
+}
+
+.fa-lightgrey {
+  color: $slack_sidenav_lightgrey;
 }
 
 .fa-white {
