@@ -83,66 +83,6 @@ class SidenavHeaderModal extends React.Component {
 
           </ModalSection>
 
-          <ModalSection>
-            {switchTeamLinks}
-          </ModalSection>
-
-          <ModalSection>
-            {switchTeamLinks}
-          </ModalSection>
-
-          <ModalSection>
-            {switchTeamLinks}
-          </ModalSection>
-
-          <ModalSection>
-            {switchTeamLinks}
-          </ModalSection>
-
-          <ModalSection>
-            {switchTeamLinks}
-          </ModalSection>
-
-          <ModalSection>
-            {switchTeamLinks}
-          </ModalSection>
-
-          <ModalSection>
-            {switchTeamLinks}
-          </ModalSection>
-
-          <ModalSection>
-            {switchTeamLinks}
-          </ModalSection>
-
-          <ModalSection>
-            {switchTeamLinks}
-          </ModalSection>
-
-          <ModalSection>
-            {switchTeamLinks}
-          </ModalSection>
-
-          <ModalSection>
-            {switchTeamLinks}
-          </ModalSection>
-
-          <ModalSection>
-            {switchTeamLinks}
-          </ModalSection>
-
-          <ModalSection>
-            {switchTeamLinks}
-          </ModalSection>
-
-          <ModalSection>
-            {switchTeamLinks}
-          </ModalSection>
-
-          <ModalSection>
-            {switchTeamLinks}
-          </ModalSection>
-
         </div>
 
       </Modal>

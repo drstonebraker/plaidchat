@@ -13,8 +13,9 @@ export const CaretDown = ({color, size}) => (
   </span>
 )
 
-export const CirclePlus = ({color, style, size}) => (
+export const CirclePlus = ({color, style, size, onClick}) => (
   <span
+    onClick={onClick}
     className={`
       fa-stack
       ${color ? ('fa-' + color) : ''}

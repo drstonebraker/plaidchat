@@ -5,6 +5,7 @@
 }
 
 .channel_index_section__header {
+  box-sizing: border-box;
   display: flex;
   width: 100%;
   font-size: 1.65rem;
@@ -12,7 +13,9 @@
   justify-content: space-between;
   align-items: center;
   font-weight: lighter;
-  overflow: initial;
+  line-height: 2.6rem;
+  margin: 0 0 .3rem 0;
+  padding: 0 1.6rem;
 }
 
 .channel_navlink {
@@ -20,13 +23,18 @@
   width: 100%;
   box-sizing: border-box;
   cursor: pointer;
+  color: $slack_sidenav_darkgrey;
+  font-size: 1.65rem;
+  line-height: 2.6rem;
+  padding: 0 1.6rem;
 
   &:hover, :focus {
-
+    background-color: $slack_sidenav_hover;
   }
 
   &--active {
-
+    background-color: $slack_sidenav_active !important;
+    color: white;
   }
 
   &--group {

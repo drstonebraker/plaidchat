@@ -13,17 +13,19 @@ class ChatSidenavChannelIndex extends React.Component {
   }
 
   render() {
-    const { channels } = this.props
+    const { channels, openChatGroupModal } = this.props
     const {
       groupChannelList, directMessageChannelList
     } = channelIndexSectionLists(channels)
-
 
     return (
       <div
         className={`chat_sidenav_channel_index`}
       >
-        <ChannelIndexSection headerContent='Channels'>
+        <ChannelIndexSection
+          headerContent='Channels'
+          openChatGroupModal={openChatGroupModal}
+        >
           { groupChannelList }
         </ChannelIndexSection>
 

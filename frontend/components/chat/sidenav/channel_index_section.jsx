@@ -12,7 +12,7 @@ class ChannelIndexSection extends React.Component {
   }
 
   render() {
-    const { children, headerContent } = this.props
+    const { children, headerContent, openChatGroupModal } = this.props
 
     return (
       <div
@@ -21,12 +21,14 @@ class ChannelIndexSection extends React.Component {
         <h4 className='channel_index_section__header'>
           <span>{ headerContent }</span>
           <CirclePlus
+            onClick={() => openChatGroupModal('createGroupChannel')}
             color='grey'
             style={{
               cursor: 'pointer',
               fontSize: '1rem'
             }}
           />
+
         </h4>
         { children }
       </div>
