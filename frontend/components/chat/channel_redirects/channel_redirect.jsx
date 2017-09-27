@@ -1,29 +1,20 @@
 import React from 'react'
 
-import { RedirectToTeam, RedirectToChannel } from './redirects.jsx'
+import { RedirectToTeam, RedirectToDefaultChannel, RedirectToChannel } from './redirects.jsx'
 
 const ChannelRedirect = (props) => {
   const {
-    match, currentUser, teamMembership, defaultTeamId,
+    match, currentUser, teamMembership, defaultTeamId, superfluous,
     channel, defaultChannelId, teamId, doesChannelBelongToTeam, channelId
   } = props
 
-  debugger
-// || (channelId && !doesChannelBelongToTeam)
   if (!teamMembership || (channelId && !doesChannelBelongToTeam))
     { return <RedirectToTeam {...props} /> }
   else if (teamId && !channelId)
+    { return <RedirectToDefaultChannel {...props} /> }
+  else if (teamId && channelId && superfluous)
     { return <RedirectToChannel {...props} /> }
-  // else if (teamId && channel.teamId === teamId) {
-  //
-  //   return <RedirectToTeam {...props} />
-  //
-  // }
-  else {
-
-    return null
-
-  }
+  else { return null }
 }
 
 export default ChannelRedirect

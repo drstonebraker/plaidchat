@@ -101,7 +101,7 @@ const App = ({store}) => (
     <AuthRoute exact path="(/login|/signup)" component={UserFormContainer} />
 
     <ProtectedRoute
-      path='/messages/:teamId?/:channelId?'
+      path='/messages/:teamId?/:channelId?/:superfluous?'
       component={ChannelRedirectContainer}
     />
     <ProtectedRoute

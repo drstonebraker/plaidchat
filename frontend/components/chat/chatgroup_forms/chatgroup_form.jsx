@@ -53,7 +53,6 @@ class ChatgroupForm extends React.Component {
     e.preventDefault();
     this.props[this.props.formType](this.state.team)
       .then((action) => {
-        debugger
         const { teamId, defaultChannelId } = action.teamMembership
         this.props.closeChatGroupModal()
         this.props.history.push(`/messages/${teamId}/${defaultChannelId}`)

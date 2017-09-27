@@ -6,7 +6,7 @@ import { getMembershipByEntityId } from '../../../selectors/chat_selectors'
 
 const mapStateToProps = (state, ownProps) => {
   const { currentUser } = state.session
-  let { teamId, channelId } = ownProps.match.params
+  let { teamId, channelId, superfluous } = ownProps.match.params
   teamId = parseInt(teamId)
   channelId = parseInt(channelId)
 
@@ -32,18 +32,16 @@ const mapStateToProps = (state, ownProps) => {
 
   const doesChannelBelongToTeam = channel ? channel.teamId === teamId : false
 
-  debugger
-
   return {
     currentUser,
     teamMembership,
     defaultTeamId,
-    // channelMembership,
     channel,
     teamId,
     channelId,
     defaultChannelId,
     doesChannelBelongToTeam,
+    superfluous
   };
 };
 
