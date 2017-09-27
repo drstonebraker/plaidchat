@@ -8,6 +8,6 @@ export const receiveTeamMembership = ({teamMembership}) => ({
 });
 
 export const updateTeamMembership = teamMembership => dispatch => (
-  TeamMembershipUtil.patchTeam(teamMembership)
+  TeamMembershipUtil.patchTeamMembership(teamMembership)
     .then(res => dispatch(receiveTeamMembership(res)))
 );

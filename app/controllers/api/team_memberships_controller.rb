@@ -5,6 +5,7 @@ class Api::TeamMembershipsController < ApplicationController
     @team_membership = TeamMembership.find(params[:id])
 
     if @team_membership.update(team_membership_params)
+      subscribe_current_user!(:channels, @team_membership.default_channel)
       render :show
     else
       @errors = [@team_membership.errors.messages]

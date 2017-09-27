@@ -16,6 +16,10 @@ class TeamMembership < ApplicationRecord
 
   before_validation :write_default_channel, if: :new_record?
 
+  ######################
+  #  associations
+  ######################
+
   belongs_to :user
   belongs_to :team
   belongs_to :default_channel,
@@ -25,6 +29,10 @@ class TeamMembership < ApplicationRecord
     primary_key: :id,
     foreign_key: :default_team_membership_id,
     class_name: :User
+
+  ######################
+  # association methods
+  #####################
 
   def write_default_channel
     self.default_channel = self.team.general_channel
