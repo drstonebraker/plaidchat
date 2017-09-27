@@ -2,7 +2,8 @@ import { connect } from 'react-redux'
 
 import ChatView from './chat_view'
 import { editUser } from '../../actions/user_actions'
-import { getEntityIdsByMembership, getMembershipByEntityId } from '../../selectors/chat_selectors'
+import { getEntityIdsByMembership, getMembershipByEntityId } from
+  '../../selectors/chat_selectors'
 
 const mapStateToProps = (state, ownProps) => {
 

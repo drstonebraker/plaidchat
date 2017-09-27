@@ -13,18 +13,15 @@ const ChannelRedirect = (
         }
       />
     )
-  }
-  // TODO: when after implementing channels
-  // else if (teamId) {
-  //   return (
-  //     <Redirect
-  //       to={
-  //         `/messages/${teamId}/${teamMembership.defaultChannelId}`
-  //       }
-  //     />
-  //   )
-  // }
-  else {
+  } else if (teamId) {
+    return (
+      <Redirect
+        to={
+          `/messages/${defaultTeamId}/${teamMembership.defaultChannelId}`
+        }
+      />
+    )
+  } else {
     return null
   }
 }

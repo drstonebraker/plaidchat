@@ -3,7 +3,8 @@ import React from 'react'
 import ChatSideNav from './sidenav/chat_sidenav'
 import ChannelRedirectContainer from
   './channel_redirects/channel_redirect_container'
-import ChatgroupModalContainer from './chatgroup_forms/chatgroup_modal_container'
+import ChatgroupModalContainer from
+  './chatgroup_forms/chatgroup_modal_container'
 
 class ChatView extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class ChatView extends React.Component {
   }
 
   componentDidMount() {
-    
+
   }
 
   componentWillReceiveProps(nextProps) {
