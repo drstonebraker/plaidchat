@@ -55,7 +55,10 @@ class ChatgroupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const { teamId: currentTeamId } = this.props.match.params
-    const newChatgroup = Object.assign({teamId: currentTeamId}, this.state.chatgroup)
+    const newChatgroup = Object.assign(
+      {teamId: currentTeamId},
+      this.state.chatgroup
+    )
 
     this.props[this.props.formType](newChatgroup)
       .then((action) => {
@@ -123,11 +126,12 @@ class ChatgroupForm extends React.Component {
 
             <Select
               className='form_field'
-              name="form-field-name"
+              name="user[username]"
               value={['one', 'two']}
               options={options}
               onChange={logChange}
               multi={true}
+              deleteRemoves={true}
             />
 
             <div className='l-float_children_right'>

@@ -35,9 +35,8 @@ class Api::UsersController < ApplicationController
       "LOWER(username) LIKE ?",
       "%#{params[:query].downcase.chars.join('%')}%"
     ).
-    order(:username).
-    limit(20)
-    
+    order(:username)
+
     render template: 'api/users/search.json.jbuilder'
   end
 

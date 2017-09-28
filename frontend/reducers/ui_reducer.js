@@ -34,7 +34,8 @@ const uiReducer = (state = defaultState, action) => {
       newState.chatgroupFormType = null
       return newState;
     case RECEIVE_USERS_SEARCH:
-      return action.users;
+      newState.users = action.users
+      return newState;
     default:
       return state;
   }
