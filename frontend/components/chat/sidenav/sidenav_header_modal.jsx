@@ -4,7 +4,8 @@ import Modal from 'react-modal'
 import { Link } from 'react-router-dom'
 
 import { modalStyle } from '../../../util/modal_style'
-import ModalSection from '../modals/modal_section'
+import ModalSection from '../modals/modal_section.jsx'
+import getSwitchTeamLinks from './get_switch_team_links.jsx'
 
 class SidenavHeaderModal extends React.Component {
   constructor(props) {
@@ -40,7 +41,8 @@ class SidenavHeaderModal extends React.Component {
 
   render() {
     const {
-      isOpen, onRequestClose, currentUser, teamName, teams, match
+      isOpen, onRequestClose, currentUser, teamName, channelName,
+      teams, match
     } = this.props
 
     const newModalStyle = Object.assign(
@@ -48,19 +50,9 @@ class SidenavHeaderModal extends React.Component {
       { maxHeight: 'calc(100vh - 10.7rem)' }
     )
 
-    const switchTeamLinks = teams.map(team => {
-      if (team.id !== Number(match.params.teamId)) {
-        return (
-          <li
-            key={team.id}
-            onClick={this.switchToTeam(team.id)}
-          >
-              Switch to <strong>{team.name}</strong>
-          </li>
-        )
-      }
-    })
-    .filter(el => el)
+    const switchTeamLinks = getSwitchTeamLinks(
+      teams, match.params.teamId, this.switchToTeam
+    )
 
     return (
       <Modal
@@ -76,9 +68,17 @@ class SidenavHeaderModal extends React.Component {
             heading={currentUser.username}
           >
 
-            <li key='1' onClick={this.logout()} >Sign Out</li>
+            <li key='1' onClick={this.logout()} >
+              Sign Out
+            </li>
             <li key='2' onClick={this.openNewTeamForm} >
               Create a new team
+            </li>
+            <li key='3' onClick={() => {}} >
+              Invite users to team <strong>{teamName}</strong>
+            </li>
+            <li key='4' onClick={() => {}} >
+              Invite users to channel <strong>{channelName}</strong>
             </li>
 
           </ModalSection>

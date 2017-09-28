@@ -1,12 +1,12 @@
-export const getTeamName = (teamId, state) => {
-  const currentTeam = state.entities.teams[teamId]
+export const getEntityName = (id, type, state) => {
+  const currentEntity = state.entities[`${type}s`][id]
   if (
-    teamId === undefined ||
-    currentTeam === undefined
+    id === undefined ||
+    currentEntity === undefined
   ) {
     return null
   }
-  return currentTeam.name
+  return currentEntity.name
 }
 
 export const getMembershipByEntityId = (type, entityId, state) => {
