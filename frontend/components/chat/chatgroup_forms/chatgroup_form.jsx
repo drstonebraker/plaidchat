@@ -13,13 +13,34 @@ class ChatgroupForm extends React.Component {
       chatgroup: {
         name: '',
       },
-      users: []
+      users: [],
+      clearable: true,
+      disabled: false,
+      githubUsers: [],
+      multi: false,
+      searchable: true,
+      selectedCreatable: null,
+      selectedCity: null
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.closeModal = this.closeModal.bind(this)
     this.handleEscKey = this.handleEscKey.bind(this)
-    this.getUsersSearch = this.getUsersSearch.bind(this)
+    this._loadUsersSearch = this._loadUsersSearch.bind(this)
+
+    this._loadGithubUsers = this._loadGithubUsers.bind(this)
+  }
+
+  _loadGithubUsers (input) {
+    return fetch(`https://api.github.com/search/users?q=${input}`)
+      .then((response) => response.json())
+      .then((json) => {
+        const githubUsers = json.items
+
+        this.setState({ githubUsers })
+
+        return { options: githubUsers }
+      })
   }
 
   componentDidMount() {
@@ -53,8 +74,11 @@ class ChatgroupForm extends React.Component {
     }
   }
 
-  getUsersSearch(query) {
+  _loadUsersSearch(query) {
     this.props.getUsersSearch(query)
+      .then(action => {
+        debugger
+      })
   }
 
   handleSubmit(e) {
@@ -86,6 +110,9 @@ class ChatgroupForm extends React.Component {
     const { chatgroup } = this.state
 
 
+    const { clearable, creatableOptions, disabled, githubUsers, multi, searchable, selectedCity, selectedCountry, selectedCreatable, selectedGithubUser, selectedName } = this.state
+
+
     // <VirtualizedSelect
     //   className='form_field'
     //   name="user[username]"
@@ -111,8 +138,6 @@ class ChatgroupForm extends React.Component {
     function logChange(val) {
       console.log("Selected: " + JSON.stringify(val));
     }
-
-
 
 
     return (
@@ -145,11 +170,10 @@ class ChatgroupForm extends React.Component {
 
             </FormFullField>
 
-            <VirtualizedSelect
+            {/*<VirtualizedSelect
               className='form_field'
               name="user[username]"
               value={undefined}
-              options={options}
               onChange={logChange}
               multi={true}
               async={true}
@@ -159,8 +183,24 @@ class ChatgroupForm extends React.Component {
               placeholder='Choose users to invite (optional)'
               scrollMenuIntoView={false}
               searchPromptText='Type to search users...'
-              loadOptions={this.getUsersSearch}
-              isLoading={isUserSearchLoading}
+              loadOptions={this._loadUsersSearch}
+              labelKey='username'
+            />*/}
+
+            <VirtualizedSelect
+              className='form_field'
+              multi
+
+              async
+              backspaceRemoves={false}
+              labelKey='login'
+              loadOptions={this._loadGithubUsers}
+              minimumInput={1}
+              onChange={(selectedGithubUser) => this.setState({ selectedGithubUser })}
+              onValueClick={this._goToGithubUser}
+              options={githubUsers}
+              value={selectedGithubUser}
+              valueKey='id'
             />
 
             <div className='l-float_children_right'>

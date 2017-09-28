@@ -71,3 +71,7 @@ export const getSubscribedChannelsByTeamId = (teamId, state) => {
   ))
   return subscribedTeamChannels
 }
+
+export const getUserSearchOptions = (usersSearch) => {
+  return usersSearch
+}

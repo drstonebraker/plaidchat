@@ -18,7 +18,11 @@
 }
 
 .Select-input {
-  margin-top: -0.7rem;
+  margin-top: -0.9rem;
+
+  & > input {
+    width: auto !important;
+  }
 }
 
 .Select--multi.has-value .Select-input {
@@ -28,4 +32,9 @@
 .Select-multi-value-wrapper {
   box-sizing: border-box;
   padding-bottom: 0.2rem;
+}
+
+.Select-placeholder {
+  top: 0.6rem;
+  left: 0.7rem;
 }
