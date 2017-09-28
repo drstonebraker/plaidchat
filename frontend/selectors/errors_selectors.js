@@ -2,6 +2,8 @@ const invalidUsernameError =
   "must contain only letters, numbers, periods, hyphens, and underscores"
 const invalidPasswordError =
   "can't be things like _password_, _123456_, or _abcdef_"
+const invalidChannelNameError =
+  "must be lowercase, without spaces or periods, and shorter than 22 Characters."
 
 const invalidErrorFn = (type) => {
   switch (type) {
@@ -9,12 +11,14 @@ const invalidErrorFn = (type) => {
       return invalidUsernameError;
     case 'password':
       return invalidPasswordError;
+    case 'name':
+      return invalidChannelNameError;
   }
 }
 
 // boolean for identifying specific errors
 export const isInvalid = (errors, type) => {
-  if (!errors[type]) {
+  if (!errors || !errors[type]) {
     return false
   }
   return errors[type].includes(invalidErrorFn(type))
@@ -23,7 +27,7 @@ export const isInvalid = (errors, type) => {
 // get array of properly formatted errors
 export const getErrors = (errors, type) => {
 
-  if (!errors[type]) {
+  if (!errors || !errors[type]) {
     return []
   }
   const result = [];
@@ -43,5 +47,5 @@ export const getErrors = (errors, type) => {
 }
 
 export const hasErrors = (errors, type) => {
-  return Boolean(errors[type] && errors[type].length)
+  return Boolean(errors && errors[type] && errors[type].length)
 }

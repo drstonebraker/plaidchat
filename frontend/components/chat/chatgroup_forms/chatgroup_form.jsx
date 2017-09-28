@@ -9,7 +9,7 @@ class ChatgroupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      team: {
+      chatgroup: {
         name: '',
       },
     }
@@ -36,11 +36,11 @@ class ChatgroupForm extends React.Component {
 
   handleChange(field) {
     return e => {
-      const team = Object.assign(
-        this.state.team,
+      const chatgroup = Object.assign(
+        this.state.chatgroup,
         {[field]: e.target.value}
       )
-      this.setState({ team })
+      this.setState({ chatgroup })
     }
   }
 
@@ -52,7 +52,10 @@ class ChatgroupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props[this.props.formType](this.state.team)
+    const { teamId: currentTeamId } = this.props.match.params
+    const newChatgroup = Object.assign({teamId: currentTeamId}, this.state.chatgroup)
+    
+    this.props[this.props.formType](newChatgroup)
       .then((action) => {
         const { teamId, defaultChannelId } = action.teamMembership
         this.props.closeChatGroupModal()
@@ -67,9 +70,9 @@ class ChatgroupForm extends React.Component {
   render() {
     const {
         formType, headingContent, submitContent, nameErrors, hasNameErrors,
-        clearChatgroupErrors
+        clearChatgroupErrors, isInvalidName
       } = this.props
-    const { team } = this.state
+    const { chatgroup } = this.state
 
     return (
       <div className='chatgroup_form_view'>
@@ -90,9 +93,11 @@ class ChatgroupForm extends React.Component {
               hasErrors={hasNameErrors}
               inputType='text'
               onChange={this.handleChange('name')}
-              inputVal={team.name}
+              inputVal={chatgroup.name}
               errorsList={nameErrors}
               autofocus={true}
+              tipValidation={isInvalidName}
+              formType={formType}
             >
 
               <FieldMessages type={formType}/>

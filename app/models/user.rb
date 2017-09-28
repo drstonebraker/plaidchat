@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   attr_reader :password
   after_initialize :ensure_session_token!
-  after_initialize :create_standard_teams!, if: :new_record?
+  after_initialize :write_standard_teams, if: :new_record?
   before_validation :set_default_team_membership,
     if: :new_record?
 

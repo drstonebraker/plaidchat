@@ -37,6 +37,7 @@ const mapStateToProps = (state, ownProps) => {
     submitContent,
     nameErrors: ErrorsSelector.getErrors(errors, 'name'),
     hasNameErrors: ErrorsSelector.hasErrors(errors, 'name'),
+    isInvalidName: ErrorsSelector.isInvalid(errors, 'name')
   };
 };
 
@@ -48,7 +49,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     clearChatgroupErrors: () => dispatch(clearChatgroupErrors()),
     createTeam: team => dispatch(createTeam(team)),
     createChannel: channel => dispatch(createChannel(
-      Object.assign( { teamId }, channel )
+      Object.assign(channel)
     ))
   };
 };
