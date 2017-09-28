@@ -1,23 +1,25 @@
 import {
-  RECEIVE_TEAM_ERRORS,
-  CLEAR_CHATGROUP_ERRORS,
-  RECEIVE_NEW_TEAM,
+  RECEIVE_CHANNEL_ERRORS,
+  RECEIVE_NEW_CHANNEL,
+} from '../actions/channel_actions'
+import {
+    CLEAR_CHATGROUP_ERRORS,
 } from '../actions/team_actions'
 
 const defaultState = {
   name: []
 }
 
-const teamsReducer = (state = defaultState, action) => {
+const channelsReducer = (state = defaultState, action) => {
   Object.freeze(state);
   const newState = Object.assign({}, state, defaultState)
 
   switch (action.type) {
-    case RECEIVE_NEW_TEAM:
+    case RECEIVE_NEW_CHANNEL:
       return defaultState;
     case CLEAR_CHATGROUP_ERRORS:
       return defaultState;
-    case RECEIVE_TEAM_ERRORS:
+    case RECEIVE_CHANNEL_ERRORS:
       for (let i = 0; i < action.errors.length; i++) {
         let error = action.errors[i]
         newState.name = error.name || []
@@ -28,4 +30,4 @@ const teamsReducer = (state = defaultState, action) => {
   }
 };
 
-export default teamsReducer;
+export default channelsReducer;

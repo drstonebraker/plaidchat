@@ -10,7 +10,7 @@ export const getTeamName = (teamId, state) => {
 }
 
 export const getMembershipByEntityId = (type, entityId, state) => {
-  entityId = +entityId
+  entityId = Number(entityId)
 
   if (!entityId) {
     return null

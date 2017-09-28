@@ -49,7 +49,7 @@ class SidenavHeaderModal extends React.Component {
     )
 
     const switchTeamLinks = teams.map(team => {
-      if (team.id !== +match.params.teamId) {
+      if (team.id !== Number(match.params.teamId)) {
         return (
           <li
             key={team.id}
@@ -81,6 +81,10 @@ class SidenavHeaderModal extends React.Component {
               Create a new team
             </li>
 
+          </ModalSection>
+
+          <ModalSection>
+            {switchTeamLinks}
           </ModalSection>
 
         </div>

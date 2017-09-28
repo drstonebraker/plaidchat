@@ -4,7 +4,6 @@ import { receiveTeamMembership } from './team_membership_actions'
 
 export const RECEIVE_NEW_CHANNEL = 'RECEIVE_NEW_CHANNEL';
 export const RECEIVE_CHANNEL_ERRORS = 'RECEIVE_CHANNEL_ERRORS';
-export const CLEAR_CHANNEL_ERRORS = 'CLEAR_CHANNEL_ERRORS';
 
 export const receiveNewChannel = ({channel, channelMembership, teamMembership}) => ({
   type: RECEIVE_NEW_CHANNEL,
@@ -17,10 +16,6 @@ export const receiveChannelErrors = errors => ({
   type: RECEIVE_CHANNEL_ERRORS,
   errors
 });
-
-export const clearChannelErrors = () => ({
-  type: CLEAR_CHANNEL_ERRORS,
-})
 
 export const createChannel = channel => dispatch => (
   ChannelUtil.postChannel(channel)

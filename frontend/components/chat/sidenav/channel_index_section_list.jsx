@@ -23,6 +23,7 @@ const createChannelList = (groupChannels, type) => {
   return groupChannels.map(channel => {
     return (
       <NavLink
+        key={channel.id}
         className={`channel_navlink channel_navlink--${type}`}
         activeClassName="channel_navlink--active"
         to={`/messages/${channel.teamId}/${channel.id}`}

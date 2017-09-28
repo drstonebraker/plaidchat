@@ -21,7 +21,7 @@ class ChannelIndexSection extends React.Component {
         <h4 className='channel_index_section__header'>
           <span>{ headerContent }</span>
           <CirclePlus
-            onClick={() => openChatGroupModal('createGroupChannel')}
+            onClick={() => openChatGroupModal('createChannel')}
             color='grey'
             style={{
               cursor: 'pointer',

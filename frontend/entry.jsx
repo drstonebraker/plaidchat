@@ -32,6 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       team: {
         name: [],
+      },
+      channel: {
+        name: []
       }
     }
   }

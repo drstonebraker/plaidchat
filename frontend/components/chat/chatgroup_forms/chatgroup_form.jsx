@@ -3,6 +3,7 @@ import React from 'react'
 import FormFullField from '../../modules/form_full_field'
 import { ErrorsList } from '../../modules/jsx_lists'
 import X from '../../modules/x.jsx'
+import FieldMessages from './field_messages.jsx'
 
 class ChatgroupForm extends React.Component {
   constructor(props) {
@@ -19,13 +20,13 @@ class ChatgroupForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.clearErrors()
+    this.props.clearChatgroupErrors()
     window.addEventListener("keyup", this.handleEscKey);
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.type !== nextProps.type) {
-      this.props.clearErrors()
+      this.props.clearChatgroupErrors()
     }
   }
 
@@ -65,8 +66,8 @@ class ChatgroupForm extends React.Component {
 
   render() {
     const {
-        type, headingContent, submitContent, nameErrors, hasNameErrors,
-        clearErrors
+        formType, headingContent, submitContent, nameErrors, hasNameErrors,
+        clearChatgroupErrors
       } = this.props
     const { team } = this.state
 
@@ -94,13 +95,7 @@ class ChatgroupForm extends React.Component {
               autofocus={true}
             >
 
-              {
-                type === 'signup' &&
-                <span>
-                  Name your team after the group that will be using
-                  Slack together.
-                </span>
-              }
+              <FieldMessages type={formType}/>
 
             </FormFullField>
 
