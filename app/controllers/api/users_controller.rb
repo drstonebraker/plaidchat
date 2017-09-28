@@ -30,6 +30,17 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def search
+    @users = User.where(
+      "LOWER(username) LIKE ?",
+      "%#{params[:query].downcase.chars.join('%')}%"
+    ).
+    order(:username).
+    limit(20)
+    
+    render template: 'api/users/search.json.jbuilder'
+  end
+
   private
 
   def user_params

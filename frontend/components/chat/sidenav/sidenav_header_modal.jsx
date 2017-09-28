@@ -84,9 +84,6 @@ class SidenavHeaderModal extends React.Component {
             <li key='3' onClick={() => {}} >
               Invite users to team <strong>{teamName}</strong>
             </li>
-            <li key='4' onClick={() => {}} >
-              Invite users to channel <strong>{channelName}</strong>
-            </li>
 
           </ModalSection>
 

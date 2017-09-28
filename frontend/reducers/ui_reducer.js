@@ -4,7 +4,10 @@ import {
   OPEN_CHATGROUP_MODAL,
   CLOSE_CHATGROUP_MODAL,
   SET_CHATGROUP_FORM_TYPE,
-} from '../actions/ui_actions.js';
+} from '../actions/ui_actions';
+import {
+  RECEIVE_USERS_SEARCH
+} from '../actions/user_actions'
 
 const defaultState = {
   isSideNavHeaderModalOpen: false,
@@ -30,6 +33,8 @@ const uiReducer = (state = defaultState, action) => {
       newState.isChatGroupModalOpen = false
       newState.chatgroupFormType = null
       return newState;
+    case RECEIVE_USERS_SEARCH:
+      return action.users;
     default:
       return state;
   }

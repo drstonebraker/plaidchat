@@ -1,4 +1,5 @@
 import React from 'react'
+import Select from 'react-select'
 
 import FormFullField from '../../modules/form_full_field'
 import { ErrorsList } from '../../modules/jsx_lists'
@@ -12,6 +13,7 @@ class ChatgroupForm extends React.Component {
       chatgroup: {
         name: '',
       },
+      users: []
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -54,7 +56,7 @@ class ChatgroupForm extends React.Component {
     e.preventDefault();
     const { teamId: currentTeamId } = this.props.match.params
     const newChatgroup = Object.assign({teamId: currentTeamId}, this.state.chatgroup)
-    
+
     this.props[this.props.formType](newChatgroup)
       .then((action) => {
         const { teamId, defaultChannelId } = action.teamMembership
@@ -73,6 +75,21 @@ class ChatgroupForm extends React.Component {
         clearChatgroupErrors, isInvalidName
       } = this.props
     const { chatgroup } = this.state
+
+
+
+
+    // var options = [
+    //   { value: 'one', label: 'One' },
+    //   { value: 'two', label: 'Two' }
+    // ];
+    //
+    // function logChange(val) {
+    //   console.log("Selected: " + JSON.stringify(val));
+    // }
+
+
+
 
     return (
       <div className='chatgroup_form_view'>
@@ -103,6 +120,15 @@ class ChatgroupForm extends React.Component {
               <FieldMessages type={formType}/>
 
             </FormFullField>
+
+            <Select
+              className
+              name="form-field-name"
+              value="one"
+              options={options}
+              onChange={logChange}
+              multi={true}
+            />
 
             <div className='l-float_children_right'>
 
