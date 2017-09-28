@@ -42,8 +42,6 @@ const mapStateToProps = (state, ownProps) => {
     nameErrors: ErrorsSelector.getErrors(errors, 'name'),
     hasNameErrors: ErrorsSelector.hasErrors(errors, 'name'),
     isInvalidName: ErrorsSelector.isInvalid(errors, 'name'),
-    usersSearch: getUserSearchOptions(state.ui.usersSearch),
-    isUserSearchLoading: state.ui.isUserSearchLoading,
   };
 };
 
@@ -57,8 +55,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     createChannel: channel => dispatch(createChannel(
       Object.assign(channel)
     )),
-    loadingUsersSearch: () => dispatch(loadingUsersSearch()),
-    getUsersSearch: query => dispatch(usersSearch(query))
   };
 };
 

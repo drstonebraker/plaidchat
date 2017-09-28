@@ -115,10 +115,6 @@ class ChatgroupForm extends React.Component {
       } = this.props
     const { chatgroup, selectedUser, usersSearch } = this.state
 
-
-    const { clearable, creatableOptions, disabled, githubUsers, multi, searchable, selectedCity, selectedCountry, selectedCreatable, selectedGithubUser, selectedName } = this.state
-
-
     return (
       <div className='chatgroup_form_view'>
         <div className="l-form_container l-middle">
@@ -149,23 +145,6 @@ class ChatgroupForm extends React.Component {
 
             </FormFullField>
 
-            {/*<VirtualizedSelect
-              className='form_field'
-              name="user[username]"
-              value={undefined}
-              onChange={logChange}
-              multi={true}
-              async={true}
-              closeOnSelect={false}
-              noResultsText='No users found'
-              openOnFocus={true}
-              placeholder='Choose users to invite (optional)'
-              scrollMenuIntoView={false}
-              searchPromptText='Type to search users...'
-              loadOptions={this._loadUsersSearch}
-              labelKey='username'
-            />*/}
-
             <VirtualizedSelect
               className='form_field'
               multi
@@ -180,7 +159,6 @@ class ChatgroupForm extends React.Component {
               labelKey='username'
 
               loadOptions={this._loadUsersSearch}
-
             />
 
             <div className='l-float_children_right'>
