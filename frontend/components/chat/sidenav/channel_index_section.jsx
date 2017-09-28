@@ -30,7 +30,9 @@ class ChannelIndexSection extends React.Component {
           />
 
         </h4>
-        { children }
+        <ul>
+          { children }
+        </ul>
       </div>
     )
   }
