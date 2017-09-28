@@ -7,7 +7,10 @@ import { createTeam, clearChatgroupErrors } from
   '../../../actions/team_actions';
 import { createChannel } from
   '../../../actions/channel_actions';
-import { closeChatGroupModal } from '../../../actions/ui_actions';
+import { usersSearch } from
+  '../../../actions/user_actions';
+import { closeChatGroupModal, loadingUsersSearch } from
+  '../../../actions/ui_actions';
 import { updateDefaultTeam } from '../../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -52,7 +55,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     createTeam: team => dispatch(createTeam(team)),
     createChannel: channel => dispatch(createChannel(
       Object.assign(channel)
-    ))
+    )),
+    loadingUsersSearch: () => dispatch(loadingUsersSearch()),
+    getUsersSearch: query => dispatch(usersSearch(query))
   };
 };
 

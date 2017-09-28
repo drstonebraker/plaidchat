@@ -19,6 +19,7 @@ class ChatgroupForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.closeModal = this.closeModal.bind(this)
     this.handleEscKey = this.handleEscKey.bind(this)
+    this.getUsersSearch = this.getUsersSearch.bind(this)
   }
 
   componentDidMount() {
@@ -52,6 +53,10 @@ class ChatgroupForm extends React.Component {
     }
   }
 
+  getUsersSearch(query) {
+    this.props.getUsersSearch(query)
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const { teamId: currentTeamId } = this.props.match.params
@@ -75,7 +80,8 @@ class ChatgroupForm extends React.Component {
   render() {
     const {
         formType, headingContent, submitContent, nameErrors, hasNameErrors,
-        clearChatgroupErrors, isInvalidName, isUserSearchLoading
+        clearChatgroupErrors, isInvalidName, isUserSearchLoading,
+        getUsersSearch, usersSearch
       } = this.props
     const { chatgroup } = this.state
 
@@ -153,7 +159,8 @@ class ChatgroupForm extends React.Component {
               placeholder='Choose users to invite (optional)'
               scrollMenuIntoView={false}
               searchPromptText='Type to search users...'
-              loadOptions={isUserSearchLoading}
+              loadOptions={this.getUsersSearch}
+              isLoading={isUserSearchLoading}
             />
 
             <div className='l-float_children_right'>
