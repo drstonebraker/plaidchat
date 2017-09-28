@@ -1,5 +1,5 @@
 import React from 'react'
-import Select from 'react-select'
+import VirtualizedSelect from 'react-virtualized-select'
 
 import FormFullField from '../../modules/form_full_field'
 import { ErrorsList } from '../../modules/jsx_lists'
@@ -75,12 +75,27 @@ class ChatgroupForm extends React.Component {
   render() {
     const {
         formType, headingContent, submitContent, nameErrors, hasNameErrors,
-        clearChatgroupErrors, isInvalidName
+        clearChatgroupErrors, isInvalidName, isUserSearchLoading
       } = this.props
     const { chatgroup } = this.state
 
 
-
+    // <VirtualizedSelect
+    //   className='form_field'
+    //   name="user[username]"
+    //   value={undefined}
+    //   options={options}
+    //   onChange={logChange}
+    //   onInputChange={() => {}}
+    //   multi={true}
+    //   async={true}
+    //   closeOnSelect={false}
+    //   noResultsText='No users found'
+    //   openOnFocus={true}
+    //   placeholder='Choose users to invite (optional)'
+    //   scrollMenuIntoView={false}
+    //   searchPromptText='Type to search users...'
+    // />
 
     var options = [
       { value: 'one', label: 'One' },
@@ -124,14 +139,21 @@ class ChatgroupForm extends React.Component {
 
             </FormFullField>
 
-            <Select
+            <VirtualizedSelect
               className='form_field'
               name="user[username]"
-              value={['one', 'two']}
+              value={undefined}
               options={options}
               onChange={logChange}
               multi={true}
-              deleteRemoves={true}
+              async={true}
+              closeOnSelect={false}
+              noResultsText='No users found'
+              openOnFocus={true}
+              placeholder='Choose users to invite (optional)'
+              scrollMenuIntoView={false}
+              searchPromptText='Type to search users...'
+              loadOptions={isUserSearchLoading}
             />
 
             <div className='l-float_children_right'>

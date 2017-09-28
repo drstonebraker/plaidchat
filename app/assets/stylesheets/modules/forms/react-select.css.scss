@@ -18,7 +18,11 @@
 }
 
 .Select-input {
-  margin-top: -0.6rem;
+  margin-top: -0.7rem;
+}
+
+.Select--multi.has-value .Select-input {
+  margin-left: 0.8rem;
 }
 
 .Select-multi-value-wrapper {

@@ -37,7 +37,9 @@ const mapStateToProps = (state, ownProps) => {
     submitContent,
     nameErrors: ErrorsSelector.getErrors(errors, 'name'),
     hasNameErrors: ErrorsSelector.hasErrors(errors, 'name'),
-    isInvalidName: ErrorsSelector.isInvalid(errors, 'name')
+    isInvalidName: ErrorsSelector.isInvalid(errors, 'name'),
+    usersSearch: state.ui.usersSearch,
+    isUserSearchLoading: state.ui.isUserSearchLoading,
   };
 };
 
