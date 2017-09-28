@@ -32,10 +32,13 @@ class Api::UsersController < ApplicationController
 
   def search
     @users = User.where(
-      "LOWER(username) LIKE ?",
-      "%#{params[:query].downcase.chars.join('%')}%"
-    ).
-    order(:username)
+        "LOWER(username) LIKE ?",
+        "%#{params[:query].downcase.chars.join('%')}%"
+      ).
+      # where.not(id: current_user.id).
+      order(:username)
+
+    # debugger
 
     render template: 'api/users/search.json.jbuilder'
   end

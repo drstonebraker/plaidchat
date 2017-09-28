@@ -82,6 +82,10 @@ class ChatgroupForm extends React.Component {
       })
       .then((usersSearch) => {
 
+        for (let i = 0; i < usersSearch.length; i++) {
+          usersSearch[i].className = 'users_search__option'
+        }
+
         this.setState({ usersSearch })
 
         return { options: usersSearch }
