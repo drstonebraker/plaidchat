@@ -74,6 +74,13 @@ class SidenavHeaderModal extends React.Component {
             <li key='2' onClick={this.openNewTeamForm} >
               Create a new team
             </li>
+
+          </ModalSection>
+
+          <ModalSection
+            heading={teamName}
+          >
+
             <li key='3' onClick={() => {}} >
               Invite users to team <strong>{teamName}</strong>
             </li>
