@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  before_action :require_login, only: %i(destroy update)
+  before_action :require_login, only: %i(destroy update search)
   before_action :require_logout, only: %i(create)
   before_action :require_current_user, only: %i(destroy update)
 
@@ -35,11 +35,9 @@ class Api::UsersController < ApplicationController
         "LOWER(username) LIKE ?",
         "%#{params[:query].downcase.chars.join('%')}%"
       ).
-      # where.not(id: current_user.id).
+      where.not(id: current_user.id).
       order(:username)
-
-    # debugger
-
+      
     render template: 'api/users/search.json.jbuilder'
   end
 

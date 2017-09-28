@@ -76,7 +76,10 @@ class ChatgroupForm extends React.Component {
   }
 
   _loadUsersSearch(query) {
-    return fetch(`api/users/search?query=${query}`)
+    return fetch(
+      `api/users/search?query=${query}`,
+      { credentials: 'include' }
+    )
       .then((response) => {
         return response.json()
       })
