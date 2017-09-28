@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import ChatgroupModal from './chatgroup_modal.jsx'
 import { openChatGroupModal, closeChatGroupModal } from
@@ -18,7 +19,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(ChatgroupModal);
+)(ChatgroupModal));

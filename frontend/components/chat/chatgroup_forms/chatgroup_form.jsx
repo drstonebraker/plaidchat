@@ -1,16 +1,19 @@
 import React from 'react'
+import Select from 'react-select'
 
 import FormFullField from '../../modules/form_full_field'
 import { ErrorsList } from '../../modules/jsx_lists'
 import X from '../../modules/x.jsx'
+import FieldMessages from './field_messages.jsx'
 
 class ChatgroupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      team: {
+      chatgroup: {
         name: '',
       },
+      users: []
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,13 +22,13 @@ class ChatgroupForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.clearErrors()
+    this.props.clearChatgroupErrors()
     window.addEventListener("keyup", this.handleEscKey);
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.type !== nextProps.type) {
-      this.props.clearErrors()
+      this.props.clearChatgroupErrors()
     }
   }
 
@@ -35,11 +38,11 @@ class ChatgroupForm extends React.Component {
 
   handleChange(field) {
     return e => {
-      const team = Object.assign(
-        this.state.team,
+      const chatgroup = Object.assign(
+        this.state.chatgroup,
         {[field]: e.target.value}
       )
-      this.setState({ team })
+      this.setState({ chatgroup })
     }
   }
 
@@ -51,10 +54,17 @@ class ChatgroupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props[this.props.formType](this.state.team)
-      .then(() => {
+    const { teamId: currentTeamId } = this.props.match.params
+    const newChatgroup = Object.assign(
+      {teamId: currentTeamId},
+      this.state.chatgroup
+    )
+
+    this.props[this.props.formType](newChatgroup)
+      .then((action) => {
+        const { teamId, defaultChannelId } = action.teamMembership
         this.props.closeChatGroupModal()
-        this.props.history.push('/messages')
+        this.props.history.push(`/messages/${teamId}/${defaultChannelId}`)
       })
   }
 
@@ -64,10 +74,25 @@ class ChatgroupForm extends React.Component {
 
   render() {
     const {
-        type, headingContent, submitContent, nameErrors, hasNameErrors,
-        clearErrors
+        formType, headingContent, submitContent, nameErrors, hasNameErrors,
+        clearChatgroupErrors, isInvalidName
       } = this.props
-    const { team } = this.state
+    const { chatgroup } = this.state
+
+
+
+
+    var options = [
+      { value: 'one', label: 'One' },
+      { value: 'two', label: 'Two' }
+    ];
+
+    function logChange(val) {
+      console.log("Selected: " + JSON.stringify(val));
+    }
+
+
+
 
     return (
       <div className='chatgroup_form_view'>
@@ -88,20 +113,26 @@ class ChatgroupForm extends React.Component {
               hasErrors={hasNameErrors}
               inputType='text'
               onChange={this.handleChange('name')}
-              inputVal={team.name}
+              inputVal={chatgroup.name}
               errorsList={nameErrors}
               autofocus={true}
+              tipValidation={isInvalidName}
+              formType={formType}
             >
 
-              {
-                type === 'signup' &&
-                <span>
-                  Name your team after the group that will be using
-                  Slack together.
-                </span>
-              }
+              <FieldMessages type={formType}/>
 
             </FormFullField>
+
+            <Select
+              className='form_field'
+              name="user[username]"
+              value={['one', 'two']}
+              options={options}
+              onChange={logChange}
+              multi={true}
+              deleteRemoves={true}
+            />
 
             <div className='l-float_children_right'>
 

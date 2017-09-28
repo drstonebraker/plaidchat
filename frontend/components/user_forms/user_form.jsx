@@ -39,8 +39,8 @@ class UserForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
     this.props.action(this.state.user)
-      .then(() => this.props.history.push('/messages'))
   }
 
   render() {
@@ -112,7 +112,11 @@ class UserForm extends React.Component {
               </FormFullField>
 
               <input
-                className='form_button form_button--submit form_button--submit--wide'
+                className={`
+                  form_button
+                  form_button--submit
+                  form_button--submit--wide
+                `}
                 type='submit'
                 value={`${submitContent} →`}
               />

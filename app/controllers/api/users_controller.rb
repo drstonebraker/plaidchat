@@ -5,13 +5,8 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    demo_team = Team.find_by(name: 'Demo')
-    global_team = Team.find_by(name: 'Global')
-    set_default_team(global_team, @user) unless @user.default_team_id
-
     if @user.save
       login!(@user)
-      create_team_membership!(demo_team, global_team)
       render :show
     else
       @errors = [@user.errors.messages]
@@ -35,10 +30,20 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def search
+    @users = User.where(
+      "LOWER(username) LIKE ?",
+      "%#{params[:query].downcase.chars.join('%')}%"
+    ).
+    order(:username)
+
+    render template: 'api/users/search.json.jbuilder'
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :default_team_id)
+    params.require(:user).permit(:username, :password, :default_team_membership_id)
   end
 
 end

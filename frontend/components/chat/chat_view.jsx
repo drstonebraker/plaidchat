@@ -1,9 +1,10 @@
 import React from 'react'
 
-import ChatSideNav from './sidenav/chat_sidenav'
+import ChatSideNav from './sidenav/chat_sidenav.jsx'
 import ChannelRedirectContainer from
   './channel_redirects/channel_redirect_container'
-import ChatgroupModalContainer from './chatgroup_forms/chatgroup_modal_container'
+import ChatgroupModalContainer from
+  './chatgroup_forms/chatgroup_modal_container'
 
 class ChatView extends React.Component {
   constructor(props) {
@@ -11,25 +12,26 @@ class ChatView extends React.Component {
   }
 
   componentDidMount() {
-    this.resetDefaultTeamId(parseInt(this.props.match.params.teamId))
+    this.resetDefaultTeamMembershipId(this.props.match.params.teamId)
   }
 
   componentWillReceiveProps(nextProps) {
-    const oldTeamId = parseInt(this.props.match.params.teamId)
-    const newTeamId = parseInt(nextProps.match.params.teamId)
+    const oldTeamId = Number(this.props.match.params.teamId)
+    const newTeamId = Number(nextProps.match.params.teamId)
     if (oldTeamId !== newTeamId) {
-      this.resetDefaultTeamId(newTeamId)
+      this.resetDefaultTeamMembershipId(newTeamId)
     }
   }
 
-  resetDefaultTeamId(newTeamId) {
-    const { teamIds, currentUser } = this.props
+  resetDefaultTeamMembershipId(newTeamId) {
+    const { teamIds, currentUser, getTeamMembership } = this.props
 
-    if (teamIds.includes(newTeamId)) {
+    if (teamIds.includes(Number(newTeamId))) {
 
       this.props.editUser({
-        default_team_id: newTeamId,
-        id: currentUser.id })
+        defaultTeamMembershipId: getTeamMembership(newTeamId).id,
+        id: currentUser.id
+      })
 
     }
   }

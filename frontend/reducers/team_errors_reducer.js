@@ -1,6 +1,6 @@
 import {
   RECEIVE_TEAM_ERRORS,
-  CLEAR_TEAM_ERRORS,
+  CLEAR_CHATGROUP_ERRORS,
   RECEIVE_NEW_TEAM,
 } from '../actions/team_actions'
 
@@ -15,7 +15,7 @@ const teamsReducer = (state = defaultState, action) => {
   switch (action.type) {
     case RECEIVE_NEW_TEAM:
       return defaultState;
-    case CLEAR_TEAM_ERRORS:
+    case CLEAR_CHATGROUP_ERRORS:
       return defaultState;
     case RECEIVE_TEAM_ERRORS:
       for (let i = 0; i < action.errors.length; i++) {

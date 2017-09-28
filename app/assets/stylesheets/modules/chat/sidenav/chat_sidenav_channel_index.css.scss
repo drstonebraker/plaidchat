@@ -1,0 +1,14 @@
+@import '../../../globals/_all.scss';
+
+.chat_sidenav_channel_index {
+  @include scrollable_dark_bg;
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100% - 6.5rem);
+  padding: 1rem 0;
+
+}
+
+.chat_sidenav_channel_index_section {
+
+}

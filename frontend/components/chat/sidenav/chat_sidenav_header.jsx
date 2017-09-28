@@ -1,6 +1,6 @@
 import React from 'react'
 
-import StatusIndicator from './status_indicator'
+import StatusIndicator from './status_indicator.jsx'
 import SidenavHeaderModalContainer from './sidenav_header_modal_container'
 import { CaretDown } from '../../font_awesome/icons'
 

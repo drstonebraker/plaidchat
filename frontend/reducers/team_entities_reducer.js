@@ -9,11 +9,11 @@ import {
 const teamEntitiesReducer = (state = {}, action) => {
   Object.freeze(state);
   const newState = Object.assign({}, state)
-  const team = action.team
+  const { team, teams } = action
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return arrayToObj(action.teams);
+      return arrayToObj(teams);
     case RECEIVE_NEW_TEAM:
       newState[team.id] = team
       return newState

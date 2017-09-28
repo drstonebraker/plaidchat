@@ -4,10 +4,10 @@
 #
 #  id                :integer          not null, primary key
 #  name              :string           not null
-#  is_direct_message :boolean          default(FALSE), not null
 #  team_id           :integer          not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  is_direct_message :boolean          default(FALSE)
 #
 
 class Channel < ApplicationRecord
@@ -16,7 +16,23 @@ class Channel < ApplicationRecord
     message: 'cannot be the same as another channel on this team' }
   validate :valid_name
 
+  ######################
+  #  associations
+  #####################
+
   belongs_to :team
+  
+  has_many :team_memberships_as_default,
+    primary_key: :id,
+    foreign_key: :default_channel_id,
+    class_name: :TeamMembership
+
+  has_many :channel_memberships,
+    dependent: :destroy
+
+  ######################
+  # custom validations
+  #####################
 
   def valid_name
     unless valid_name?
@@ -30,5 +46,9 @@ class Channel < ApplicationRecord
     return false if self.name.length >= 22
     true
   end
+
+  ######################
+  # association methods
+  #####################
 
 end

@@ -40,23 +40,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def create_team_membership!(*teams)
-    teams.each do |team|
-      general_channel = team.channels.find_by(name: 'general')
-      TeamMembership.create!(
-        team_id: team.id,
-        user_id: current_user.id,
-        default_channel_id: general_channel.id
-      )
+  def subscribe_current_user!(association, chatgroup)
+    unless current_user.send(association).include?(chatgroup)
+      current_user.send(association) << chatgroup
     end
-  end
-
-  def set_default_team(team, user=current_user)
-    user.default_team_id = team.id
-  end
-
-  def set_default_team!(team, user=current_user)
-    user.update!(default_team_id: team.id)
   end
 
 end
