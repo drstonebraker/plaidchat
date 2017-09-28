@@ -25,7 +25,8 @@
   margin: 0 0 .4rem 0;
   cursor: pointer;
 }
-.form_field__text_input {
+
+.form_field__text_input, {
   display: block;
   border: 1px solid $slack-border-color;
   width: 100%;

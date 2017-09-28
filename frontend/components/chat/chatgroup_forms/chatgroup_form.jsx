@@ -79,14 +79,14 @@ class ChatgroupForm extends React.Component {
 
 
 
-    // var options = [
-    //   { value: 'one', label: 'One' },
-    //   { value: 'two', label: 'Two' }
-    // ];
-    //
-    // function logChange(val) {
-    //   console.log("Selected: " + JSON.stringify(val));
-    // }
+    var options = [
+      { value: 'one', label: 'One' },
+      { value: 'two', label: 'Two' }
+    ];
+
+    function logChange(val) {
+      console.log("Selected: " + JSON.stringify(val));
+    }
 
 
 
@@ -122,9 +122,9 @@ class ChatgroupForm extends React.Component {
             </FormFullField>
 
             <Select
-              className
+              className='form_field'
               name="form-field-name"
-              value="one"
+              value={['one', 'two']}
               options={options}
               onChange={logChange}
               multi={true}
