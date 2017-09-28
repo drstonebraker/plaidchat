@@ -36,8 +36,9 @@ class Api::UsersController < ApplicationController
         "%#{params[:query].downcase.chars.join('%')}%"
       ).
       where.not(id: current_user.id).
+      where.not("username LIKE 'anonymous_%'").
       order(:username)
-      
+
     render template: 'api/users/search.json.jbuilder'
   end
 
