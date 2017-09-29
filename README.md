@@ -1,6 +1,6 @@
 # README
 
-Plaidchat is portfolio project aiming to clone the core features and design of slack, as a browser-based team chat platform.
+[Plaidchat](https://plaidchat.herokuapp.com) is portfolio project aiming to clone the core features and design of [slack](https://slack.com/), a browser-based team chat platform.
 
 
 ## Features
@@ -17,6 +17,7 @@ Plaidchat is portfolio project aiming to clone the core features and design of s
 + Users can invite non-users to sign up
 + A live chat stream on every channel
 + Users can send direct messages to other users in their team
++ Users can upload images to be used as avatars on their profile
 
 ## Stack
 
