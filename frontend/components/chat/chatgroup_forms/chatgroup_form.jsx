@@ -1,5 +1,5 @@
 import React from 'react'
-import VirtualizedSelect from 'react-virtualized-select'
+import Select from 'react-select'
 
 import FormFullField from '../../modules/form_full_field'
 import { ErrorsList } from '../../modules/jsx_lists'
@@ -28,20 +28,7 @@ class ChatgroupForm extends React.Component {
     this.closeModal = this.closeModal.bind(this)
     this.handleEscKey = this.handleEscKey.bind(this)
     this._loadUsersSearch = this._loadUsersSearch.bind(this)
-
-    this._loadGithubUsers = this._loadGithubUsers.bind(this)
-  }
-
-  _loadGithubUsers (input) {
-    return fetch(`https://api.github.com/search/users?q=${input}`)
-      .then((response) => response.json())
-      .then((json) => {
-        const usersSearch = json.items
-
-        this.setState({ usersSearch })
-
-        return { options: usersSearch }
-      })
+    this.renderUserOption = this.renderUserOption.bind(this)
   }
 
   componentDidMount() {
@@ -115,6 +102,36 @@ class ChatgroupForm extends React.Component {
     this.props.closeChatGroupModal()
   }
 
+  renderUserOption({
+    key, option
+  }) {
+    console.log(arguments);
+
+    const style = {
+      height: '3.5rem',
+      margin: '0.4rem',
+      borderRadius: '0.3rem',
+      lineHeight: '3.5rem',
+      fontSize: '1.4rem',
+      fontWeight: '900',
+      boxSizing: 'border-box',
+      padding: '0 1rem',
+      cursor: 'pointer',
+
+
+
+    }
+
+    return (
+      <div
+        key={key}
+        style={style}
+      >
+        { option.username }
+      </div>
+    )
+  }
+
   render() {
     const {
         formType, headingContent, submitContent, nameErrors, hasNameErrors,
@@ -152,10 +169,10 @@ class ChatgroupForm extends React.Component {
 
             </FormFullField>
 
-            <VirtualizedSelect
+            <Select
               className='form_field'
               multi
-              async
+
               backspaceRemoves={true}
               minimumInput={1}
               onChange={(users) => this.setState({ selectedUser: users })}
@@ -170,7 +187,8 @@ class ChatgroupForm extends React.Component {
               placeholder='Choose users to invite (optional)'
               scrollMenuIntoView={false}
               searchPromptText='Type to search users...'
-
+              optionRenderer={this.renderUserOption}
+              optionHeight={35}
             />
 
             <div className='l-float_children_right'>
