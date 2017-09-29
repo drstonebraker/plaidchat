@@ -21,7 +21,7 @@ ActiveRecord::Base.transaction do
     name: 'Global'
   )
 
-  User.create!(
+  demo_user = User.create!(
     username: 'anonymous_alien',
     password: '1t9xbnxtZbYWw8d90wOkMA'
   )

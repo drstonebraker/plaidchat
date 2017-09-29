@@ -166,6 +166,11 @@ class ChatgroupForm extends React.Component {
               labelKey='username'
 
               loadOptions={this._loadUsersSearch}
+              noResultsText='No users found'
+              placeholder='Choose users to invite (optional)'
+              scrollMenuIntoView={false}
+              searchPromptText='Type to search users...'
+
             />
 
             <div className='l-float_children_right'>
