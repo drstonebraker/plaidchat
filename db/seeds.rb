@@ -31,6 +31,8 @@ ActiveRecord::Base.transaction do
     password: '1t9xbnxtZbYWw8d90wOkMA'
   )
 
+  demo_user.teams << class_team
+
   %w(world news sports music movies tv politics funny videos pics gaming).each do |name|
     channel = Channel.create!(name: name, team_id: global_team.id)
     demo_user.channels << channel
