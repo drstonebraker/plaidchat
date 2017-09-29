@@ -1,24 +1,34 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Plaidchat is portfolio project aiming to clone the core features and design of slack, as a browser-based team chat platform.
 
-Things you may want to cover:
 
-* Ruby version
+## Features
 
-* System dependencies
++ Secure user authentication
++ Users can create their own teams
++ Users can create their own channels
++ Global team available to every user
++ Unique Demo team available each user, demonstrating the features of the application
 
-* Configuration
+## Future Features
 
-* Database creation
++ Users can invite other users to join a team or channel
++ Users can invite non-users to sign up
++ A live chat stream on every channel
++ Users can send direct messages to other users in their team
 
-* Database initialization
+## Stack
 
-* How to run the test suite
++ Ruby on Rails
++ PostgreSQL
++ React
++ Redux
 
-* Services (job queues, cache servers, search engines, etc.)
+## Learning Goals
 
-* Deployment instructions
-
-* ...
++ Build a clean, modular full-stack web application using Rails, React, and Redux.
++ Learn the features and best-practices of using the Sass preprocessor, including mixins and SMACSS
++ Utilize rails callbacks to dynamically generate database records based on user interaction.
++ Implement secure authenticated routes, disabling users from accessing unauthorized resources.
++ Learn and implement the WebSocket protocol for live updates and real-time client-server interaction.
