@@ -1,5 +1,4 @@
 import React from 'react'
-import Select from 'react-select'
 
 import FormFullField from '../../modules/form_full_field'
 import { ErrorsList } from '../../modules/jsx_lists'
@@ -79,21 +78,6 @@ class ChatgroupForm extends React.Component {
       } = this.props
     const { chatgroup } = this.state
 
-
-
-
-    var options = [
-      { value: 'one', label: 'One' },
-      { value: 'two', label: 'Two' }
-    ];
-
-    function logChange(val) {
-      console.log("Selected: " + JSON.stringify(val));
-    }
-
-
-
-
     return (
       <div className='chatgroup_form_view'>
         <div className="l-form_container l-middle">
@@ -123,16 +107,6 @@ class ChatgroupForm extends React.Component {
               <FieldMessages type={formType}/>
 
             </FormFullField>
-
-            <Select
-              className='form_field'
-              name="user[username]"
-              value={['one', 'two']}
-              options={options}
-              onChange={logChange}
-              multi={true}
-              deleteRemoves={true}
-            />
 
             <div className='l-float_children_right'>
 
