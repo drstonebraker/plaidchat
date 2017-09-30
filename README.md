@@ -1,6 +1,6 @@
 # README
 
-[Plaidchat](https://plaidchat.herokuapp.com) is portfolio project aiming to clone the core features and design of [slack](https://slack.com/), a browser-based team chat platform.
+[Plaidchat](https://plaidchat.herokuapp.com) is portfolio project aiming to clone the core features and design of [slack](https://slack.com/), a browser-based team chat platform.  It's service enables any group of people to create a private chat application (called a team) with various chat rooms (called channels) -- usually organized by topic.  Members of a team can communicate with each other remotely over the internet by using the live messaging service made available by slack (and plaidchat).
 
 
 ## Features
@@ -33,3 +33,10 @@
 + Utilize rails callbacks to dynamically generate database records based on user interaction.
 + Implement secure authenticated routes, disabling users from accessing unauthorized resources.
 + Learn and implement the WebSocket protocol for live updates and real-time client-server interaction.
+
+## Details
+
+#### Frontend
+
+
+#### Backend

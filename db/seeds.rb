@@ -38,9 +38,9 @@ ActiveRecord::Base.transaction do
     demo_user.channels << channel
   end
 
-  %w(design timeline planning research).each do |name|
-    channel = Channel.create!(name: name, team_id: class_team.id)
-    demo_user.channels << channel
-  end
+  # %w(design timeline planning research).each do |name|
+  #   channel = Channel.create!(name: name, team_id: class_team.id)
+  #   demo_user.channels << channel
+  # end
 
 end
