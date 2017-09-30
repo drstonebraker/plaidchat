@@ -49,6 +49,8 @@ To demonstrate my ability to implement a full range of style-based feature, plai
 
 Styles were written with attention paid to modularity, maintainability, and best-practices -- allowing for greater speed of development and demonstrating the modularity skills necessary for larger team projects.
 
+In addition, styles were written to responsively accommodate a range of devices and screen sizes.
+
 #### Backend
 
 **Database**
