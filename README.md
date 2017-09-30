@@ -36,26 +36,31 @@
 
 ## Details
 
-#### Frontend
+### Frontend
 
 **Program Design**
+
 The design of my frontend program is based on best-practices developed for React and Redux technologies.  All user data is saved into a global redux store, normalized into separate objects/reducers for modularity and maintainability.  Data is retrieved from a backend api as-needed, and cached on the frontend to enable high performance on every user interaction with the application.
 
 **Authentication**
+
 I installed protected routes which intelligently redirect the user away from unauthorized resources and either back to their most recently-visited channels (if logged in) or to a session log in form.
 
 **User Experience**
+
 To demonstrate my ability to implement a full range of style-based feature, plaidchat's design was based almost entirely off that of slack itself, with modifications made only when appropriate to accommodate the slightly different feature sets of the two applications.
 
 Styles were written with attention paid to modularity, maintainability, and best-practices -- allowing for greater speed of development and demonstrating the modularity skills necessary for larger team projects.
 
 In addition, styles were written to responsively accommodate a range of devices and screen sizes.
 
-#### Backend
+### Backend
 
 **Database**
+
 All user data is persisted to a remote SQL (postgres) relational database.
 The application has rails ActiveRecord models to represent users and their settings, teams, channels, messages, and the relationships that exist between each of them.  With this in place, I was able to add ActiveRecord callbacks which automatically generate appropriate records as users interact with the website. For example, when a user first signs up, they are automatically subscribed to the Global team and its default channels, and a new Demo team is created for them to use as well.
 
 **Authentication**
+
 All api routes which are used to service the frontend on-demand requests for data are securely protected from unauthorized access, such as cross-site request forgery and users who are not logged in.
