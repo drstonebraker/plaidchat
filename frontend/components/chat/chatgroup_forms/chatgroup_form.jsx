@@ -13,22 +13,14 @@ class ChatgroupForm extends React.Component {
       chatgroup: {
         name: '',
       },
-      usersSearch: [],
-
-      clearable: true,
-      disabled: false,
-      githubUsers: [],
-      multi: false,
-      searchable: true,
-      selectedCreatable: null,
-      selectedCity: null
+      userInvites: [],
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.closeModal = this.closeModal.bind(this)
     this.handleEscKey = this.handleEscKey.bind(this)
-    this._loadUsersSearch = this._loadUsersSearch.bind(this)
-    this.renderUserOption = this.renderUserOption.bind(this)
+    this.handleUsersInvitesChange = this.handleUsersInvitesChange.bind(this)
+    this.loadUsersSearch = this.loadUsersSearch.bind(this)
   }
 
   componentDidMount() {
@@ -62,25 +54,25 @@ class ChatgroupForm extends React.Component {
     }
   }
 
-  _loadUsersSearch(query) {
-    return fetch(
-      `api/users/search?query=${query}`,
-      { credentials: 'include' }
-    )
-      .then((response) => {
-        return response.json()
-      })
-      .then((usersSearch) => {
-
-        for (let i = 0; i < usersSearch.length; i++) {
-          usersSearch[i].className = 'users_search__option'
-        }
-
-        this.setState({ usersSearch })
-
-        return { options: usersSearch }
-      })
-  }
+  // _loadUsersSearch(query) {
+  //   return fetch(
+  //     `api/users/search?query=${query}`,
+  //     { credentials: 'include' }
+  //   )
+  //     .then((response) => {
+  //       return response.json()
+  //     })
+  //     .then((usersSearch) => {
+  //
+  //       for (let i = 0; i < usersSearch.length; i++) {
+  //         usersSearch[i].className = 'users_search__option'
+  //       }
+  //
+  //       this.setState({ usersSearch })
+  //
+  //       return { options: usersSearch }
+  //     })
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -132,12 +124,34 @@ class ChatgroupForm extends React.Component {
     )
   }
 
+  ///////////
+
+  handleUsersInvitesChange (values) {
+		this.setState({
+			userInvites: values,
+		});
+	}
+
+  loadUsersSearch (input, callback) {
+    input = input.toLowerCase();
+    this.props.searchUsers(input).then((action) => {
+
+      var data = {
+  			options: action.users,
+  		};
+
+      callback(null, data);
+    });
+	}
+
+  ///////////
+
   render() {
     const {
         formType, headingContent, submitContent, nameErrors, hasNameErrors,
         clearChatgroupErrors, isInvalidName
       } = this.props
-    const { chatgroup, selectedUser, usersSearch } = this.state
+    const { chatgroup, selectedUser, userInvites } = this.state
 
     return (
       <div className='chatgroup_form_view'>
@@ -169,7 +183,7 @@ class ChatgroupForm extends React.Component {
 
             </FormFullField>
 
-            <Select
+            {/*<Select
               className='form_field'
               multi
 
@@ -190,6 +204,16 @@ class ChatgroupForm extends React.Component {
               optionRenderer={this.renderUserOption}
               optionHeight={35}
               isLoading={this.props.isUserSearchLoading}
+            />*/}
+
+            <Select.Async
+              className='form_field'
+              multi
+              value={this.state.userInvites}
+              onChange={this.handleUsersInvitesChange}
+              valueKey='id'
+              labelKey='username'
+              loadOptions={this.loadUsersSearch}
             />
 
             <div className='l-float_children_right'>

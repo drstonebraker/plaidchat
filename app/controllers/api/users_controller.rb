@@ -39,6 +39,8 @@ class Api::UsersController < ApplicationController
       where.not("username LIKE 'anonymous_%'").
       order(:username)
 
+    # debugger
+
     render template: 'api/users/search.json.jbuilder'
   end
 
