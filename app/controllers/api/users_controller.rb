@@ -37,7 +37,8 @@ class Api::UsersController < ApplicationController
       ).
       where.not(id: current_user.id).
       where.not("username LIKE 'anonymous_%'").
-      order(:username)
+      order(:username).
+      limit(200)
 
     # debugger
 
