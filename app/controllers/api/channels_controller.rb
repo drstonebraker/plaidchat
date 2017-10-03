@@ -5,7 +5,9 @@ class Api::ChannelsController < ApplicationController
     @channel = Channel.new(channel_params)
 
     if @channel.save
-      subscribe_current_user!(:channels, @channel)
+      user_ids = [current_user.id] + params[:channel][:user_ids]
+      subscribe_user_ids!(user_ids, [@channel])
+
       set_as_default!
       render :show
     else
