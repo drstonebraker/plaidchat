@@ -1,93 +1,49 @@
 import React from 'react'
 import Modal from 'react-modal'
+import merge from 'lodash.merge'
 
 import { modalStyle } from '../../../util/modal_style'
-import ModalSection from '../modals/modal_section.jsx'
-import getSwitchTeamLinks from './get_switch_team_links.jsx'
 
-class SidenavHeaderModal extends React.Component {
+class InviteConfirmModal extends React.Component {
   constructor(props) {
     super(props)
-    this.switchToTeam = this.switchToTeam.bind(this)
-    this.openNewTeamForm = this.openNewTeamForm.bind(this)
   }
 
   componentDidMount() {
 
   }
 
-  switchToTeam(teamId) {
-    return () => {
-      this.props.onRequestClose()
-      this.props.history.push(`/messages/${teamId}`)
-    }
-  }
-
-  logout() {
-    return () => {
-      this.props.onRequestClose()
-      return this.props.logout().then(
-        () => this.props.history.push(`/`)
-      )
-    }
-  }
-
-  openNewTeamForm() {
-    this.props.onRequestClose()
-    this.props.openChatGroupModal('createTeam')
-  }
 
   render() {
     const {
-      isOpen, onRequestClose, currentUser, teamName, channelName,
-      teams, match
+      isOpen, chatgroupType
     } = this.props
+
+    const newContent = Object.assign(
+      modalStyle.content,
+      {
+        top: '1rem',
+        right: '1rem',
+        bottom: 'unset',
+        left: 'unset',
+        width: 'auto',
+      }
+    )
 
     const newModalStyle = Object.assign(
       modalStyle,
-      { maxHeight: 'calc(100vh - 10.7rem)' }
-    )
-
-    const switchTeamLinks = getSwitchTeamLinks(
-      teams, match.params.teamId, this.switchToTeam
+      { content: newContent }
     )
 
     return (
       <Modal
         style={ newModalStyle }
         closeTimeoutMS={100}
-        contentLabel="User Menu"
+        contentLabel="User Invite Success Alert"
         isOpen={isOpen}
-        onRequestClose={onRequestClose}
       >
-        <div className="modal_content modal_content--scroll">
-
-          <ModalSection
-            heading={currentUser.username}
-          >
-
-            <li key='1' onClick={this.logout()} >
-              Sign Out
-            </li>
-            <li key='2' onClick={this.openNewTeamForm} >
-              Create a new team
-            </li>
-
-          </ModalSection>
-
-          <ModalSection
-            heading={teamName}
-          >
-
-            <li key='3' onClick={() => {}} >
-              Invite users to team <strong>{teamName}</strong>
-            </li>
-
-          </ModalSection>
-
-          <ModalSection>
-            {switchTeamLinks}
-          </ModalSection>
+        <div className="modal_content">
+          Users added to { chatgroupType }
 
         </div>
 
@@ -96,4 +52,4 @@ class SidenavHeaderModal extends React.Component {
   }
 }
 
-export default SidenavHeaderModal
+export default InviteConfirmModal

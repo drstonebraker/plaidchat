@@ -5,6 +5,8 @@ import ChannelRedirectContainer from
   './channel_redirects/channel_redirect_container'
 import ChatgroupModalContainer from
   './chatgroup_forms/chatgroup_modal_container'
+import InviteConfirmModalContainer from
+  './chatgroup_forms/invite_confirm_modal_container'
 
 class ChatView extends React.Component {
   constructor(props) {
@@ -43,6 +45,7 @@ class ChatView extends React.Component {
       <div className='chat_view'>
         <ChatSideNav />
         <ChatgroupModalContainer />
+        <InviteConfirmModalContainer />
       </div>
     )
   }

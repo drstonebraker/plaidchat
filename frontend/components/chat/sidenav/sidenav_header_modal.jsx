@@ -47,7 +47,9 @@ class SidenavHeaderModal extends React.Component {
 
     const newModalStyle = Object.assign(
       modalStyle,
-      { maxHeight: 'calc(100vh - 10.7rem)' }
+      {
+        maxHeight: 'calc(100vh - 10.7rem)'
+      }
     )
 
     const switchTeamLinks = getSwitchTeamLinks(

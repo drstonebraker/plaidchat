@@ -32,11 +32,10 @@ export const modalStyleFull = {
     left: '0rem',
     bottom: '0rem',
     right: '0rem',
-    overflow: 'auto',
+    overflow: 'none',
     width: 'auto',
     border: 'none',
     borderRadius: '0rem',
     boxShadow: 'none',
-
   }
 }
