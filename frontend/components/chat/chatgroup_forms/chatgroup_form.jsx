@@ -1,5 +1,4 @@
 import React from 'react'
-import Select from 'react-select'
 
 import FormFullField from '../../modules/form_full_field'
 import { ErrorsList } from '../../modules/jsx_lists'
@@ -133,7 +132,7 @@ class ChatgroupForm extends React.Component {
               <FieldMessages type={formType}/>
 
             </FormFullField>
-
+            
 
             <Select.Async
               className='form_field'
