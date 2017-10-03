@@ -3,8 +3,11 @@ import {
   CLOSE_SIDENAV_HEADER_MODAL,
   OPEN_CHATGROUP_MODAL,
   CLOSE_CHATGROUP_MODAL,
+  OPEN_INVITE_CONFIRM_MODAL,
+  CLOSE_INVITE_CONFIRM_MODAL,
   SET_CHATGROUP_FORM_TYPE,
   LOADING_USERS_SEARCH,
+  SENDING_USER_INVITES,
 } from '../actions/ui_actions';
 import {
   RECEIVE_USERS_SEARCH
@@ -31,14 +34,24 @@ const uiReducer = (state = defaultState, action) => {
       return newState;
     case OPEN_CHATGROUP_MODAL:
       newState.isChatGroupModalOpen = true
+      newState.isUserInvitesSent = false
       newState.chatgroupFormType = action.formType
       return newState;
     case CLOSE_CHATGROUP_MODAL:
       newState.isChatGroupModalOpen = false
       newState.chatgroupFormType = null
       return newState;
+    case OPEN_INVITE_CONFIRM_MODAL:
+      newState.isInviteConfirmModalOpen = action.formType
+      return newState;
+    case CLOSE_INVITE_CONFIRM_MODAL:
+      newState.isInviteConfirmModalOpen = null
+      return newState;
     case LOADING_USERS_SEARCH:
       newState.loadingUsersSearch = true
+      return newState;
+    case SENDING_USER_INVITES:
+      newState.isUserInvitesSent = true
       return newState;
     case RECEIVE_USERS_SEARCH:
       newState.usersSearch = action.users

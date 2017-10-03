@@ -10,8 +10,13 @@ import { createChannel } from
   '../../../actions/channel_actions';
 import { searchUsers } from
   '../../../actions/user_actions';
-import { closeChatGroupModal, loadingUsersSearch } from
-  '../../../actions/ui_actions';
+import {
+  closeChatGroupModal,
+  loadingUsersSearch,
+  openInviteConfirmModal,
+  closeInviteConfirmModal,
+  sendingUserInvites,
+} from '../../../actions/ui_actions';
 import { updateDefaultTeam } from '../../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -49,6 +54,7 @@ const mapStateToProps = (state, ownProps) => {
     isInvalidName: ErrorsSelector.isInvalid(errors, 'name'),
     isUserSearchLoading: state.ui.isUserSearchLoading,
     usersSearch: state.ui.usersSearch,
+    isUserInvitesSent: state.ui.isUserInvitesSent
   };
 };
 
@@ -64,6 +70,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     )),
     loadingUsersSearch: () => dispatch(loadingUsersSearch()),
     searchUsers: query => dispatch(searchUsers(query)),
+    openInviteConfirmModal: (formType) => dispatch(
+      openInviteConfirmModal(formType)
+    ),
+    closeInviteConfirmModal: () => dispatch(closeInviteConfirmModal()),
+    sendingUserInvites: () => dispatch(sendingUserInvites())
   };
 };
 

@@ -57,18 +57,29 @@ class ChatgroupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
+    const {
+      formType, closeChatGroupModal, history, openInviteConfirmModal,
+      sendingUserInvites, closeInviteConfirmModal
+    } = this.props
     const { teamId: currentTeamId } = this.props.match.params
+
+    if (this.state.userInvites.length > 0) { sendingUserInvites() }
+
     const newChatgroup = Object.assign(
       {teamId: currentTeamId},
       this.state.chatgroup,
       { userIds: this.state.userInvites }
     )
 
-    this.props[this.props.formType](newChatgroup)
+    this.props[formType](newChatgroup)
       .then((action) => {
         const { teamId, defaultChannelId } = action.teamMembership
-        this.props.closeChatGroupModal()
-        this.props.history.push(`/messages/${teamId}/${defaultChannelId}`)
+        closeChatGroupModal()
+        history.push(`/messages/${teamId}/${defaultChannelId}`)
+        if (this.props.isUserInvitesSent) {
+          openInviteConfirmModal(formType)
+          setTimeout(closeInviteConfirmModal, 5000)
+        }
       })
   }
 

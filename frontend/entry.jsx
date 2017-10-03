@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
       chatgroupFormType: null,
       usersSearch: [],
       isUserSearchLoading: false,
+      isUserInvitesSent: false,
+      isInviteConfirmModalOpen: false,
     },
     errors: {
       session: {
