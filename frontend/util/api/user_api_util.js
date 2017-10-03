@@ -6,3 +6,11 @@ export const patchUser = (user) => (
     contentType: 'application/json'
   })
 )
+
+export const getUsersSearch = (query) => (
+  $.ajax({
+    method: 'GET',
+    url: `api/users/search?query=${query}`,
+    contentType: 'application/json'
+  })
+)

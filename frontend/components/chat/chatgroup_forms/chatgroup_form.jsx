@@ -189,6 +189,7 @@ class ChatgroupForm extends React.Component {
               searchPromptText='Type to search users...'
               optionRenderer={this.renderUserOption}
               optionHeight={35}
+              isLoading={this.props.isUserSearchLoading}
             />
 
             <div className='l-float_children_right'>

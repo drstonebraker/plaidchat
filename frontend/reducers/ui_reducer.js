@@ -37,6 +37,12 @@ const uiReducer = (state = defaultState, action) => {
       newState.isChatGroupModalOpen = false
       newState.chatgroupFormType = null
       return newState;
+    case LOADING_USERS_SEARCH:
+      newState.loadingUsersSearch = true
+      return newState;
+    case RECEIVE_USERS_SEARCH:
+      newState.usersSearch = action.users
+      return newState;
     default:
       return state;
   }

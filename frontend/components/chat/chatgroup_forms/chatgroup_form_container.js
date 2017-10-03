@@ -8,7 +8,7 @@ import { createTeam, clearChatgroupErrors } from
   '../../../actions/team_actions';
 import { createChannel } from
   '../../../actions/channel_actions';
-import { usersSearch } from
+import { searchUsers } from
   '../../../actions/user_actions';
 import { closeChatGroupModal, loadingUsersSearch } from
   '../../../actions/ui_actions';
@@ -42,6 +42,8 @@ const mapStateToProps = (state, ownProps) => {
     nameErrors: ErrorsSelector.getErrors(errors, 'name'),
     hasNameErrors: ErrorsSelector.hasErrors(errors, 'name'),
     isInvalidName: ErrorsSelector.isInvalid(errors, 'name'),
+    isUserSearchLoading: state.ui.isUserSearchLoading,
+    usersSearch: state.ui.usersSearch,
   };
 };
 
@@ -55,6 +57,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     createChannel: channel => dispatch(createChannel(
       Object.assign(channel)
     )),
+    loadingUsersSearch: () => dispatch(loadingUsersSearch()),
+    searchUsers: query => dispatch(searchUsers(query)),
   };
 };
 
