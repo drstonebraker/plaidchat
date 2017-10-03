@@ -33,7 +33,7 @@ class Api::UsersController < ApplicationController
   def search
     @users = User.where(
         "LOWER(username) LIKE ?",
-        "%#{params[:query].downcase.chars.join('%')}%"
+        "#{params[:query].downcase}%"
       ).
       where.not(id: current_user.id).
       where.not("username LIKE 'anonymous_%'").
