@@ -2,7 +2,6 @@ class Api::TeamsController < ApplicationController
   before_action :require_login, only: %i(create)
 
   def create
-    debugger
     @team = Team.new(team_params)
 
 

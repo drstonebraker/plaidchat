@@ -9,14 +9,6 @@
   @include overflow_ellipses;
 }
 
-.modal_content--alert {
-  box-sizing: border-box;
-  font-family: $lato;
-  padding: 1.5rem;
-  font-size: 1.4rem;
-}
-
-
 .modal_content--scroll {
   @include scrollable_light_bg;
 }

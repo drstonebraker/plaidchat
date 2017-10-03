@@ -48,7 +48,7 @@ class InviteConfirmModal extends React.Component {
           <span className='modal_content__icon modal_content__icon--success'>
             ✔
           </span>
-          Users added to { chatgroupType }
+          <span>Users added to { chatgroupType }</span>
         </div>
 
       </Modal>

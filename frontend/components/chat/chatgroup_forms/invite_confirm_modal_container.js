@@ -6,7 +6,7 @@ const mapStateToProps = (state, ownProps) => {
 
   let chatgroupType;
 
-  switch (state.ui.isInviteConfirmModalOpen) {
+  switch (state.ui.inviteConfirmModalType) {
     case 'createTeam':
       chatgroupType = 'team'
       break;
@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     chatgroupType,
-    isOpen: Boolean(state.ui.isInviteConfirmModalOpen),
+    isOpen: state.ui.isInviteConfirmModalOpen,
   };
 };
 

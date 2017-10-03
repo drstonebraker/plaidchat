@@ -77,8 +77,10 @@ class ChatgroupForm extends React.Component {
         closeChatGroupModal()
         history.push(`/messages/${teamId}/${defaultChannelId}`)
         if (this.props.isUserInvitesSent) {
-          openInviteConfirmModal(formType)
-          setTimeout(closeInviteConfirmModal, 4000)
+          setTimeout(() => {
+            openInviteConfirmModal(formType)
+            setTimeout(closeInviteConfirmModal, 3000)
+          }, 500)
         }
       })
   }

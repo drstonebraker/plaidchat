@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
       usersSearch: [],
       isUserSearchLoading: false,
       isUserInvitesSent: false,
-      isInviteConfirmModalOpen: null//'createTeam',
+      isInviteConfirmModalOpen: false,
+      inviteConfirmModalType: null
     },
     errors: {
       session: {
