@@ -54,28 +54,12 @@ class ChatgroupForm extends React.Component {
     }
   }
 
-  // _loadUsersSearch(query) {
-  //   return fetch(
-  //     `api/users/search?query=${query}`,
-  //     { credentials: 'include' }
-  //   )
-  //     .then((response) => {
-  //       return response.json()
-  //     })
-  //     .then((usersSearch) => {
-  //
-  //       for (let i = 0; i < usersSearch.length; i++) {
-  //         usersSearch[i].className = 'users_search__option'
-  //       }
-  //
-  //       this.setState({ usersSearch })
-  //
-  //       return { options: usersSearch }
-  //     })
-  // }
-
   handleSubmit(e) {
     e.preventDefault();
+
+    console.log(this.state);
+    debugger
+
     const { teamId: currentTeamId } = this.props.match.params
     const newChatgroup = Object.assign(
       {teamId: currentTeamId},
@@ -94,41 +78,10 @@ class ChatgroupForm extends React.Component {
     this.props.closeChatGroupModal()
   }
 
-  renderUserOption({
-    key, option
-  }) {
-    console.log(arguments);
-
-    const style = {
-      height: '3.5rem',
-      margin: '0.4rem',
-      borderRadius: '0.3rem',
-      lineHeight: '3.5rem',
-      fontSize: '1.4rem',
-      fontWeight: '900',
-      boxSizing: 'border-box',
-      padding: '0 1rem',
-      cursor: 'pointer',
-
-
-
-    }
-
-    return (
-      <div
-        key={key}
-        style={style}
-      >
-        { option.username }
-      </div>
-    )
-  }
-
-  ///////////
-
-  handleUsersInvitesChange (values) {
+  handleUsersInvitesChange (users) {
+    const userIds = users.map(user => user.id)
 		this.setState({
-			userInvites: values,
+			userInvites: userIds,
 		});
 	}
 
@@ -144,14 +97,12 @@ class ChatgroupForm extends React.Component {
     });
 	}
 
-  ///////////
-
   render() {
     const {
         formType, headingContent, submitContent, nameErrors, hasNameErrors,
         clearChatgroupErrors, isInvalidName
       } = this.props
-    const { chatgroup, selectedUser, userInvites } = this.state
+    const { chatgroup, userInvites } = this.state
 
     return (
       <div className='chatgroup_form_view'>
@@ -183,38 +134,20 @@ class ChatgroupForm extends React.Component {
 
             </FormFullField>
 
-            {/*<Select
-              className='form_field'
-              multi
-
-              backspaceRemoves={true}
-              minimumInput={1}
-              onChange={(users) => this.setState({ selectedUser: users })}
-              value={selectedUser}
-              options={usersSearch}
-
-              valueKey='id'
-              labelKey='username'
-
-              loadOptions={this._loadUsersSearch}
-              noResultsText='No users found'
-              placeholder='Choose users to invite (optional)'
-              scrollMenuIntoView={false}
-              searchPromptText='Type to search users...'
-              optionRenderer={this.renderUserOption}
-              optionHeight={35}
-              isLoading={this.props.isUserSearchLoading}
-            />*/}
 
             <Select.Async
               className='form_field'
               multi
-              value={this.state.userInvites}
+              value={userInvites}
               onChange={this.handleUsersInvitesChange}
               valueKey='id'
               labelKey='username'
               loadOptions={this.loadUsersSearch}
+              noResultsText='No users found'
+              placeholder='Choose users to invite (optional)'
+              searchPromptText='Type to search users...'
             />
+
 
             <div className='l-float_children_right'>
 
