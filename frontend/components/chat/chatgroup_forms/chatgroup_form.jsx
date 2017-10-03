@@ -87,7 +87,11 @@ class ChatgroupForm extends React.Component {
 
   loadUsersSearch (input, callback) {
     input = input.toLowerCase();
-    this.props.searchUsers(input).then((action) => {
+    const { teamId, formType } = this.props
+    let query = `query=${input}`
+    if (formType === 'createChannel') { query += `&team_id=${teamId}` }
+
+    this.props.searchUsers(query).then((action) => {
 
       var data = {
   			options: action.users,

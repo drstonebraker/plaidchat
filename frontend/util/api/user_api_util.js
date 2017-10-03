@@ -10,7 +10,7 @@ export const patchUser = (user) => (
 export const getUsersSearch = (query) => (
   $.ajax({
     method: 'GET',
-    url: `api/users/search?query=${query}`,
+    url: `api/users/search?${query}`,
     contentType: 'application/json'
   })
 )

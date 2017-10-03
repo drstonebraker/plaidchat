@@ -40,7 +40,10 @@ class Api::UsersController < ApplicationController
       order(:username).
       limit(200)
 
-    # debugger
+    if params[:team_id]
+      @users = @users.includes(:teams).
+        where(teams: { id: params[:team_id] })
+    end
 
     render template: 'api/users/search.json.jbuilder'
   end

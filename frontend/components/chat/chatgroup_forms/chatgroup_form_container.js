@@ -39,6 +39,7 @@ const mapStateToProps = (state, ownProps) => {
     formType,
     headingContent,
     submitContent,
+    teamId: ownProps.match.params.teamId,
     nameErrors: ErrorsSelector.getErrors(errors, 'name'),
     hasNameErrors: ErrorsSelector.hasErrors(errors, 'name'),
     isInvalidName: ErrorsSelector.isInvalid(errors, 'name'),

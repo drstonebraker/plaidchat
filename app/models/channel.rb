@@ -21,7 +21,7 @@ class Channel < ApplicationRecord
   #####################
 
   belongs_to :team
-  
+
   has_many :team_memberships_as_default,
     primary_key: :id,
     foreign_key: :default_channel_id,
@@ -29,6 +29,10 @@ class Channel < ApplicationRecord
 
   has_many :channel_memberships,
     dependent: :destroy
+
+  has_many :users,
+    through: :channel_memberships,
+    source: :user
 
   ######################
   # custom validations
