@@ -17,9 +17,14 @@ ActiveRecord::Base.transaction do
   ChannelMembership.destroy_all
 
 
-  Team.create!(
+  global_team = Team.create!(
     name: 'Global'
   )
+
+
+  # class_team = Team.create!(
+  #   name: 'Business Class Project'
+  # )
 
   demo_user = User.create!(
     username: 'anonymous_alien',
@@ -38,5 +43,17 @@ ActiveRecord::Base.transaction do
       password: '1t9xbnxtZbYWw8d90wOkMA'
     )
   end
+
+  # demo_user.teams << class_team
+
+  %w(world news sports music movies tv politics funny videos pics gaming).each do |name|
+    channel = Channel.create!(name: name, team_id: global_team.id)
+    demo_user.channels << channel
+  end
+
+  # %w(design timeline planning research).each do |name|
+  #   channel = Channel.create!(name: name, team_id: class_team.id)
+  #   demo_user.channels << channel
+  # end
 
 end
