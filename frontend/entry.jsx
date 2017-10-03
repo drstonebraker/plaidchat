@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
       isSideNavHeaderModalOpen: false,
       isChatGroupModalOpen: false,
       chatgroupFormType: null,
-      usersSearch: []
+      usersSearch: [],
+      isUserSearchLoading: false,
     },
     errors: {
       session: {
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       channel: {
         name: []
-      }
+      },
     }
   }
 

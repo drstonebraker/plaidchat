@@ -12,7 +12,7 @@ export const receiveUserErrors = errors => ({
 export const receiveUsersSearch = users => ({
   type: RECEIVE_USERS_SEARCH,
   users
-});
+})
 
 export const editUser = user => dispatch => (
   UserUtil.patchUser(user)
@@ -20,7 +20,8 @@ export const editUser = user => dispatch => (
           error => dispatch(receiveUserErrors(error.responseJSON)))
 );
 
-export const usersSearch = query => dispatch => (
+export const searchUsers = query => dispatch => (
   UserUtil.getUsersSearch(query)
-    .then(users => dispatch(receiveUsersSearch(users)))
-)
+    .then(users => dispatch(receiveUsersSearch(users)),
+          error => console.log('error: ', error))
+);

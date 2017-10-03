@@ -12,12 +12,14 @@ class ChatgroupForm extends React.Component {
       chatgroup: {
         name: '',
       },
-      users: []
+      userInvites: [],
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.closeModal = this.closeModal.bind(this)
     this.handleEscKey = this.handleEscKey.bind(this)
+    this.handleUsersInvitesChange = this.handleUsersInvitesChange.bind(this)
+    this.loadUsersSearch = this.loadUsersSearch.bind(this)
   }
 
   componentDidMount() {
@@ -53,6 +55,10 @@ class ChatgroupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
+    console.log(this.state);
+    debugger
+
     const { teamId: currentTeamId } = this.props.match.params
     const newChatgroup = Object.assign(
       {teamId: currentTeamId},
@@ -71,12 +77,31 @@ class ChatgroupForm extends React.Component {
     this.props.closeChatGroupModal()
   }
 
+  handleUsersInvitesChange (users) {
+    const userIds = users.map(user => user.id)
+		this.setState({
+			userInvites: userIds,
+		});
+	}
+
+  loadUsersSearch (input, callback) {
+    input = input.toLowerCase();
+    this.props.searchUsers(input).then((action) => {
+
+      var data = {
+  			options: action.users,
+  		};
+
+      callback(null, data);
+    });
+	}
+
   render() {
     const {
         formType, headingContent, submitContent, nameErrors, hasNameErrors,
         clearChatgroupErrors, isInvalidName
       } = this.props
-    const { chatgroup } = this.state
+    const { chatgroup, userInvites } = this.state
 
     return (
       <div className='chatgroup_form_view'>
@@ -107,6 +132,21 @@ class ChatgroupForm extends React.Component {
               <FieldMessages type={formType}/>
 
             </FormFullField>
+            
+
+            <Select.Async
+              className='form_field'
+              multi
+              value={userInvites}
+              onChange={this.handleUsersInvitesChange}
+              valueKey='id'
+              labelKey='username'
+              loadOptions={this.loadUsersSearch}
+              noResultsText='No users found'
+              placeholder='Choose users to invite (optional)'
+              searchPromptText='Type to search users...'
+            />
+
 
             <div className='l-float_children_right'>
 

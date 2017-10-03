@@ -4,6 +4,7 @@ import {
   OPEN_CHATGROUP_MODAL,
   CLOSE_CHATGROUP_MODAL,
   SET_CHATGROUP_FORM_TYPE,
+  LOADING_USERS_SEARCH,
 } from '../actions/ui_actions';
 import {
   RECEIVE_USERS_SEARCH
@@ -11,7 +12,10 @@ import {
 
 const defaultState = {
   isSideNavHeaderModalOpen: false,
-  isChatGroupModalOpen: false
+  isChatGroupModalOpen: false,
+  chatgroupFormType: null,
+  usersSearch: [],
+  isUserSearchLoading: false,
 };
 
 const uiReducer = (state = defaultState, action) => {
@@ -33,8 +37,11 @@ const uiReducer = (state = defaultState, action) => {
       newState.isChatGroupModalOpen = false
       newState.chatgroupFormType = null
       return newState;
+    case LOADING_USERS_SEARCH:
+      newState.loadingUsersSearch = true
+      return newState;
     case RECEIVE_USERS_SEARCH:
-      newState.users = action.users
+      newState.usersSearch = action.users
       return newState;
     default:
       return state;
