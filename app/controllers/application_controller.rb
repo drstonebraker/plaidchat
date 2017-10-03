@@ -46,4 +46,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def subscribe_user_ids!(new_user_ids, chatgroups)
+    chatgroups.each do |chatgroup|
+      uniq_ids = chatgroup.user_ids.concat(new_user_ids).uniq
+      chatgroup.user_ids = uniq_ids
+    end    
+  end
+
 end

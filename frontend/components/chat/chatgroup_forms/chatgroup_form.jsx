@@ -57,13 +57,11 @@ class ChatgroupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    console.log(this.state);
-    debugger
-
     const { teamId: currentTeamId } = this.props.match.params
     const newChatgroup = Object.assign(
       {teamId: currentTeamId},
-      this.state.chatgroup
+      this.state.chatgroup,
+      { userIds: this.state.userInvites }
     )
 
     this.props[this.props.formType](newChatgroup)
