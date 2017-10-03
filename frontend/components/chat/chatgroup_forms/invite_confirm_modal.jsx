@@ -20,6 +20,7 @@ class InviteConfirmModal extends React.Component {
     } = this.props
 
     const newContent = Object.assign(
+      {},
       modalStyle.content,
       {
         top: '1rem',
@@ -31,6 +32,7 @@ class InviteConfirmModal extends React.Component {
     )
 
     const newModalStyle = Object.assign(
+      {},
       modalStyle,
       { content: newContent }
     )
@@ -42,9 +44,11 @@ class InviteConfirmModal extends React.Component {
         contentLabel="User Invite Success Alert"
         isOpen={isOpen}
       >
-        <div className="modal_content">
+        <div className="modal_content modal_content--alert">
+          <span className='modal_content__icon modal_content__icon--success'>
+            ✔
+          </span>
           Users added to { chatgroupType }
-
         </div>
 
       </Modal>
