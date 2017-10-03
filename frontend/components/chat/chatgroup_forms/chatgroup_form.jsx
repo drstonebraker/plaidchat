@@ -104,7 +104,7 @@ class ChatgroupForm extends React.Component {
   render() {
     const {
         formType, headingContent, submitContent, nameErrors, hasNameErrors,
-        clearChatgroupErrors, isInvalidName
+        clearChatgroupErrors, isInvalidName, inviteType
       } = this.props
     const { chatgroup, userInvites } = this.state
 
@@ -148,7 +148,7 @@ class ChatgroupForm extends React.Component {
               labelKey='username'
               loadOptions={this.loadUsersSearch}
               noResultsText='No users found'
-              placeholder='Choose users to invite (optional)'
+              placeholder={`Choose ${inviteType} to invite (optional)`}
               searchPromptText='Type to search users...'
             />
 

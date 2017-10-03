@@ -19,6 +19,7 @@ const mapStateToProps = (state, ownProps) => {
   let headingContent;
   let submitContent;
   let errors;
+  let inviteType;
 
   switch (state.ui.chatgroupFormType) {
     case 'createTeam':
@@ -26,12 +27,14 @@ const mapStateToProps = (state, ownProps) => {
       headingContent = 'Create a new team'
       submitContent = 'Create Team'
       errors = state.errors.team;
+      inviteType = 'users'
       break;
     case 'createChannel':
       formType = 'createChannel'
       headingContent = 'Create a new channel'
       submitContent = 'Create Channel'
       errors = state.errors.channel;
+      inviteType = 'team members'
       break;
   }
 
@@ -39,6 +42,7 @@ const mapStateToProps = (state, ownProps) => {
     formType,
     headingContent,
     submitContent,
+    inviteType,
     teamId: ownProps.match.params.teamId,
     nameErrors: ErrorsSelector.getErrors(errors, 'name'),
     hasNameErrors: ErrorsSelector.hasErrors(errors, 'name'),
