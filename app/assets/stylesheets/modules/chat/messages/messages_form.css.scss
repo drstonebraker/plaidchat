@@ -1,0 +1,53 @@
+@import '../../../globals/_all.scss';
+
+.messages_view__footer {
+  position: absolute;
+  left: 0rem;
+  right: 0rem;
+  bottom: 0rem;
+  height: 6.6rem;
+}
+
+.message_form {
+  display: block;
+  margin: 0 2rem;
+  box-sizing: border-box;
+  border-radius: 0.6rem;
+  box-shadow: inset 0 0 0 0.2rem $slack_border_thick;
+  height: 4.4rem;
+
+}
+
+.message_form--focus {
+  border: 0.2rem solid $slack_border_color;
+}
+
+.message_form__submit {
+  box-sizing: content-box;
+  cursor: pointer;
+  display: block;
+  float: left;
+  border: 0.2rem solid $slack_border_thick;
+  border-radius: 0.6rem 0rem 0rem 0.6rem;
+  height: 100%;
+  width: 4.4rem;
+
+
+  & * {
+    background-color: $slack_border_thick;
+  }
+
+  &:hover {
+    background-color: $slack_green_button;
+    border-color: $slack_green_button_border;
+
+    & * {
+      background-color: white;
+    }
+  }
+}
+
+.message_form__input_container {
+  display: block;
+  float: left;
+}

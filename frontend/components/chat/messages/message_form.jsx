@@ -12,8 +12,15 @@ class MessageForm extends React.Component {
   render() {
 
     return (
-      <div className='messages_view__form'>
+      <div className='messages_view__footer'>
+        <form className='message_form l-cf'>
+          <input
+            type='submit'
+            className='message_form__submit'
+            value=''
+          />
 
+        </form>
       </div>
     )
   }
