@@ -27,7 +27,7 @@
     "test": "test"
   },
   "scripts": {
-    "postinstall": ""
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
