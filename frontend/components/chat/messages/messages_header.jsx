@@ -12,7 +12,7 @@ class MessagesHeader extends React.Component {
   render() {
 
     return (
-      <div>
+      <div className='messages_view__header'>
 
       </div>
     )

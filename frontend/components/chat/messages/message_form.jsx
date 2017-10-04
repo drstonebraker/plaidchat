@@ -12,7 +12,7 @@ class MessageForm extends React.Component {
   render() {
 
     return (
-      <div>
+      <div className='messages_view__form'>
 
       </div>
     )
