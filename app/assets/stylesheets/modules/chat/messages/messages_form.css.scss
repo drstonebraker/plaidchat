@@ -16,10 +16,17 @@
   box-shadow: inset 0 0 0 0.2rem $slack_border_thick;
   height: 4.4rem;
 
-}
+  &--focus {
+    border: 0.2rem solid $slack_border_color;
 
-.message_form--focus {
-  border: 0.2rem solid $slack_border_color;
+    & .message_form__submit {
+      border: 0.2rem solid $slack_border_color;
+    }
+
+    & .plus_bar {
+      background-color: $slack_border_color;
+    }
+  }
 }
 
 .message_form__submit {
@@ -32,18 +39,37 @@
   height: 100%;
   width: 4.4rem;
 
-
-  & * {
-    background-color: $slack_border_thick;
-  }
-
   &:hover {
     background-color: $slack_green_button;
     border-color: $slack_green_button_border;
 
-    & * {
+    & ~ .plus_group * {
       background-color: white;
     }
+  }
+}
+
+.plus_group {
+  display: inline-block;
+  position: absolute;
+  z-index: 100;
+  top: 2.1rem;
+  left: 3.5rem;
+  pointer-events: none;
+}
+
+.plus_bar {
+  $bar_width: 1.4rem;
+  position: absolute;
+  border-radius: 0.1rem;
+  height: 0.2rem;
+  width: $bar_width;
+  background-color: $slack_submit_plus_color;
+
+  &--horizontal {
+  }
+  &--vertical {
+    transform: rotate(90deg);
   }
 }
 
