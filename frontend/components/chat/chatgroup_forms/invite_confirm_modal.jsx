@@ -1,6 +1,5 @@
 import React from 'react'
 import Modal from 'react-modal'
-import merge from 'lodash.merge'
 
 import { modalStyle } from '../../../util/modal_style'
 
