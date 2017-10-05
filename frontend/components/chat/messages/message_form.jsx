@@ -30,6 +30,8 @@ class MessageForm extends React.Component {
           />
           <Plus />
 
+          
+
         </form>
       </div>
     )
