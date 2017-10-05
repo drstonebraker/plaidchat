@@ -8,7 +8,7 @@
 #  session_token              :string           not null
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
-#  default_team_membership_id :integer          not null
+#  default_team_membership_id :integer
 #
 
 require 'test_helper'

@@ -34,6 +34,9 @@ class Channel < ApplicationRecord
     through: :channel_memberships,
     source: :user
 
+  has_many :messages,
+    class_name: :Message
+
   ######################
   # custom validations
   #####################
