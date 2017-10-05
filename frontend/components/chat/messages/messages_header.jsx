@@ -10,10 +10,13 @@ class MessagesHeader extends React.Component {
   }
 
   render() {
+    const { channel } = this.props;
 
     return (
       <div className='messages_view__header'>
-
+        <div className='messages_header__channel_name'>
+          #{channel ? channel.name : ''}
+        </div>
       </div>
     )
   }
