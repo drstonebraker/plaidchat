@@ -1,0 +1,19 @@
+@import '../../../globals/_all.scss';
+
+.messages_view__header {
+  position: absolute;
+  left: 0rem;
+  right: 0rem;
+  top: 0rem;
+  height: 6rem;
+  border-bottom: .1rem solid $slack_border_light;
+}
+
+.messages_header__channel_name {
+  font-family: $lato;
+  font-weight: 900;
+  padding: 0 0 0 2.1rem;
+  color: $slack_heading_color;
+  font-size: 1.8rem;
+  line-height: 6rem;
+}
