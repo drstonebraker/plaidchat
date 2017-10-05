@@ -5,6 +5,7 @@ import Plus from '../../modules/plus'
 class MessageForm extends React.Component {
   constructor(props) {
     super(props)
+
     this.state = {
       value: ''
     }
@@ -71,7 +72,7 @@ class MessageForm extends React.Component {
             <input
               type='text'
               className='message_form__input'
-              placeholder={`Message #${channel}`}
+              placeholder={`Message #${channel.name}`}
               onChange={this.handleChange}
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
