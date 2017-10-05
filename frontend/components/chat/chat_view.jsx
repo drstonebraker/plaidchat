@@ -1,6 +1,7 @@
 import React from 'react'
 
-import ChatSideNav from './sidenav/chat_sidenav.jsx'
+import ChatSideNav from './sidenav/chat_sidenav'
+import MessagesView from './messages/messages_view'
 import ChannelRedirectContainer from
   './channel_redirects/channel_redirect_container'
 import ChatgroupModalContainer from
@@ -44,6 +45,7 @@ class ChatView extends React.Component {
     return (
       <div className='chat_view'>
         <ChatSideNav />
+        <MessagesView />
         <ChatgroupModalContainer />
         <InviteConfirmModalContainer />
       </div>

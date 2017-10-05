@@ -1,0 +1,19 @@
+@import '../../../globals/_all.scss';
+
+.messages_view {
+  position: fixed;
+  left: 22rem;
+  top: 0rem;
+  right: 0rem;
+  bottom: 0rem;
+  background-color: white;
+}
+
+.messages_view__header {
+  position: absolute;
+  left: 0rem;
+  right: 0rem;
+  top: 0rem;
+  height: 6rem;
+  border-bottom: .1rem solid $slack_border_light;
+}
