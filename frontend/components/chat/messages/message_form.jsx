@@ -72,7 +72,7 @@ class MessageForm extends React.Component {
             <input
               type='text'
               className='message_form__input'
-              placeholder={`Message #${channel.name}`}
+              placeholder={`Message #${channel ? channel.name : ''}`}
               onChange={this.handleChange}
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
