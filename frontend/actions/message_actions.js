@@ -22,6 +22,6 @@ export const receiveMessageErrors = errors => ({
 
 export const createMessage = message => dispatch => (
   MessageUtil.postMessage(message)
-    // .then(res => dispatch(receiveMessage(res)),
+    // .then(() => ()),
     //       error => dispatch(receiveMessageErrors(error.responseJSON)))
 );

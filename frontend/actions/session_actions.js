@@ -7,7 +7,7 @@ export const CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
 
 export const receiveCurrentUser = ({
   user, teams, teamMemberships, channelMemberships,
-  channels, defaultTeamDefaultChannelMessages
+  channels, messages
 }) => ({
   type: RECEIVE_CURRENT_USER,
   user,
@@ -15,7 +15,7 @@ export const receiveCurrentUser = ({
   teamMemberships,
   channels,
   channelMemberships,
-  defaultTeamDefaultChannelMessages,
+  messages,
 });
 
 export const receiveSessionErrors = errors => ({
