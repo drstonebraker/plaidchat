@@ -12,6 +12,7 @@
 
 class Message < ApplicationRecord
   validates :body, presence: true
+  scope :recent, -> { order(created_at: :desc).limit(50) }
 
   belongs_to :user
   belongs_to :channel
