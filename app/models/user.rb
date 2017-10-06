@@ -8,7 +8,7 @@
 #  session_token              :string           not null
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
-#  default_team_membership_id :integer          not null
+#  default_team_membership_id :integer
 #
 
 class User < ApplicationRecord
@@ -59,14 +59,16 @@ class User < ApplicationRecord
     through: :default_team_membership,
     source: :default_channel
 
+  has_many :messages,
+    class_name: :Message
+
+  has_many :default_team_default_channel_messages,
+    through: :default_team_default_channel,
+    source: :messages
+
   def default_team_channel_memberships
     self.channel_memberships.joins(:team).where(teams: {id: self.default_team.id})
   end
-
-  # TODO
-  # has_many :default_team_default_channel_messages,
-  #   through: :default_team_default_channel,
-  #   source: :messages
 
   ######################
   # custom validations
@@ -177,6 +179,14 @@ class User < ApplicationRecord
     association = "#{entity_type}_memberships".to_sym
 
     self.send(association).find_by("#{entity_type}_id" => entity.id)
+  end
+
+  def write_message(message_params)
+    Message.new(
+      body: message_params['body'],
+      channel_id: message_params['channel_id'],
+      user_id: self.id
+    )
   end
 
 end

@@ -8,6 +8,8 @@ import channelEntitiesReducer from
   './channel_entities_reducer.js';
 import channelMembershipEntitiesReducer from
   './channel_membership_entities_reducer.js';
+import messageEntitiesReducer from
+  './message_entities_reducer.js';
 
 const entitiesReducer = combineReducers({
   users: userEntitiesReducer,
@@ -15,7 +17,7 @@ const entitiesReducer = combineReducers({
   teamMemberships: teamMembershipEntitiesReducer,
   channels: channelEntitiesReducer,
   channelMemberships: channelMembershipEntitiesReducer,
-  messages: () => ({}),
+  messages: messageEntitiesReducer,
 });
 
 export default entitiesReducer;
