@@ -8,6 +8,7 @@ class MessagesChannel < ApplicationCable::Channel
   end
 
   def publishMessage(data)
+    debugger
     ActionCable.server.broadcast(params[:channel_name], data['message'])
   end
 end

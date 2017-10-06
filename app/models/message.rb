@@ -13,6 +13,8 @@
 class Message < ApplicationRecord
   validates :body, presence: true
   scope :recent, -> { order(created_at: :desc).limit(50) }
+  
+  after_commit { MessageRelayJob.perform_later(self, self.channel) }
 
   belongs_to :user
   belongs_to :channel

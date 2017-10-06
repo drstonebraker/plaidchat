@@ -57,6 +57,7 @@ class ChatView extends React.Component {
 
   unsubscribeChannels (teamChannels) {
     const { subscriptions } = window.App.cable.subscriptions
+    window.App.webSockets = {}
 
     for (let i = 0; i < subscriptions.length; i++) {
       const subscription = subscriptions[i]
@@ -67,7 +68,8 @@ class ChatView extends React.Component {
   subscribeToSocket (channel) {
     const channelName = `channel_${channel.id}`
     // learned from https://gist.github.com/louisscruz/353429252f6a888262117e3d856ebfc2#file-message-rb
-    window.App.cable.subscriptions.create({
+    window.App.webSockets = window.App.webSockets || {}
+    window.App.webSockets[channel.id] = window.App.cable.subscriptions.create({
       channel: 'MessagesChannel',
       channel_name: channelName
     }, {
@@ -76,9 +78,6 @@ class ChatView extends React.Component {
       received: (data) => {
         this.props.receiveMessage(data.message);
       },
-      publishMessage: (message) => {
-        return this.perform('publishMessage', { message })
-      }
     });
   }
 
