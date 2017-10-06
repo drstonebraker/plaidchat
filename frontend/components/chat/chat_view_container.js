@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 
 import ChatView from './chat_view'
 import { editUser } from '../../actions/user_actions'
+import { receiveMessage } from '../../actions/message_actions'
 import { getEntityIdsByMembership, getMembershipByEntityId } from
   '../../selectors/chat_selectors'
 
@@ -24,6 +25,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     editUser: user => dispatch(
       editUser(Object.assign(user))
     ),
+    receiveMessage: data => dispatch(receiveMessage(data.message)),
   };
 };
 

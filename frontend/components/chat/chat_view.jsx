@@ -12,6 +12,8 @@ import InviteConfirmModalContainer from
 class ChatView extends React.Component {
   constructor(props) {
     super(props)
+
+    this.subscribeToSocket = this.subscribeToSocket.bing(this)
   }
 
   componentDidMount() {
@@ -24,6 +26,20 @@ class ChatView extends React.Component {
     if (oldTeamId !== newTeamId) {
       this.resetDefaultTeamMembershipId(newTeamId)
     }
+  }
+
+  subscribeToSocket (channelName) {
+    // learned from https://gist.github.com/louisscruz/353429252f6a888262117e3d856ebfc2#file-message-rb
+    window.App.cable.subscriptions.create({
+      channel: 'MessagesChannel',
+      channel_name: channelName
+    }, {
+      connected: () => {},
+      disconnected: () => {},
+      received: (data) => {
+        this.props.receiveMessage(data.message);
+      }
+    });
   }
 
   resetDefaultTeamMembershipId(newTeamId) {
