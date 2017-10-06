@@ -13,7 +13,7 @@ class ChatView extends React.Component {
   constructor(props) {
     super(props)
 
-    this.subscribeToSocket = this.subscribeToSocket.bing(this)
+    this.subscribeToSocket = this.subscribeToSocket.bind(this)
   }
 
   componentDidMount() {
@@ -51,9 +51,8 @@ class ChatView extends React.Component {
 
     for (let i = 0; i < teamChannels.length; i++) {
       const channel = teamChannels[i]
-      this.subscribeToSocket(`channel_${channel.id}`)
+      this.subscribeToSocket(channel)
     }
-    // call this from componentDidMount and willReceiveProps?
   }
 
   unsubscribeChannels (teamChannels) {
@@ -65,7 +64,8 @@ class ChatView extends React.Component {
     }
   }
 
-  subscribeToSocket (channelName) {
+  subscribeToSocket (channel) {
+    const channelName = `channel_${channel.id}`
     // learned from https://gist.github.com/louisscruz/353429252f6a888262117e3d856ebfc2#file-message-rb
     window.App.cable.subscriptions.create({
       channel: 'MessagesChannel',
@@ -77,7 +77,7 @@ class ChatView extends React.Component {
         this.props.receiveMessage(data.message);
       },
       publishMessage: (message) => {
-        // TODO...
+        return this.perform('publishMessage', { message })
       }
     });
   }

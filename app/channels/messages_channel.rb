@@ -7,7 +7,7 @@ class MessagesChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def publishMessage
-
+  def publishMessage(data)
+    ActionCable.server.broadcast(params[:channel_name], data['message'])
   end
 end
