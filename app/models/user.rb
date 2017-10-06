@@ -181,4 +181,12 @@ class User < ApplicationRecord
     self.send(association).find_by("#{entity_type}_id" => entity.id)
   end
 
+  def write_message(message_params)
+    Message.new(
+      body: message_params.body,
+      channel_id: message_params.channel_id,
+      user_id: self.id
+    )
+  end
+
 end
