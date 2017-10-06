@@ -18,9 +18,19 @@ class ChatView extends React.Component {
 
   componentDidMount() {
     this.resetDefaultTeamMembershipId(this.props.match.params.teamId)
+    this.subscribeChannels(this.props.teamChannels)
   }
 
   componentWillReceiveProps(nextProps) {
+    this.checkTeamChange(nextProps)
+    this.checkChannelsChange(nextProps)
+  }
+
+  componentWillUnmount () {
+    this.unsubscribeChannels(this.props.teamChannels)
+  }
+
+  checkTeamChange (nextProps) {
     const oldTeamId = Number(this.props.match.params.teamId)
     const newTeamId = Number(nextProps.match.params.teamId)
     if (oldTeamId !== newTeamId) {
@@ -28,26 +38,31 @@ class ChatView extends React.Component {
     }
   }
 
-  subscribeAllChannels () {
-    // subscribe new teams channels.
+  checkChannelsChange (nextProps) {
+    const oldTeamChannels = this.props.teamChannels
+    const newTeamChannels = nextProps.teamChannels
+    if (oldTeamChannels !== newTeamChannels) {
+      this.unsubscribeChannels(oldTeamChannels)
+      this.subscribeChannels(newTeamChannels)
+    }
+  }
+
+  subscribeChannels (teamChannels) {
+
+    for (let i = 0; i < teamChannels.length; i++) {
+      const channel = teamChannels[i]
+      this.subscribeToSocket(`channel_${channel.id}`)
+    }
     // call this from componentDidMount and willReceiveProps?
   }
 
-  unsubscribeAllChannels () {
-    const { teamChannels } = this.props
+  unsubscribeChannels (teamChannels) {
+    const { subscriptions } = window.App.cable.subscriptions
 
-    //remove all subscribed channels, such as in...
-    // https://github.com/RyleySill93/clack/blob/master/frontend/components/channel_list.jsx
-
-    // setSocket (channelName) {
-    //   const channels = values(this.props.channels)
-    //     .concat(this.props.directMessages) || [];
-    //   if (channels.length > 0) {
-    //     window.App.cable.subscriptions.subscriptions
-    //       .forEach(sub => this.removeSocket(sub));
-    //     channels.forEach(channel => this.addSocket(`channel_${channel.id}`));
-    //   }
-    // }
+    for (let i = 0; i < subscriptions.length; i++) {
+      const subscription = subscriptions[i]
+      this.unsubscribeSocket(subscription)
+    }
   }
 
   subscribeToSocket (channelName) {
@@ -60,8 +75,15 @@ class ChatView extends React.Component {
       disconnected: () => {},
       received: (data) => {
         this.props.receiveMessage(data.message);
+      },
+      publishMessage: (message) => {
+        // TODO...
       }
     });
+  }
+
+  unsubscribeSocket (channel) {
+    window.App.cable.subscriptions.remove(channel)
   }
 
   resetDefaultTeamMembershipId(newTeamId) {
