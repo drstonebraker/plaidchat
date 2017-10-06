@@ -16,6 +16,9 @@ class Channel < ApplicationRecord
     message: 'cannot be the same as another channel on this team' }
   validate :valid_name
 
+
+  scope :recent, -> { order(created_at: :desc).limit(3) }
+
   ######################
   #  associations
   #####################
@@ -33,6 +36,9 @@ class Channel < ApplicationRecord
   has_many :users,
     through: :channel_memberships,
     source: :user
+
+  has_many :messages,
+    class_name: :Message
 
   ######################
   # custom validations

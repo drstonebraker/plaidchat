@@ -27,11 +27,12 @@ class MessageForm extends React.Component {
   handleSubmit (e) {
     if (e) { e.preventDefault(); }
 
-    console.log('submitting: ', this.state.value);
-
-    this.setState({
-      value: ''
-    })
+    this.props.createMessage({
+      body: this.state.value,
+      channelId: this.props.channel.id
+    }).then(
+      () => { this.setState({ value: '' }) }
+    )
   }
 
   handleChange (e) {
