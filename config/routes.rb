@@ -20,7 +20,10 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :update]
     resource :session, only: [:create, :destroy]
     resources :teams, only: [:create]
-    resources :channels, only: [:create]
+    resources :channels, only: [:create] do
+      resources :messages, only: [:index]
+    end
+    resources :messages, only: [:create, :update, :destroy]
     resources :team_memberships, only: [:update]
     get 'users/search', to: 'users#search', as: 'users_search'
     patch 'channels/:id', to: 'channels#make_default', as: 'default_channel'
