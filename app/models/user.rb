@@ -183,8 +183,8 @@ class User < ApplicationRecord
 
   def write_message(message_params)
     Message.new(
-      body: message_params.body,
-      channel_id: message_params.channel_id,
+      body: message_params['body'],
+      channel_id: message_params['channel_id'],
       user_id: self.id
     )
   end

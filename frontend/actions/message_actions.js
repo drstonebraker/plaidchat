@@ -20,13 +20,8 @@ export const receiveMessageErrors = errors => ({
   errors
 });
 
-// export const createChannel = channel => dispatch => (
-//   ChannelUtil.postChannel(channel)
-//     .then(res => dispatch(receiveNewChannel(res)),
-//           error => dispatch(receiveChannelErrors(error.responseJSON)))
-// );
-//
-// export const setDefaultChannel = channelId => dispatch => (
-//   ChannelUtil.patchDefaultChannel(channelId)
-//     .then(res => dispatch(receiveTeamMembership(res)))
-// )
+export const createMessage = message => dispatch => (
+  MessageUtil.postMessage(message)
+    // .then(res => dispatch(receiveMessage(res)),
+    //       error => dispatch(receiveMessageErrors(error.responseJSON)))
+);

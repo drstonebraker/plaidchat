@@ -1,4 +1,5 @@
 import React from 'react'
+import isEqual from 'lodash.isequal'
 
 import ChatSideNav from './sidenav/chat_sidenav'
 import MessagesView from './messages/messages_view'
@@ -41,7 +42,7 @@ class ChatView extends React.Component {
   checkChannelsChange (nextProps) {
     const oldTeamChannels = this.props.teamChannels
     const newTeamChannels = nextProps.teamChannels
-    if (oldTeamChannels !== newTeamChannels) {
+    if (!isEqual(oldTeamChannels.sort(), newTeamChannels.sort())) {
       this.unsubscribeChannels(oldTeamChannels)
       this.subscribeChannels(newTeamChannels)
     }
@@ -75,8 +76,8 @@ class ChatView extends React.Component {
     }, {
       connected: () => {},
       disconnected: () => {},
-      received: (data) => {
-        this.props.receiveMessage(data.message);
+      received: (message) => {
+        this.props.receiveMessage(message);
       },
     });
   }
