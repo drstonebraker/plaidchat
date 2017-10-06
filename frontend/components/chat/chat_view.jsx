@@ -28,6 +28,28 @@ class ChatView extends React.Component {
     }
   }
 
+  subscribeAllChannels () {
+    // subscribe new teams channels.
+    // call this from componentDidMount and willReceiveProps?
+  }
+
+  unsubscribeAllChannels () {
+    const { teamChannels } = this.props
+
+    //remove all subscribed channels, such as in...
+    // https://github.com/RyleySill93/clack/blob/master/frontend/components/channel_list.jsx
+
+    // setSocket (channelName) {
+    //   const channels = values(this.props.channels)
+    //     .concat(this.props.directMessages) || [];
+    //   if (channels.length > 0) {
+    //     window.App.cable.subscriptions.subscriptions
+    //       .forEach(sub => this.removeSocket(sub));
+    //     channels.forEach(channel => this.addSocket(`channel_${channel.id}`));
+    //   }
+    // }
+  }
+
   subscribeToSocket (channelName) {
     // learned from https://gist.github.com/louisscruz/353429252f6a888262117e3d856ebfc2#file-message-rb
     window.App.cable.subscriptions.create({
