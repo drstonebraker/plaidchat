@@ -19,21 +19,32 @@ export default class Splash extends React.Component {
           loop
           muted
           autoPlay
-          className='splash_bg'
+          className='splash__bg'
         >
-          <source src="/assets/splash_bg.mp4" type="video/mp4"/>
-          <source src="/assets/splash_bg.ogv" type="video/ogg"/>
+          <source src="/assets/splash__bg.mp4" type="video/mp4"/>
+          <source src="/assets/splash__bg.ogv" type="video/ogg"/>
         </video>
 
-        
+        <div className='splash__content l-middle'>
+          <h3 className='splash__heading splash__heading--h3'>
+            Chat for teams
+          </h3>
+          <div className='splash__action_container'>
+            <h6 className='splash__heading splash__heading--h6'>
+              A messaging app for teams that need to stay connected... no matter where, no matter when.
+            </h6>
 
-        <button
-          className='l-wire_button l-wire_button--thick l-wire_button--white l-middle'
-          onClick={this.login()}
-          type="button"
-        >
-          Try it now
-        </button>
+            <button
+              className='form_button form_button--submit'
+              onClick={this.login()}
+              type="button"
+            >
+              Try it now
+            </button>
+          </div>
+
+        </div>
+
       </div>
     )
   }

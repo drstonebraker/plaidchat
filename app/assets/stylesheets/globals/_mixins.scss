@@ -58,3 +58,11 @@
     clear: both;
   }
 }
+
+@mixin text-shadow {
+  text-shadow:
+   -1px -1px 2px $slack_shadow_solid_color,
+    1px -1px 2px $slack_shadow_solid_color,
+    -1px 1px 2px $slack_shadow_solid_color,
+     1px 1px 2px $slack_shadow_solid_color;
+}
