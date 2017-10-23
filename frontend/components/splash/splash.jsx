@@ -24,19 +24,11 @@ export default class Splash extends React.Component {
           <source src="/assets/splash_bg.mp4" type="video/mp4"/>
           <source src="/assets/splash_bg.ogv" type="video/ogg"/>
         </video>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+
+        
+
         <button
-          className='l-wire_button'
+          className='l-wire_button l-wire_button--thick l-wire_button--white l-middle'
           onClick={this.login()}
           type="button"
         >

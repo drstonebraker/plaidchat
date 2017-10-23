@@ -66,3 +66,25 @@
     border-color: $slack_wirebutton_dark;
   }
 }
+
+.l-wire_button--thick {
+  font-weight: 900;
+  border: .4rem solid;
+}
+
+.l-wire_button--white {
+  color: white;
+  border-color: white;
+  box-shadow: 0 0 2px 2px $slack_shadow_solid_color,
+    inset 0 0 2px 2px $slack_shadow_solid_color;
+  text-shadow:
+   -1px -1px 2px $slack_shadow_solid_color,
+    1px -1px 2px $slack_shadow_solid_color,
+    -1px 1px 2px $slack_shadow_solid_color,
+     1px 1px 2px $slack_shadow_solid_color;
+
+  &:hover {
+    color: $slack_green;
+    border-color: $slack_green;
+  }
+}
