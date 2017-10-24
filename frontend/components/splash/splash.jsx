@@ -21,8 +21,12 @@ export default class Splash extends React.Component {
           autoPlay
           className='splash__bg'
         >
-          <source src="/assets/splash__bg.mp4" type="video/mp4"/>
-          <source src="/assets/splash__bg.ogv" type="video/ogg"/>
+          <source
+            src="https://res.cloudinary.com/dvcr1kq1u/video/upload/v1508806099/splash__bg_znmdrn.mp4" 
+            type="video/mp4"/>
+          <source
+            src="https://res.cloudinary.com/dvcr1kq1u/video/upload/v1508806098/splash__bg_emdfrf.ogv" 
+            type="video/ogg"/>
         </video>
 
         <div className='splash__content l-middle'>
