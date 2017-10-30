@@ -21,6 +21,9 @@ class Team < ApplicationRecord
   has_many :users,
     through: :team_memberships,
     source: :user
+  has_many :messages,
+    through: :channels,
+    source: :messages
 
   ######################
   # custom validations

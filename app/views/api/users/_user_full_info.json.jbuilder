@@ -31,8 +31,12 @@ if user == current_user
   end
 
   json.messages do
-    json.array! user.default_team_default_channel_messages.recent do |default_team_default_channel_message|
-      json.partial! 'api/messages/message.json.jbuilder', message: default_team_default_channel_message
+    channel_messages = []
+    user.channels.each do |channel|
+      channel_messages += channel.messages.recent
+    end
+    json.array! channel_messages do |message|
+      json.partial! 'api/messages/message.json.jbuilder', message: message
     end
   end
 
