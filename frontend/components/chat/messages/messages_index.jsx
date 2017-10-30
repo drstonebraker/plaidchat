@@ -10,6 +10,8 @@ class MessagesIndex extends React.Component {
   }
 
   render() {
+    const { messages } = this.props
+    console.log(messages);
 
     return (
       <div className='messages_view__index'>
