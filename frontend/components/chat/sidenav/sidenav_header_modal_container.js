@@ -6,7 +6,7 @@ import { closeSidenavHeaderModal, openChatGroupModal } from
   '../../../actions/ui_actions'
 import { logout } from '../../../actions/session_actions'
 import { getEntityName, getEntitiesByMembership } from
-  '../../../selectors/chat_selectors'
+  '../../../selectors/chatgroup_selectors'
 
 const mapStateToProps = (state, ownProps) => {
 

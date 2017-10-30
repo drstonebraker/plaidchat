@@ -8,7 +8,7 @@ import {
   getEntityIdsByMembership,
   getMembershipByEntityId ,
   getSubscribedChannelsByTeamId,
-} from '../../selectors/chat_selectors'
+} from '../../selectors/chatgroup_selectors'
 
 const mapStateToProps = (state, ownProps) => {
 

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 
 import ChatgroupForm from './chatgroup_form.jsx'
 import * as ErrorsSelector from '../../../selectors/errors_selectors'
-import { getUserSearchOptions } from '../../../selectors/chat_selectors'
+import { getUserSearchOptions } from '../../../selectors/chatgroup_selectors'
 import { createTeam, clearChatgroupErrors } from
   '../../../actions/team_actions';
 import { createChannel } from

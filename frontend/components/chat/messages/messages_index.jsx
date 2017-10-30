@@ -12,7 +12,7 @@ class MessagesIndex extends React.Component {
   render() {
 
     return (
-      <div>
+      <div className='messages_view__index'>
 
       </div>
     )

@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import ChannelRedirect from './channel_redirect'
-import { getMembershipByEntityId } from '../../../selectors/chat_selectors'
+import { getMembershipByEntityId } from '../../../selectors/chatgroup_selectors'
 
 const mapStateToProps = (state, ownProps) => {
   const { currentUser } = state.session

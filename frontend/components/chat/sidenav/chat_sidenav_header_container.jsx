@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import ChatSidenavHeader from './chat_sidenav_header.jsx'
-import { getEntityName } from '../../../selectors/chat_selectors'
+import { getEntityName } from '../../../selectors/chatgroup_selectors'
 import { openSidenavHeaderModal } from '../../../actions/ui_actions'
 
 const mapStateToProps = (state, ownProps) => {
