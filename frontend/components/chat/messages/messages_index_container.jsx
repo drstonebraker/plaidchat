@@ -7,7 +7,8 @@ import { getMessagesByChannelId } from '../../../selectors/message_selectors'
 const mapStateToProps = (state, ownProps) => {
   const channelId = ownProps.match.params.channelId
   return {
-    messages: getMessagesByChannelId(channelId, state)
+    channelId,
+    messages: getMessagesByChannelId(channelId, state),
   };
 };
 

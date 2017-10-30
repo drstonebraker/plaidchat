@@ -2,8 +2,14 @@
 
 .messages_view__index_container {
   @include scrollable_light_bg;
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: 100%;
+}
+
+.messages_view__index {
+  max-height: 100%;
+  margin-top: auto;
 }
 
 .message {
@@ -12,5 +18,6 @@
 
 .message__body {
   font-size: 1.5rem;
+  line-height: 2rem;
   color: $slack_message_color;
 }

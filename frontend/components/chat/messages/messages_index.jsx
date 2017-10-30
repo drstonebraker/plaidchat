@@ -8,7 +8,19 @@ class MessagesIndex extends React.Component {
   }
 
   componentDidMount() {
+    this.scrollToBottom()
+  }
 
+  componentDidUpdate(prevProps) {
+    const { messages, channelId } = this.props
+    if (messages.length > prevProps.messages.length ||
+      channelId != prevProps.channelId) {
+      this.scrollToBottom()
+    }
+  }
+
+  scrollToBottom() {
+    this.container.scrollTop = this.container.scrollHeight
   }
 
   render() {
@@ -20,7 +32,9 @@ class MessagesIndex extends React.Component {
     })
 
     return (
-      <div className='messages_view__index_container'>
+      <div
+        ref={container => this.container = container}
+        className='messages_view__index_container'>
         <ul className='messages_view__index'>
           { messagesIndex }
         </ul>
