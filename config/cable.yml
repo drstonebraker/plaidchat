@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://redistogo:ca8613d7e5d981ae69169762c863dc07@grouper.redistogo.com:11155/
   channel_prefix: plaid_chat_production
