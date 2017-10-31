@@ -256,7 +256,7 @@ DEPENDENCIES
   rails (~> 5.1.4)
   rails_12factor
   rb-fsevent
-  redis
+  redis (~> 3.0)
   sass-rails (~> 5.0)
   selenium-webdriver
   serialize_json-rails
