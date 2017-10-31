@@ -26,12 +26,16 @@ class MessagesIndex extends React.Component {
   render() {
     const { messages } = this.props
     let currentUserId = null;
+    let currentCreatedAt = 0;
     const messagesIndex = messages.map((msg) => {
       const prevUserId = currentUserId
+      const prevCreatedAt = currentCreatedAt
       currentUserId = msg.userId
+      currentCreatedAt = msg.createdAt
       return (
           <Message
             prevUserId={prevUserId}
+            prevCreatedAt={prevCreatedAt}
             key={msg.id}
             {...msg} />
       )
