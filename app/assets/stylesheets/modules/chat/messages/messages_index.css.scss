@@ -26,6 +26,12 @@
   }
 }
 
+.message_gutter {
+  position: relative;
+  width: 3.8rem;
+  margin-right: 1rem;
+}
+
 .message_content {
   line-height: 1.8rem;
 }
@@ -43,13 +49,15 @@
   line-height: 1.8rem;
   color: $slack_tip_color;
   font-weight: lighter;
+  width: 10rem;
 
   &--gutter {
     visibility: hidden;
-    position: relative;
+    position: absolute;
     top: 0.2rem;
-    right: 1rem;
+    right: 0.1rem;
     line-height: 1.8rem;
+    text-align: right;
   }
 }
 
