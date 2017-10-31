@@ -28,10 +28,10 @@ class MessagesIndex extends React.Component {
     let currentUserId = null;
     const messagesIndex = messages.map((msg) => {
       const prevUserId = currentUserId
-      currentUserId = msg.user_id
+      currentUserId = msg.userId
       return (
           <Message
-            prevUserId={currentUserId}
+            prevUserId={prevUserId}
             key={msg.id}
             {...msg} />
       )

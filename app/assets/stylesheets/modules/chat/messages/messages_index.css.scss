@@ -20,6 +20,9 @@
 
   &:hover {
     background-color: $slack_bg_light;
+    & .message__createdAt--gutter {
+      visibility: visible;
+    }
   }
 }
 
@@ -40,6 +43,14 @@
   line-height: 1.8rem;
   color: $slack_tip_color;
   font-weight: lighter;
+
+  &--gutter {
+    visibility: hidden;
+    position: relative;
+    top: 0.2rem;
+    right: 1rem;
+    line-height: 1.8rem;
+  }
 }
 
 .message__body {
