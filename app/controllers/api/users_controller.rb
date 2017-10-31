@@ -4,14 +4,12 @@ class Api::UsersController < ApplicationController
   before_action :require_current_user, only: %i(destroy update)
 
   def create
-    puts 'creating new user'
     @user = User.new(user_params)
     if @user.save
       login!(@user)
       render :show
     else
       @errors = [@user.errors.messages]
-      puts '###error:', @errors
       render partial: 'api/shared/errors.json.jbuilder',
         status: 400
     end
