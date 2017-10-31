@@ -20,14 +20,20 @@ class MessagesIndex extends React.Component {
   }
 
   scrollToBottom() {
-    this.container.scrollTop = this.container.scrollHeight
+    this.index.scrollTop = this.index.scrollHeight
   }
 
   render() {
     const { messages } = this.props
+    let currentUserId = null;
     const messagesIndex = messages.map((msg) => {
+      const prevUserId = currentUserId
+      currentUserId = msg.user_id
       return (
-          <Message key={msg.id} {...msg} />
+          <Message
+            prevUserId={currentUserId}
+            key={msg.id}
+            {...msg} />
       )
     })
 
@@ -35,7 +41,9 @@ class MessagesIndex extends React.Component {
       <div
         ref={container => this.container = container}
         className='messages_view__index_container'>
-        <ul className='messages_view__index'>
+        <ul
+          ref={index => this.index = index}
+          className='messages_view__index'>
           { messagesIndex }
         </ul>
       </div>

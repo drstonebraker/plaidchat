@@ -1,23 +1,49 @@
 @import '../../../globals/_all.scss';
 
 .messages_view__index_container {
-  @include scrollable_light_bg;
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
 .messages_view__index {
+  @include scrollable_light_bg;
   max-height: 100%;
   margin-top: auto;
+  padding: 0 0 1.7rem 0;
 }
 
 .message {
+  font-family: $lato;
+  display: flex;
+  padding: 0.3rem 4rem 0.5rem 2.6rem;
 
+  &:hover {
+    background-color: $slack_bg_light;
+  }
+}
+
+.message_content {
+  line-height: 1.8rem;
+}
+
+.message__username {
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+  color: $slack_heading_color;
+  font-weight: 900;
+  margin: 0 0.8rem 0 0;
+}
+
+.message__createdAt {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  color: $slack_tip_color;
+  font-weight: lighter;
 }
 
 .message__body {
   font-size: 1.5rem;
-  line-height: 2rem;
+  line-height: 1.8rem;
   color: $slack_message_color;
 }
