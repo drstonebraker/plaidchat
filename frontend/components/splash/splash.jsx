@@ -5,13 +5,6 @@ export default class Splash extends React.Component {
     super(props)
   }
 
-  login() {
-    return () => (
-      this.props.demoLogin()
-        // .then(() => this.props.history.push('/messages'))
-    )
-  }
-
   render () {
     return (
       <div className='splash'>
@@ -22,10 +15,10 @@ export default class Splash extends React.Component {
           className='splash__bg'
         >
           <source
-            src="https://res.cloudinary.com/dvcr1kq1u/video/upload/v1508806099/splash__bg_znmdrn.mp4" 
+            src="https://res.cloudinary.com/dvcr1kq1u/video/upload/v1508806099/splash__bg_znmdrn.mp4"
             type="video/mp4"/>
           <source
-            src="https://res.cloudinary.com/dvcr1kq1u/video/upload/v1508806098/splash__bg_emdfrf.ogv" 
+            src="https://res.cloudinary.com/dvcr1kq1u/video/upload/v1508806098/splash__bg_emdfrf.ogv"
             type="video/ogg"/>
         </video>
 
@@ -40,7 +33,7 @@ export default class Splash extends React.Component {
 
             <button
               className='form_button form_button--submit'
-              onClick={this.login()}
+              onClick={this.props.signupDemo}
               type="button"
             >
               Try it now

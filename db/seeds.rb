@@ -21,10 +21,10 @@ ActiveRecord::Base.transaction do
     name: 'Global'
   )
 
-  demo_user = User.create!(
-    username: 'anonymous_alien',
-    password: '1t9xbnxtZbYWw8d90wOkMA'
-  )
+  # demo_user = User.create!(
+  #   username: 'anonymous_alien',
+  #   password: '1t9xbnxtZbYWw8d90wOkMA'
+  # )
 
   100.times do
     username = Faker::Internet.user_name

@@ -33,6 +33,12 @@ export const signup = user => dispatch => (
           error => dispatch(receiveSessionErrors(error.responseJSON)))
 );
 
+export const signupDemo = user => dispatch => (
+  AuthUtil.signupDemo()
+    .then(currentUserData => dispatch(receiveCurrentUser(currentUserData)),
+          error => dispatch(receiveSessionErrors(error.responseJSON)))
+);
+
 export const login = user => dispatch => (
   AuthUtil.postSession(user)
     .then(currentUserData => dispatch(receiveCurrentUser(currentUserData)),
