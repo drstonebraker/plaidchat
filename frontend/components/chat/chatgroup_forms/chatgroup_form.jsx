@@ -22,6 +22,7 @@ class ChatgroupForm extends React.Component {
     this.handleEscKey = this.handleEscKey.bind(this)
     this.handleUsersInvitesChange = this.handleUsersInvitesChange.bind(this)
     this.loadUsersSearch = this.loadUsersSearch.bind(this)
+    this.receiveNewChatGroup = this.receiveNewChatGroup.bind(this)
   }
 
   componentDidMount() {
@@ -88,20 +89,19 @@ class ChatgroupForm extends React.Component {
 
   receiveNewChatGroup(action) {
     const {
-      closeChatGroupModal, history
+      closeChatGroupModal, history, entityType
     } = this.props
     const { teamId, defaultChannelId } = action.teamMembership
     closeChatGroupModal()
     history.push(`/messages/${teamId}/${defaultChannelId}`)
-    this.triggerInviteConfirmModal()
+    this.triggerInviteConfirmModal(entityType)
   }
 
-  triggerInviteConfirmModal() {
+  triggerInviteConfirmModal(entityType) {
     const {
-      openInviteConfirmModal, closeInviteConfirmModal, isUserInvitesSent,
-      entityType
+      openInviteConfirmModal, closeInviteConfirmModal, isUserInvitesSent
     } = this.props
-
+    
     if (isUserInvitesSent) {
       setTimeout(() => {
         openInviteConfirmModal(entityType)
