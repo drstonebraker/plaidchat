@@ -19,7 +19,7 @@ class Api::TeamsController < ApplicationController
   end
 
   def invite
-    @team = Team.new(team_params)
+    @team = Team.find(params[:id])
     user_ids = params[:team][:user_ids]
     subscribe_user_ids!(user_ids, [@team, @team.general_channel, @team.random_channel])
     if @team.errors.full_messages.empty?

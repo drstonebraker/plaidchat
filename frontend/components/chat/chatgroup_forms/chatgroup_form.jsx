@@ -62,7 +62,9 @@ class ChatgroupForm extends React.Component {
       actionType, entityType, closeChatGroupModal, history, openInviteConfirmModal,
       sendingUserInvites, closeInviteConfirmModal
     } = this.props
-    const { teamId: currentTeamId } = this.props.match.params
+    const {
+      channelId, teamId: currentTeamId
+    } = this.props.match.params
 
     if (this.state.userInvites.length > 0) { sendingUserInvites() }
 
@@ -71,6 +73,10 @@ class ChatgroupForm extends React.Component {
       this.state.chatgroup,
       { userIds: this.state.userInvites }
     )
+
+    if (actionType === 'invite') {
+      newChatgroup.id =  entityType === 'team' ? currentTeamId : channelId
+    }
 
     const formType = camelCase(`${actionType} ${entityType}`)
 
@@ -86,6 +92,10 @@ class ChatgroupForm extends React.Component {
           }, 500)
         }
       })
+  }
+
+  receiveNewChatGroup(action) {
+
   }
 
   closeModal() {

@@ -18,7 +18,7 @@ class Api::ChannelsController < ApplicationController
   end
 
   def invite
-    @channel = Channel.new(channel_params)
+    @channel = Channel.find(params[:id])
     user_ids = params[:channel][:user_ids]
     subscribe_user_ids!(user_ids, [@channel])
     if @channel.errors.full_messages.empty?
