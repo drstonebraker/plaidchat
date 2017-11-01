@@ -34,6 +34,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
 gem 'rails_12factor'
 
+# for api calls to randomlist; generates demo user info
+gem "http"
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
