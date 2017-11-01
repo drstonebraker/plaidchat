@@ -97,11 +97,13 @@ class ChatgroupForm extends React.Component {
     this.triggerInviteConfirmModal(entityType)
   }
 
+  // entityType must be passed in instead of pulled from props
+  // b/c it is no longer in props after form is closed
   triggerInviteConfirmModal(entityType) {
     const {
       openInviteConfirmModal, closeInviteConfirmModal, isUserInvitesSent
     } = this.props
-    
+
     if (isUserInvitesSent) {
       setTimeout(() => {
         openInviteConfirmModal(entityType)
