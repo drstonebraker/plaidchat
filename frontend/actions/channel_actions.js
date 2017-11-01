@@ -23,6 +23,12 @@ export const createChannel = channel => dispatch => (
           error => dispatch(receiveChannelErrors(error.responseJSON)))
 );
 
+export const inviteChannel = channel => dispatch => (
+  ChannelUtil.patchChannel(channel)
+    .then(res => dispatch(receiveNewChannel(res)),
+          error => dispatch(receiveChannelErrors(error.responseJSON)))
+);
+
 export const setDefaultChannel = channelId => dispatch => (
   ChannelUtil.patchDefaultChannel(channelId)
     .then(res => dispatch(receiveTeamMembership(res)))

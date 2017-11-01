@@ -11,7 +11,6 @@ class SidenavHeaderModal extends React.Component {
   constructor(props) {
     super(props)
     this.switchToTeam = this.switchToTeam.bind(this)
-    this.openNewTeamForm = this.openNewTeamForm.bind(this)
   }
 
   componentDidMount() {
@@ -34,9 +33,22 @@ class SidenavHeaderModal extends React.Component {
     }
   }
 
+  openChatGroupForm(type) {
+    this.props.onRequestClose()
+    this.props.openChatGroupModal(type)
+  }
+
   openNewTeamForm() {
     this.props.onRequestClose()
     this.props.openChatGroupModal('createTeam')
+  }
+
+  openTeamInviteForm() {
+
+  }
+
+  openChannelInviteForm() {
+
   }
 
   render() {
@@ -73,7 +85,7 @@ class SidenavHeaderModal extends React.Component {
             <li key='1' onClick={this.logout()} >
               Sign Out
             </li>
-            <li key='2' onClick={this.openNewTeamForm} >
+            <li key='2' onClick={() => this.openChatGroupForm('createTeam')} >
               Create a new team
             </li>
 
@@ -83,8 +95,11 @@ class SidenavHeaderModal extends React.Component {
             heading={teamName}
           >
 
-            <li key='3' onClick={() => {}} >
+            <li key='3' onClick={() => this.openChatGroupForm('inviteTeam')} >
               Invite users to team <strong>{teamName}</strong>
+            </li>
+            <li key='4' onClick={() => this.openChatGroupForm('inviteChannel')} >
+              Invite users to <strong>#{channelName}</strong>
             </li>
 
           </ModalSection>

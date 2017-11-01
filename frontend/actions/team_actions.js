@@ -29,3 +29,9 @@ export const createTeam = team => dispatch => (
     .then(res => dispatch(receiveNewTeam(res)),
           error => dispatch(receiveTeamErrors(error.responseJSON)))
 );
+
+export const inviteTeam = team => dispatch => (
+  TeamUtil.patchTeam(team)
+    .then(res => dispatch(receiveNewTeam(res)),
+          error => dispatch(receiveTeamErrors(error.responseJSON)))
+);

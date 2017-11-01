@@ -4,9 +4,9 @@ import { withRouter } from 'react-router-dom'
 import ChatgroupForm from './chatgroup_form.jsx'
 import * as ErrorsSelector from '../../../selectors/errors_selectors'
 import { getUserSearchOptions } from '../../../selectors/chatgroup_selectors'
-import { createTeam, clearChatgroupErrors } from
+import { createTeam, inviteTeam, clearChatgroupErrors } from
   '../../../actions/team_actions';
-import { createChannel } from
+import { createChannel, inviteChannel } from
   '../../../actions/channel_actions';
 import { searchUsers } from
   '../../../actions/user_actions';
@@ -49,7 +49,7 @@ const mapStateToProps = (state, ownProps) => {
       errors = state.errors.channel;
       inviteType = 'team members'
       break;
-    case 'teamInvite':
+    case 'inviteTeam':
       actionType = 'invite'
       entityType = 'team'
       headingContent = `Invite users to ${teamName}`
@@ -57,7 +57,7 @@ const mapStateToProps = (state, ownProps) => {
       errors = state.errors.team;
       inviteType = 'users'
       break;
-    case 'channelInvite':
+    case 'inviteChannel':
       actionType = 'invite'
       entityType = 'channel'
       headingContent = `Invite users to ${channelName}`
@@ -90,9 +90,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     closeChatGroupModal: () => dispatch(closeChatGroupModal()),
     clearChatgroupErrors: () => dispatch(clearChatgroupErrors()),
     createTeam: team => dispatch(createTeam(team)),
-    createChannel: channel => dispatch(createChannel(
-      Object.assign(channel)
-    )),
+    createChannel: channel => dispatch(createChannel(channel)),
+    inviteTeam: team => dispatch(inviteTeam(team)),
+    inviteChannel: channel => dispatch(inviteChannel(channel)),
     loadingUsersSearch: () => dispatch(loadingUsersSearch()),
     searchUsers: query => dispatch(searchUsers(query)),
     openInviteConfirmModal: (entityType) => dispatch(
