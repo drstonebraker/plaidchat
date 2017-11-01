@@ -20,6 +20,11 @@ import {
 import { updateDefaultTeam } from '../../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  const teamId = ownProps.match.params.teamId
+  const channelId = ownProps.match.params.channelId
+  const teamName = state.entities.teams[teamId].name
+  const channelName = state.entities.channels[channelId].name
+
   let formType;
   let headingContent;
   let submitContent;
@@ -38,6 +43,20 @@ const mapStateToProps = (state, ownProps) => {
       formType = 'createChannel'
       headingContent = 'Create a new channel'
       submitContent = 'Create Channel'
+      errors = state.errors.channel;
+      inviteType = 'team members'
+      break;
+    case 'teamInvite':
+      formType = 'teamInvite'
+      headingContent = `Invite users to ${teamName}`
+      submitContent = 'Send Invites'
+      errors = state.errors.team;
+      inviteType = 'users'
+      break;
+    case 'channelInvite':
+      formType = 'channelInvite'
+      headingContent = `Invite users to ${channelName}`
+      submitContent = 'Send Invites'
       errors = state.errors.channel;
       inviteType = 'team members'
       break;
