@@ -46,7 +46,7 @@ const uiReducer = (state = defaultState, action) => {
       newState.inviteConfirmModalType = action.entityType
       return newState;
     case CLOSE_INVITE_CONFIRM_MODAL:
-      newState.isInviteConfirmModalOpen = null
+      newState.isInviteConfirmModalOpen = false
       return newState;
     case LOADING_USERS_SEARCH:
       newState.loadingUsersSearch = true
