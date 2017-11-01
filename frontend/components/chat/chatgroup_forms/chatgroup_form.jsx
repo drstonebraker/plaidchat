@@ -59,21 +59,23 @@ class ChatgroupForm extends React.Component {
     e.preventDefault();
 
     const {
-      actionType, entityType, closeChatGroupModal, history, openInviteConfirmModal,
-      sendingUserInvites, closeInviteConfirmModal
+      actionType, entityType, sendingUserInvites
     } = this.props
     const {
       channelId, teamId: currentTeamId
     } = this.props.match.params
 
+    // set redux store so confirm modal will open
     if (this.state.userInvites.length > 0) { sendingUserInvites() }
 
+    // build object to send as payload to backend
     const newChatgroup = Object.assign(
       {teamId: currentTeamId},
       this.state.chatgroup,
       { userIds: this.state.userInvites }
     )
 
+    // specify entity to update
     if (actionType === 'invite') {
       newChatgroup.id =  entityType === 'team' ? currentTeamId : channelId
     }
@@ -81,21 +83,31 @@ class ChatgroupForm extends React.Component {
     const formType = camelCase(`${actionType} ${entityType}`)
 
     this.props[formType](newChatgroup)
-      .then((action) => {
-        const { teamId, defaultChannelId } = action.teamMembership
-        closeChatGroupModal()
-        history.push(`/messages/${teamId}/${defaultChannelId}`)
-        if (this.props.isUserInvitesSent) {
-          setTimeout(() => {
-            openInviteConfirmModal(formType)
-            setTimeout(closeInviteConfirmModal, 3000)
-          }, 500)
-        }
-      })
+      .then(this.receiveNewChatGroup)
   }
 
   receiveNewChatGroup(action) {
+    const {
+      closeChatGroupModal, history
+    } = this.props
+    const { teamId, defaultChannelId } = action.teamMembership
+    closeChatGroupModal()
+    history.push(`/messages/${teamId}/${defaultChannelId}`)
+    this.triggerInviteConfirmModal()
+  }
 
+  triggerInviteConfirmModal() {
+    const {
+      openInviteConfirmModal, closeInviteConfirmModal, isUserInvitesSent,
+      entityType
+    } = this.props
+
+    if (isUserInvitesSent) {
+      setTimeout(() => {
+        openInviteConfirmModal(entityType)
+        setTimeout(closeInviteConfirmModal, 3000)
+      }, 500)
+    }
   }
 
   closeModal() {
