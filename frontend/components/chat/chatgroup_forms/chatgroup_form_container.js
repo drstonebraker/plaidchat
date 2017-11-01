@@ -25,7 +25,8 @@ const mapStateToProps = (state, ownProps) => {
   const teamName = state.entities.teams[teamId].name
   const channelName = state.entities.channels[channelId].name
 
-  let formType;
+  let actionType;
+  let entityType;
   let headingContent;
   let submitContent;
   let errors;
@@ -33,28 +34,32 @@ const mapStateToProps = (state, ownProps) => {
 
   switch (state.ui.chatgroupFormType) {
     case 'createTeam':
-      formType = 'createTeam'
+      actionType = 'create'
+      entityType = 'team'
       headingContent = 'Create a new team'
       submitContent = 'Create Team'
       errors = state.errors.team;
       inviteType = 'users'
       break;
     case 'createChannel':
-      formType = 'createChannel'
+      actionType = 'create'
+      entityType = 'channel'
       headingContent = 'Create a new channel'
       submitContent = 'Create Channel'
       errors = state.errors.channel;
       inviteType = 'team members'
       break;
     case 'teamInvite':
-      formType = 'teamInvite'
+      actionType = 'invite'
+      entityType = 'team'
       headingContent = `Invite users to ${teamName}`
       submitContent = 'Send Invites'
       errors = state.errors.team;
       inviteType = 'users'
       break;
     case 'channelInvite':
-      formType = 'channelInvite'
+      actionType = 'invite'
+      entityType = 'channel'
       headingContent = `Invite users to ${channelName}`
       submitContent = 'Send Invites'
       errors = state.errors.channel;
@@ -63,7 +68,8 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   return {
-    formType,
+    actionType,
+    entityType,
     headingContent,
     submitContent,
     inviteType,
@@ -89,8 +95,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     )),
     loadingUsersSearch: () => dispatch(loadingUsersSearch()),
     searchUsers: query => dispatch(searchUsers(query)),
-    openInviteConfirmModal: (formType) => dispatch(
-      openInviteConfirmModal(formType)
+    openInviteConfirmModal: (entityType) => dispatch(
+      openInviteConfirmModal(entityType)
     ),
     closeInviteConfirmModal: () => dispatch(closeInviteConfirmModal()),
     sendingUserInvites: () => dispatch(sendingUserInvites())

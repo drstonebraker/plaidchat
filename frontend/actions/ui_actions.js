@@ -25,9 +25,9 @@ export const closeChatGroupModal = () => ({
   type: CLOSE_CHATGROUP_MODAL,
 });
 
-export const openInviteConfirmModal = (formType) => ({
+export const openInviteConfirmModal = (entityType) => ({
   type: OPEN_INVITE_CONFIRM_MODAL,
-  formType
+  entityType
 });
 
 export const closeInviteConfirmModal = () => ({

@@ -114,7 +114,7 @@ class ChatgroupForm extends React.Component {
 
   render() {
     const {
-        formType, headingContent, submitContent, nameErrors, hasNameErrors,
+        actionType, entityType, headingContent, submitContent, nameErrors, hasNameErrors,
         clearChatgroupErrors, isInvalidName, inviteType
       } = this.props
     const { chatgroup, userInvites } = this.state
@@ -133,22 +133,22 @@ class ChatgroupForm extends React.Component {
             onSubmit={this.handleSubmit}
             >
 
-            <FormFullField
-              labelVal='name'
-              hasErrors={hasNameErrors}
-              inputType='text'
-              onChange={this.handleChange('name')}
-              inputVal={chatgroup.name}
-              errorsList={nameErrors}
-              autofocus={true}
-              tipValidation={isInvalidName}
-              formType={formType}
-            >
-
-              <FieldMessages type={formType}/>
-
-            </FormFullField>
-
+            {
+              actionType !== 'invite' &&
+              <FormFullField
+                labelVal='name'
+                hasErrors={hasNameErrors}
+                inputType='text'
+                onChange={this.handleChange('name')}
+                inputVal={chatgroup.name}
+                errorsList={nameErrors}
+                autofocus={true}
+                tipValidation={isInvalidName}
+                formType={formType}
+              >
+                <FieldMessages type={formType}/>
+              </FormFullField>
+            }
 
             <Select.Async
               className='form_field'

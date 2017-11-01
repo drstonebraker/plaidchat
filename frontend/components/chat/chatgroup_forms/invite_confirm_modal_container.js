@@ -4,19 +4,8 @@ import InviteConfirmModal from './invite_confirm_modal.jsx'
 
 const mapStateToProps = (state, ownProps) => {
 
-  let chatgroupType;
-
-  switch (state.ui.inviteConfirmModalType) {
-    case 'createTeam':
-      chatgroupType = 'team'
-      break;
-    case 'createChannel':
-      chatgroupType = 'channel'
-      break;
-  }
-
   return {
-    chatgroupType,
+    chatgroupType: state.ui.inviteConfirmModalType,
     isOpen: state.ui.isInviteConfirmModalOpen,
   };
 };
