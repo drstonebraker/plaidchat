@@ -1,5 +1,6 @@
 import React from 'react'
 import Select from 'react-select'
+import camelCase from 'lodash.camelcase'
 
 import FormFullField from '../../modules/form_full_field'
 import { ErrorsList } from '../../modules/jsx_lists'
@@ -58,7 +59,7 @@ class ChatgroupForm extends React.Component {
     e.preventDefault();
 
     const {
-      formType, closeChatGroupModal, history, openInviteConfirmModal,
+      actionType, entityType, closeChatGroupModal, history, openInviteConfirmModal,
       sendingUserInvites, closeInviteConfirmModal
     } = this.props
     const { teamId: currentTeamId } = this.props.match.params
@@ -70,6 +71,8 @@ class ChatgroupForm extends React.Component {
       this.state.chatgroup,
       { userIds: this.state.userInvites }
     )
+
+    const formType = camelCase(`${actionType} ${entityType}`)
 
     this.props[formType](newChatgroup)
       .then((action) => {
@@ -98,9 +101,9 @@ class ChatgroupForm extends React.Component {
 
   loadUsersSearch (input, callback) {
     input = input.toLowerCase();
-    const { teamId, formType } = this.props
+    const { teamId, entityType } = this.props
     let query = `query=${input}`
-    if (formType === 'createChannel') { query += `&team_id=${teamId}` }
+    if (entityType === 'channel') { query += `&team_id=${teamId}` }
 
     this.props.searchUsers(query).then((action) => {
 
