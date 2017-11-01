@@ -15,6 +15,10 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def create_demo
+
+  end
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -36,7 +40,7 @@ class Api::UsersController < ApplicationController
         "#{params[:query].downcase}%"
       ).
       where.not(id: current_user.id).
-      where.not("username LIKE 'anonymous_%'").
+      where(is_demo: false).
       order(:username).
       limit(200)
 

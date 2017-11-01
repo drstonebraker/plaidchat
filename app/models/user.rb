@@ -9,6 +9,7 @@
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
 #  default_team_membership_id :integer
+#  is_demo                    :boolean          default(FALSE), not null
 #
 
 class User < ApplicationRecord
