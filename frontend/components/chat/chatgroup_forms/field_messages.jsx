@@ -3,14 +3,14 @@ import React from 'react'
 const FieldMessages = ({ type, className }) => {
 
   switch (type) {
-    case 'createTeam':
+    case 'team':
       return (
         <span className={className}>
           Name your team after the group that will be using
           Slack together.
         </span>
       )
-    case 'createChannel':
+    case 'channel':
       return (
         <span className={className}>
           Names must be lowercase, without spaces or periods,

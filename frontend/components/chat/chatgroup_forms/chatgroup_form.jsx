@@ -144,9 +144,9 @@ class ChatgroupForm extends React.Component {
                 errorsList={nameErrors}
                 autofocus={true}
                 tipValidation={isInvalidName}
-                formType={formType}
+                entityType={entityType}
               >
-                <FieldMessages type={formType}/>
+                <FieldMessages type={entityType}/>
               </FormFullField>
             }
 

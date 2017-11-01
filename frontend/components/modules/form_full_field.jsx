@@ -1,4 +1,5 @@
 import React from 'react'
+import isEqual from 'lodash.isequal'
 
 import { ErrorsList } from './jsx_lists'
 
@@ -12,7 +13,11 @@ class FormFullField extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.formType !== nextProps.formType) {
+    const { actionType, entityType } = this.props
+    if (!isEqual(
+      [actionType, entityType],
+      [nextProps.actionType, nextProps.entityType]
+    )) {
       this.autofocus()
     }
   }
