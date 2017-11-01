@@ -16,7 +16,15 @@ class Api::UsersController < ApplicationController
   end
 
   def create_demo
-
+    @user = User.new(user_params)
+    if @user.save
+      login!(@user)
+      render :show
+    else
+      @errors = [@user.errors.messages]
+      render partial: 'api/shared/errors.json.jbuilder',
+        status: 400
+    end
   end
 
   def update
