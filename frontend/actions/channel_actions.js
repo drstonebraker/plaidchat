@@ -24,7 +24,7 @@ export const createChannel = channel => dispatch => (
 );
 
 export const inviteChannel = channel => dispatch => (
-  ChannelUtil.patchChannel(channel)
+  ChannelUtil.inviteChannel(channel)
     .then(res => dispatch(receiveNewChannel(res)),
           error => dispatch(receiveChannelErrors(error.responseJSON)))
 );

@@ -7,10 +7,10 @@ export const postChannel = (channel) => (
   })
 )
 
-export const patchChannel = (channel) => (
+export const inviteChannel = (channel) => (
   $.ajax({
     method: 'PATCH',
-    url: `api/channels/${channel.id}`,
+    url: `api/channels/invite/${channel.id}`,
     data: JSON.stringify({ channel }),
     contentType: 'application/json'
   })

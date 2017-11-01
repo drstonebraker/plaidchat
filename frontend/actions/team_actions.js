@@ -31,7 +31,7 @@ export const createTeam = team => dispatch => (
 );
 
 export const inviteTeam = team => dispatch => (
-  TeamUtil.patchTeam(team)
+  TeamUtil.inviteTeam(team)
     .then(res => dispatch(receiveNewTeam(res)),
           error => dispatch(receiveTeamErrors(error.responseJSON)))
 );

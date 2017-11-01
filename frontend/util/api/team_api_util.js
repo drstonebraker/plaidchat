@@ -7,10 +7,10 @@ export const postTeam = (team) => (
   })
 )
 
-export const patchTeam = (team) => (
+export const inviteTeam = (team) => (
   $.ajax({
     method: 'PATCH',
-    url: `api/teams/${team.id}`,
+    url: `api/teams/invite/${team.id}`,
     data: JSON.stringify({ team }),
     contentType: 'application/json'
   })

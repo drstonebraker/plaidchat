@@ -72,4 +72,8 @@ class Team < ApplicationRecord
     @general_channel ||= self.channels.find_by(name: 'general')
   end
 
+  def random_channel
+    @random_channel ||= self.channels.find_by(name: 'random')
+  end
+
 end

@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     resources :team_memberships, only: [:update]
     get 'users/search', to: 'users#search', as: 'users_search'
     patch 'channels/:id', to: 'channels#make_default', as: 'default_channel'
+    patch 'teams/invite/:id', to: 'teams#invite', as: 'invite_team'
+    patch 'channels/invite/:id', to: 'channels#invite', as: 'invite_channel'
   end
 
   root "static_pages#root"

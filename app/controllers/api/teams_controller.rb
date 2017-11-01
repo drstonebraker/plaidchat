@@ -18,6 +18,19 @@ class Api::TeamsController < ApplicationController
     end
   end
 
+  def invite
+    @team = Team.new(team_params)
+    user_ids = params[:team][:user_ids]
+    subscribe_user_ids!(user_ids, [@team, @team.general_channel, @team.random_channel])
+    if @team.errors.full_messages.empty?
+      render :show
+    else
+      @errors = [@team.errors.messages]
+      render partial: 'api/shared/errors.json.jbuilder',
+        status: 400
+    end
+  end
+
   private
 
   def team_params

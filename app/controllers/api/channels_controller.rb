@@ -17,6 +17,19 @@ class Api::ChannelsController < ApplicationController
     end
   end
 
+  def invite
+    @channel = Channel.new(channel_params)
+    user_ids = params[:channel][:user_ids]
+    subscribe_user_ids!(user_ids, [@channel])
+    if @channel.errors.full_messages.empty?
+      render :show
+    else
+      @errors = [@channel.errors.messages]
+      render partial: 'api/shared/errors.json.jbuilder',
+        status: 400
+    end
+  end
+
   def make_default
     @channel = Channel.find(params[:id])
     current_user.default_team_default_channel = @channel
