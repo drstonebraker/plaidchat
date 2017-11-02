@@ -204,43 +204,10 @@ class User < ApplicationRecord
     default_image_urls.sample
   end
 
-  def self.default_image_urls
-    %w(
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580704/plaid35_wzjcag.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580704/plaid36_gxyj1e.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580704/plaid33_w7rufn.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580704/plaid30_t3sqco.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580704/plaid34_bpbiyk.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580704/plaid32_op6kaf.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580704/plaid31_krvsgy.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580703/plaid23_pck9lp.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580704/plaid28_fdhoc2.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580703/plaid27_htczjy.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580703/plaid25_ftcl9q.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580703/plaid29_k4acvq.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580703/plaid22_c1rtmi.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580703/plaid26_yfiykj.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580703/plaid20_ppr36h.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580703/plaid18_jinzwl.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580702/plaid21_okhppw.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580702/plaid13_eztwv7.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580702/plaid24_sfizfx.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580702/plaid15_ly8tn1.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580702/plaid17_mzytj5.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580702/plaid14_joqula.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580702/plaid16_nflqgh.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580702/plaid12_hzp55e.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580702/plaid11_syiflm.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580702/plaid10_xkpsfw.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580702/plaid8_dr1zbm.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580702/plaid9_ovo6mg.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580701/plaid7_w0v8nf.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580701/plaid5_fuyzvk.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580701/plaid6_riduf6.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580701/plaid4_fra7ii.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580701/plaid3_uexymy.png
-      http://res.cloudinary.com/dvcr1kq1u/image/upload/v1509580701/plaid1_kpz8p7.png
-    )
+  def self.animal_names
+    # ActionController::Base.helpers.asset_path
+    path = Rails.root.join('public', 'animal_list.txt')
+    File.readlines(path).map { |name| name.chomp.gsub(' ', '_') }
   end
 
 end
