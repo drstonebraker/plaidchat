@@ -197,19 +197,19 @@ class User < ApplicationRecord
   ######################
 
   def ensure_avatar_url!
-    if self.is_demo
-      self.avatar_url ||= self.class.new_demo_avatar_url
-    else
-      self.avatar_url ||= self.class.new_plaid_avatar_url
-    end
+    self.avatar_url ||= self.class.new_plaid_avatar_url
+  end
+
+  def self.new_demo_user
+    animal = animal_names.sample
   end
 
   def self.new_plaid_avatar_url
     ActionController::Base.helpers.asset_path("plaids/plaid#{rand(1..34)}.png")
   end
 
-  def self.new_demo_avatar_url
-    ActionController::Base.helpers.asset_path("animals/#{animal_names.sample}.jpg")
+  def self.new_demo_avatar_url(animal)
+    ActionController::Base.helpers.asset_path("animals/#{animal}.jpg")
   end
 
   def self.animal_names
