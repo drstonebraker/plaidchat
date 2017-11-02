@@ -4,6 +4,9 @@ class Api::UsersController < ApplicationController
   before_action :require_current_user, only: %i(destroy update)
 
   def create
+
+    # path = ActionController::Base.helpers.asset_path('animals/aardvark.jpg')
+
     @user = User.new(user_params)
     if @user.save
       login!(@user)
