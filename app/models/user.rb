@@ -201,7 +201,28 @@ class User < ApplicationRecord
   end
 
   def self.new_demo_user
+    animal, username = generate_animal_username
+
+    User.new(
+      username: username,
+      password: '1t9xbnxtZbYWw8d90wOkMA',
+      is_demo: true,
+      avatar_url: new_demo_avatar_url(animal)
+    )
+  end
+
+  def self.generate_animal_username
     animal = animal_names.sample
+    adjective = adjectives[animal.chr].sample
+    username = "#{adjective}_#{animal}"
+
+    while User.exists?(username: username)
+      animal = animal_names.sample
+      adjective = adjectives[animal.chr].sample
+      username = "#{adjective}_#{animal}"
+    end
+
+    [animal, username]
   end
 
   def self.new_plaid_avatar_url
@@ -215,6 +236,12 @@ class User < ApplicationRecord
   def self.animal_names
     path = Rails.root.join('public', 'animal_list.txt')
     File.readlines(path).map { |name| name.chomp.gsub(' ', '_') }
+  end
+
+  def self.adjectives
+    path = Rails.root.join('public', 'adjectives.txt')
+    File.readlines(path).map { |name| name.chomp }.
+      group_by(&:chr)
   end
 
 end
