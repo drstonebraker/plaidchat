@@ -197,15 +197,22 @@ class User < ApplicationRecord
   ######################
 
   def ensure_avatar_url!
-    self.avatar_url ||= self.class.new_avatar_url
+    if self.is_demo
+      self.avatar_url ||= self.class.new_demo_avatar_url
+    else
+      self.avatar_url ||= self.class.new_plaid_avatar_url
+    end
   end
 
-  def self.new_avatar_url
-    default_image_urls.sample
+  def self.new_plaid_avatar_url
+    ActionController::Base.helpers.asset_path("plaids/plaid#{rand(1..34)}.png")
+  end
+
+  def self.new_demo_avatar_url
+    ActionController::Base.helpers.asset_path("animals/#{animal_names.sample}.jpg")
   end
 
   def self.animal_names
-    # ActionController::Base.helpers.asset_path
     path = Rails.root.join('public', 'animal_list.txt')
     File.readlines(path).map { |name| name.chomp.gsub(' ', '_') }
   end
