@@ -9,18 +9,7 @@ class Api::UsersController < ApplicationController
 
     @user = User.new(user_params)
     if @user.save
-      login!(@user)
-      render :show
-    else
-      @errors = [@user.errors.messages]
-      render partial: 'api/shared/errors.json.jbuilder',
-        status: 400
-    end
-  end
-
-  def create_demo
-    @user = User.new(user_params)
-    if @user.save
+      subscribe_existing_channels!
       login!(@user)
       render :show
     else
@@ -67,6 +56,12 @@ class Api::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :password, :default_team_membership_id, :is_demo)
+  end
+
+  def subscribe_existing_channels!
+    if params[:channel_ids]
+      Channel.subscribe_user_ids!([@user.id], Channel.where('id IN (?)', params[:channel_ids]))
+    end
   end
 
 end
