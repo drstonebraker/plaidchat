@@ -15,7 +15,7 @@ class AuthNav extends React.Component {
     const authBtn = (value, path) => (
       <button
         type='button'
-        className="l-wire_button"
+        className="wire_button"
         onClick={this.navigate(path)}
       >
         {value}

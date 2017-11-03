@@ -66,3 +66,42 @@
     -1px 1px 2px $slack_shadow_solid_color,
      1px 1px 2px $slack_shadow_solid_color;
 }
+
+@mixin opaque-button {
+  padding: 1.4rem 1.8rem 1.6rem 1.8rem;
+  background-color: $slack-green;
+  color: white;
+  text-shadow: rgba(0, 0, 0, 0.1) 0px 1px 1px;
+  border: none;
+  
+  &:hover, &:focus {
+    box-shadow:  0 .2rem 0 $slack-green-dark;
+    padding-bottom: 1.4rem;
+    margin-bottom: 0.2rem;
+  }
+
+  &:active {
+    @include active-button;
+  }
+
+  &--wide {
+    display: block;
+    width: 100%;
+    margin: 1.2rem 0 0 auto;
+  }
+
+  &--sm {
+
+  }
+
+  &--blue {
+
+  }
+
+}
+
+@mixin active-button {
+  box-shadow: inset 0 .2rem .3rem $slack_shadow_solid_color;
+  padding-bottom: 1.6rem;
+  margin-bottom: 0rem;
+}

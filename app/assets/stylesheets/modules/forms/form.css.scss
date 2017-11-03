@@ -63,10 +63,8 @@
 
   border-radius: 0.4rem;
 
-  &:active {
-    box-shadow: inset 0 .2rem .3rem $slack_shadow_solid_color;
-    padding-bottom: 1.6rem;
-    margin-bottom: 0rem;
+  &--submit {
+    @include opaque-button;
   }
 
   &--cancel {
@@ -80,26 +78,10 @@
     }
   }
 
-
-  &--submit {
-    padding: 1.4rem 1.8rem 1.6rem 1.8rem;
-    background-color: $slack-green;
-    color: white;
-    text-shadow: rgba(0, 0, 0, 0.1) 0px 1px 1px;
-    border: none;
-
-    &:hover, &:focus {
-      box-shadow:  0 .2rem 0 $slack-green-dark;
-      padding-bottom: 1.4rem;
-      margin-bottom: 0.2rem;
-    }
-
-    &--wide {
-      display: block;
-      width: 100%;
-      margin: 1.2rem 0 0 auto;
-    }
+  &:active {
+    @include active-button;
   }
+
 }
 
 .form_field__text_input--warn {
