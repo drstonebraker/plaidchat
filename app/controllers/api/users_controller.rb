@@ -4,10 +4,8 @@ class Api::UsersController < ApplicationController
   before_action :require_current_user, only: %i(destroy update)
 
   def create
-
-    # path = ActionController::Base.helpers.asset_path('animals/aardvark.jpg')
-
-    @user = User.new(user_params)
+    @user = user_params[:is_demo] ? User.new_demo_user : User.new(user_params)
+    
     if @user.save
       subscribe_existing_channels!
       login!(@user)
