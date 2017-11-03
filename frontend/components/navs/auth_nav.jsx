@@ -1,6 +1,8 @@
 import React from 'react'
 import { Route, withRouter } from 'react-router-dom'
 
+import AuthButton from './auth_button'
+
 class AuthNav extends React.Component {
   constructor(props) {
     super(props)
@@ -26,8 +28,14 @@ class AuthNav extends React.Component {
       <div className={`${this.props.className}`}>
         <Route exact path="/" render={() => (
           <div>
-            {authBtn('Login', 'login')}
-            {authBtn('Sign Up', 'signup')}
+            <AuthButton
+              value='Login'
+              onClick={this.navigate('login')}
+              className='wire_button' />
+            <AuthButton
+              value='Sign Up'
+              onClick={this.navigate('signup')}
+              className='wire_button' />
           </div>
         )} />
       <Route exact path="/login" render={() => (
