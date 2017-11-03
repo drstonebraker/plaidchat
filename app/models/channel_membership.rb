@@ -10,6 +10,7 @@
 #
 
 class ChannelMembership < ApplicationRecord
+  after_save :subscribe_user_to_team!
 
   belongs_to :channel
   belongs_to :user
@@ -17,5 +18,10 @@ class ChannelMembership < ApplicationRecord
   has_one :team,
     through: :channel,
     source: :team
+
+  def subscribe_user_to_team!
+    uniq_user_ids = self.team.user_ids.concat(self.user_id).uniq
+    self.team.user_ids = uniq_user_ids
+  end
 
 end
