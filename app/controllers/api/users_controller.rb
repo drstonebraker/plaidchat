@@ -66,7 +66,7 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :default_team_membership_id)
+    params.require(:user).permit(:username, :password, :default_team_membership_id, :is_demo)
   end
 
 end
