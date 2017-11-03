@@ -76,11 +76,11 @@ class Team < ApplicationRecord
     @random_channel ||= self.channels.find_by(name: 'random')
   end
 
-  def self.subscribe_user_ids!(new_user_ids, teams)
-    teams.each do |team|
-      uniq_ids = team.user_ids.concat(new_user_ids).uniq
-      team.user_ids = uniq_ids
-    end
-  end
+  # def self.subscribe_user_ids!(new_user_ids, teams)
+  #   teams.each do |team|
+  #     uniq_ids = team.user_ids.concat(new_user_ids).uniq
+  #     team.user_ids = uniq_ids
+  #   end
+  # end
 
 end

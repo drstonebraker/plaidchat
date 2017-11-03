@@ -8,9 +8,9 @@ import {
 import {
   RECEIVE_NEW_CHANNEL,
 } from '../actions/channel_actions';
-import {
-  RECEIVE_TEAM_MEMBERSHIP,
-} from '../actions/team_membership_actions';
+// import {
+//   RECEIVE_TEAM_MEMBERSHIP,
+// } from '../actions/team_membership_actions';
 
 const teamMembershipEntitiesReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -26,9 +26,9 @@ const teamMembershipEntitiesReducer = (state = {}, action) => {
     case RECEIVE_NEW_CHANNEL:
       newState[teamMembership.id] = teamMembership
       return newState;
-    case RECEIVE_TEAM_MEMBERSHIP:
-      newState[teamMembership.id] = teamMembership
-      return newState
+    // case RECEIVE_TEAM_MEMBERSHIP:
+    //   newState[teamMembership.id] = teamMembership
+    //   return newState
     default:
       return state;
   }

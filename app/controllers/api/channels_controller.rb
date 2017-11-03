@@ -6,9 +6,9 @@ class Api::ChannelsController < ApplicationController
 
     if @channel.save
       user_ids = [current_user.id] + params[:channel][:user_ids]
-      subscribe_user_ids!(user_ids, [@channel])
+      Channel.subscribe_user_ids!(user_ids, [@channel])
 
-      set_as_default!
+      # set_as_default!
       render :show
     else
       @errors = [@channel.errors.messages]
@@ -20,7 +20,7 @@ class Api::ChannelsController < ApplicationController
   def invite
     @channel = Channel.find(params[:id])
     user_ids = params[:channel][:user_ids]
-    subscribe_user_ids!(user_ids, [@channel])
+    Channel.subscribe_user_ids!(user_ids, [@channel])
     if @channel.errors.full_messages.empty?
       render :show
     else

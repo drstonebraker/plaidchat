@@ -1,13 +1,13 @@
-import * as TeamMembershipUtil from '../util/api/team_membership_api_util';
+// import * as TeamMembershipUtil from '../util/api/team_membership_api_util';
+//
+// export const RECEIVE_TEAM_MEMBERSHIP = 'RECEIVE_TEAM_MEMBERSHIP';
 
-export const RECEIVE_TEAM_MEMBERSHIP = 'RECEIVE_TEAM_MEMBERSHIP';
+// export const receiveTeamMembership = ({teamMembership}) => ({
+//   type: RECEIVE_TEAM_MEMBERSHIP,
+//   teamMembership,
+// });
 
-export const receiveTeamMembership = ({teamMembership}) => ({
-  type: RECEIVE_TEAM_MEMBERSHIP,
-  teamMembership,
-});
-
-export const updateTeamMembership = teamMembership => dispatch => (
-  TeamMembershipUtil.patchTeamMembership(teamMembership)
-    .then(res => dispatch(receiveTeamMembership(res)))
-);
+// export const updateTeamMembership = teamMembership => dispatch => (
+//   TeamMembershipUtil.patchTeamMembership(teamMembership)
+//     .then(res => dispatch(receiveTeamMembership(res)))
+// );

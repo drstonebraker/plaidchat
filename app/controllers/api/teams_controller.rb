@@ -7,7 +7,7 @@ class Api::TeamsController < ApplicationController
 
     if @team.save
       user_ids = [current_user.id] + params[:team][:user_ids]
-      subscribe_user_ids!(user_ids, [@team, *@team.channels])
+      Channel.subscribe_user_ids!(user_ids, [*@team.channels])
 
       set_as_default!
       render :show
@@ -21,7 +21,7 @@ class Api::TeamsController < ApplicationController
   def invite
     @team = Team.find(params[:id])
     user_ids = params[:team][:user_ids]
-    subscribe_user_ids!(user_ids, [@team, @team.general_channel, @team.random_channel])
+    Channel.subscribe_user_ids!(user_ids, [@team.general_channel, @team.random_channel])
     if @team.errors.full_messages.empty?
       render :show
     else

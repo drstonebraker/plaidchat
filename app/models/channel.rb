@@ -62,15 +62,17 @@ class Channel < ApplicationRecord
   #####################
 
   def self.subscribe_user_ids!(new_user_ids, channels)
+    # channel_ids = channels.map(&:id)
+    # channels = Channel.where('id IN (?)', channel_ids)
     channels.each do |channel|
       uniq_user_ids = channel.user_ids.concat(new_user_ids).uniq
       channel.user_ids = uniq_user_ids
     end
 
-    team_ids = channels.pluck(:team_id)
-
-    teams = Team.where('id IN (?)', team_ids)
-    Team.subscribe_user_ids!(new_user_ids, teams)
+    # team_ids = channels.pluck(:team_id)
+    #
+    # teams = Team.where('id IN (?)', team_ids)
+    # Team.subscribe_user_ids!(new_user_ids, teams)
   end
 
 end
