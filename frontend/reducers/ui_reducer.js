@@ -39,7 +39,6 @@ const uiReducer = (state = defaultState, action) => {
       return newState;
     case CLOSE_CHATGROUP_MODAL:
       newState.isChatGroupModalOpen = false
-      newState.chatgroupFormType = null
       return newState;
     case OPEN_INVITE_CONFIRM_MODAL:
       newState.isInviteConfirmModalOpen = true

@@ -8,7 +8,7 @@ class Api::ChannelsController < ApplicationController
       user_ids = [current_user.id] + params[:channel][:user_ids]
       Channel.subscribe_user_ids!(user_ids, [@channel])
 
-      # set_as_default!
+      set_as_default!
       render :show
     else
       @errors = [@channel.errors.messages]
