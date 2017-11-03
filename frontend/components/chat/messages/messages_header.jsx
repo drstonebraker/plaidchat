@@ -15,7 +15,7 @@ class MessagesHeader extends React.Component {
     return (
       <div className='messages_view__header'>
         <div className='messages_header__channel_name'>
-          #{channel ? channel.name : ''}
+          <span>#{channel ? channel.name : ''}</span>
         </div>
       </div>
     )
