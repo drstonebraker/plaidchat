@@ -204,6 +204,17 @@ class User < ApplicationRecord
       )
   end
 
+  def copy_messages_to(user)
+    self.messages.each do |message|
+      message.user_id = user.id
+    end
+  end
+
+  def copy_defaults_to(user)
+    user.default_team_membership_id = self.default_team_membership_id
+    user.default_team_default_channel = self.default_team_default_channel
+  end
+
   ######################
   # other initialization methods
   ######################

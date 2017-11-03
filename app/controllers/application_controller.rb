@@ -47,9 +47,12 @@ class ApplicationController < ActionController::Base
   end
 
   def handle_demo_transfer
-    # current_user.copy_messages_to(@user)
+    demo_user = current_user
+    current_user.copy_messages_to(@user)
     current_user.copy_channels_to(@user)
+    current_user.copy_defaults_to(@user)
     logout!
+    demo_user.destroy!
   end
 
   # def subscribe_current_user!(association, chatgroup)
