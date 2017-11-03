@@ -11,6 +11,8 @@
 }
 
 .messages_header__channel_name {
+  display: flex;
+  justify-content: space-between;
   font-family: $lato;
   font-weight: 900;
   padding: 0 0 0 2.1rem;

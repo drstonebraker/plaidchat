@@ -6,6 +6,7 @@ import MessagesHeader from './messages_header'
 const mapStateToProps = (state, ownProps) => {
 
   return {
+    isDemo: state.session.currentUser.isDemo,
     channel: state.entities.channels[ownProps.match.params.channelId],
   };
 };

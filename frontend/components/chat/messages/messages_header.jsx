@@ -9,13 +9,31 @@ class MessagesHeader extends React.Component {
 
   }
 
+  navigate(path) {
+    return () => this.props.history.push(path)
+  }
+
   render() {
-    const { channel } = this.props;
+    const { channel, isDemo } = this.props;
+
+    const authBtn = (value, path) => (
+      <button
+        type='button'
+        className="wire_button wire_button--sm"
+        onClick={this.navigate(path)}
+      >
+        {value}
+      </button>
+    )
 
     return (
       <div className='messages_view__header'>
         <div className='messages_header__channel_name'>
           <span>#{channel ? channel.name : ''}</span>
+          <div>
+            {isDemo && authBtn('Login', 'login')}
+            {isDemo && authBtn('Sign Up', 'signup')}
+          </div>
         </div>
       </div>
     )
