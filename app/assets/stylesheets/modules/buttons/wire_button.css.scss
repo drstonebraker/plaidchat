@@ -22,19 +22,6 @@
   border: .4rem solid;
 }
 
-.wire_button--green {
-  color: $slack_green;
-  border-color: $slack_green;
-  box-shadow: 0 0 2px 2px $slack_shadow_solid_color,
-    inset 0 0 2px 2px $slack_shadow_solid_color;
-  @include text-shadow;
-
-  &:hover {
-    color: white;
-    border-color: white;
-  }
-}
-
 .wire_button--sm {
-
+  padding: 0.8rem 1.2rem 0.8rem 1.2rem;
 }
