@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    unless logged_in? || params[:user].try(:[], :is_demo)
+    unless logged_in? || demo_user_creation?
       render json: [{error: 'You must be logged in'}], status: 401
     end
   end
@@ -40,6 +40,10 @@ class ApplicationController < ActionController::Base
         {error: "You do not have permission to edit this user's information"}
       ], status: 401
     end
+  end
+
+  def demo_user_creation?
+    params[:user].try(:[], :is_demo)
   end
 
   # def subscribe_current_user!(association, chatgroup)
