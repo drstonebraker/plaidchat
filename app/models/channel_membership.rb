@@ -20,7 +20,7 @@ class ChannelMembership < ApplicationRecord
     source: :team
 
   def subscribe_user_to_team!
-    uniq_user_ids = self.team.user_ids.concat(self.user_id).uniq
+    uniq_user_ids = self.team.user_ids.push(self.user_id).uniq
     self.team.user_ids = uniq_user_ids
   end
 
