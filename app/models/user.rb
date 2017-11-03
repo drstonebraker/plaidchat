@@ -192,6 +192,18 @@ class User < ApplicationRecord
     )
   end
 
+  def copy_channels_to(user)
+    Channel.subscribe_user_ids!(
+      [user.id],
+      self.
+        teams.
+        where.
+        not(name: 'Demo').
+        includes(:channels).
+        flat_map(&:channels)
+      )
+  end
+
   ######################
   # other initialization methods
   ######################

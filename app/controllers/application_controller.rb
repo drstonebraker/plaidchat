@@ -46,6 +46,12 @@ class ApplicationController < ActionController::Base
     params[:user].try(:[], :is_demo)
   end
 
+  def handle_demo_transfer
+    # current_user.copy_messages_to(@user)
+    current_user.copy_channels_to(@user)
+    logout!
+  end
+
   # def subscribe_current_user!(association, chatgroup)
   #   unless current_user.send(association).include?(chatgroup)
   #     current_user.send(association) << chatgroup

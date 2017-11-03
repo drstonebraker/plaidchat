@@ -9,6 +9,8 @@ class Api::SessionsController < ApplicationController
     )
 
     if @user
+      handle_demo_transfer if current_user # demo user logging in to permanent acct
+
       login!(@user)
       render :show
     else
