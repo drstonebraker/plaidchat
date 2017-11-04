@@ -16,14 +16,24 @@ class InvitesController < ApplicationController
 
   def consume
     @invite = Invite.find_by(token: params[:invite_token])
-    @user = User.new_demo_user!
+
+    if logged_in?
+      @user = User.new_demo_user!
+      login!(@user)
+    else
+      @user = current_user
+    end
+    debugger
     Channel.subscribe_user_ids!(
       [@user.id],
       [@invite.channel, @invite.team.general_channel, @invite.team.random_channel]
     )
-    login!(@user)
+
+    # set default team membership
+    # set default channel membership
+
     @invite.destroy!
-    render :template => "static_pages/root"
+    redirect_to root_url
   end
 
   private

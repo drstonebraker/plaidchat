@@ -12,7 +12,7 @@
 class Invite < ApplicationRecord
   validates :token, presence: true, uniqueness: true
 
-  after_initialize :generate_token!
+  after_initialize :ensure_token!
 
   belongs_to :channel
 
