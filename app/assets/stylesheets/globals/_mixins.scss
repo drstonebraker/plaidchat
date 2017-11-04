@@ -69,6 +69,7 @@
 
 @mixin opaque-button {
   cursor: pointer;
+  white-space: nowrap;
   box-sizing: border-box;
   font-size: 2rem;
   font-weight: 500;
