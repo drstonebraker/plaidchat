@@ -1,0 +1,11 @@
+@import '../../globals/_all.scss';
+
+.opaque_button {
+  @include opaque_button;
+
+  &:active {
+    @include active-button;
+    padding-bottom: 0.7rem;
+  }
+
+}

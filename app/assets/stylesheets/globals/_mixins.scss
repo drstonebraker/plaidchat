@@ -68,20 +68,25 @@
 }
 
 @mixin opaque-button {
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.92rem;
+  text-align: center;
+  outline: none;
+  border-radius: 0.4rem;
+  margin: 0 0 0 1.2rem;
   padding: 1.4rem 1.8rem 1.6rem 1.8rem;
   background-color: $slack-green;
   color: white;
   text-shadow: rgba(0, 0, 0, 0.1) 0px 1px 1px;
   border: none;
-  
+
   &:hover, &:focus {
     box-shadow:  0 .2rem 0 $slack-green-dark;
     padding-bottom: 1.4rem;
     margin-bottom: 0.2rem;
-  }
-
-  &:active {
-    @include active-button;
   }
 
   &--wide {
@@ -91,11 +96,23 @@
   }
 
   &--sm {
+    padding: 0.7rem 1.2rem 0.7rem 1.2rem;
+    font-size: 1.6rem;
+    font-weight: 300;
+    vertical-align: initial;
 
+    &:hover, &:focus {
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.2rem;
+    }
   }
 
   &--blue {
+    background-color: $slack_modal_item_hover;
 
+    &:hover, &:focus {
+      box-shadow: 0 .2rem 0 darken($slack_modal_item_hover, 10%);
+    }
   }
 
 }

@@ -13,9 +13,10 @@
 .messages_header__channel_name {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-family: $lato;
   font-weight: 900;
-  padding: 0 0 0 2.1rem;
+  padding: 0 2.1rem;
   color: $slack_heading_color;
   font-size: 1.8rem;
   line-height: 6rem;

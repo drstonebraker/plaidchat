@@ -33,6 +33,13 @@ class MessagesHeader extends React.Component {
           <div>
             {isDemo && authBtn('Login', 'login')}
             {isDemo && authBtn('Sign Up', 'signup')}
+            <button
+              type='button'
+              className="opaque_button opaque_button--blue opaque_button--sm"
+              onClick={() => {}}
+            >
+              Magic Invite Link!
+            </button>
           </div>
         </div>
       </div>
