@@ -3,6 +3,12 @@ import React from 'react'
 export default class Splash extends React.Component {
   constructor(props) {
     super(props)
+
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick() {
+    this.props.signupDemo()
   }
 
   render () {
@@ -33,7 +39,7 @@ export default class Splash extends React.Component {
 
             <button
               className='form_button form_button--submit'
-              onClick={this.props.signupDemo}
+              onClick={this.handleClick}
               type="button"
             >
               Try it now
