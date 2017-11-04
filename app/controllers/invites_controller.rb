@@ -2,7 +2,16 @@ class InvitesController < ApplicationController
   before_action :require_channel_membership, only: %i(create)
 
   def create
-    
+    @invite = Invite.new(invite_params)
+
+    if @invite.save
+      render :show
+    else
+      @errors = [@invite.errors.messages]
+      render partial: 'api/shared/errors.json.jbuilder',
+        status: 400
+    end
+
   end
 
   def consume
