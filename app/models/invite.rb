@@ -22,7 +22,8 @@ class Invite < ApplicationRecord
 
   def self.generate_token
     new_token = SecureRandom.urlsafe_base64
-    while Invite.exists?(token: new_token)
+    # redo if it has hyphen (makes harder to double-click to copy) or exists
+    while new_token.include?('-') || Invite.exists?(token: new_token)
       new_token = SecureRandom.urlsafe_base64
     end
     new_token
