@@ -6,8 +6,8 @@ Rails.application.routes.draw do
     resources :teams, only: [:create]
     resources :channels, only: [:create] do
       resources :messages, only: [:index]
-      resources :invites, only: [:create]
     end
+    resources :invites, only: [:create]
     resources :messages, only: [:create, :update, :destroy]
     resources :team_memberships, only: [:update]
     get 'users/search', to: 'users#search', as: 'users_search'
