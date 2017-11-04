@@ -1,27 +1,12 @@
 Rails.application.routes.draw do
 
-  namespace :api do
-    get 'messages/index'
-  end
-
-  namespace :api do
-    get 'messages/create'
-  end
-
-  namespace :api do
-    get 'messages/update'
-  end
-
-  namespace :api do
-    get 'messages/destroy'
-  end
-
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:create, :update]
     resource :session, only: [:create, :destroy]
     resources :teams, only: [:create]
     resources :channels, only: [:create] do
       resources :messages, only: [:index]
+      resources :invites, only: [:create]
     end
     resources :messages, only: [:create, :update, :destroy]
     resources :team_memberships, only: [:update]
@@ -30,6 +15,8 @@ Rails.application.routes.draw do
     patch 'teams/invite/:id', to: 'teams#invite', as: 'invite_team'
     patch 'channels/invite/:id', to: 'channels#invite', as: 'invite_channel'
   end
+
+  get 'invite/:invite_token', to: 'invites#consume', as: 'magic_invite'
 
   root "static_pages#root"
 
