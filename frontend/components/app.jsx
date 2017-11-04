@@ -25,7 +25,7 @@ const App = ({store}) => (
       component={ChatViewContainer}
     />
 
-    <AuthRoute path="/" component={SplashContainer} />
+    <AuthRoute exact path="/" component={SplashContainer} />
 
   </div>
 )
