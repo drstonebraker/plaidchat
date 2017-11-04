@@ -30,8 +30,10 @@ class ApplicationController < ActionController::Base
   end
 
   def require_logout
-    render json: ['You cannot create a new session when already logged in'],
-      status: 401 if logged_in?
+    if logged_in? && !current_user.is_demo
+      render json: ['You cannot create a new session when already logged in'],
+        status: 401
+    end
   end
 
   def require_current_user

@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Route } from 'react-router-dom'
 
-import MainNav from './navs/main_nav'
+import MainNavContainer from './navs/main_nav_container'
 import UserFormContainer from './user_forms/user_form_container'
 import ChatViewContainer from './chat/chat_view_container'
 import ChannelRedirectContainer from
@@ -13,7 +13,7 @@ import SplashContainer from './splash/splash_container'
 
 const App = ({store}) => (
   <div>
-    <AuthRoute exact path="(/login|/signup|/)" component={MainNav} />
+    <AuthRoute exact path="(/login|/signup|/)" component={MainNavContainer} />
     <AuthRoute exact path="(/login|/signup)" component={UserFormContainer} />
 
     <ProtectedRoute

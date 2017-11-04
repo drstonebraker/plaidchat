@@ -206,12 +206,13 @@ class User < ApplicationRecord
 
   def copy_messages_to(user)
     self.messages.each do |message|
-      message.user_id = user.id
+      message.update!(user_id: user.id)
     end
   end
 
   def copy_defaults_to(user)
-    user.default_team_membership_id = self.default_team_membership_id
+    default_team_id = self.default_team.id
+    user.default_team_membership_id = user.team_memberships.find_by(team_id: default_team_id).id
     user.default_team_default_channel = self.default_team_default_channel
   end
 
