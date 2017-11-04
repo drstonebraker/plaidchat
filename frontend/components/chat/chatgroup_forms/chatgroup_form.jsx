@@ -177,19 +177,24 @@ class ChatgroupForm extends React.Component {
               </FormFullField>
             }
 
-            <Select.Async
-              className='form_field'
-              multi
-              value={userInvites}
-              onChange={this.handleUsersInvitesChange}
-              valueKey='id'
-              labelKey='username'
-              loadOptions={this.loadUsersSearch}
-              noResultsText='No users found'
-              placeholder={`Choose ${inviteType} to invite (optional)`}
-              searchPromptText='Type to search users...'
-            />
-
+            <div className='form_field'>
+              <Select.Async
+                multi
+                value={userInvites}
+                onChange={this.handleUsersInvitesChange}
+                valueKey='id'
+                labelKey='username'
+                loadOptions={this.loadUsersSearch}
+                noResultsText='No users found'
+                placeholder={`Choose ${inviteType} to add (optional)`}
+                searchPromptText='Type to search users...'
+              />
+              <span className='form_field__input_tip'>
+                Only registered {inviteType} can be added.
+                If you would like to add temporary users,
+                you may invite them by sending them an invite link.
+              </span>
+            </div>
 
             <div className='l-float_children_right'>
 

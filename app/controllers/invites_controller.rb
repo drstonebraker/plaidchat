@@ -18,12 +18,12 @@ class InvitesController < ApplicationController
     @invite = Invite.find_by(token: params[:invite_token])
 
     if logged_in?
+      @user = current_user
+    else
       @user = User.new_demo_user!
       login!(@user)
-    else
-      @user = current_user
     end
-    debugger
+  
     Channel.subscribe_user_ids!(
       [@user.id],
       [@invite.channel, @invite.team.general_channel, @invite.team.random_channel]
