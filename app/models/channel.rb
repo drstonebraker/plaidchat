@@ -33,6 +33,9 @@ class Channel < ApplicationRecord
   has_many :channel_memberships,
     dependent: :destroy
 
+  has_many :invites,
+    dependent: :destroy
+
   has_many :users,
     through: :channel_memberships,
     source: :user
