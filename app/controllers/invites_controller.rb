@@ -15,7 +15,15 @@ class InvitesController < ApplicationController
   end
 
   def consume
-
+    @invite = Invite.find_by(token: params[:invite_token])
+    @user = User.new_demo_user!
+    Channel.subscribe_user_ids!(
+      [@user.id],
+      [@invite.channel, @invite.team.general_channel, @invite.team.random_channel]
+    )
+    login!(@user)
+    @invite.destroy!
+    render :template => "static_pages/root"
   end
 
   private

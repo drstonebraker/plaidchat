@@ -16,6 +16,10 @@ class Invite < ApplicationRecord
 
   belongs_to :channel
 
+  has_one :team,
+    through: :channel,
+    source: :team
+
   def self.generate_token
     new_token = SecureRandom.urlsafe_base64
     while Invite.exists?(token: new_token)

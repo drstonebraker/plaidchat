@@ -235,6 +235,12 @@ class User < ApplicationRecord
     )
   end
 
+  def self.new_demo_user!
+    user = self.new_demo_user
+    user.save!
+    user
+  end
+
   def self.generate_animal_username
     animal = animal_names.sample
     adjective = adjectives[animal.chr].sample
