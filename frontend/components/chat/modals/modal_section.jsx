@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ModalSection = ({ heading, children }) => {
+const ModalSection = ({ heading, children, avatarUrl }) => {
   // add css class to children listitems
   children = React.Children.map(children, child => (
     React.cloneElement(child, {
@@ -14,9 +14,7 @@ const ModalSection = ({ heading, children }) => {
       {
         heading &&
         <h2 className='modal_section_header'>
-          <div className='image_placeholder'>
-
-          </div>
+          <img className='avatar_image' src={avatarUrl}/>
           <span className='modal_section_header__heading'>
             { heading }
           </span>

@@ -80,6 +80,7 @@ class SidenavHeaderModal extends React.Component {
 
           <ModalSection
             heading={currentUser.username}
+            avatarUrl={currentUser.avatarUrl}
           >
 
             <li key='1' onClick={this.logout()} >

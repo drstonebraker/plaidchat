@@ -1,16 +1,16 @@
 @import '../../../globals/_all.scss';
 
 .messages_view__index_container {
+  @include scrollable_light_bg;
   display: flex;
   flex-direction: column;
   height: 100%;
+  box-sizing: border-box;
 }
 
 .messages_view__index {
-  @include scrollable_light_bg;
   max-height: 100%;
   margin-top: auto;
-  padding: 0 0 1.7rem 0;
 }
 
 .message {
@@ -24,12 +24,16 @@
       visibility: visible;
     }
   }
+  &:last-child {
+    padding-bottom: 1.7rem;
+  }
 }
 
 .message_gutter {
   position: relative;
   width: 3.8rem;
   margin-right: 1rem;
+  padding: 0.2rem 0 0 0;
 }
 
 .message_content {
@@ -65,4 +69,43 @@
   font-size: 1.5rem;
   line-height: 1.8rem;
   color: $slack_message_color;
+}
+
+.magic_link_notice {
+  padding: 1.3rem 0 1.6rem 0;
+  position: relative;
+  background-color: $slack_bg_light;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: $lato;
+  color: $slack_heading_color;
+}
+
+.magic_link_notice__content {
+  padding: 0 0 0.6rem 0;
+  box-sizing: border-box;
+  margin: 0 10rem;
+}
+
+.magic_link_notice__heading {
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+
+  &--bold {
+    font-weight: 800;
+  }
+}
+
+.magic_link_notice__copy {
+  margin: 1rem 0 1.2rem 0;
+  font-size: 1.3rem;
+  line-height: 1.4rem;
+}
+
+.magic_link_notice__zigzag {
+  height: 6px;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background: url(<%= asset_path('zigzag.png') %>) repeat;
 }
