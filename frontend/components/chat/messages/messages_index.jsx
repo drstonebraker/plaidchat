@@ -46,7 +46,15 @@ class MessagesIndex extends React.Component {
         ref={container => this.container = container}
         className='messages_view__index_container'>
         <div className='magic_link_notice'>
-          <div className='l-middle'>hahahahah</div>
+          <div className='l-middle'>
+            <h4>Hey teamie!</h4>
+            <p>Looking for someone to chat with?</p>
+            <p>
+              Click the button below to generate a unique link you can send to
+              anyone, and they'll be able to chat with you right away without
+              even having to sign in or register!
+            </p>
+          </div>
           <div className='magic_link_notice__zigzag'></div>
         </div>
         <ul
