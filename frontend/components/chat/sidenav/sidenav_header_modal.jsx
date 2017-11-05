@@ -96,10 +96,10 @@ class SidenavHeaderModal extends React.Component {
           >
 
             <li key='3' onClick={() => this.openChatGroupForm('inviteTeam')} >
-              Invite users to team <strong>{teamName}</strong>
+              Add users to team <strong>{teamName}</strong>
             </li>
             <li key='4' onClick={() => this.openChatGroupForm('inviteChannel')} >
-              Invite users to <strong>#{channelName}</strong>
+              Add users to <strong>#{channelName}</strong>
             </li>
 
           </ModalSection>

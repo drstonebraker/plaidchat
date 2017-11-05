@@ -52,7 +52,7 @@ const mapStateToProps = (state, ownProps) => {
     case 'inviteTeam':
       actionType = 'invite'
       entityType = 'team'
-      headingContent = `Invite users to ${teamName}`
+      headingContent = `Add users to ${teamName}`
       submitContent = 'Send Invites'
       errors = state.errors.team;
       inviteType = 'users'
@@ -60,7 +60,7 @@ const mapStateToProps = (state, ownProps) => {
     case 'inviteChannel':
       actionType = 'invite'
       entityType = 'channel'
-      headingContent = `Invite users to ${channelName}`
+      headingContent = `Add users to ${channelName}`
       submitContent = 'Send Invites'
       errors = state.errors.channel;
       inviteType = 'team members'

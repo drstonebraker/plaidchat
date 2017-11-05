@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 
 const Message = ({
-  id, body, createdAt, username, userId, prevUserId, prevCreatedAt
+  id, body, createdAt, username, userId, prevUserId, prevCreatedAt, avatarUrl
 }) => {
   const isWithinFiveMins = moment(prevCreatedAt).add(5, 'minutes') >= moment(createdAt)
 
@@ -24,7 +24,7 @@ const Message = ({
 
     <li key={id} className='message'>
       <div className='message_gutter'>
-        <div className='image_placeholder'></div>
+        <img className='avatar_image' src={avatarUrl}/>
       </div>
       <div className='message_content'>
         <h6>
