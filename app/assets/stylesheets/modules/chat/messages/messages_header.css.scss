@@ -16,8 +16,22 @@
   align-items: center;
   font-family: $lato;
   font-weight: 900;
-  padding: 0 2.1rem;
+  padding-left: 2.1rem;
+  margin-right: 2.1rem;
   color: $slack_heading_color;
   font-size: 1.8rem;
   line-height: 6rem;
+  overflow-x: hidden;
+}
+
+.opaque_button--fixed_width {
+  width: 14.8rem;
+}
+
+.demo_auth_container {
+  transition: transform 200ms ease;
+
+  &--hide_magic_link {
+    transform: translateX(16rem)
+  }
 }

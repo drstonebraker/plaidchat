@@ -30,12 +30,18 @@ class MessagesHeader extends React.Component {
       <div className='messages_view__header'>
         <div className='messages_header__channel_name'>
           <span>#{channel ? channel.name : ''}</span>
-          <div>
+          <div className='demo_auth_container'>
             {isDemo && authBtn('Login', '/login')}
             {isDemo && authBtn('Sign Up', '/signup')}
             <button
               type='button'
-              className="opaque_button opaque_button--blue opaque_button--sm l-margin_left--12"
+              className={`
+                opaque_button
+                opaque_button--blue
+                opaque_button--sm
+                l-margin_left--12
+                opaque_button--fixed_width
+                `}
               onClick={() => {}}
             >
               Magic Invite Link!

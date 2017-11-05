@@ -45,7 +45,7 @@ class MessagesIndex extends React.Component {
       <div
         ref={container => this.container = container}
         className='messages_view__index_container'>
-        <div className='magic_link_notice'>
+        <div className='magic_link_notice' ref={div => this.mlNotice = div}>
           <div className='l-middle magic_link_notice__content'>
             <h4 className='magic_link_notice__heading magic_link_notice__heading--bold'>
               🎉&nbsp; Hey teamie!
