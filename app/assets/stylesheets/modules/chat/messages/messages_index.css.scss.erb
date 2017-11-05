@@ -72,10 +72,34 @@
 }
 
 .magic_link_notice {
+  padding: 0 0 0.6rem 0;
   position: relative;
   min-height: 15rem;
   background-color: $slack_bg_light;
   margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: $lato;
+  color: $slack_heading_color;
+}
+
+.magic_link_notice__content {
+  padding: 0 0 0.6rem 0;
+  box-sizing: border-box;
+}
+
+.magic_link_notice__heading {
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+
+  &--bold {
+    font-weight: 800;
+  }
+}
+
+.magic_link_notice__copy {
+  margin: 1rem 0 1.2rem 0;
+  font-size: 1.3rem;
+  line-height: 1.4rem;
 }
 
 .magic_link_notice__zigzag {
