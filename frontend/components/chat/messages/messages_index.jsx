@@ -20,7 +20,7 @@ class MessagesIndex extends React.Component {
   }
 
   scrollToBottom() {
-    this.index.scrollTop = this.index.scrollHeight
+    this.container.scrollTop = this.container.scrollHeight
   }
 
   render() {
@@ -45,6 +45,10 @@ class MessagesIndex extends React.Component {
       <div
         ref={container => this.container = container}
         className='messages_view__index_container'>
+        <div className='magic_link_notice'>
+          <div className='l-middle'>hahahahah</div>
+          <div className='magic_link_notice__zigzag'></div>
+        </div>
         <ul
           ref={index => this.index = index}
           className='messages_view__index'>
