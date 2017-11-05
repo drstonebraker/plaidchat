@@ -1,5 +1,7 @@
 import React from 'react'
 
+import DefaultTeamAvatar from './default_team_avatar'
+
 const ModalSection = ({ heading, children, avatarUrl }) => {
   // add css class to children listitems
   children = React.Children.map(children, child => (
@@ -14,7 +16,13 @@ const ModalSection = ({ heading, children, avatarUrl }) => {
       {
         heading &&
         <h2 className='modal_section_header'>
-          <img className='avatar_image' src={avatarUrl}/>
+          {
+            avatarUrl ? (
+              <img className='avatar_image u-clickable' src={avatarUrl}/>
+            ) : (
+              <DefaultTeamAvatar teamName={heading}/>
+            )
+          }
           <span className='modal_section_header__heading'>
             { heading }
           </span>
