@@ -30,7 +30,10 @@ class MessagesHeader extends React.Component {
       <div className='messages_view__header'>
         <div className='messages_header__channel_name'>
           <span>#{channel ? channel.name : ''}</span>
-          <div className='demo_auth_container'>
+          <div
+            className='demo_auth_container demo_auth_container--hide_magic_link'
+            id='demo_auth_container'
+          >
             {isDemo && authBtn('Login', '/login')}
             {isDemo && authBtn('Sign Up', '/signup')}
             <button
