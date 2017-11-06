@@ -53,7 +53,7 @@ const mapStateToProps = (state, ownProps) => {
       actionType = 'invite'
       entityType = 'team'
       headingContent = `Add users to ${teamName}`
-      submitContent = 'Send Invites'
+      submitContent = 'Add Users'
       errors = state.errors.team;
       inviteType = 'users'
       break;
