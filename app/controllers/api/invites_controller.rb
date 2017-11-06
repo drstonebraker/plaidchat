@@ -17,23 +17,25 @@ class Api::InvitesController < ApplicationController
   def consume
     @invite = Invite.find_by(token: params[:invite_token])
 
-    if logged_in?
-      @user = current_user
-    else
-      @user = User.new_demo_user!
-      login!(@user)
+    if @invite
+      if logged_in?
+        @user = current_user
+      else
+        @user = User.new_demo_user!
+        login!(@user)
+      end
+
+      Channel.subscribe_user_ids!(
+        [@user.id],
+        [@invite.channel, @invite.team.general_channel, @invite.team.random_channel]
+      )
+
+      team_membership = @user.team_memberships.find_by(team_id: @invite.team.id)
+      @user.update!(default_team_membership_id: team_membership.id)
+      @user.default_team_membership.update!(default_channel_id: @invite.channel_id)
+
+      # @invite.destroy!
     end
-
-    Channel.subscribe_user_ids!(
-      [@user.id],
-      [@invite.channel, @invite.team.general_channel, @invite.team.random_channel]
-    )
-
-    team_membership = @user.team_memberships.find_by(team_id: @invite.team.id)
-    @user.update!(default_team_membership_id: team_membership.id)
-    @user.default_team_membership.update!(default_channel_id: @invite.channel_id)
-
-    # @invite.destroy!
     redirect_to root_url
   end
 

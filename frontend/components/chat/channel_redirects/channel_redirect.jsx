@@ -4,7 +4,7 @@ import { RedirectToTeam, RedirectToDefaultChannel, RedirectToChannel } from './r
 
 const ChannelRedirect = (props) => {
   const {
-    match, currentUser, teamMembership, defaultTeamId, superfluous,
+    match, currentUser, teamMembership, superfluous,
     channel, defaultChannelId, teamId, doesChannelBelongToTeam, channelId
   } = props
 

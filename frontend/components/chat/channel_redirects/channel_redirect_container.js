@@ -23,10 +23,10 @@ const mapStateToProps = (state, ownProps) => {
   // )
 
   const channel = state.entities.channels[channelId]
-
-  const defaultTeamId = state.entities.teamMemberships[
+  const defaultTeamMembership = state.entities.teamMemberships[
     currentUser.defaultTeamMembershipId
-  ].teamId
+  ]
+  const defaultTeamId = defaultTeamMembership && defaultTeamMembership.teamId
 
   const defaultChannelId = teamMembership ? teamMembership.defaultChannelId : null
 
