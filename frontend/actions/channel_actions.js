@@ -1,6 +1,4 @@
 import * as ChannelUtil from '../util/api/channel_api_util';
-// import { receiveTeamMembership } from './team_membership_actions'
-
 
 export const RECEIVE_NEW_CHANNEL = 'RECEIVE_NEW_CHANNEL';
 export const RECEIVE_CHANNEL_ERRORS = 'RECEIVE_CHANNEL_ERRORS';

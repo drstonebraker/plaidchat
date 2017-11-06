@@ -10,6 +10,7 @@ import {
   SENDING_USER_INVITES,
   OPEN_MAGIC_LINK_MODAL,
   CLOSE_MAGIC_LINK_MODAL,
+  RECEIVE_NEW_INVITE,
 } from '../actions/ui_actions';
 import {
   RECEIVE_USERS_SEARCH
@@ -63,6 +64,9 @@ const uiReducer = (state = defaultState, action) => {
       return newState;
     case CLOSE_MAGIC_LINK_MODAL:
       newState.isMagicLinkModalOpen = false
+      return newState;
+    case RECEIVE_NEW_INVITE:
+      newState.currentInviteLink = action.link
       return newState;
     default:
       return state;

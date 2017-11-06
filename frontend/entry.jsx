@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
       isInviteConfirmModalOpen: false,
       inviteConfirmModalType: null,
       isMagicLinkModalOpen: true,
+      currentInviteLink: '',
     },
     errors: {
       session: {

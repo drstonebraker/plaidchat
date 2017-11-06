@@ -2,6 +2,7 @@ class InvitesController < ApplicationController
   before_action :require_channel_membership, only: %i(create)
 
   def create
+    debugger
     @invite = Invite.new(invite_params)
 
     if @invite.save
