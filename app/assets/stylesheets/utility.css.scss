@@ -1,5 +1,9 @@
 @import './globals/_all.scss';
 
 .u-clickable {
-  // cursor: pointer;
+  cursor: pointer;
+}
+
+.u-hidden {
+  visibility: hidden;
 }

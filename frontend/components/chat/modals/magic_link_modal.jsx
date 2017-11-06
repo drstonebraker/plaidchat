@@ -88,17 +88,18 @@ class MagicLinkModal extends React.Component {
 
             </CopyToClipboard>
 
-            {
-              isCopied === true &&
-              <div>Link copied</div>
-            }
-
-            {
-              isCopied === false &&
-              <div>Unable to copy. Please copy link manually</div>
-            }
-
           </form>
+
+          <div
+            className={`
+              form_field__input_tip
+              l-center
+              ${isCopied === false ? 'form_field__input_tip--warn' : ''}
+              ${isCopied === null ? 'u-hidden' : ''}
+            `}>
+            { isCopied === true ? 'Link copied' : 'Click the blue button to copy' }
+            { isCopied === false ? 'Unable to copy. Please copy link manually' : '' }
+          </div>
 
         </div>
 

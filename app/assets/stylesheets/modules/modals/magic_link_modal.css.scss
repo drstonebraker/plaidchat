@@ -31,10 +31,14 @@
   display: block;
   float: left;
   background-color: $slack_modal_item_hover;
-  border: 0.2rem solid darken($slack_modal_item_hover, 10%);
+  border: 0.2rem solid darken($slack_modal_item_hover, 7%);
   border-radius: 0rem 0.6rem 0.6rem 0rem;
   height: 100%;
   width: 4.4rem;
+
+  &:active {
+    box-shadow: inset 0 .2rem .3rem $slack_shadow_solid_color;
+  }
 }
 
 .magic_link_modal_form__input_container {
@@ -56,5 +60,5 @@
   font-family: $open_sans;
   color: $slack_tip_color;
   box-shadow: inset 0 0 0.4rem $slack_shadow_solid_color;
-  background-color: #f7f7f7;
+  background-color: #f6f6f6;
 }

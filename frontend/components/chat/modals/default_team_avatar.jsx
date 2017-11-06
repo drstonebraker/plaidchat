@@ -20,7 +20,7 @@ const DefaultTeamAvatar = ({teamName}) => {
 
   return (
     <div
-      className='avatar_image u-clickable'
+      className='avatar_image'
       style={{backgroundColor: randomColor}}>
       {firstLetter}
     </div>
