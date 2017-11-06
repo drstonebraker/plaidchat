@@ -44,3 +44,15 @@ export const CircleX = ({color}) => (
     color={color}
   />
 )
+
+export const CopyIcon = ({color, size}) => (
+  <span className>
+    <i
+      style={{'fontSize': size}}
+      className={
+        `fa fa-clipboard ${color && ('fa-' + color)}`
+      }
+      aria-hidden={true}
+    ></i>
+  </span>
+)

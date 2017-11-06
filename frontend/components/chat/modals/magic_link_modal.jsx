@@ -1,19 +1,32 @@
 import React from 'react'
 import Modal from 'react-modal'
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import { modalStyle } from '../../../util/modal_style'
+import { CopyIcon } from '../../font_awesome/icons'
 
 class MagicLinkModal extends React.Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      isCopied: null,
+    }
+
+    this.handleCopy = this.handleCopy.bind(this)
   }
 
   componentDidMount() {
 
   }
 
+  handleCopy(text, successBool) {
+    this.setState({isCopied: successBool})
+  }
+
   render() {
-    const { onRequestClose, isOpen } = this.props
+    const { onRequestClose, isOpen, inviteLink } = this.props
+    const { isCopied } = this.state
 
     const newContent = Object.assign(
       {},
@@ -44,8 +57,49 @@ class MagicLinkModal extends React.Component {
           onRequestClose={onRequestClose}
         >
 
-        <div>
-          asdfasdfasdkhalskjdhflkasjhfd
+        <div className='magic_link_modal'>
+
+          <form
+            className='magic_link_modal_form l-cf'
+            ref={(form) => { this.form = form }}
+          >
+            <div className='magic_link_modal_form__input_container'>
+              <input
+                type='text'
+                className='magic_link_modal_form__input'
+                value={inviteLink}
+                readonly={true}
+              />
+            </div>
+
+            <CopyToClipboard
+              text={inviteLink}
+              onCopy={this.handleCopy}>
+
+              <button
+                type='button'
+                className='magic_link_modal_form__copy'
+                title='Copy to clipboard'
+              >
+                <CopyIcon
+                  color='white'
+                  size={20}/>
+              </button>
+
+            </CopyToClipboard>
+
+            {
+              isCopied === true &&
+              <div>Link copied</div>
+            }
+
+            {
+              isCopied === false &&
+              <div>Unable to copy. Please copy link manually</div>
+            }
+
+          </form>
+
         </div>
 
       </Modal>
