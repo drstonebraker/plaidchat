@@ -34,7 +34,7 @@ ActiveRecord::Base.transaction do
     end
 
     User.create!(
-      username: Faker::Internet.user_name,
+      username: username,
       password: '1t9xbnxtZbYWw8d90wOkMA'
     )
   end
