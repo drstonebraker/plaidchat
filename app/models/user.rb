@@ -11,6 +11,7 @@
 #  default_team_membership_id :integer
 #  is_demo                    :boolean          default(FALSE), not null
 #  avatar_url                 :string           not null
+#  is_bot                     :boolean          default(FALSE), not null
 #
 
 class User < ApplicationRecord

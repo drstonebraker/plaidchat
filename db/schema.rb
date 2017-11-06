@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171104030743) do
+ActiveRecord::Schema.define(version: 20171106081759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20171104030743) do
     t.integer "default_team_membership_id"
     t.boolean "is_demo", default: false, null: false
     t.string "avatar_url", null: false
+    t.boolean "is_bot", default: false, null: false
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["username", "password_digest"], name: "index_users_on_username_and_password_digest", unique: true
   end
