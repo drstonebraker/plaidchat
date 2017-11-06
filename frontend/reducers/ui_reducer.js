@@ -60,13 +60,14 @@ const uiReducer = (state = defaultState, action) => {
       newState.usersSearch = action.users
       return newState;
     case OPEN_MAGIC_LINK_MODAL:
+      newState.currentInviteToken = ''
       newState.isMagicLinkModalOpen = true
       return newState;
     case CLOSE_MAGIC_LINK_MODAL:
       newState.isMagicLinkModalOpen = false
       return newState;
     case RECEIVE_NEW_INVITE:
-      newState.currentInviteLink = action.link
+      newState.currentInviteToken = action.link.token
       return newState;
     default:
       return state;

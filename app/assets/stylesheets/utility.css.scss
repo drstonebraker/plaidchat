@@ -7,3 +7,18 @@
 .u-hidden {
   visibility: hidden;
 }
+
+.u-spin {
+  -webkit-animation: 2200ms linear 0s infinite spin;
+	animation: 2200ms linear 0s infinite spin;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg)
+  }
+
+  to {
+    transform: rotate(360deg)
+  }
+}

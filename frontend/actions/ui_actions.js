@@ -61,5 +61,5 @@ export const receiveNewInvite = (link) => ({
 
 export const createInvite = invite => dispatch => (
   InviteUtil.postInvite(invite)
-    .then(res => dispatch(receiveNewInvite(res))
+    .then(res => dispatch(receiveNewInvite(res)))
 );

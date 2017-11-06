@@ -3,6 +3,8 @@ import React from 'react'
 class MessagesHeader extends React.Component {
   constructor(props) {
     super(props)
+
+    this.openInviteModal = this.openInviteModal.bind(this)
   }
 
   componentDidMount() {
@@ -11,6 +13,11 @@ class MessagesHeader extends React.Component {
 
   navigate(path) {
     return () => this.props.history.push(path)
+  }
+
+  openInviteModal() {
+    this.props.openMagicLinkModal()
+    this.props.createInvite()
   }
 
   render() {
@@ -45,7 +52,7 @@ class MessagesHeader extends React.Component {
                 l-margin_left--12
                 opaque_button--fixed_width
                 `}
-              onClick={() => {}}
+              onClick={this.openInviteModal}
             >
               Magic Invite Link!
             </button>

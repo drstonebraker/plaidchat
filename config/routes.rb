@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     patch 'channels/invite/:id', to: 'channels#invite', as: 'invite_channel'
   end
 
-  get 'invite/:invite_token', to: 'invites#consume', as: 'magic_invite'
+  get 'invite/:invite_token', to: 'api/invites#consume', as: 'magic_invite'
 
   root "static_pages#root"
 

@@ -4,6 +4,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import { modalStyle } from '../../../util/modal_style'
 import { CopyIcon } from '../../font_awesome/icons'
+import LogoIcon from '../../logos/logo_icon'
 
 class MagicLinkModal extends React.Component {
   constructor(props) {
@@ -25,8 +26,10 @@ class MagicLinkModal extends React.Component {
   }
 
   render() {
-    const { onRequestClose, isOpen, inviteLink } = this.props
+    const { onRequestClose, isOpen, inviteToken } = this.props
     const { isCopied } = this.state
+
+    const inviteLink = `https://www.plaidchat.com/invite/${inviteToken}`
 
     const newContent = Object.assign(
       {},
@@ -58,48 +61,57 @@ class MagicLinkModal extends React.Component {
         >
 
         <div className='magic_link_modal'>
+          {
+            inviteToken ? (
+              <div>
+                <form
+                  className='magic_link_modal_form l-cf'
+                  ref={(form) => { this.form = form }}
+                >
+                  <div className='magic_link_modal_form__input_container'>
+                    <input
+                      type='text'
+                      className='magic_link_modal_form__input'
+                      value={inviteLink}
+                      readOnly
+                    />
+                  </div>
 
-          <form
-            className='magic_link_modal_form l-cf'
-            ref={(form) => { this.form = form }}
-          >
-            <div className='magic_link_modal_form__input_container'>
-              <input
-                type='text'
-                className='magic_link_modal_form__input'
-                value={inviteLink}
-                readonly={true}
-              />
-            </div>
+                  <CopyToClipboard
+                    text={inviteLink}
+                    onCopy={this.handleCopy}>
 
-            <CopyToClipboard
-              text={inviteLink}
-              onCopy={this.handleCopy}>
+                    <button
+                      type='button'
+                      className='magic_link_modal_form__copy'
+                      title='Copy to clipboard'
+                    >
+                      <CopyIcon
+                        color='white'
+                        size={20}/>
+                    </button>
 
-              <button
-                type='button'
-                className='magic_link_modal_form__copy'
-                title='Copy to clipboard'
-              >
-                <CopyIcon
-                  color='white'
-                  size={20}/>
-              </button>
+                  </CopyToClipboard>
 
-            </CopyToClipboard>
+                </form>
 
-          </form>
-
-          <div
-            className={`
-              form_field__input_tip
-              l-center
-              ${isCopied === false ? 'form_field__input_tip--warn' : ''}
-              ${isCopied === null ? 'u-hidden' : ''}
-            `}>
-            { isCopied === true ? 'Link copied' : 'Click the blue button to copy' }
-            { isCopied === false ? 'Unable to copy. Please copy link manually' : '' }
-          </div>
+                <div
+                  className={`
+                    form_field__input_tip
+                    l-center
+                    ${isCopied === false ? 'form_field__input_tip--warn' : ''}
+                    ${isCopied === null ? 'u-hidden' : ''}
+                  `}>
+                  { isCopied === true ? 'Link copied' : 'Click the blue button to copy' }
+                  { isCopied === false ? 'Unable to copy. Please copy link manually' : '' }
+                </div>
+              </div>
+            ) : (
+              <div className='l-center u-spin'>
+                <LogoIcon size={60}/>
+              </div>
+            )
+          }
 
         </div>
 

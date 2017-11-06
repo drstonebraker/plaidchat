@@ -1,4 +1,4 @@
-class InvitesController < ApplicationController
+class Api::InvitesController < ApplicationController
   before_action :require_channel_membership, only: %i(create)
 
   def create
@@ -41,7 +41,7 @@ class InvitesController < ApplicationController
   private
 
   def require_channel_membership
-    unless current_user.channel_ids.include?(invite_params[:channel_id])
+    unless current_user.channel_ids.include?(invite_params[:channel_id].to_i)
       render json: [
         {error: "You do not have permission to create invites for that channel"}
       ], status: 401
@@ -51,5 +51,4 @@ class InvitesController < ApplicationController
   def invite_params
     params.require(:invite).permit(:channel_id)
   end
-
 end

@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     isOpen: state.ui.isMagicLinkModalOpen,
-    inviteLink: state.ui.currentInviteLink,
+    inviteToken: state.ui.currentInviteToken,
   };
 };
 

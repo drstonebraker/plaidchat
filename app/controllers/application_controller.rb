@@ -58,17 +58,4 @@ class ApplicationController < ActionController::Base
     demo_user.destroy!
   end
 
-  # def subscribe_current_user!(association, chatgroup)
-  #   unless current_user.send(association).include?(chatgroup)
-  #     current_user.send(association) << chatgroup
-  #   end
-  # end
-  #
-  # def subscribe_user_ids!(new_user_ids, channels)
-  #   channels.each do |chatgroup|
-  #     uniq_ids = chatgroup.user_ids.concat(new_user_ids).uniq
-  #     chatgroup.user_ids = uniq_ids
-  #   end
-  # end
-
 end
