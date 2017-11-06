@@ -45,6 +45,7 @@ class SidenavHeaderModal extends React.Component {
     } = this.props
 
     const newModalStyle = Object.assign(
+      {},
       modalStyle,
       {
         maxHeight: 'calc(100vh - 10.7rem)'

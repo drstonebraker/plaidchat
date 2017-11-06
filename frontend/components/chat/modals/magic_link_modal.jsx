@@ -15,6 +15,25 @@ class MagicLinkModal extends React.Component {
   render() {
     const { onRequestClose, isOpen } = this.props
 
+    const newContent = Object.assign(
+      {},
+      modalStyle.content,
+      {
+        left: '5rem',
+        right: '5rem',
+        bottom: 'unset',
+        top: '50vh',
+        width: 'auto',
+        transform: 'translateY(-50%)',
+      }
+    )
+
+    const newModalStyle = Object.assign(
+      {},
+      modalStyle,
+      { content: newContent }
+    )
+
     return (
       <div>
         <Modal
@@ -24,6 +43,11 @@ class MagicLinkModal extends React.Component {
           isOpen={isOpen}
           onRequestClose={onRequestClose}
         >
+
+        <div>
+          asdfasdfasdkhalskjdhflkasjhfd
+        </div>
+
       </Modal>
       </div>
     )

@@ -3,7 +3,7 @@ import React from 'react'
 import MessagesHeaderContainer from './messages_header_container'
 import MessagesIndexContainer from './messages_index_container'
 import MessageFormContainer from './message_form_container'
-
+import MagicLinkModalContainer from '../modals/magic_link_modal_container'
 
 class ChatView extends React.Component {
   constructor(props) {
@@ -26,6 +26,7 @@ class ChatView extends React.Component {
         <MessagesHeaderContainer />
         <MessagesIndexContainer />
         <MessageFormContainer />
+        <MagicLinkModalContainer />
       </div>
     )
   }
