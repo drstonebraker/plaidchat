@@ -2,7 +2,6 @@ class Api::InvitesController < ApplicationController
   before_action :require_channel_membership, only: %i(create)
 
   def create
-    debugger
     @invite = Invite.new(invite_params)
 
     if @invite.save
@@ -34,7 +33,7 @@ class Api::InvitesController < ApplicationController
     @user.update!(default_team_membership_id: team_membership.id)
     @user.default_team_membership.update!(default_channel_id: @invite.channel_id)
 
-    @invite.destroy!
+    # @invite.destroy!
     redirect_to root_url
   end
 

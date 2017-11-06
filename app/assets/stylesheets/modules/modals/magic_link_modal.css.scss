@@ -4,9 +4,25 @@
   padding: 5rem;
 }
 
+.magic_link_modal__copy {
+  font-family: $lato;
+  text-align: center;
+}
+
+.magic_link_modal_copy__heading {
+  font-size: 2rem;
+  margin: 0 0 2rem 0;
+  font-weight: 800;
+}
+.magic_link_modal_copy__tip {
+  margin: 1rem 0 1.2rem 0;
+  font-size: 1.3rem;
+  line-height: 1.4rem;
+}
+
 .magic_link_modal_form {
   display: block;
-  margin: 0 2rem;
+  margin: 2rem 2rem 0 2rem;
   box-sizing: border-box;
   border-radius: 0.6rem;
   box-shadow: inset 0 0 0 0.2rem $slack_border_thick;
@@ -25,7 +41,7 @@
   }
 }
 
-.magic_link_modal_form__copy {
+.magic_link_modal_form__submit {
   box-sizing: border-box;
   cursor: pointer;
   display: block;
