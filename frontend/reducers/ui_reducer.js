@@ -8,6 +8,8 @@ import {
   SET_CHATGROUP_FORM_TYPE,
   LOADING_USERS_SEARCH,
   SENDING_USER_INVITES,
+  OPEN_MAGIC_LINK_MODAL,
+  CLOSE_MAGIC_LINK_MODAL,
 } from '../actions/ui_actions';
 import {
   RECEIVE_USERS_SEARCH
@@ -55,6 +57,12 @@ const uiReducer = (state = defaultState, action) => {
       return newState;
     case RECEIVE_USERS_SEARCH:
       newState.usersSearch = action.users
+      return newState;
+    case OPEN_MAGIC_LINK_MODAL:
+      newState.isMagicLinkModalOpen = true
+      return newState;
+    case CLOSE_MAGIC_LINK_MODAL:
+      newState.isMagicLinkModalOpen = false
       return newState;
     default:
       return state;
