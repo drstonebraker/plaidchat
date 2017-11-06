@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     isOpen: state.ui.isMagicLinkModalOpen,
     inviteToken: state.ui.currentInviteToken,
-    channelName: state.entities.channels[channelId].name
+    channelName: channelId && state.entities.channels[channelId].name
   };
 };
 

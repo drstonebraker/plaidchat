@@ -8,6 +8,7 @@ class MessagesIndex extends React.Component {
 
     this.resetDemoNavPosition = this.resetDemoNavPosition.bind(this)
     this.handleScroll = this.handleScroll.bind(this)
+    this.openInviteModal = this.openInviteModal.bind(this)
   }
 
   componentDidMount() {
@@ -30,6 +31,11 @@ class MessagesIndex extends React.Component {
 
   handleScroll() {
     this.resetDemoNavPosition()
+  }
+
+  openInviteModal() {
+    this.props.openMagicLinkModal()
+    this.props.createInvite()
   }
 
   resetDemoNavPosition() {
@@ -83,7 +89,7 @@ class MessagesIndex extends React.Component {
               ref={btn => this.magicLinkButton = btn}
               type='button'
               className="opaque_button opaque_button--blue opaque_button--sm"
-              onClick={() => {}}
+              onClick={this.openInviteModal}
             >
               Magic Invite Link!
             </button>
