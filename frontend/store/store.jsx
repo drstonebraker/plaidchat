@@ -8,11 +8,11 @@ const middlewares = [thunk];
 let middlewaresWithDevTools;
 if (process.env.NODE_ENV !== 'production') {
   const { logger } = require('redux-logger');
-  const { composeWithDevTools } = require('redux-devtools-extension')
   middlewares.push(logger);
 
-  middlewaresWithDevTools = composeWithDevTools(applyMiddleware(...middlewares))
 }
+const { composeWithDevTools } = require('redux-devtools-extension')
+middlewaresWithDevTools = composeWithDevTools(applyMiddleware(...middlewares))
 
 
 const configureStore = (preloadedState = {}) => (
