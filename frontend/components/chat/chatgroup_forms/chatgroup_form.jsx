@@ -229,6 +229,7 @@ class ChatgroupForm extends React.Component {
           type='button'
           onClick={this.closeModal}
           className='chat_group_form_close'
+          aria-label="Close"
         >
           <X/>
           <span className='chat_group_form_close__esc'>
