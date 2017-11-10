@@ -1,1 +1,5 @@
-# README
+# Plaidchat
+
+## Technologies
+
+## Future Directions
