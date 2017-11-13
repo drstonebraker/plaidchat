@@ -9,12 +9,15 @@ This project was a learning exercise with a goal of following the functionality 
 
 #### Live Chat
 Users can chat live with any internet-connected user around the world.
+![A demonstration showing the live chat functionality](http://res.cloudinary.com/dvcr1kq1u/image/upload/v1510616563/live_chat_gezaqp.gif)
 
 #### Magic Link
 Users can generate links to invite peers who are or aren't already registered on the site to easily join their chat.
+![A demonstration showing the generation of an invite link](http://res.cloudinary.com/dvcr1kq1u/image/upload/v1510616082/magic_link_vytcbe.gif)
 
 #### Error handling
 Forms provide meaning error handling for users.  Styles and components were written to be modular and scalable: forms and form fields are both reusable components with styling and error-handling built-in.
+![A demonstration showing helpful error feedback](http://res.cloudinary.com/dvcr1kq1u/image/upload/v1510616082/error_handling_fuaxvd.gif)
 
 #### Protected routes
 Routes are protected on both the frontend and backend to prevent users from accessing unauthorized resources.
