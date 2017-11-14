@@ -1,7 +1,7 @@
 @import './_media_breakpoints.scss';
 
 @mixin phone {
-  @media (max-width: #{$tablet-width}) {
+  @media (max-width: #{$tablet-width - 1px}) {
     @content;
   }
 }
