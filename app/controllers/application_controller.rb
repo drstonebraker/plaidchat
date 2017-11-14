@@ -45,9 +45,10 @@ class ApplicationController < ActionController::Base
     demo_user = current_user
     current_user.copy_messages_to(@user)
     current_user.copy_channels_to(@user)
-    current_user.copy_defaults_to(@user)
+    current_user.copy_defaults_to!(@user)
     logout!
     demo_user.destroy!
+    @user.reload
   end
 
 end

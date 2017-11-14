@@ -210,10 +210,11 @@ class User < ApplicationRecord
     end
   end
 
-  def copy_defaults_to(user)
+  def copy_defaults_to!(user)
     default_team_id = self.default_team.id
     user.default_team_membership_id = user.team_memberships.find_by(team_id: default_team_id).id
     user.default_team_default_channel = self.default_team_default_channel
+    user.save!
   end
 
   ######################
