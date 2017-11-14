@@ -51,8 +51,8 @@ class MagicLinkModal extends React.Component {
       {},
       modalStyle.content,
       {
-        left: '5rem',
-        right: '5rem',
+        left: '10vw',
+        right: '10vw',
         bottom: 'unset',
         top: '50vh',
         width: 'auto',
