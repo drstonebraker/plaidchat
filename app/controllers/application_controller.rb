@@ -37,14 +37,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def require_current_user
-    unless current_user.session_token == session[:session_token]
-      render json: [
-        {error: "You do not have permission to edit this user's information"}
-      ], status: 401
-    end
-  end
-
   def demo_user_creation?
     params[:user].try(:[], :is_demo)
   end
