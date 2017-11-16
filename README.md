@@ -7,7 +7,7 @@ Plaidchat is a full-stack application built with:
 + React
 + Redux
 + the WebSocket protocol (implemented with ActionCable)
-+ Variations of BEM and SMACCS styling conventions.
++ Variations of BEM and SMACCS styling conventions
 
 This project was a learning exercise with a goal of following the functionality and design of an existing online application (slack) in order to build a full-stack app which meets predetermined feature and style specifications.
 
