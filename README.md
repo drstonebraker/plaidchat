@@ -1,7 +1,13 @@
 # Plaidchat
+[See it live!](https://www.plaidchat.com)
 
 ## Technologies
-Plaidchat is a full-stack application built with a Ruby on Rails backend, a React and Redux frontend, and the WebSocket protocol (implemented with ActionCable). It also utilizes variations of BEM and SMACCS styling conventions.
+Plaidchat is a full-stack application built with:
++ Ruby on Rails
++ React
++ Redux
++ the WebSocket protocol (implemented with ActionCable)
++ Variations of BEM and SMACCS styling conventions.
 
 This project was a learning exercise with a goal of following the functionality and design of an existing online application (slack) in order to build a full-stack app which meets predetermined feature and style specifications.
 
