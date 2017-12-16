@@ -36,7 +36,7 @@ export const signup = user => dispatch => (
 export const login = user => dispatch => (
   AuthUtil.postSession(user)
     .then(currentUserData => dispatch(receiveCurrentUser(currentUserData)),
-          error => dispatch(receiveSessionErrors(error.responseJSON)))
+          error => dispatch(receiveSessionErrors(error)))
 );
 
 export const logout = () => dispatch => (
