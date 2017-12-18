@@ -18,12 +18,12 @@
 //   })
 // )
 
-export const deleteSession = () => (
-  $.ajax({
-    method: 'DELETE',
-    url: `api/session`
-  })
-)
+// export const deleteSession = () => (
+//   $.ajax({
+//     method: 'DELETE',
+//     url: `api/session`
+//   })
+// )
 
 // fetch
 
@@ -55,4 +55,11 @@ export const postSession = user => (
     credentials: 'include'
   }).then(checkStatus)
     .then(getJSON)
+);
+
+export const deleteSession = () => (
+  fetch(`api/session`, {
+    method: 'DELETE',
+    credentials: 'include'
+  })
 );
